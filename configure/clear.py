@@ -13,5 +13,6 @@ class clear:
         # 0 = clears from cursor until end of screen,
         # 1 = clears from cursor to beginning of screen
         # 2 = clears entire screen
+        # 3 = erasing recording line 
         clearScreen = u"\u001b[" + f"{pos}" + "J"
         return clearScreen 

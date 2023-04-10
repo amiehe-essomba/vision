@@ -27,4 +27,5 @@ class init:
     # removing the reverse when is set 
     remove_reverse  = u"\u001b[27m"
     # link github 
-    link        = u"\u001b[8;;https://github.com/amiehe-essomba ST"
+    link            = u"\u001b[8;;https://github.com/amiehe-essomba ST"
+    
