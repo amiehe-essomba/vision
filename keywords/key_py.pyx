@@ -8,7 +8,7 @@ cdef class LANG:
     def __cinit__(self, master):
         self.master     = master
         self.c          = {"color_name" : [], 'values' : []}
-    def PY(self):
+    def PY(self, str termios = "monokai"):
         cdef :
             dict data = {}
             list keys = []

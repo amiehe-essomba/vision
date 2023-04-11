@@ -942,6 +942,12 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
+/* ArgTypeTest.proto */
+#define __Pyx_ArgTypeTest(obj, type, none_allowed, name, exact)\
+    ((likely((Py_TYPE(obj) == type) | (none_allowed && (obj == Py_None)))) ? 1 :\
+        __Pyx__ArgTypeTest(obj, type, name, exact))
+static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
+
 /* PyDictVersioning.proto */
 #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
 #define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
@@ -1290,6 +1296,7 @@ static const char __pyx_k_getitem[] = "__getitem__";
 static const char __pyx_k_logical[] = "logical";
 static const char __pyx_k_monokai[] = "monokai";
 static const char __pyx_k_setitem[] = "__setitem__";
+static const char __pyx_k_termios[] = "termios";
 static const char __pyx_k_truediv[] = "__truediv__";
 static const char __pyx_k_EOFError[] = "EOFError";
 static const char __pyx_k_KeyError[] = "KeyError";
@@ -1565,6 +1572,7 @@ static PyObject *__pyx_n_s_str;
 static PyObject *__pyx_n_s_str_2;
 static PyObject *__pyx_n_s_sub;
 static PyObject *__pyx_n_s_super;
+static PyObject *__pyx_n_s_termios;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_truediv;
 static PyObject *__pyx_n_s_try;
@@ -1577,7 +1585,7 @@ static PyObject *__pyx_n_s_write;
 static PyObject *__pyx_n_s_xor;
 static PyObject *__pyx_n_s_yield;
 static int __pyx_pf_6key_py_4LANG___cinit__(struct __pyx_obj_6key_py_LANG *__pyx_v_self, PyObject *__pyx_v_master); /* proto */
-static PyObject *__pyx_pf_6key_py_4LANG_2PY(struct __pyx_obj_6key_py_LANG *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6key_py_4LANG_2PY(struct __pyx_obj_6key_py_LANG *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_termios); /* proto */
 static PyObject *__pyx_pf_6key_py_4LANG_6master___get__(struct __pyx_obj_6key_py_LANG *__pyx_v_self); /* proto */
 static int __pyx_pf_6key_py_4LANG_6master_2__set__(struct __pyx_obj_6key_py_LANG *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static int __pyx_pf_6key_py_4LANG_6master_4__del__(struct __pyx_obj_6key_py_LANG *__pyx_v_self); /* proto */
@@ -1686,7 +1694,7 @@ static int __pyx_pf_6key_py_4LANG___cinit__(struct __pyx_obj_6key_py_LANG *__pyx
  *     def __cinit__(self, master):
  *         self.master     = master             # <<<<<<<<<<<<<<
  *         self.c          = {"color_name" : [], 'values' : []}
- *     def PY(self):
+ *     def PY(self, str termios = "monokai"):
  */
   if (!(likely(PyString_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(1, 9, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_master;
@@ -1701,7 +1709,7 @@ static int __pyx_pf_6key_py_4LANG___cinit__(struct __pyx_obj_6key_py_LANG *__pyx
  *     def __cinit__(self, master):
  *         self.master     = master
  *         self.c          = {"color_name" : [], 'values' : []}             # <<<<<<<<<<<<<<
- *     def PY(self):
+ *     def PY(self, str termios = "monokai"):
  *         cdef :
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
@@ -1744,25 +1752,76 @@ static int __pyx_pf_6key_py_4LANG___cinit__(struct __pyx_obj_6key_py_LANG *__pyx
 /* "key_py.pyx":11
  *         self.master     = master
  *         self.c          = {"color_name" : [], 'values' : []}
- *     def PY(self):             # <<<<<<<<<<<<<<
+ *     def PY(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
  *         cdef :
  *             dict data = {}
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6key_py_4LANG_3PY(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6key_py_4LANG_3PY(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6key_py_4LANG_3PY(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6key_py_4LANG_3PY(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  CYTHON_UNUSED PyObject *__pyx_v_termios = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("PY (wrapper)", 0);
-  __pyx_r = __pyx_pf_6key_py_4LANG_2PY(((struct __pyx_obj_6key_py_LANG *)__pyx_v_self));
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_termios,0};
+    PyObject* values[1] = {0};
+    values[0] = ((PyObject*)__pyx_n_s_monokai);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_termios);
+          if (value) { values[0] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "PY") < 0)) __PYX_ERR(1, 11, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_termios = ((PyObject*)values[0]);
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("PY", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 11, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("key_py.LANG.PY", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_termios), (&PyString_Type), 1, "termios", 1))) __PYX_ERR(1, 11, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6key_py_4LANG_2PY(((struct __pyx_obj_6key_py_LANG *)__pyx_v_self), __pyx_v_termios);
 
   /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6key_py_4LANG_2PY(struct __pyx_obj_6key_py_LANG *__pyx_v_self) {
+static PyObject *__pyx_pf_6key_py_4LANG_2PY(struct __pyx_obj_6key_py_LANG *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_termios) {
   PyObject *__pyx_v_data = 0;
   PyObject *__pyx_v_keys = 0;
   PyObject *__pyx_r = NULL;
@@ -1776,7 +1835,7 @@ static PyObject *__pyx_pf_6key_py_4LANG_2PY(struct __pyx_obj_6key_py_LANG *__pyx
   __Pyx_RefNannySetupContext("PY", 0);
 
   /* "key_py.pyx":13
- *     def PY(self):
+ *     def PY(self, str termios = "monokai"):
  *         cdef :
  *             dict data = {}             # <<<<<<<<<<<<<<
  *             list keys = []
@@ -3164,7 +3223,7 @@ static PyObject *__pyx_pf_6key_py_4LANG_2PY(struct __pyx_obj_6key_py_LANG *__pyx
   /* "key_py.pyx":11
  *         self.master     = master
  *         self.c          = {"color_name" : [], 'values' : []}
- *     def PY(self):             # <<<<<<<<<<<<<<
+ *     def PY(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
  *         cdef :
  *             dict data = {}
  */
@@ -3469,7 +3528,7 @@ static int __pyx_setprop_6key_py_4LANG_master(PyObject *o, PyObject *v, CYTHON_U
 }
 
 static PyMethodDef __pyx_methods_6key_py_LANG[] = {
-  {"PY", (PyCFunction)__pyx_pw_6key_py_4LANG_3PY, METH_NOARGS, 0},
+  {"PY", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6key_py_4LANG_3PY, METH_VARARGS|METH_KEYWORDS, 0},
   {"__reduce_cython__", (PyCFunction)__pyx_pw_6key_py_4LANG_5__reduce_cython__, METH_NOARGS, 0},
   {"__setstate_cython__", (PyCFunction)__pyx_pw_6key_py_4LANG_7__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
@@ -3783,6 +3842,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_str_2, __pyx_k_str_2, sizeof(__pyx_k_str_2), 0, 0, 1, 1},
   {&__pyx_n_s_sub, __pyx_k_sub, sizeof(__pyx_k_sub), 0, 0, 1, 1},
   {&__pyx_n_s_super, __pyx_k_super, sizeof(__pyx_k_super), 0, 0, 1, 1},
+  {&__pyx_n_s_termios, __pyx_k_termios, sizeof(__pyx_k_termios), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_truediv, __pyx_k_truediv, sizeof(__pyx_k_truediv), 0, 0, 1, 1},
   {&__pyx_n_s_try, __pyx_k_try, sizeof(__pyx_k_try), 0, 0, 1, 1},
@@ -4473,6 +4533,27 @@ static void __Pyx_RaiseArgtupleInvalid(
                  "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
                  func_name, more_or_less, num_expected,
                  (num_expected == 1) ? "" : "s", num_found);
+}
+
+/* ArgTypeTest */
+static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact)
+{
+    if (unlikely(!type)) {
+        PyErr_SetString(PyExc_SystemError, "Missing type object");
+        return 0;
+    }
+    else if (exact) {
+        #if PY_MAJOR_VERSION == 2
+        if ((type == &PyBaseString_Type) && likely(__Pyx_PyBaseString_CheckExact(obj))) return 1;
+        #endif
+    }
+    else {
+        if (likely(__Pyx_TypeCheck(obj, type))) return 1;
+    }
+    PyErr_Format(PyExc_TypeError,
+        "Argument '%.200s' has incorrect type (expected %.200s, got %.200s)",
+        name, type->tp_name, Py_TYPE(obj)->tp_name);
+    return 0;
 }
 
 /* PyDictVersioning */
