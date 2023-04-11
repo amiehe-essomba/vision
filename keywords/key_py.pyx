@@ -5,10 +5,10 @@ cdef class LANG:
         str master 
     cdef:
         dict c
-    def __cinit__(self, master):
+    def __cinit__(self, master) -> None:
         self.master     = master
         self.c          = {"color_name" : [], 'values' : []}
-    def PY(self, str termios = "monokai"):
+    cpdef dict PY(self, str termios = "monokai"):
         cdef :
             dict data = {}
             list keys = []
