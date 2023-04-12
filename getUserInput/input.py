@@ -1,6 +1,10 @@
+import os, sys
+
+if (sys.platform == "win32"): pass 
+else:  import  termios, tty
+
 def decoding_string():
     import msvcrt 
-
     s = []   
     while True:
         if msvcrt.kbhit():
@@ -15,7 +19,7 @@ def decoding_string():
    
     return s
 
-def convert( ):
+def windows( ):
     s = decoding_string()
     number = None 
 
@@ -46,3 +50,19 @@ def convert( ):
             elif s == "s" : number = [27, [49, 66]]
         else: number =  [None, None]
     return number
+ 
+def linux():
+    #import termios, sys, tty
+
+    fd              = sys.stdin.fileno()
+    old_settings    = termios.tcgetattr( fd )
+    try:
+        tty.setraw(sys.stdin)
+        ch = ord( sys.stdin.read(1) )
+    finally: termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
+    return ch
+
+def convert():
+    if os.name == "nt": return windows()
+    else: return linux()
