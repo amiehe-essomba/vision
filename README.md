@@ -5,7 +5,7 @@ and effective code editing experience. With a strong focus on customization, the
 
 ## VISION DESIGN 
 
-![logo](/images/termios.png)
+![logo](/images/termios-beta.png)
 
 ## BUILT WITH 
 - __**Python**__ 
