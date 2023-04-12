@@ -25,8 +25,8 @@ class cursor:
         to          = u"\u001b[" +  str( y ) +";" + str(x) + "H"
         return to
 
-    def UP_AND_DROP():
-        drop         = u"\u001b[M"
+    def UP_AND_DROP(pos):
+        drop         = u"\u001b[" + str(pos) + "M"
         return drop
     
 class line:

@@ -58,6 +58,8 @@ def base():
     structure['drop_idd']                       = 0
     # alphabetic char + underscore char
     structure['alpha']                          = case()
+    # last cursor position
+    structure['x_y']                            = []
     
     return structure
     

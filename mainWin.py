@@ -20,7 +20,7 @@ class IDE:
         # save and restore cursor postion 
         self.state              = state 
         # getting max size (max_x, max_y) of the window 
-        self.max_x, self.max_y  = screenConfig.get_win_ter()
+        self.max_x, self.max_y  = screenConfig.cursorMax()
         # getting the cursor coordiantes (x, y)
         self.x, self.y          = screenConfig.cursor()
         # loading the keywords for moving cursor on a particular region of the screen 
@@ -54,7 +54,7 @@ class IDE:
         
         while True:
             # getting max size (max_x, max_y) of the window 
-            self._max_x_, self._max_y_  = screenConfig.get_win_ter()
+            self._max_x_, self._max_y_  = screenConfig.cursorMax()
             
             try:
                 # get user input
