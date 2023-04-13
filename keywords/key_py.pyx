@@ -8,7 +8,7 @@ cdef class LANG:
     def __cinit__(self, master) -> None:
         self.master     = master
         self.c          = {"color_name" : [], 'values' : []}
-    cpdef dict PY(self, str termios = "monokai"):
+    cdef dict PY(self, str termios = "monokai"):
         cdef :
             dict data = {}
             list keys = []
@@ -27,7 +27,7 @@ cdef class LANG:
         data['class_and_func']      = {"name" : ['def', "class", "super"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}  
-        data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range"], "color" : self.c }
+        data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range", "async"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
         data["loop"]                = {"name" : ["while", "with", "for", "yield"], "color" : self.c }
@@ -50,6 +50,9 @@ cdef class LANG:
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
+        data["loading"]             = {"name" : ['from',  "import"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",

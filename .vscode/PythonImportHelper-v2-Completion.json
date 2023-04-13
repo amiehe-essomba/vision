@@ -1,0 +1,757 @@
+[
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "imp,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "imp.",
+        "description": "imp.",
+        "detail": "imp.",
+        "documentation": {}
+    },
+    {
+        "label": "os,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.",
+        "description": "os.",
+        "detail": "os.",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame     ",
+        "description": "frame     ",
+        "isExtraImport": true,
+        "detail": "frame     ",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "Extension",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "cythonize",
+        "importPath": "Cython.Build",
+        "description": "Cython.Build",
+        "isExtraImport": true,
+        "detail": "Cython.Build",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame         ",
+        "description": "frame         ",
+        "isExtraImport": true,
+        "detail": "frame         ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame         ",
+        "description": "frame         ",
+        "isExtraImport": true,
+        "detail": "frame         ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame         ",
+        "description": "frame         ",
+        "isExtraImport": true,
+        "detail": "frame         ",
+        "documentation": {}
+    },
+    {
+        "label": "input",
+        "importPath": "getUserInput  ",
+        "description": "getUserInput  ",
+        "isExtraImport": true,
+        "detail": "getUserInput  ",
+        "documentation": {}
+    },
+    {
+        "label": "input",
+        "importPath": "getUserInput  ",
+        "description": "getUserInput  ",
+        "isExtraImport": true,
+        "detail": "getUserInput  ",
+        "documentation": {}
+    },
+    {
+        "label": "input",
+        "importPath": "getUserInput  ",
+        "description": "getUserInput  ",
+        "isExtraImport": true,
+        "detail": "getUserInput  ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "sys,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys.",
+        "description": "sys.",
+        "detail": "sys.",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "importPath": "DataBase      ",
+        "description": "DataBase      ",
+        "isExtraImport": true,
+        "detail": "DataBase      ",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "importPath": "DataBase      ",
+        "description": "DataBase      ",
+        "isExtraImport": true,
+        "detail": "DataBase      ",
+        "documentation": {}
+    },
+    {
+        "label": "header",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "header",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "words",
+        "importPath": "keywords      ",
+        "description": "keywords      ",
+        "isExtraImport": true,
+        "detail": "keywords      ",
+        "documentation": {}
+    },
+    {
+        "label": "case",
+        "kind": 2,
+        "importPath": "DataBase.data",
+        "description": "DataBase.data",
+        "peekOfCode": "def case():\n    lower_case = \"abcdefghijklmnopqrstuvwxyz\"\n    upper_case = lower_case.upper()\n    return lower_case+upper_case+\"_\"\ndef base():\n    structure = {}\n    structure['input']                          = \"\"\n    # string used for the code,\n    structure['string']                         = \"\"\n    # string used to handling the output that is the must inmportant string",
+        "detail": "DataBase.data",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 2,
+        "importPath": "DataBase.data",
+        "description": "DataBase.data",
+        "peekOfCode": "def base():\n    structure = {}\n    structure['input']                          = \"\"\n    # string used for the code,\n    structure['string']                         = \"\"\n    # string used to handling the output that is the must inmportant string\n    structure['s']                              = \"\"\n    # initialisation of index associated to the input\n    structure['index']                          = 0\n    # initialisation of index I associated to the string s value",
+        "detail": "DataBase.data",
+        "documentation": {}
+    },
+    {
+        "label": "indexation",
+        "kind": 2,
+        "importPath": "DataBase.data",
+        "description": "DataBase.data",
+        "peekOfCode": "def indexation():\n    indexation  = {\n        0 : {\n            'action' : 'FREE',  # [FREE, LOCKED]\n            'status' : 'I',     # [I, D] \n            'do'     : 'ADDS',  # [ADD, INSERT, INDEX]\n            'cursor' : 'NO',    # [NO, UP, DOWN, ENTER]\n            'last'   : ''\n            }\n        }",
+        "detail": "DataBase.data",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "kind": 6,
+        "importPath": "configure.clear",
+        "description": "configure.clear",
+        "peekOfCode": "class clear:\n    clear       = u\"\\u001b[\" + \"2J\"\n    # line\n    def line( pos : int ):\n        # 2 = entire line\n        # 1 = from the cursor to start of line\n        # 0 = from the cursor to end of line\n        clearline   = u\"\\u001b[\" + f\"{pos}\" + \"K\"\n        return clearline\n    # creen ",
+        "detail": "configure.clear",
+        "documentation": {}
+    },
+    {
+        "label": "fg",
+        "kind": 6,
+        "importPath": "configure.colors",
+        "description": "configure.colors",
+        "peekOfCode": "class fg:\n    black       = u\"\\u001b[30m\"\n    red         = u\"\\u001b[31m\"\n    green       = u\"\\u001b[32m\"\n    yellow      = u\"\\u001b[33m\"\n    blue        = u\"\\u001b[34m\"\n    magenta     = u\"\\u001b[35m\"\n    cyan        = u\"\\u001b[36m\"\n    white       = u\"\\u001b[37m\"\n    black_L     = u\"\\u001b[30;1m\"",
+        "detail": "configure.colors",
+        "documentation": {}
+    },
+    {
+        "label": "bg",
+        "kind": 6,
+        "importPath": "configure.colors",
+        "description": "configure.colors",
+        "peekOfCode": "class bg:\n    black       = u\"\\u001b[40m\"\n    red         = u\"\\u001b[41m\"\n    green       = u\"\\u001b[42m\"\n    yellow      = u\"\\u001b[43m\"\n    blue        = u\"\\u001b[44m\"\n    magenta     = u\"\\u001b[45m\"\n    cyan        = u\"\\u001b[46m\"\n    white       = u\"\\u001b[47m\"\n    black_L     = u\"\\u001b[40;1m\"",
+        "detail": "configure.colors",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "kind": 6,
+        "importPath": "configure.init",
+        "description": "configure.init",
+        "peekOfCode": "class init:\n    # reset cursor state\n    reset       = u\"\\u001b[0m\"  \n    # text bold                                \n    bold        = u\"\\u001b[1m\"\n    # text italic \n    italic      = u\"\\u001b[3m\"\n    # underline text \n    underline   = u\"\\u001b[4m\"\n    # make cursor and text blink ",
+        "detail": "configure.init",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "kind": 6,
+        "importPath": "configure.moveCursor",
+        "description": "configure.moveCursor",
+        "peekOfCode": "class cursor:\n    move = u\"\\u001b[?12h\"\n    def __init__(self):\n        pass\n    # moving cursor up \n    def UP( pos: int ):\n        up          = u\"\\u001b[\" + str( pos ) + \"A\"\n        return up\n    # moving cursor down \n    def DOWN( pos: int ):",
+        "detail": "configure.moveCursor",
+        "documentation": {}
+    },
+    {
+        "label": "line",
+        "kind": 6,
+        "importPath": "configure.moveCursor",
+        "description": "configure.moveCursor",
+        "peekOfCode": "class line:\n    # next line \n    nextline = u\"\\u001b[1E\"\n    # previous line \n    prevline = u\"\\u001b[1F\"",
+        "detail": "configure.moveCursor",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "kind": 2,
+        "importPath": "configure.screenConfig",
+        "description": "configure.screenConfig",
+        "peekOfCode": "def cursor():\n    # using to get the right cursor position on the screen  at each time (x, y)\n    if os.name == \"nt\": return cursorWin()\n    else: return cursorLinux()\ndef cursorMax():\n    if os.name == \"nt\": return get_win_ter()\n    else: return get_linux_ter()\ndef cursorWin():\n    import msvcrt\n    imp.reload(sys)",
+        "detail": "configure.screenConfig",
+        "documentation": {}
+    },
+    {
+        "label": "cursorMax",
+        "kind": 2,
+        "importPath": "configure.screenConfig",
+        "description": "configure.screenConfig",
+        "peekOfCode": "def cursorMax():\n    if os.name == \"nt\": return get_win_ter()\n    else: return get_linux_ter()\ndef cursorWin():\n    import msvcrt\n    imp.reload(sys)\n    try:\n        sys.stdout.write(\"\\x1b[6n\")\n        sys.stdout.flush()\n        buffer = bytes()",
+        "detail": "configure.screenConfig",
+        "documentation": {}
+    },
+    {
+        "label": "cursorWin",
+        "kind": 2,
+        "importPath": "configure.screenConfig",
+        "description": "configure.screenConfig",
+        "peekOfCode": "def cursorWin():\n    import msvcrt\n    imp.reload(sys)\n    try:\n        sys.stdout.write(\"\\x1b[6n\")\n        sys.stdout.flush()\n        buffer = bytes()\n        while msvcrt.kbhit():\n            buffer += msvcrt.getch()\n        hex_loc = buffer.decode()",
+        "detail": "configure.screenConfig",
+        "documentation": {}
+    },
+    {
+        "label": "cursorLinux",
+        "kind": 2,
+        "importPath": "configure.screenConfig",
+        "description": "configure.screenConfig",
+        "peekOfCode": "def cursorLinux():\n    OldStdinMode = termios.tcgetattr(sys.stdin)\n    _ = termios.tcgetattr(sys.stdin)\n    _[3] = _[3] & ~(termios.ECHO | termios.ICANON)\n    termios.tcsetattr(sys.stdin, termios.TCSAFLUSH, _)\n    try:\n        _ = \"\"\n        sys.stdout.write(\"\\x1b[6n\")\n        sys.stdout.flush()\n        while not (_ := _+sys.stdin.read(1)).endswith('R'): True",
+        "detail": "configure.screenConfig",
+        "documentation": {}
+    },
+    {
+        "label": "get_win_ter",
+        "kind": 2,
+        "importPath": "configure.screenConfig",
+        "description": "configure.screenConfig",
+        "peekOfCode": "def get_win_ter():\n    # using to get the size of the screen at each time\n    from ctypes import windll, create_string_buffer\n    h = windll.kernel32.GetStdHandle(-12)\n    csbi = create_string_buffer(22)\n    res = windll.kernel32.GetConsoleScreenBufferInfo(h, csbi)\n    if not res: return 80, 25\n    import struct\n    (bufx, bufy, curx, cury, wattr, left, top, right, bottom, maxx, maxy) = struct.unpack(\"11h\", csbi.raw)\n    width = right-left+1",
+        "detail": "configure.screenConfig",
+        "documentation": {}
+    },
+    {
+        "label": "get_linux_ter",
+        "kind": 2,
+        "importPath": "configure.screenConfig",
+        "description": "configure.screenConfig",
+        "peekOfCode": "def get_linux_ter():\n    width = os.popen('tput cols', 'r').readline()\n    height= os.popen('tput lines', 'r').readline()\n    return ( int(width), int(height) )",
+        "detail": "configure.screenConfig",
+        "documentation": {}
+    },
+    {
+        "label": "scrolled",
+        "kind": 6,
+        "importPath": "configure.scroll",
+        "description": "configure.scroll",
+        "peekOfCode": "class scrolled:\n    # scrollUp\n    def UP(n : int):\n        s = u\"\\u001b[\" + f\"{n}\" + \"S\"\n        return s\n    def DOWN(n : int ):\n        # scrollDown \n        s = u\"\\u001b[\" + f\"{n}\" + \"T\"\n        return s",
+        "detail": "configure.scroll",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "kind": 6,
+        "importPath": "configure.state",
+        "description": "configure.state",
+        "peekOfCode": "class save:\n    # save cursor position \n    save    = u\"\\u001b[s\" \n    # restore cursor posiion \n    restore = u\"\\u001b[u\"",
+        "detail": "configure.state",
+        "documentation": {}
+    },
+    {
+        "label": "ascii",
+        "kind": 2,
+        "importPath": "frame.frame",
+        "description": "frame.frame",
+        "peekOfCode": "def ascii(char :str ):\n    if   char == '<=' : return chr(8804)\n    elif char == '>=' : return chr(8805)\n    elif char == '/'  : return chr(247)\n    elif char == '!=' : return chr(8800)\n    elif char == '->' : return chr(8594)\n    elif char == '||' : return chr(9553)\n    elif char == '==' : return chr(9552)*2\n    else: return char \ndef frame(custom : bool = False):",
+        "detail": "frame.frame",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "kind": 2,
+        "importPath": "frame.frame",
+        "description": "frame.frame",
+        "peekOfCode": "def frame(custom : bool = False):\n    if custom is False:\n        up_l, up_r = chr(9556), chr(9559)\n        down_l, down_r = chr(9562), chr(9565)\n        med1, med2, med3 = chr(9574), chr(9577), chr(9580)\n        ver, hor = chr(9553), chr(9552)\n        vl, vr = chr(9568), chr(9571)\n        f = {'ul':up_l, 'ur':up_r, 'dl':down_l, 'dr':down_r, 'm1':med1,'m2':med2, 'm3':med3, 'v':ver, 'h':hor, 'vl':vl, 'vr': vr}\n    else:\n        up_l, up_r = chr(9487), chr(9491)",
+        "detail": "frame.frame",
+        "documentation": {}
+    },
+    {
+        "label": "decoding_string",
+        "kind": 2,
+        "importPath": "getUserInput.input",
+        "description": "getUserInput.input",
+        "peekOfCode": "def decoding_string():\n    import msvcrt \n    s = []   \n    while True:\n        if msvcrt.kbhit():\n            key = msvcrt.getch()\n            s.append(key)\n            if s[0] == b'\\x00':\n                try: \n                    if s[1] : break",
+        "detail": "getUserInput.input",
+        "documentation": {}
+    },
+    {
+        "label": "windows",
+        "kind": 2,
+        "importPath": "getUserInput.input",
+        "description": "getUserInput.input",
+        "peekOfCode": "def windows( ):\n    s = decoding_string()\n    number = None \n    if len(s) == 1:\n        try:\n            s = s[0].decode(\"utf-8\")\n            try: number =  [ord(s), None]\n            except TypeError: \n                if   s == \"\\x0e\":\n                    number =  [14, None]",
+        "detail": "getUserInput.input",
+        "documentation": {}
+    },
+    {
+        "label": "linux",
+        "kind": 2,
+        "importPath": "getUserInput.input",
+        "description": "getUserInput.input",
+        "peekOfCode": "def linux():\n    #import termios, sys, tty\n    fd              = sys.stdin.fileno()\n    old_settings    = termios.tcgetattr( fd )\n    try:\n        tty.setraw(sys.stdin)\n        ch = ord( sys.stdin.read(1) )\n    finally: termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)\n    return ch\ndef convert():",
+        "detail": "getUserInput.input",
+        "documentation": {}
+    },
+    {
+        "label": "convert",
+        "kind": 2,
+        "importPath": "getUserInput.input",
+        "description": "getUserInput.input",
+        "peekOfCode": "def convert():\n    if os.name == \"nt\": return windows()\n    else: return linux()",
+        "detail": "getUserInput.input",
+        "documentation": {}
+    },
+    {
+        "label": "title",
+        "kind": 2,
+        "importPath": "header.header",
+        "description": "header.header",
+        "peekOfCode": "def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = \"white\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    cc          = init.init.bold + colors.fg.rbg(0, 255, 255)\n    string      = \"VISION EDITOR V-1.0.0\".center(max_x - 2)\n    move        = moveCursor.cursor \n    action      = state.save\n    blink       = init.init.blink+init.init.underline\n    if color == \"white\": c   = colors.fg.rbg(255, 255, 255)",
+        "detail": "header.header",
+        "documentation": {}
+    },
+    {
+        "label": "middle",
+        "kind": 2,
+        "importPath": "header.header",
+        "description": "header.header",
+        "peekOfCode": "def middle(max_x: int, n : int, x : int, y : int, color : str = \"white\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    move_left   = moveCursor.cursor \n    position    = moveCursor.cursor\n    c_bg        = colors.bg.rgb(10, 10, 10)\n    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+\"1, 1\"+ reset   \n    if color == \"white\": c   = bold + colors.fg.rbg(255, 255, 255)\n    else: c = bold + colors.fg.rbg(0, 0, 0)",
+        "detail": "header.header",
+        "documentation": {}
+    },
+    {
+        "label": "counter",
+        "kind": 2,
+        "importPath": "header.header",
+        "description": "header.header",
+        "peekOfCode": "def counter(n :int , color : str = \"white\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold    \n    reset       = init.init.reset\n    length      = len(str(n))\n    max_x       = 5\n    if color == \"white\": c   = bold + colors.fg.rbg(255, 255, 255)\n    else: c = bold + colors.fg.rbg(0, 0, 0)\n    if (max_x - length) >= 0:  s       = f\"{c}{asc['v']}{reset} \"\n    else:  s = \"\"",
+        "detail": "header.header",
+        "documentation": {}
+    },
+    {
+        "label": "bottom",
+        "kind": 2,
+        "importPath": "header.header",
+        "description": "header.header",
+        "peekOfCode": "def bottom(max_x :int = 0, color : str = \"white\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold    \n    reset       = init.init.reset\n    if color == \"white\": c   = bold + colors.fg.rbg(255, 255, 255)\n    else: c = bold + colors.fg.rbg(0, 0, 0)\n    sys.stdout.write(\n        c + f\"{asc['dl']}\" + f\"{asc['h']}\" * 7 + \n        f\"{asc['h']}\" + f\"{asc['h']}\" * (max_x - 10) + \n        f\"{asc['dr']}\" + reset + \"\\n\"",
+        "detail": "header.header",
+        "documentation": {}
+    },
+    {
+        "label": "line",
+        "kind": 2,
+        "importPath": "header.header",
+        "description": "header.header",
+        "peekOfCode": "def line(x : int, y : int, max_x : int, max_y : int, scrollUp : int = 0):\n    \"\"\"\n    This block is used to set column and row of the cusror a each time \n    on the terminal \n    x       = is the currently row of the cursor \n    y       = is the currently column of the cursor \n    x_max   = width of the screen \n    y_max   = height of the screen \n    \"\"\"\n    position        = moveCursor.cursor",
+        "detail": "header.header",
+        "documentation": {}
+    },
+    {
+        "label": "saveData",
+        "kind": 6,
+        "importPath": "saving.save",
+        "description": "saving.save",
+        "peekOfCode": "class saveData:\n    def __init__(self, dataBase : dict = {}):\n        self.dataBase = dataBase\n        # getting max size (max_x, max_y) of the window \n        self.max_x, self.max_y  = screenConfig.cursorMax()\n        self._max_x_            = self.max_x \n        self.max_x            //= 2 \n        # loading the keywords for moving cursor on a particular region of the screen \n        self.move               = moveCursor.cursor\n        # loading keywords for cleaning screen and lines ",
+        "detail": "saving.save",
+        "documentation": {}
+    },
+    {
+        "label": "bottom",
+        "kind": 2,
+        "importPath": "saving.save",
+        "description": "saving.save",
+        "peekOfCode": "def bottom(max_x :int = 0, color : str = \"white\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold    \n    reset       = init.init.reset\n    if color == \"white\": c   = bold + colors.fg.rbg(255, 255, 255)\n    else: c = bold + colors.fg.rbg(0, 0, 0)\n    sys.stdout.write(\n        c + f\"{asc['dl']}\" + f\"{asc['h']}\" * 7 + \n        f\"{asc['h']}\" + f\"{asc['h']}\" * (max_x - 10) + \n        f\"{asc['dr']}\" + reset + \"\\n\"",
+        "detail": "saving.save",
+        "documentation": {}
+    },
+    {
+        "label": "case",
+        "kind": 2,
+        "importPath": "saving.save",
+        "description": "saving.save",
+        "peekOfCode": "def case():\n    lower_case = \"a b c d e f g h i j k l m n o p q r s t u v w x y z\"\n    upper_case = lower_case.upper().split()\n    return lower_case.split()+upper_case+['-', '_', '.']+ [str(x) for x in range(10)]\nclass saveData:\n    def __init__(self, dataBase : dict = {}):\n        self.dataBase = dataBase\n        # getting max size (max_x, max_y) of the window \n        self.max_x, self.max_y  = screenConfig.cursorMax()\n        self._max_x_            = self.max_x ",
+        "detail": "saving.save",
+        "documentation": {}
+    },
+    {
+        "label": "writeInput",
+        "kind": 2,
+        "importPath": "saving.writing",
+        "description": "saving.writing",
+        "peekOfCode": "def writeInput(dataFile: list , FileName : str):\n    with open(FileName, \"w\") as file:\n        for i, string in enumerate(dataFile): \n            if i != len(dataFile)-1: file.write(f\"{string}\\n\")\n            else: file.write(f\"{string}\")\n    file.close()",
+        "detail": "saving.writing",
+        "documentation": {}
+    },
+    {
+        "label": "comment",
+        "kind": 2,
+        "importPath": "style.languageStype",
+        "description": "style.languageStype",
+        "peekOfCode": "def comment( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"bash\"]  : return '#'\n    elif name in ['fortran']                : return \"!\"\n    elif name in ['c', 'c++']               : return \"//\"\n    else: return None\ndef ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '->'\n    else: return None\ndef deco( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '@'",
+        "detail": "style.languageStype",
+        "documentation": {}
+    },
+    {
+        "label": "ouput",
+        "kind": 2,
+        "importPath": "style.languageStype",
+        "description": "style.languageStype",
+        "peekOfCode": "def ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '->'\n    else: return None\ndef deco( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '@'\n    else: return None",
+        "detail": "style.languageStype",
+        "documentation": {}
+    },
+    {
+        "label": "deco",
+        "kind": 2,
+        "importPath": "style.languageStype",
+        "description": "style.languageStype",
+        "peekOfCode": "def deco( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '@'\n    else: return None",
+        "detail": "style.languageStype",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "kind": 6,
+        "importPath": "style.style",
+        "description": "style.style",
+        "peekOfCode": "class config:\n    def __init__(self, termios : str = \"monokai\"):\n        # set style \n        self.termios            = termios\n        # loading backgroung color \n        self.color_bg           = colors.bg\n        # loading foreground color \n        self.color_fg           = colors.fg\n        # loading initialization cursor parameters \n        self.init               = init.init",
+        "detail": "style.style",
+        "documentation": {}
+    },
+    {
+        "label": "IDE",
+        "kind": 6,
+        "importPath": "mainLinux",
+        "description": "mainLinux",
+        "peekOfCode": "class IDE:\n    def __init__(self, termios : str = \"monokai\"):\n        # border configuration \n        self.acs                = frame.frame(custom=True)\n        # loading backgroung color \n        self.color_bg           = colors.bg\n        # loading foreground color \n        self.color_fg           = colors.fg\n        # loading initialization cursor parameters \n        self.init               = init.init",
+        "detail": "mainLinux",
+        "documentation": {}
+    },
+    {
+        "label": "IDE",
+        "kind": 6,
+        "importPath": "mainWin",
+        "description": "mainWin",
+        "peekOfCode": "class IDE:\n    def __init__(self, termios : str = \"monokai\"):\n        # border configuration \n        self.acs                = frame.frame(custom=True)\n        # loading backgroung color \n        self.color_bg           = colors.bg\n        # loading foreground color \n        self.color_fg           = colors.fg\n        # loading initialization cursor parameters \n        self.init               = init.init",
+        "detail": "mainWin",
+        "documentation": {}
+    }
+]

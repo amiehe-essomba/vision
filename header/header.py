@@ -1,4 +1,3 @@
-import os  
 import sys 
 from configure  import colors, init, clear, state, screenConfig, moveCursor
 from frame      import frame

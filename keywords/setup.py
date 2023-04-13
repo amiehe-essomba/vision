@@ -10,6 +10,7 @@ setup(
     ext_modules=cythonize( 
         [
         "key_py.pyx", 
+        "words.pyx"
         ], 
         annotate = False
         )

@@ -5,6 +5,7 @@ from frame          import frame
 from DataBase       import data
 from header         import header
 from saving         import save, writing
+from keywords       import words
 
 class IDE:
     def __init__(self, termios : str = "monokai"):
@@ -251,9 +252,7 @@ class IDE:
                         self.scrollUp   += 1
                         self.x           = self.size + 1
                         self.scrollEnter = True
-                        sys.stdout.write(
-                            self.scroll.UP(1)  
-                        )
+                        sys.stdout.write( self.scroll.UP(1) )
                         sys.stdout.flush()
                 # indentation Tab
                 elif self.char == 9:
@@ -281,18 +280,17 @@ class IDE:
                 sys.stdout.write(
                     self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
                     self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
-                    self.move.TO(x=self.size+1, y=self.y) + self.c_bg+self.Data['input'] + 
+                    self.move.TO(x=self.size+1, y=self.y) + self.c_bg+
+                    words.words(self.Data['input'], self.c, "python" ).final() + 
                     self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
                     )
 
                 # replace the cussor 
-                if self.Data['I_S'] > 0:  
-                    sys.stdout.write(self.move.RIGHT(pos=(self.x)) )
+                if self.Data['I_S'] > 0: sys.stdout.write(self.move.RIGHT(pos=(self.x)) )
                 else: pass 
                 
-                sys.stdout.write(
-                    self.move.TO(y=self.max_y-2, x=self.size) 
-                    )
+                sys.stdout.write( self.move.TO(y=self.max_y-2, x=self.size) )
+                
                 if self.scrollUp == 0:
                     header.line(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y-2)
                 else:
@@ -310,8 +308,7 @@ class IDE:
                 self._string_ = self.color_bg.red_L + self.color_fg.rbg(255, 255, 255) +"KeyboardInterrupt" + self.init.reset
                 sys.stdout.write(
                     self.clear.screen(pos=2)+ self.move.TO(x=0, y=0)+
-                    self._string_ + "\n"
-                )
+                    self._string_ + "\n" )
                 break
             except NameError : pass
             
