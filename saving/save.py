@@ -123,7 +123,7 @@ class saveData:
                 sys.stdout.write(self.c + f"{self.acs['v']}"  + self.cc +  self._string_ + self.c + f"{self.acs['v']}" + self.init.reset + 
                     self.move.DOWN(1) + self.move.LEFT(pos=1000)+ self.clear.line(2) ) 
                 # third line 
-                sys.stdout.write(self.c + f"{self.acs['vl']}" + f"{self.acs['h']}" * 7 + f"{self.acs['m1']}" +  
+                sys.stdout.write(self.c + f"{self.acs['vl']}" + f"{self.acs['h']}" * 7 + f"{self.acs['h']}" +  
                         f"{self.acs['h']}"*(self.max_x - 10) + f"{self.acs['vr']}" + self.init.reset+'\n' ) 
                 
                 sys.stdout.write(self.move.TO(x=x, y=y))

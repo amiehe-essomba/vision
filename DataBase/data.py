@@ -19,7 +19,7 @@ def base():
      # index associated to the string string value
     structure['I_S']                            = 0
     # history of data associated to the string  input
-    structure['liste']                          = []
+    structure['liste']                          = [""]
     # history of data associated to the value returns by the function readchar
     structure['get']                            = []
     # initialisation of integer idd used to get the next of previous
@@ -32,7 +32,7 @@ def base():
     # initilization of last
     structure['last']                           = 0
     # initialisation of list associated to the index value
-    structure['tabular']                        = []
+    structure['tabular']                        = [0]
      # initialisation of list associated to I value
     structure['sub_tabular']                    = []
     # initialisation of the list associated to last value
@@ -42,9 +42,10 @@ def base():
     # storing cursor position
     structure['remove_tabular']                 = []
     # initialization of the list associated to string
-    structure['string_tab']                     = []
+    structure['string_tab']                     = [0]
     # initialization of associated to I_S
-    structure['string_tabular']                 = []
+    structure['string_tabular']                 = [""]
+    # drowp
     structure['str_drop_down']                  = ""
     # dropdown index 
     structure['drop ']                          = 0
