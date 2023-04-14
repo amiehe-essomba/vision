@@ -2,7 +2,6 @@ from setuptools import setup, Extension
 from Cython.Build import  cythonize
 
 
-
 setup(
     name = "my cython modules",
     author='amiehe',

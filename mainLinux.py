@@ -58,6 +58,11 @@ class IDE:
         self.c_bg                   = self.init.bold + self.color_bg.rgb(10, 10, 10)
         # fg color 
         self.c                      = self.init.bold + self.color_fg.rbg(255, 255, 255)
+        # building color 
+        self.color                  = self.c_bg + self.c
+        # locked the writings 
+        self.locked                 = False 
+        self.m                      = 0
         ###########################################################
         self.input, self.size       = header.counter( self.if_line + 1 )
         header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white")
@@ -216,10 +221,11 @@ class IDE:
                     # erasing entire line 
                     sys.stdout.write(self.clear.line(2))
                     # writing string 
+                    __string__, __color__ = words.words(self.Data['input'], self.color, "python" ).final()
                     sys.stdout.write(
                         self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
                         self.move.TO(x=self.max_x, y=self.y) + self.c + f"{self.acs['v']}" +
-                        self.move.TO(x=self.size+1, y=self.y) + self.c_bg+self.Data['string'] + 
+                        self.move.TO(x=self.size+1, y=self.y) + self.c_bg+  __string__ + 
                         self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
                         )
                     #####################################################################################
@@ -242,6 +248,15 @@ class IDE:
                     self.Data["I_S"]    = 0
                     self.Data["index"]  = 0
                     self.input, self.size = header.counter( self.if_line + 1 )
+                    ######################################################################################
+                    # changing color or reset color  
+                    if __color__["locked"] is False:  
+                        self.locked = False
+                        self.m      = 0
+                    else: 
+                        self.color  = __color__["color"]
+                        self.locked = __color__["locked"]
+                        self.m      = __color__["rest"]
                     ######################################################################################
                     
                     if self.y < (self.max_y-3 ):
@@ -277,11 +292,11 @@ class IDE:
                 # erasing entire line 
                 sys.stdout.write(self.clear.line(2))
                 # writing string 
+                __string__, __color__ = words.words(self.Data['input'], self.color, "python" ).final(locked=self.locked, m = self.m)
                 sys.stdout.write(
                     self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
                     self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
-                    self.move.TO(x=self.size+1, y=self.y) + self.c_bg+
-                    words.words(self.Data['input'], self.c, "python" ).final() + 
+                    self.move.TO(x=self.size+1, y=self.y) + self.c_bg+ __string__ + 
                     self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
                     )
 

@@ -703,28 +703,55 @@
     {
         "label": "comment",
         "kind": 2,
-        "importPath": "style.languageStype",
-        "description": "style.languageStype",
-        "peekOfCode": "def comment( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"bash\"]  : return '#'\n    elif name in ['fortran']                : return \"!\"\n    elif name in ['c', 'c++']               : return \"//\"\n    else: return None\ndef ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '->'\n    else: return None\ndef deco( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '@'",
-        "detail": "style.languageStype",
+        "importPath": "style.languageStyle",
+        "description": "style.languageStyle",
+        "peekOfCode": "def comment( name : str = \"python\"):\n    if   name in ['mamba', \"python\", \"bash\"]    : return {\"name\" : '#'}\n    elif name in ['fortran']                    : return {\"name\" : \"!\"}\n    elif name in ['c', 'c++']                   : return {\"name\" : \"//\"}\n    else: return None\ndef mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}\ndef ouput( name : str = \"python\"):",
+        "detail": "style.languageStyle",
+        "documentation": {}
+    },
+    {
+        "label": "mul_cmt",
+        "kind": 2,
+        "importPath": "style.languageStyle",
+        "description": "style.languageStyle",
+        "peekOfCode": "def mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}\ndef ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}",
+        "detail": "style.languageStyle",
         "documentation": {}
     },
     {
         "label": "ouput",
         "kind": 2,
-        "importPath": "style.languageStype",
-        "description": "style.languageStype",
-        "peekOfCode": "def ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '->'\n    else: return None\ndef deco( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '@'\n    else: return None",
-        "detail": "style.languageStype",
+        "importPath": "style.languageStyle",
+        "description": "style.languageStyle",
+        "peekOfCode": "def ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):",
+        "detail": "style.languageStyle",
         "documentation": {}
     },
     {
-        "label": "deco",
+        "label": "decorator",
         "kind": 2,
-        "importPath": "style.languageStype",
-        "description": "style.languageStype",
-        "peekOfCode": "def deco( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return '@'\n    else: return None",
-        "detail": "style.languageStype",
+        "importPath": "style.languageStyle",
+        "description": "style.languageStyle",
+        "peekOfCode": "def decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']\n    elif name in ['mamba']      : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]\n    else: return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]",
+        "detail": "style.languageStyle",
+        "documentation": {}
+    },
+    {
+        "label": "delimitor",
+        "kind": 2,
+        "importPath": "style.languageStyle",
+        "description": "style.languageStyle",
+        "peekOfCode": "def delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']\n    elif name in ['mamba']      : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]\n    else: return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]",
+        "detail": "style.languageStyle",
+        "documentation": {}
+    },
+    {
+        "label": "characters",
+        "kind": 2,
+        "importPath": "style.languageStyle",
+        "description": "style.languageStyle",
+        "peekOfCode": "def characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']\n    elif name in ['mamba']      : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]\n    else: return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]",
+        "detail": "style.languageStyle",
         "documentation": {}
     },
     {

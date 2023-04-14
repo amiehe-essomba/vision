@@ -909,16 +909,42 @@ static const char *__pyx_f[] = {
 
 /*--- Type declarations ---*/
 struct __pyx_obj_6key_py_LANG;
+struct __pyx_opt_args_6key_py_4LANG_LANG;
 struct __pyx_opt_args_6key_py_4LANG_PY;
+struct __pyx_opt_args_6key_py_4LANG_MAMBA;
 
 /* "key_py.pyx":11
  *         self.master     = master
  *         self.c          = {"color_name" : [], 'values' : []}
- *     cdef dict PY(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
+ *     cpdef LANG(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
+ *         if    self.master == "python": return LANG(self.master).PY(termios=termios)
+ *         elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios)
+ */
+struct __pyx_opt_args_6key_py_4LANG_LANG {
+  int __pyx_n;
+  PyObject *termios;
+};
+
+/* "key_py.pyx":16
+ *         else: pass
+ * 
+ *     cdef PY(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
  *         cdef :
  *             dict data = {}
  */
 struct __pyx_opt_args_6key_py_4LANG_PY {
+  int __pyx_n;
+  PyObject *termios;
+};
+
+/* "key_py.pyx":91
+ *         return data.copy()
+ * 
+ *     cdef MAMBA(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
+ *         cdef :
+ *             dict data = {}
+ */
+struct __pyx_opt_args_6key_py_4LANG_MAMBA {
   int __pyx_n;
   PyObject *termios;
 };
@@ -940,7 +966,9 @@ struct __pyx_obj_6key_py_LANG {
 
 
 struct __pyx_vtabstruct_6key_py_LANG {
+  PyObject *(*LANG)(struct __pyx_obj_6key_py_LANG *, int __pyx_skip_dispatch, struct __pyx_opt_args_6key_py_4LANG_LANG *__pyx_optional_args);
   PyObject *(*PY)(struct __pyx_obj_6key_py_LANG *, struct __pyx_opt_args_6key_py_4LANG_PY *__pyx_optional_args);
+  PyObject *(*MAMBA)(struct __pyx_obj_6key_py_LANG *, struct __pyx_opt_args_6key_py_4LANG_MAMBA *__pyx_optional_args);
 };
 static struct __pyx_vtabstruct_6key_py_LANG *__pyx_vtabptr_6key_py_LANG;
 
@@ -1056,6 +1084,78 @@ static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UIN
 #define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
 #endif
 
+/* PyCFunctionFastCall.proto */
+#if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObject **args, Py_ssize_t nargs);
+#else
+#define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
+#endif
+
+/* PyFunctionFastCall.proto */
+#if CYTHON_FAST_PYCALL
+#define __Pyx_PyFunction_FastCall(func, args, nargs)\
+    __Pyx_PyFunction_FastCallDict((func), (args), (nargs), NULL)
+#if 1 || PY_VERSION_HEX < 0x030600B1
+static PyObject *__Pyx_PyFunction_FastCallDict(PyObject *func, PyObject **args, Py_ssize_t nargs, PyObject *kwargs);
+#else
+#define __Pyx_PyFunction_FastCallDict(func, args, nargs, kwargs) _PyFunction_FastCallDict(func, args, nargs, kwargs)
+#endif
+#define __Pyx_BUILD_ASSERT_EXPR(cond)\
+    (sizeof(char [1 - 2*!(cond)]) - 1)
+#ifndef Py_MEMBER_SIZE
+#define Py_MEMBER_SIZE(type, member) sizeof(((type *)0)->member)
+#endif
+#if CYTHON_FAST_PYCALL
+  static size_t __pyx_pyframe_localsplus_offset = 0;
+  #include "frameobject.h"
+  #define __Pxy_PyFrame_Initialize_Offsets()\
+    ((void)__Pyx_BUILD_ASSERT_EXPR(sizeof(PyFrameObject) == offsetof(PyFrameObject, f_localsplus) + Py_MEMBER_SIZE(PyFrameObject, f_localsplus)),\
+     (void)(__pyx_pyframe_localsplus_offset = ((size_t)PyFrame_Type.tp_basicsize) - Py_MEMBER_SIZE(PyFrameObject, f_localsplus)))
+  #define __Pyx_PyFrame_GetLocalsplus(frame)\
+    (assert(__pyx_pyframe_localsplus_offset), (PyObject **)(((char *)(frame)) + __pyx_pyframe_localsplus_offset))
+#endif // CYTHON_FAST_PYCALL
+#endif
+
+/* PyObjectCall.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
+#else
+#define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
+#endif
+
+/* PyObjectCall2Args.proto */
+static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
+
+/* PyObjectCallMethO.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
+#endif
+
+/* PyObjectCallOneArg.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
+
+/* IncludeStringH.proto */
+#include <string.h>
+
+/* BytesEquals.proto */
+static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals);
+
+/* UnicodeEquals.proto */
+static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals);
+
+/* StrEquals.proto */
+#if PY_MAJOR_VERSION >= 3
+#define __Pyx_PyString_Equals __Pyx_PyUnicode_Equals
+#else
+#define __Pyx_PyString_Equals __Pyx_PyBytes_Equals
+#endif
+
+/* ArgTypeTest.proto */
+#define __Pyx_ArgTypeTest(obj, type, none_allowed, name, exact)\
+    ((likely((Py_TYPE(obj) == type) | (none_allowed && (obj == Py_None)))) ? 1 :\
+        __Pyx__ArgTypeTest(obj, type, name, exact))
+static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
+
 /* GetModuleGlobalName.proto */
 #if CYTHON_USE_DICT_VERSIONS
 #define __Pyx_GetModuleGlobalName(var, name)  {\
@@ -1075,22 +1175,6 @@ static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_ve
 #define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
 #define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
 static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
-#endif
-
-/* PyObjectCall.proto */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
-#else
-#define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
-#endif
-
-/* PyObjectSetAttrStr.proto */
-#if CYTHON_USE_TYPE_SLOTS
-#define __Pyx_PyObject_DelAttrStr(o,n) __Pyx_PyObject_SetAttrStr(o, n, NULL)
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value);
-#else
-#define __Pyx_PyObject_DelAttrStr(o,n)   PyObject_DelAttr(o,n)
-#define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
 #endif
 
 /* py_dict_keys.proto */
@@ -1260,7 +1344,9 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
+static PyObject *__pyx_f_6key_py_4LANG_LANG(struct __pyx_obj_6key_py_LANG *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_6key_py_4LANG_LANG *__pyx_optional_args); /* proto*/
 static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v_self, struct __pyx_opt_args_6key_py_4LANG_PY *__pyx_optional_args); /* proto*/
+static PyObject *__pyx_f_6key_py_4LANG_MAMBA(struct __pyx_obj_6key_py_LANG *__pyx_v_self, struct __pyx_opt_args_6key_py_4LANG_MAMBA *__pyx_optional_args); /* proto*/
 
 /* Module declarations from 'key_py' */
 static PyTypeObject *__pyx_ptype_6key_py_LANG = 0;
@@ -1270,7 +1356,9 @@ int __pyx_module_is_main_key_py = 0;
 
 /* Implementation of 'key_py' */
 static PyObject *__pyx_builtin_TypeError;
-static const char __pyx_k__2[] = "#";
+static const char __pyx_k__8[] = "==";
+static const char __pyx_k__9[] = "<=";
+static const char __pyx_k_as[] = "as";
 static const char __pyx_k_eq[] = "__eq__";
 static const char __pyx_k_fg[] = "fg";
 static const char __pyx_k_ge[] = "__ge__";
@@ -1281,21 +1369,22 @@ static const char __pyx_k_le[] = "__le__";
 static const char __pyx_k_lt[] = "__lt__";
 static const char __pyx_k_ne[] = "__ne__";
 static const char __pyx_k_or[] = "or";
-static const char __pyx_k__10[] = "==";
-static const char __pyx_k__11[] = "<=";
-static const char __pyx_k__12[] = ">=";
-static const char __pyx_k__13[] = "!=";
-static const char __pyx_k__14[] = "->";
+static const char __pyx_k__10[] = ">=";
+static const char __pyx_k__11[] = "!=";
+static const char __pyx_k__12[] = "->";
 static const char __pyx_k_add[] = "__add__";
 static const char __pyx_k_all[] = "all";
 static const char __pyx_k_and[] = "and";
 static const char __pyx_k_any[] = "any";
-static const char __pyx_k_cmt[] = "cmt";
 static const char __pyx_k_def[] = "def";
+static const char __pyx_k_del[] = "del";
+static const char __pyx_k_end[] = "end";
 static const char __pyx_k_for[] = "for";
 static const char __pyx_k_int[] = "int";
 static const char __pyx_k_len[] = "__len__";
 static const char __pyx_k_map[] = "map";
+static const char __pyx_k_max[] = "max";
+static const char __pyx_k_min[] = "min";
 static const char __pyx_k_mod[] = "__mod__";
 static const char __pyx_k_mul[] = "__mul__";
 static const char __pyx_k_not[] = "not";
@@ -1310,51 +1399,74 @@ static const char __pyx_k_LANG[] = "LANG";
 static const char __pyx_k_NULL[] = "NULL";
 static const char __pyx_k_None[] = "None";
 static const char __pyx_k_True[] = "True";
+static const char __pyx_k_ansi[] = "ansi";
 static const char __pyx_k_args[] = "args";
 static const char __pyx_k_bool[] = "bool";
 static const char __pyx_k_call[] = "__call__";
+static const char __pyx_k_case[] = "case";
 static const char __pyx_k_cond[] = "cond";
 static const char __pyx_k_copy[] = "copy";
+static const char __pyx_k_cplx[] = "cplx";
 static const char __pyx_k_dict[] = "dict";
 static const char __pyx_k_elif[] = "elif";
 static const char __pyx_k_else[] = "else";
 static const char __pyx_k_exit[] = "exit";
 static const char __pyx_k_from[] = "from";
+static const char __pyx_k_func[] = "func";
+static const char __pyx_k_help[] = "help";
 static const char __pyx_k_iner[] = "iner";
 static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_iter[] = "__iter__";
 static const char __pyx_k_keys[] = "keys";
 static const char __pyx_k_list[] = "list";
+static const char __pyx_k_load[] = "load";
 static const char __pyx_k_loop[] = "loop";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "name";
+static const char __pyx_k_next[] = "next";
+static const char __pyx_k_none[] = "none";
+static const char __pyx_k_only[] = "only";
 static const char __pyx_k_open[] = "open";
 static const char __pyx_k_or_2[] = "__or__";
+static const char __pyx_k_pass[] = "pass";
 static const char __pyx_k_quit[] = "quit";
 static const char __pyx_k_radd[] = "__radd__";
+static const char __pyx_k_rand[] = "rand";
 static const char __pyx_k_read[] = "read";
+static const char __pyx_k_save[] = "save";
 static const char __pyx_k_self[] = "self";
+static const char __pyx_k_sget[] = "sget";
 static const char __pyx_k_stop[] = "stop";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_type[] = "type";
 static const char __pyx_k_with[] = "with";
 static const char __pyx_k_Flase[] = "Flase";
 static const char __pyx_k_and_2[] = "__and__";
 static const char __pyx_k_async[] = "async";
+static const char __pyx_k_begin[] = "begin";
 static const char __pyx_k_break[] = "break";
 static const char __pyx_k_cinit[] = "__cinit__";
 static const char __pyx_k_class[] = "class";
 static const char __pyx_k_close[] = "close";
 static const char __pyx_k_color[] = "color";
 static const char __pyx_k_float[] = "float";
+static const char __pyx_k_floor[] = "floor";
+static const char __pyx_k_fopen[] = "fopen";
+static const char __pyx_k_input[] = "input";
 static const char __pyx_k_local[] = "local";
+static const char __pyx_k_mamba[] = "mamba";
+static const char __pyx_k_merge[] = "merge";
+static const char __pyx_k_n_int[] = "n_int";
 static const char __pyx_k_other[] = "other";
 static const char __pyx_k_print[] = "print";
 static const char __pyx_k_raise[] = "raise";
 static const char __pyx_k_range[] = "range";
+static const char __pyx_k_round[] = "round";
 static const char __pyx_k_str_2[] = "__str__";
 static const char __pyx_k_super[] = "super";
 static const char __pyx_k_tuple[] = "tuple";
 static const char __pyx_k_types[] = "types";
+static const char __pyx_k_until[] = "until";
 static const char __pyx_k_while[] = "while";
 static const char __pyx_k_write[] = "write";
 static const char __pyx_k_yield[] = "yield";
@@ -1369,22 +1481,39 @@ static const char __pyx_k_global[] = "global";
 static const char __pyx_k_import[] = "import";
 static const char __pyx_k_kwargs[] = "kwargs";
 static const char __pyx_k_lambda[] = "lambda";
+static const char __pyx_k_length[] = "length";
 static const char __pyx_k_master[] = "master";
+static const char __pyx_k_module[] = "module";
 static const char __pyx_k_name_2[] = "__name__";
 static const char __pyx_k_not_in[] = "not in";
+static const char __pyx_k_python[] = "python";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_return[] = "return";
+static const char __pyx_k_string[] = "string";
+static const char __pyx_k_switch[] = "switch";
+static const char __pyx_k_unless[] = "unless";
 static const char __pyx_k_values[] = "values";
+static const char __pyx_k_GetLine[] = "GetLine";
 static const char __pyx_k_IOError[] = "IOError";
+static const char __pyx_k_License[] = "License";
 static const char __pyx_k_OSError[] = "OSError";
 static const char __pyx_k_Warning[] = "Warning";
+static const char __pyx_k_boolean[] = "boolean";
 static const char __pyx_k_complex[] = "complex";
+static const char __pyx_k_default[] = "default";
 static const char __pyx_k_delitem[] = "__delitem__";
+static const char __pyx_k_general[] = "general";
 static const char __pyx_k_getitem[] = "__getitem__";
+static const char __pyx_k_integer[] = "integer";
 static const char __pyx_k_loading[] = "loading";
 static const char __pyx_k_logical[] = "logical";
+static const char __pyx_k_matrix1[] = "matrix1";
 static const char __pyx_k_monokai[] = "monokai";
+static const char __pyx_k_n_float[] = "n_float";
+static const char __pyx_k_ndarray[] = "ndarray";
+static const char __pyx_k_p_float[] = "p_float";
 static const char __pyx_k_setitem[] = "__setitem__";
+static const char __pyx_k_termios[] = "termios";
 static const char __pyx_k_truediv[] = "__truediv__";
 static const char __pyx_k_EOFError[] = "EOFError";
 static const char __pyx_k_KeyError[] = "KeyError";
@@ -1398,6 +1527,7 @@ static const char __pyx_k_import_2[] = "__import__";
 static const char __pyx_k_readline[] = "readline";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_Exception[] = "Exception";
+static const char __pyx_k_FileError[] = "FileError";
 static const char __pyx_k_NameError[] = "NameError";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_arguments[] = "arguments";
@@ -1405,13 +1535,18 @@ static const char __pyx_k_bool_func[] = "bool_func";
 static const char __pyx_k_configure[] = "configure";
 static const char __pyx_k_readlines[] = "readlines";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
+static const char __pyx_k_scan_test[] = "scan_test";
 static const char __pyx_k_IndexError[] = "IndexError";
 static const char __pyx_k_SystemExit[] = "SystemExit";
 static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_color_name[] = "color_name";
+static const char __pyx_k_dictionary[] = "dictionary";
 static const char __pyx_k_exceptions[] = "exceptions";
+static const char __pyx_k_initialize[] = "initialize";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
+static const char __pyx_k_tablep_int[] = "tablep_int";
 static const char __pyx_k_BufferError[] = "BufferError";
+static const char __pyx_k_DomainError[] = "DomainError";
 static const char __pyx_k_ImportError[] = "ImportError";
 static const char __pyx_k_LookupError[] = "LookupError";
 static const char __pyx_k_MemoryError[] = "MemoryError";
@@ -1420,18 +1555,25 @@ static const char __pyx_k_SystemError[] = "SystemError";
 static const char __pyx_k_UserWarning[] = "UserWarning";
 static const char __pyx_k_constructor[] = "constructor";
 static const char __pyx_k_BytesWarning[] = "BytesWarning";
+static const char __pyx_k_GetFuncNames[] = "GetFuncNames";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
 static const char __pyx_k_TimeoutError[] = "TimeoutError";
 static const char __pyx_k_UnicodeError[] = "UnicodeError";
 static const char __pyx_k_WindowsError[] = "WindowsError";
 static const char __pyx_k_magic_method[] = "magic_method";
 static const char __pyx_k_BaseException[] = "BaseException";
+static const char __pyx_k_DecodingError[] = "DecodingError";
+static const char __pyx_k_EncodingError[] = "EncodingError";
+static const char __pyx_k_FileModeError[] = "FileModeError";
+static const char __pyx_k_FileNameError[] = "FileNameError";
 static const char __pyx_k_FutureWarning[] = "FutureWarning";
 static const char __pyx_k_GeneratorExit[] = "GeneratorExit";
+static const char __pyx_k_GetClassNames[] = "GetClassNames";
 static const char __pyx_k_ImportWarning[] = "ImportWarning";
 static const char __pyx_k_OverflowError[] = "OverflowError";
 static const char __pyx_k_StopIteration[] = "StopIteration";
 static const char __pyx_k_SyntaxWarning[] = "SyntaxWarning";
+static const char __pyx_k_prompt_delete[] = "prompt, delete";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_AssertionError[] = "AssertionError";
 static const char __pyx_k_AttributeError[] = "AttributeError";
@@ -1446,6 +1588,7 @@ static const char __pyx_k_BlockingIOError[] = "BlockingIOError";
 static const char __pyx_k_BrokenPipeError[] = "BrokenPipeError";
 static const char __pyx_k_ConnectionError[] = "ConnectionError";
 static const char __pyx_k_FileExistsError[] = "FileExistsError";
+static const char __pyx_k_ModuleLoadError[] = "ModuleLoadError";
 static const char __pyx_k_PermissionError[] = "PermissionError";
 static const char __pyx_k_ResourceWarning[] = "ResourceWarning";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
@@ -1468,10 +1611,12 @@ static const char __pyx_k_UnicodeEncodeError[] = "UnicodeEncodeError";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_ModuleNotFoundError[] = "ModuleNotFoundError";
 static const char __pyx_k_NotImplementedError[] = "NotImplementedError";
+static const char __pyx_k_CircularLoadingError[] = "CircularLoadingError";
 static const char __pyx_k_ConnectionResetError[] = "ConnectionResetError";
 static const char __pyx_k_UnicodeTranslateError[] = "UnicodeTranslateError";
 static const char __pyx_k_ConnectionAbortedError[] = "ConnectionAbortedError";
 static const char __pyx_k_ConnectionRefusedError[] = "ConnectionRefusedError";
+static const char __pyx_k_DirectoryNotFoundError[] = "DirectoryNotFoundError";
 static const char __pyx_k_PendingDeprecationWarning[] = "PendingDeprecationWarning";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static PyObject *__pyx_n_s_ArithmeticError;
@@ -1483,20 +1628,31 @@ static PyObject *__pyx_n_s_BrokenPipeError;
 static PyObject *__pyx_n_s_BufferError;
 static PyObject *__pyx_n_s_BytesWarning;
 static PyObject *__pyx_n_s_ChildProcessError;
+static PyObject *__pyx_n_s_CircularLoadingError;
 static PyObject *__pyx_n_s_ConnectionAbortedError;
 static PyObject *__pyx_n_s_ConnectionError;
 static PyObject *__pyx_n_s_ConnectionRefusedError;
 static PyObject *__pyx_n_s_ConnectionResetError;
+static PyObject *__pyx_n_s_DecodingError;
 static PyObject *__pyx_n_s_DeprecationWarning;
+static PyObject *__pyx_n_s_DirectoryNotFoundError;
+static PyObject *__pyx_n_s_DomainError;
 static PyObject *__pyx_n_s_EOFError;
+static PyObject *__pyx_n_s_EncodingError;
 static PyObject *__pyx_n_s_EnvironmentError;
 static PyObject *__pyx_n_s_Exception;
+static PyObject *__pyx_n_s_FileError;
 static PyObject *__pyx_n_s_FileExistsError;
+static PyObject *__pyx_n_s_FileModeError;
+static PyObject *__pyx_n_s_FileNameError;
 static PyObject *__pyx_n_s_FileNotFoundError;
 static PyObject *__pyx_n_s_Flase;
 static PyObject *__pyx_n_s_FloatingPointError;
 static PyObject *__pyx_n_s_FutureWarning;
 static PyObject *__pyx_n_s_GeneratorExit;
+static PyObject *__pyx_n_s_GetClassNames;
+static PyObject *__pyx_n_s_GetFuncNames;
+static PyObject *__pyx_n_s_GetLine;
 static PyObject *__pyx_n_s_IOError;
 static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_n_s_ImportWarning;
@@ -1507,8 +1663,10 @@ static PyObject *__pyx_n_s_IsADirectoryError;
 static PyObject *__pyx_n_s_KeyError;
 static PyObject *__pyx_n_s_KeyboardInterrupt;
 static PyObject *__pyx_n_s_LANG;
+static PyObject *__pyx_n_s_License;
 static PyObject *__pyx_n_s_LookupError;
 static PyObject *__pyx_n_s_MemoryError;
+static PyObject *__pyx_n_s_ModuleLoadError;
 static PyObject *__pyx_n_s_ModuleNotFoundError;
 static PyObject *__pyx_n_s_NULL;
 static PyObject *__pyx_n_s_NameError;
@@ -1550,31 +1708,34 @@ static PyObject *__pyx_n_s_ZeroDivisionError;
 static PyObject *__pyx_kp_s__10;
 static PyObject *__pyx_kp_s__11;
 static PyObject *__pyx_kp_s__12;
-static PyObject *__pyx_kp_s__13;
-static PyObject *__pyx_kp_s__14;
-static PyObject *__pyx_kp_s__2;
+static PyObject *__pyx_kp_s__8;
+static PyObject *__pyx_kp_s__9;
 static PyObject *__pyx_n_s_add;
 static PyObject *__pyx_n_s_all;
 static PyObject *__pyx_n_s_all_keys;
 static PyObject *__pyx_n_s_and;
 static PyObject *__pyx_n_s_and_2;
+static PyObject *__pyx_n_s_ansi;
 static PyObject *__pyx_n_s_any;
 static PyObject *__pyx_n_s_args;
 static PyObject *__pyx_n_s_arguments;
+static PyObject *__pyx_n_s_as;
 static PyObject *__pyx_n_s_assert;
 static PyObject *__pyx_n_s_async;
+static PyObject *__pyx_n_s_begin;
 static PyObject *__pyx_n_s_bolean;
 static PyObject *__pyx_n_s_bool;
 static PyObject *__pyx_n_s_bool_func;
+static PyObject *__pyx_n_s_boolean;
 static PyObject *__pyx_n_s_break;
 static PyObject *__pyx_n_s_call;
 static PyObject *__pyx_n_s_cancel;
+static PyObject *__pyx_n_s_case;
 static PyObject *__pyx_n_s_cinit;
 static PyObject *__pyx_n_s_class;
 static PyObject *__pyx_n_s_class_and_func;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_close;
-static PyObject *__pyx_n_s_cmt;
 static PyObject *__pyx_n_s_color;
 static PyObject *__pyx_n_s_color_name;
 static PyObject *__pyx_n_s_colors;
@@ -1585,11 +1746,16 @@ static PyObject *__pyx_n_s_constructor;
 static PyObject *__pyx_n_s_contains;
 static PyObject *__pyx_n_s_continue;
 static PyObject *__pyx_n_s_copy;
+static PyObject *__pyx_n_s_cplx;
 static PyObject *__pyx_n_s_def;
+static PyObject *__pyx_n_s_default;
+static PyObject *__pyx_n_s_del;
 static PyObject *__pyx_n_s_delitem;
 static PyObject *__pyx_n_s_dict;
+static PyObject *__pyx_n_s_dictionary;
 static PyObject *__pyx_n_s_elif;
 static PyObject *__pyx_n_s_else;
+static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_eq;
 static PyObject *__pyx_n_s_except;
 static PyObject *__pyx_n_s_exceptions;
@@ -1598,28 +1764,38 @@ static PyObject *__pyx_n_s_fg;
 static PyObject *__pyx_n_s_filter;
 static PyObject *__pyx_n_s_finaly;
 static PyObject *__pyx_n_s_float;
+static PyObject *__pyx_n_s_floor;
 static PyObject *__pyx_n_s_floordiv;
+static PyObject *__pyx_n_s_fopen;
 static PyObject *__pyx_n_s_for;
 static PyObject *__pyx_n_s_from;
+static PyObject *__pyx_n_s_func;
 static PyObject *__pyx_n_s_ge;
+static PyObject *__pyx_n_s_general;
 static PyObject *__pyx_n_s_getitem;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_global;
 static PyObject *__pyx_n_s_gt;
+static PyObject *__pyx_n_s_help;
 static PyObject *__pyx_n_s_if;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_import_2;
 static PyObject *__pyx_n_s_in;
 static PyObject *__pyx_n_s_iner;
 static PyObject *__pyx_n_s_init;
+static PyObject *__pyx_n_s_initialize;
+static PyObject *__pyx_n_s_input;
 static PyObject *__pyx_n_s_int;
+static PyObject *__pyx_n_s_integer;
 static PyObject *__pyx_n_s_iter;
 static PyObject *__pyx_n_s_keys;
 static PyObject *__pyx_n_s_kwargs;
 static PyObject *__pyx_n_s_lambda;
 static PyObject *__pyx_n_s_le;
 static PyObject *__pyx_n_s_len;
+static PyObject *__pyx_n_s_length;
 static PyObject *__pyx_n_s_list;
+static PyObject *__pyx_n_s_load;
 static PyObject *__pyx_n_s_loading;
 static PyObject *__pyx_n_s_local;
 static PyObject *__pyx_n_s_logical;
@@ -1627,27 +1803,44 @@ static PyObject *__pyx_n_s_loop;
 static PyObject *__pyx_n_s_lt;
 static PyObject *__pyx_n_s_magic_method;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_mamba;
 static PyObject *__pyx_n_s_map;
 static PyObject *__pyx_n_s_master;
+static PyObject *__pyx_n_s_matrix1;
+static PyObject *__pyx_n_s_max;
+static PyObject *__pyx_n_s_merge;
+static PyObject *__pyx_n_s_min;
 static PyObject *__pyx_n_s_mod;
+static PyObject *__pyx_n_s_module;
 static PyObject *__pyx_n_s_monokai;
 static PyObject *__pyx_n_s_mul;
+static PyObject *__pyx_n_s_n_float;
+static PyObject *__pyx_n_s_n_int;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_name_2;
+static PyObject *__pyx_n_s_ndarray;
 static PyObject *__pyx_n_s_ne;
+static PyObject *__pyx_n_s_next;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
+static PyObject *__pyx_n_s_none;
 static PyObject *__pyx_n_s_not;
 static PyObject *__pyx_kp_s_not_in;
+static PyObject *__pyx_n_s_only;
 static PyObject *__pyx_n_s_open;
 static PyObject *__pyx_n_s_or;
 static PyObject *__pyx_n_s_or_2;
 static PyObject *__pyx_n_s_other;
+static PyObject *__pyx_n_s_p_float;
+static PyObject *__pyx_n_s_pass;
 static PyObject *__pyx_n_s_pow;
 static PyObject *__pyx_n_s_print;
+static PyObject *__pyx_kp_s_prompt_delete;
+static PyObject *__pyx_n_s_python;
 static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_quit;
 static PyObject *__pyx_n_s_radd;
 static PyObject *__pyx_n_s_raise;
+static PyObject *__pyx_n_s_rand;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_rbg;
 static PyObject *__pyx_n_s_read;
@@ -1657,21 +1850,32 @@ static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_return;
+static PyObject *__pyx_n_s_round;
+static PyObject *__pyx_n_s_save;
+static PyObject *__pyx_n_s_scan_test;
 static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_set;
 static PyObject *__pyx_n_s_setitem;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
+static PyObject *__pyx_n_s_sget;
 static PyObject *__pyx_n_s_stop;
 static PyObject *__pyx_n_s_str;
 static PyObject *__pyx_n_s_str_2;
+static PyObject *__pyx_n_s_string;
 static PyObject *__pyx_n_s_sub;
 static PyObject *__pyx_n_s_super;
+static PyObject *__pyx_n_s_switch;
+static PyObject *__pyx_n_s_tablep_int;
+static PyObject *__pyx_n_s_termios;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_truediv;
 static PyObject *__pyx_n_s_try;
 static PyObject *__pyx_n_s_tuple;
+static PyObject *__pyx_n_s_type;
 static PyObject *__pyx_n_s_types;
+static PyObject *__pyx_n_s_unless;
+static PyObject *__pyx_n_s_until;
 static PyObject *__pyx_n_s_values;
 static PyObject *__pyx_n_s_while;
 static PyObject *__pyx_n_s_with;
@@ -1679,11 +1883,12 @@ static PyObject *__pyx_n_s_write;
 static PyObject *__pyx_n_s_xor;
 static PyObject *__pyx_n_s_yield;
 static int __pyx_pf_6key_py_4LANG___cinit__(struct __pyx_obj_6key_py_LANG *__pyx_v_self, PyObject *__pyx_v_master); /* proto */
+static PyObject *__pyx_pf_6key_py_4LANG_2LANG(struct __pyx_obj_6key_py_LANG *__pyx_v_self, PyObject *__pyx_v_termios); /* proto */
 static PyObject *__pyx_pf_6key_py_4LANG_6master___get__(struct __pyx_obj_6key_py_LANG *__pyx_v_self); /* proto */
 static int __pyx_pf_6key_py_4LANG_6master_2__set__(struct __pyx_obj_6key_py_LANG *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static int __pyx_pf_6key_py_4LANG_6master_4__del__(struct __pyx_obj_6key_py_LANG *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6key_py_4LANG_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6key_py_LANG *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6key_py_4LANG_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6key_py_LANG *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_6key_py_4LANG_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6key_py_LANG *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6key_py_4LANG_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6key_py_LANG *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_6key_py_LANG(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_keys = {0, &__pyx_n_s_keys, 0, 0, 0};
 static __Pyx_CachedCFunction __pyx_umethod_PyList_Type_copy = {0, &__pyx_n_s_copy, 0, 0, 0};
@@ -1699,17 +1904,16 @@ static PyObject *__pyx_int_204;
 static PyObject *__pyx_int_240;
 static PyObject *__pyx_int_255;
 static PyObject *__pyx_tuple_;
+static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__5;
 static PyObject *__pyx_tuple__6;
 static PyObject *__pyx_tuple__7;
-static PyObject *__pyx_tuple__8;
-static PyObject *__pyx_tuple__9;
+static PyObject *__pyx_tuple__13;
+static PyObject *__pyx_tuple__14;
 static PyObject *__pyx_tuple__15;
 static PyObject *__pyx_tuple__16;
-static PyObject *__pyx_tuple__17;
-static PyObject *__pyx_tuple__18;
 /* Late includes */
 
 /* "key_py.pyx":8
@@ -1788,7 +1992,7 @@ static int __pyx_pf_6key_py_4LANG___cinit__(struct __pyx_obj_6key_py_LANG *__pyx
  *     def __cinit__(self, master) -> None:
  *         self.master     = master             # <<<<<<<<<<<<<<
  *         self.c          = {"color_name" : [], 'values' : []}
- *     cdef dict PY(self, str termios = "monokai"):
+ *     cpdef LANG(self, str termios = "monokai"):
  */
   if (!(likely(PyString_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(1, 9, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_master;
@@ -1803,8 +2007,8 @@ static int __pyx_pf_6key_py_4LANG___cinit__(struct __pyx_obj_6key_py_LANG *__pyx
  *     def __cinit__(self, master) -> None:
  *         self.master     = master
  *         self.c          = {"color_name" : [], 'values' : []}             # <<<<<<<<<<<<<<
- *     cdef dict PY(self, str termios = "monokai"):
- *         cdef :
+ *     cpdef LANG(self, str termios = "monokai"):
+ *         if    self.master == "python": return LANG(self.master).PY(termios=termios)
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1846,7 +2050,257 @@ static int __pyx_pf_6key_py_4LANG___cinit__(struct __pyx_obj_6key_py_LANG *__pyx
 /* "key_py.pyx":11
  *         self.master     = master
  *         self.c          = {"color_name" : [], 'values' : []}
- *     cdef dict PY(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
+ *     cpdef LANG(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
+ *         if    self.master == "python": return LANG(self.master).PY(termios=termios)
+ *         elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios)
+ */
+
+static PyObject *__pyx_pw_6key_py_4LANG_3LANG(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_6key_py_4LANG_LANG(struct __pyx_obj_6key_py_LANG *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_6key_py_4LANG_LANG *__pyx_optional_args) {
+  PyObject *__pyx_v_termios = ((PyObject*)__pyx_n_s_monokai);
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  int __pyx_t_6;
+  struct __pyx_opt_args_6key_py_4LANG_PY __pyx_t_7;
+  struct __pyx_opt_args_6key_py_4LANG_MAMBA __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("LANG", 0);
+  if (__pyx_optional_args) {
+    if (__pyx_optional_args->__pyx_n > 0) {
+      __pyx_v_termios = __pyx_optional_args->termios;
+    }
+  }
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_LANG); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 11, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_6key_py_4LANG_3LANG)) {
+        __Pyx_XDECREF(__pyx_r);
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+          if (likely(__pyx_t_4)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+            __Pyx_INCREF(__pyx_t_4);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_3, function);
+          }
+        }
+        __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_termios) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_termios);
+        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 11, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_r = __pyx_t_2;
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_type_dict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "key_py.pyx":12
+ *         self.c          = {"color_name" : [], 'values' : []}
+ *     cpdef LANG(self, str termios = "monokai"):
+ *         if    self.master == "python": return LANG(self.master).PY(termios=termios)             # <<<<<<<<<<<<<<
+ *         elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios)
+ *         else: pass
+ */
+  __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->master, __pyx_n_s_python, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_6 = (__pyx_t_5 != 0);
+  if (__pyx_t_6) {
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_6key_py_LANG), __pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_7.__pyx_n = 1;
+    __pyx_t_7.termios = __pyx_v_termios;
+    __pyx_t_2 = ((struct __pyx_vtabstruct_6key_py_LANG *)((struct __pyx_obj_6key_py_LANG *)__pyx_t_1)->__pyx_vtab)->PY(((struct __pyx_obj_6key_py_LANG *)__pyx_t_1), &__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 12, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
+    goto __pyx_L0;
+  }
+
+  /* "key_py.pyx":13
+ *     cpdef LANG(self, str termios = "monokai"):
+ *         if    self.master == "python": return LANG(self.master).PY(termios=termios)
+ *         elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios)             # <<<<<<<<<<<<<<
+ *         else: pass
+ * 
+ */
+  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->master, __pyx_n_s_mamba, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 13, __pyx_L1_error)
+  __pyx_t_5 = (__pyx_t_6 != 0);
+  if (__pyx_t_5) {
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_6key_py_LANG), __pyx_v_self->master); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_8.__pyx_n = 1;
+    __pyx_t_8.termios = __pyx_v_termios;
+    __pyx_t_1 = ((struct __pyx_vtabstruct_6key_py_LANG *)((struct __pyx_obj_6key_py_LANG *)__pyx_t_2)->__pyx_vtab)->MAMBA(((struct __pyx_obj_6key_py_LANG *)__pyx_t_2), &__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = 0;
+    goto __pyx_L0;
+  }
+
+  /* "key_py.pyx":14
+ *         if    self.master == "python": return LANG(self.master).PY(termios=termios)
+ *         elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios)
+ *         else: pass             # <<<<<<<<<<<<<<
+ * 
+ *     cdef PY(self, str termios = "monokai"):
+ */
+  /*else*/ {
+  }
+
+  /* "key_py.pyx":11
+ *         self.master     = master
+ *         self.c          = {"color_name" : [], 'values' : []}
+ *     cpdef LANG(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
+ *         if    self.master == "python": return LANG(self.master).PY(termios=termios)
+ *         elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios)
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("key_py.LANG.LANG", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6key_py_4LANG_3LANG(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_6key_py_4LANG_3LANG(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_termios = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("LANG (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_termios,0};
+    PyObject* values[1] = {0};
+    values[0] = ((PyObject*)__pyx_n_s_monokai);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_termios);
+          if (value) { values[0] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "LANG") < 0)) __PYX_ERR(1, 11, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_termios = ((PyObject*)values[0]);
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("LANG", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 11, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("key_py.LANG.LANG", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_termios), (&PyString_Type), 1, "termios", 1))) __PYX_ERR(1, 11, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6key_py_4LANG_2LANG(((struct __pyx_obj_6key_py_LANG *)__pyx_v_self), __pyx_v_termios);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6key_py_4LANG_2LANG(struct __pyx_obj_6key_py_LANG *__pyx_v_self, PyObject *__pyx_v_termios) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  struct __pyx_opt_args_6key_py_4LANG_LANG __pyx_t_2;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("LANG", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2.__pyx_n = 1;
+  __pyx_t_2.termios = __pyx_v_termios;
+  __pyx_t_1 = __pyx_vtabptr_6key_py_LANG->LANG(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 11, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("key_py.LANG.LANG", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "key_py.pyx":16
+ *         else: pass
+ * 
+ *     cdef PY(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
  *         cdef :
  *             dict data = {}
  */
@@ -1854,6 +2308,7 @@ static int __pyx_pf_6key_py_4LANG___cinit__(struct __pyx_obj_6key_py_LANG *__pyx
 static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v_self, struct __pyx_opt_args_6key_py_4LANG_PY *__pyx_optional_args) {
   PyObject *__pyx_v_data = 0;
   PyObject *__pyx_v_keys = 0;
+  PyObject *__pyx_v_names = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1866,117 +2321,63 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   if (__pyx_optional_args) {
   }
 
-  /* "key_py.pyx":13
- *     cdef dict PY(self, str termios = "monokai"):
+  /* "key_py.pyx":18
+ *     cdef PY(self, str termios = "monokai"):
  *         cdef :
  *             dict data = {}             # <<<<<<<<<<<<<<
  *             list keys = []
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 13, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_data = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":14
+  /* "key_py.pyx":19
  *         cdef :
  *             dict data = {}
  *             list keys = []             # <<<<<<<<<<<<<<
  * 
- * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 14, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_keys = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":17
- * 
- * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153, 153, 255)]}             # <<<<<<<<<<<<<<
- *         data['cmt']                 = {"name" : "#" , "color" : self.c}
- * 
- */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_monokai);
-  __Pyx_GIVEREF(__pyx_n_s_monokai);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
-  __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v_self->c);
-  __Pyx_DECREF(__pyx_v_self->c);
-  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "key_py.pyx":18
- * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153, 153, 255)]}
- *         data['cmt']                 = {"name" : "#" , "color" : self.c}             # <<<<<<<<<<<<<<
- * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
- */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_kp_s__2) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_cmt, __pyx_t_1) < 0)) __PYX_ERR(1, 18, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "key_py.pyx":20
- *         data['cmt']                 = {"name" : "#" , "color" : self.c}
+  /* "key_py.pyx":21
+ *             list keys = []
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}             # <<<<<<<<<<<<<<
  *         data['types']               = {"name" : ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list", "bool"], "color" : self.c }
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 20, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 20, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_monokai);
   __Pyx_GIVEREF(__pyx_n_s_monokai);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 20, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 20, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 20, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 20, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 20, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->c);
@@ -1984,16 +2385,16 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_v_self->c = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":21
+  /* "key_py.pyx":22
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
  *         data['types']               = {"name" : ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list", "bool"], "color" : self.c }             # <<<<<<<<<<<<<<
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 21, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(9); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 21, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(9); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_int);
   __Pyx_GIVEREF(__pyx_n_s_int);
@@ -2022,45 +2423,45 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __Pyx_INCREF(__pyx_n_s_bool);
   __Pyx_GIVEREF(__pyx_n_s_bool);
   PyList_SET_ITEM(__pyx_t_2, 8, __pyx_n_s_bool);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 21, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 21, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_types, __pyx_t_1) < 0)) __PYX_ERR(1, 21, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 22, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_types, __pyx_t_1) < 0)) __PYX_ERR(1, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "key_py.pyx":23
+  /* "key_py.pyx":24
  *         data['types']               = {"name" : ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list", "bool"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}             # <<<<<<<<<<<<<<
  *         data["constructor"]         = {"name" : ['__init__', '__name__', "__cinit__"], "color" : self.c}
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 23, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 23, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_monokai);
   __Pyx_GIVEREF(__pyx_n_s_monokai);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 23, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 23, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 23, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 23, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 23, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->c);
@@ -2068,16 +2469,16 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_v_self->c = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":24
+  /* "key_py.pyx":25
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
  *         data["constructor"]         = {"name" : ['__init__', '__name__', "__cinit__"], "color" : self.c}             # <<<<<<<<<<<<<<
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 24, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_init);
   __Pyx_GIVEREF(__pyx_n_s_init);
@@ -2088,45 +2489,45 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __Pyx_INCREF(__pyx_n_s_cinit);
   __Pyx_GIVEREF(__pyx_n_s_cinit);
   PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_cinit);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 24, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 25, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 24, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_constructor, __pyx_t_1) < 0)) __PYX_ERR(1, 24, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 25, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_constructor, __pyx_t_1) < 0)) __PYX_ERR(1, 25, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "key_py.pyx":26
+  /* "key_py.pyx":27
  *         data["constructor"]         = {"name" : ['__init__', '__name__', "__cinit__"], "color" : self.c}
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}             # <<<<<<<<<<<<<<
  *         data['class_and_func']      = {"name" : ['def', "class", "super"], "color" : self.c }
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 26, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 26, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_monokai);
   __Pyx_GIVEREF(__pyx_n_s_monokai);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 26, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 26, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 26, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 26, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 26, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 26, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 26, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->c);
@@ -2134,16 +2535,16 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_v_self->c = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":27
+  /* "key_py.pyx":28
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
  *         data['class_and_func']      = {"name" : ['def', "class", "super"], "color" : self.c }             # <<<<<<<<<<<<<<
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 27, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 27, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_def);
   __Pyx_GIVEREF(__pyx_n_s_def);
@@ -2154,45 +2555,45 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __Pyx_INCREF(__pyx_n_s_super);
   __Pyx_GIVEREF(__pyx_n_s_super);
   PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_super);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 28, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_class_and_func, __pyx_t_1) < 0)) __PYX_ERR(1, 27, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 28, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_class_and_func, __pyx_t_1) < 0)) __PYX_ERR(1, 28, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "key_py.pyx":29
+  /* "key_py.pyx":30
  *         data['class_and_func']      = {"name" : ['def', "class", "super"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}             # <<<<<<<<<<<<<<
- *         data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range", "async"], "color" : self.c }
- * 
+ *         data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range",
+ *                                                 "async", "type", "input", "round", "del"], "color" : self.c }
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 29, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 29, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_monokai);
   __Pyx_GIVEREF(__pyx_n_s_monokai);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 29, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 29, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 29, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 29, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 29, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 29, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 29, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->c);
@@ -2200,16 +2601,16 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_v_self->c = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":30
+  /* "key_py.pyx":31
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
- *         data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range", "async"], "color" : self.c }             # <<<<<<<<<<<<<<
+ *         data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range",             # <<<<<<<<<<<<<<
+ *                                                 "async", "type", "input", "round", "del"], "color" : self.c }
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 30, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(8); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 30, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(12); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_lambda);
   __Pyx_GIVEREF(__pyx_n_s_lambda);
@@ -2235,45 +2636,73 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __Pyx_INCREF(__pyx_n_s_async);
   __Pyx_GIVEREF(__pyx_n_s_async);
   PyList_SET_ITEM(__pyx_t_2, 7, __pyx_n_s_async);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_type);
+  __Pyx_GIVEREF(__pyx_n_s_type);
+  PyList_SET_ITEM(__pyx_t_2, 8, __pyx_n_s_type);
+  __Pyx_INCREF(__pyx_n_s_input);
+  __Pyx_GIVEREF(__pyx_n_s_input);
+  PyList_SET_ITEM(__pyx_t_2, 9, __pyx_n_s_input);
+  __Pyx_INCREF(__pyx_n_s_round);
+  __Pyx_GIVEREF(__pyx_n_s_round);
+  PyList_SET_ITEM(__pyx_t_2, 10, __pyx_n_s_round);
+  __Pyx_INCREF(__pyx_n_s_del);
+  __Pyx_GIVEREF(__pyx_n_s_del);
+  PyList_SET_ITEM(__pyx_t_2, 11, __pyx_n_s_del);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_iner, __pyx_t_1) < 0)) __PYX_ERR(1, 30, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "key_py.pyx":32
- *         data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range", "async"], "color" : self.c }
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
+ *         data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range",
+ *                                                 "async", "type", "input", "round", "del"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+ */
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 31, __pyx_L1_error)
+
+  /* "key_py.pyx":31
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
+ *         data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range",             # <<<<<<<<<<<<<<
+ *                                                 "async", "type", "input", "round", "del"], "color" : self.c }
+ * 
+ */
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_iner, __pyx_t_1) < 0)) __PYX_ERR(1, 31, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":34
+ *                                                 "async", "type", "input", "round", "del"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}             # <<<<<<<<<<<<<<
  *         data["loop"]                = {"name" : ["while", "with", "for", "yield"], "color" : self.c }
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_monokai);
   __Pyx_GIVEREF(__pyx_n_s_monokai);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 32, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 32, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->c);
@@ -2281,16 +2710,16 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_v_self->c = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":33
+  /* "key_py.pyx":35
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
  *         data["loop"]                = {"name" : ["while", "with", "for", "yield"], "color" : self.c }             # <<<<<<<<<<<<<<
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 33, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 33, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_while);
   __Pyx_GIVEREF(__pyx_n_s_while);
@@ -2304,45 +2733,45 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __Pyx_INCREF(__pyx_n_s_yield);
   __Pyx_GIVEREF(__pyx_n_s_yield);
   PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_yield);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 33, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 33, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_loop, __pyx_t_1) < 0)) __PYX_ERR(1, 33, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_loop, __pyx_t_1) < 0)) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "key_py.pyx":35
+  /* "key_py.pyx":37
  *         data["loop"]                = {"name" : ["while", "with", "for", "yield"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}             # <<<<<<<<<<<<<<
  *         data['cond']                = {"name" : ['if', "elif", "else", "try", "except", "finaly"], "color" : self.c }
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_monokai);
   __Pyx_GIVEREF(__pyx_n_s_monokai);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->c);
@@ -2350,16 +2779,16 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_v_self->c = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":36
+  /* "key_py.pyx":38
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
  *         data['cond']                = {"name" : ['if', "elif", "else", "try", "except", "finaly"], "color" : self.c }             # <<<<<<<<<<<<<<
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 36, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 36, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_if);
   __Pyx_GIVEREF(__pyx_n_s_if);
@@ -2379,45 +2808,45 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __Pyx_INCREF(__pyx_n_s_finaly);
   __Pyx_GIVEREF(__pyx_n_s_finaly);
   PyList_SET_ITEM(__pyx_t_2, 5, __pyx_n_s_finaly);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 36, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 38, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 36, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_cond, __pyx_t_1) < 0)) __PYX_ERR(1, 36, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 38, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_cond, __pyx_t_1) < 0)) __PYX_ERR(1, 38, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "key_py.pyx":38
+  /* "key_py.pyx":40
  *         data['cond']                = {"name" : ['if', "elif", "else", "try", "except", "finaly"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}             # <<<<<<<<<<<<<<
- *         data['stop']                = {"name" : ['break', "cancel", "exit", "continue", "self", "local", "global", "quit", "return", "open",
- *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
+ *         names                       = ['break', "cancel", "exit", "continue", "quit", "next"]
+ *         data['stop']                = {"name" : names, "color" : self.c }
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_monokai);
   __Pyx_GIVEREF(__pyx_n_s_monokai);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 38, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 38, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->c);
@@ -2425,117 +2854,83 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_v_self->c = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":39
+  /* "key_py.pyx":41
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
- *         data['stop']                = {"name" : ['break', "cancel", "exit", "continue", "self", "local", "global", "quit", "return", "open",             # <<<<<<<<<<<<<<
- *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
+ *         names                       = ['break', "cancel", "exit", "continue", "quit", "next"]             # <<<<<<<<<<<<<<
+ *         data['stop']                = {"name" : names, "color" : self.c }
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 39, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(15); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_break);
   __Pyx_GIVEREF(__pyx_n_s_break);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_break);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_break);
   __Pyx_INCREF(__pyx_n_s_cancel);
   __Pyx_GIVEREF(__pyx_n_s_cancel);
-  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_cancel);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_cancel);
   __Pyx_INCREF(__pyx_n_s_exit);
   __Pyx_GIVEREF(__pyx_n_s_exit);
-  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_exit);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_exit);
   __Pyx_INCREF(__pyx_n_s_continue);
   __Pyx_GIVEREF(__pyx_n_s_continue);
-  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_continue);
-  __Pyx_INCREF(__pyx_n_s_self);
-  __Pyx_GIVEREF(__pyx_n_s_self);
-  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_self);
-  __Pyx_INCREF(__pyx_n_s_local);
-  __Pyx_GIVEREF(__pyx_n_s_local);
-  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_n_s_local);
-  __Pyx_INCREF(__pyx_n_s_global);
-  __Pyx_GIVEREF(__pyx_n_s_global);
-  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_n_s_global);
+  PyList_SET_ITEM(__pyx_t_1, 3, __pyx_n_s_continue);
   __Pyx_INCREF(__pyx_n_s_quit);
   __Pyx_GIVEREF(__pyx_n_s_quit);
-  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_n_s_quit);
-  __Pyx_INCREF(__pyx_n_s_return);
-  __Pyx_GIVEREF(__pyx_n_s_return);
-  PyList_SET_ITEM(__pyx_t_2, 8, __pyx_n_s_return);
-  __Pyx_INCREF(__pyx_n_s_open);
-  __Pyx_GIVEREF(__pyx_n_s_open);
-  PyList_SET_ITEM(__pyx_t_2, 9, __pyx_n_s_open);
-  __Pyx_INCREF(__pyx_n_s_close);
-  __Pyx_GIVEREF(__pyx_n_s_close);
-  PyList_SET_ITEM(__pyx_t_2, 10, __pyx_n_s_close);
-  __Pyx_INCREF(__pyx_n_s_readline);
-  __Pyx_GIVEREF(__pyx_n_s_readline);
-  PyList_SET_ITEM(__pyx_t_2, 11, __pyx_n_s_readline);
-  __Pyx_INCREF(__pyx_n_s_write);
-  __Pyx_GIVEREF(__pyx_n_s_write);
-  PyList_SET_ITEM(__pyx_t_2, 12, __pyx_n_s_write);
-  __Pyx_INCREF(__pyx_n_s_read);
-  __Pyx_GIVEREF(__pyx_n_s_read);
-  PyList_SET_ITEM(__pyx_t_2, 13, __pyx_n_s_read);
-  __Pyx_INCREF(__pyx_n_s_readlines);
-  __Pyx_GIVEREF(__pyx_n_s_readlines);
-  PyList_SET_ITEM(__pyx_t_2, 14, __pyx_n_s_readlines);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "key_py.pyx":40
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
- *         data['stop']                = {"name" : ['break', "cancel", "exit", "continue", "self", "local", "global", "quit", "return", "open",
- *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }             # <<<<<<<<<<<<<<
- * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
- */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
-
-  /* "key_py.pyx":39
- * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
- *         data['stop']                = {"name" : ['break', "cancel", "exit", "continue", "self", "local", "global", "quit", "return", "open",             # <<<<<<<<<<<<<<
- *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
- * 
- */
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_stop, __pyx_t_1) < 0)) __PYX_ERR(1, 39, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyList_SET_ITEM(__pyx_t_1, 4, __pyx_n_s_quit);
+  __Pyx_INCREF(__pyx_n_s_next);
+  __Pyx_GIVEREF(__pyx_n_s_next);
+  PyList_SET_ITEM(__pyx_t_1, 5, __pyx_n_s_next);
+  __pyx_v_names = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
 
   /* "key_py.pyx":42
- *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
+ *         names                       = ['break', "cancel", "exit", "continue", "quit", "next"]
+ *         data['stop']                = {"name" : names, "color" : self.c }             # <<<<<<<<<<<<<<
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}             # <<<<<<<<<<<<<<
- *         data['arguments']           = {"name" : ["args", "kwargs", "other", "all", "any"], "color" : self.c }
- * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 42, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_names) < 0) __PYX_ERR(1, 42, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 42, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_stop, __pyx_t_1) < 0)) __PYX_ERR(1, 42, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":44
+ *         data['stop']                = {"name" : names, "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}             # <<<<<<<<<<<<<<
+ *         names                       = [ "self", "local", "global",  "return", "open", "close", "readline", "write", "read", "readlines"]
+ *         data['global']                = {"name" : names, "color" : self.c }
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 44, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_monokai);
   __Pyx_GIVEREF(__pyx_n_s_monokai);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 42, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 42, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 42, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 42, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 42, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 42, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 42, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->c);
@@ -2543,109 +2938,67 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_v_self->c = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":43
- * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
- *         data['arguments']           = {"name" : ["args", "kwargs", "other", "all", "any"], "color" : self.c }             # <<<<<<<<<<<<<<
- * 
- *         self.cancel                 = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}
- */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_args);
-  __Pyx_GIVEREF(__pyx_n_s_args);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_args);
-  __Pyx_INCREF(__pyx_n_s_kwargs);
-  __Pyx_GIVEREF(__pyx_n_s_kwargs);
-  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_kwargs);
-  __Pyx_INCREF(__pyx_n_s_other);
-  __Pyx_GIVEREF(__pyx_n_s_other);
-  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_other);
-  __Pyx_INCREF(__pyx_n_s_all);
-  __Pyx_GIVEREF(__pyx_n_s_all);
-  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_all);
-  __Pyx_INCREF(__pyx_n_s_any);
-  __Pyx_GIVEREF(__pyx_n_s_any);
-  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_any);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 43, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 43, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_arguments, __pyx_t_1) < 0)) __PYX_ERR(1, 43, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
   /* "key_py.pyx":45
- *         data['arguments']           = {"name" : ["args", "kwargs", "other", "all", "any"], "color" : self.c }
  * 
- *         self.cancel                 = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}             # <<<<<<<<<<<<<<
- *         data["bool_func"]           = {"name" : ["True", "Flase", "None", "NULL"], "color" : self.c }
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+ *         names                       = [ "self", "local", "global",  "return", "open", "close", "readline", "write", "read", "readlines"]             # <<<<<<<<<<<<<<
+ *         data['global']                = {"name" : names, "color" : self.c }
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 45, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(10); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_monokai);
-  __Pyx_GIVEREF(__pyx_n_s_monokai);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
-  __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_cancel, __pyx_t_1) < 0) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_INCREF(__pyx_n_s_self);
+  __Pyx_GIVEREF(__pyx_n_s_self);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_self);
+  __Pyx_INCREF(__pyx_n_s_local);
+  __Pyx_GIVEREF(__pyx_n_s_local);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_local);
+  __Pyx_INCREF(__pyx_n_s_global);
+  __Pyx_GIVEREF(__pyx_n_s_global);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_global);
+  __Pyx_INCREF(__pyx_n_s_return);
+  __Pyx_GIVEREF(__pyx_n_s_return);
+  PyList_SET_ITEM(__pyx_t_1, 3, __pyx_n_s_return);
+  __Pyx_INCREF(__pyx_n_s_open);
+  __Pyx_GIVEREF(__pyx_n_s_open);
+  PyList_SET_ITEM(__pyx_t_1, 4, __pyx_n_s_open);
+  __Pyx_INCREF(__pyx_n_s_close);
+  __Pyx_GIVEREF(__pyx_n_s_close);
+  PyList_SET_ITEM(__pyx_t_1, 5, __pyx_n_s_close);
+  __Pyx_INCREF(__pyx_n_s_readline);
+  __Pyx_GIVEREF(__pyx_n_s_readline);
+  PyList_SET_ITEM(__pyx_t_1, 6, __pyx_n_s_readline);
+  __Pyx_INCREF(__pyx_n_s_write);
+  __Pyx_GIVEREF(__pyx_n_s_write);
+  PyList_SET_ITEM(__pyx_t_1, 7, __pyx_n_s_write);
+  __Pyx_INCREF(__pyx_n_s_read);
+  __Pyx_GIVEREF(__pyx_n_s_read);
+  PyList_SET_ITEM(__pyx_t_1, 8, __pyx_n_s_read);
+  __Pyx_INCREF(__pyx_n_s_readlines);
+  __Pyx_GIVEREF(__pyx_n_s_readlines);
+  PyList_SET_ITEM(__pyx_t_1, 9, __pyx_n_s_readlines);
+  __Pyx_DECREF_SET(__pyx_v_names, ((PyObject*)__pyx_t_1));
+  __pyx_t_1 = 0;
 
   /* "key_py.pyx":46
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+ *         names                       = [ "self", "local", "global",  "return", "open", "close", "readline", "write", "read", "readlines"]
+ *         data['global']                = {"name" : names, "color" : self.c }             # <<<<<<<<<<<<<<
  * 
- *         self.cancel                 = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}
- *         data["bool_func"]           = {"name" : ["True", "Flase", "None", "NULL"], "color" : self.c }             # <<<<<<<<<<<<<<
- * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 46, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_True);
-  __Pyx_GIVEREF(__pyx_n_s_True);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_True);
-  __Pyx_INCREF(__pyx_n_s_Flase);
-  __Pyx_GIVEREF(__pyx_n_s_Flase);
-  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_Flase);
-  __Pyx_INCREF(__pyx_n_s_None);
-  __Pyx_GIVEREF(__pyx_n_s_None);
-  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_None);
-  __Pyx_INCREF(__pyx_n_s_NULL);
-  __Pyx_GIVEREF(__pyx_n_s_NULL);
-  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_NULL);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 46, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_names) < 0) __PYX_ERR(1, 46, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 46, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_bool_func, __pyx_t_1) < 0)) __PYX_ERR(1, 46, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_global, __pyx_t_1) < 0)) __PYX_ERR(1, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "key_py.pyx":48
- *         data["bool_func"]           = {"name" : ["True", "Flase", "None", "NULL"], "color" : self.c }
+ *         data['global']                = {"name" : names, "color" : self.c }
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}             # <<<<<<<<<<<<<<
- *         data['logical']             = {"name" : ['and', 'or'], "color" : self.c }
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}             # <<<<<<<<<<<<<<
+ *         data['arguments']           = {"name" : ["args", "kwargs", "other", "all", "any"], "color" : self.c }
  * 
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 48, __pyx_L1_error)
@@ -2665,7 +3018,7 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 48, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 48, __pyx_L1_error)
@@ -2683,32 +3036,41 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
 
   /* "key_py.pyx":49
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
- *         data['logical']             = {"name" : ['and', 'or'], "color" : self.c }             # <<<<<<<<<<<<<<
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
+ *         data['arguments']           = {"name" : ["args", "kwargs", "other", "all", "any"], "color" : self.c }             # <<<<<<<<<<<<<<
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 49, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_and);
-  __Pyx_GIVEREF(__pyx_n_s_and);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_and);
-  __Pyx_INCREF(__pyx_n_s_or);
-  __Pyx_GIVEREF(__pyx_n_s_or);
-  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_or);
+  __Pyx_INCREF(__pyx_n_s_args);
+  __Pyx_GIVEREF(__pyx_n_s_args);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_args);
+  __Pyx_INCREF(__pyx_n_s_kwargs);
+  __Pyx_GIVEREF(__pyx_n_s_kwargs);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_kwargs);
+  __Pyx_INCREF(__pyx_n_s_other);
+  __Pyx_GIVEREF(__pyx_n_s_other);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_other);
+  __Pyx_INCREF(__pyx_n_s_all);
+  __Pyx_GIVEREF(__pyx_n_s_all);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_all);
+  __Pyx_INCREF(__pyx_n_s_any);
+  __Pyx_GIVEREF(__pyx_n_s_any);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_any);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 49, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 49, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_logical, __pyx_t_1) < 0)) __PYX_ERR(1, 49, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_arguments, __pyx_t_1) < 0)) __PYX_ERR(1, 49, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "key_py.pyx":51
- *         data['logical']             = {"name" : ['and', 'or'], "color" : self.c }
+ *         data['arguments']           = {"name" : ["args", "kwargs", "other", "all", "any"], "color" : self.c }
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}             # <<<<<<<<<<<<<<
- *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}             # <<<<<<<<<<<<<<
+ *         data["bool_func"]           = {"name" : ["True", "Flase", "None", "NULL"], "color" : self.c }
  * 
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 51, __pyx_L1_error)
@@ -2728,7 +3090,7 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 51, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 51, __pyx_L1_error)
@@ -2746,50 +3108,38 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
 
   /* "key_py.pyx":52
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
- *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }             # <<<<<<<<<<<<<<
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}
+ *         data["bool_func"]           = {"name" : ["True", "Flase", "None", "NULL"], "color" : self.c }             # <<<<<<<<<<<<<<
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(8); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 52, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_kp_s__10);
-  __Pyx_GIVEREF(__pyx_kp_s__10);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s__10);
-  __Pyx_INCREF(__pyx_kp_s__11);
-  __Pyx_GIVEREF(__pyx_kp_s__11);
-  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_kp_s__11);
-  __Pyx_INCREF(__pyx_kp_s__12);
-  __Pyx_GIVEREF(__pyx_kp_s__12);
-  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_kp_s__12);
-  __Pyx_INCREF(__pyx_kp_s__13);
-  __Pyx_GIVEREF(__pyx_kp_s__13);
-  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_kp_s__13);
-  __Pyx_INCREF(__pyx_n_s_in);
-  __Pyx_GIVEREF(__pyx_n_s_in);
-  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_in);
-  __Pyx_INCREF(__pyx_kp_s_not_in);
-  __Pyx_GIVEREF(__pyx_kp_s_not_in);
-  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_kp_s_not_in);
-  __Pyx_INCREF(__pyx_n_s_not);
-  __Pyx_GIVEREF(__pyx_n_s_not);
-  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_n_s_not);
-  __Pyx_INCREF(__pyx_kp_s__14);
-  __Pyx_GIVEREF(__pyx_kp_s__14);
-  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_kp_s__14);
+  __Pyx_INCREF(__pyx_n_s_True);
+  __Pyx_GIVEREF(__pyx_n_s_True);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_True);
+  __Pyx_INCREF(__pyx_n_s_Flase);
+  __Pyx_GIVEREF(__pyx_n_s_Flase);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_Flase);
+  __Pyx_INCREF(__pyx_n_s_None);
+  __Pyx_GIVEREF(__pyx_n_s_None);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_None);
+  __Pyx_INCREF(__pyx_n_s_NULL);
+  __Pyx_GIVEREF(__pyx_n_s_NULL);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_NULL);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 52, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 52, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_bolean, __pyx_t_1) < 0)) __PYX_ERR(1, 52, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_bool_func, __pyx_t_1) < 0)) __PYX_ERR(1, 52, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "key_py.pyx":54
- *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }
+ *         data["bool_func"]           = {"name" : ["True", "Flase", "None", "NULL"], "color" : self.c }
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}             # <<<<<<<<<<<<<<
- *         data["loading"]             = {"name" : ['from',  "import"], "color" : self.c }
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}             # <<<<<<<<<<<<<<
+ *         data['logical']             = {"name" : ['and', 'or'], "color" : self.c }
  * 
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 54, __pyx_L1_error)
@@ -2809,7 +3159,7 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 54, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 54, __pyx_L1_error)
@@ -2827,33 +3177,33 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
 
   /* "key_py.pyx":55
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
- *         data["loading"]             = {"name" : ['from',  "import"], "color" : self.c }             # <<<<<<<<<<<<<<
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+ *         data['logical']             = {"name" : ['and', 'or'], "color" : self.c }             # <<<<<<<<<<<<<<
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_from);
-  __Pyx_GIVEREF(__pyx_n_s_from);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_from);
-  __Pyx_INCREF(__pyx_n_s_import);
-  __Pyx_GIVEREF(__pyx_n_s_import);
-  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_import);
+  __Pyx_INCREF(__pyx_n_s_and);
+  __Pyx_GIVEREF(__pyx_n_s_and);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_and);
+  __Pyx_INCREF(__pyx_n_s_or);
+  __Pyx_GIVEREF(__pyx_n_s_or);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_or);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 55, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 55, __pyx_L1_error)
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_loading, __pyx_t_1) < 0)) __PYX_ERR(1, 55, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_logical, __pyx_t_1) < 0)) __PYX_ERR(1, 55, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "key_py.pyx":57
- *         data["loading"]             = {"name" : ['from',  "import"], "color" : self.c }
+ *         data['logical']             = {"name" : ['and', 'or'], "color" : self.c }
  * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}             # <<<<<<<<<<<<<<
- *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",
- *                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}             # <<<<<<<<<<<<<<
+ *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }
+ * 
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -2872,7 +3222,7 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 57, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 57, __pyx_L1_error)
@@ -2890,14 +3240,161 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
 
   /* "key_py.pyx":58
  * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+ *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 58, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(8); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 58, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_kp_s__8);
+  __Pyx_GIVEREF(__pyx_kp_s__8);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s__8);
+  __Pyx_INCREF(__pyx_kp_s__9);
+  __Pyx_GIVEREF(__pyx_kp_s__9);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_kp_s__9);
+  __Pyx_INCREF(__pyx_kp_s__10);
+  __Pyx_GIVEREF(__pyx_kp_s__10);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_kp_s__10);
+  __Pyx_INCREF(__pyx_kp_s__11);
+  __Pyx_GIVEREF(__pyx_kp_s__11);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_kp_s__11);
+  __Pyx_INCREF(__pyx_n_s_in);
+  __Pyx_GIVEREF(__pyx_n_s_in);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_in);
+  __Pyx_INCREF(__pyx_kp_s_not_in);
+  __Pyx_GIVEREF(__pyx_kp_s_not_in);
+  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_kp_s_not_in);
+  __Pyx_INCREF(__pyx_n_s_not);
+  __Pyx_GIVEREF(__pyx_n_s_not);
+  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_n_s_not);
+  __Pyx_INCREF(__pyx_kp_s__12);
+  __Pyx_GIVEREF(__pyx_kp_s__12);
+  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_kp_s__12);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 58, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 58, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_bolean, __pyx_t_1) < 0)) __PYX_ERR(1, 58, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":60
+ *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}             # <<<<<<<<<<<<<<
+ *         data["loading"]             = {"name" : ['from',  "import", "as"], "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":61
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
+ *         data["loading"]             = {"name" : ['from',  "import", "as"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 61, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 61, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_from);
+  __Pyx_GIVEREF(__pyx_n_s_from);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_from);
+  __Pyx_INCREF(__pyx_n_s_import);
+  __Pyx_GIVEREF(__pyx_n_s_import);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_import);
+  __Pyx_INCREF(__pyx_n_s_as);
+  __Pyx_GIVEREF(__pyx_n_s_as);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_as);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 61, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 61, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_loading, __pyx_t_1) < 0)) __PYX_ERR(1, 61, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":63
+ *         data["loading"]             = {"name" : ['from',  "import", "as"], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}             # <<<<<<<<<<<<<<
+ *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",
+ *                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":64
+ * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
  *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",             # <<<<<<<<<<<<<<
  *                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
  *                                         "UserWarning", "ArithmeticError", "AssertionError", "AttributeError", "BaseException", "BlockingIOError",
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 58, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(70); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 58, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(70); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_NameError);
   __Pyx_GIVEREF(__pyx_n_s_NameError);
@@ -3109,61 +3606,61 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __Pyx_INCREF(__pyx_n_s_ZeroDivisionError);
   __Pyx_GIVEREF(__pyx_n_s_ZeroDivisionError);
   PyList_SET_ITEM(__pyx_t_2, 69, __pyx_n_s_ZeroDivisionError);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 58, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 64, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "key_py.pyx":71
+  /* "key_py.pyx":77
  *                                         "StopAsyncIteration", "StopIteration", "SyntaxError", "SystemError", "SystemExit","SyntaxWarning",
  *                                         "TabError", "TimeoutError", "TypeError", "ValueError", "Warning", "WindowsError", "ZeroDivisionError"
  *                                         ], "color" : self.c }             # <<<<<<<<<<<<<<
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
  */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 58, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 64, __pyx_L1_error)
 
-  /* "key_py.pyx":58
+  /* "key_py.pyx":64
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
  *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",             # <<<<<<<<<<<<<<
  *                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
  *                                         "UserWarning", "ArithmeticError", "AssertionError", "AttributeError", "BaseException", "BlockingIOError",
  */
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_exceptions, __pyx_t_1) < 0)) __PYX_ERR(1, 58, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_exceptions, __pyx_t_1) < 0)) __PYX_ERR(1, 64, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "key_py.pyx":73
+  /* "key_py.pyx":79
  *                                         ], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}             # <<<<<<<<<<<<<<
  *         data["magic_method"]        = {"name" : ["__add__", "__sub__", "__mul__", "__truediv__", "__floordiv__", "__mod__",
  *                                         "__pow__", "__and__", "__xor__", "__or__", "__radd__", "__le__", '__lt__', "__gt__", "__eq__",
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 73, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 73, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_monokai);
   __Pyx_GIVEREF(__pyx_n_s_monokai);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 73, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 73, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 73, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 73, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 73, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 73, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 73, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->c);
@@ -3171,16 +3668,16 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_v_self->c = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "key_py.pyx":74
+  /* "key_py.pyx":80
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
  *         data["magic_method"]        = {"name" : ["__add__", "__sub__", "__mul__", "__truediv__", "__floordiv__", "__mod__",             # <<<<<<<<<<<<<<
  *                                         "__pow__", "__and__", "__xor__", "__or__", "__radd__", "__le__", '__lt__', "__gt__", "__eq__",
  *                                         "__ne__", "__ge__", "__len__", "__getitem__", '__setitem__', '__delitem__', '__iter__', '__contains__',
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 74, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(25); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 74, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(25); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_add);
   __Pyx_GIVEREF(__pyx_n_s_add);
@@ -3257,71 +3754,73 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __Pyx_INCREF(__pyx_n_s_str_2);
   __Pyx_GIVEREF(__pyx_n_s_str_2);
   PyList_SET_ITEM(__pyx_t_2, 24, __pyx_n_s_str_2);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 74, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 80, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "key_py.pyx":78
+  /* "key_py.pyx":84
  *                                         "__ne__", "__ge__", "__len__", "__getitem__", '__setitem__', '__delitem__', '__iter__', '__contains__',
  *                                         '__call__', '__str__'
  *                                         ] , "color" : self.c }             # <<<<<<<<<<<<<<
- *         keys = list(data.keys())
  * 
+ *         keys                        = list(data.keys())
  */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 74, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 80, __pyx_L1_error)
 
-  /* "key_py.pyx":74
+  /* "key_py.pyx":80
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
  *         data["magic_method"]        = {"name" : ["__add__", "__sub__", "__mul__", "__truediv__", "__floordiv__", "__mod__",             # <<<<<<<<<<<<<<
  *                                         "__pow__", "__and__", "__xor__", "__or__", "__radd__", "__le__", '__lt__', "__gt__", "__eq__",
  *                                         "__ne__", "__ge__", "__len__", "__getitem__", '__setitem__', '__delitem__', '__iter__', '__contains__',
  */
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_magic_method, __pyx_t_1) < 0)) __PYX_ERR(1, 74, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_magic_method, __pyx_t_1) < 0)) __PYX_ERR(1, 80, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "key_py.pyx":79
- *                                         '__call__', '__str__'
+  /* "key_py.pyx":86
  *                                         ] , "color" : self.c }
- *         keys = list(data.keys())             # <<<<<<<<<<<<<<
  * 
- *         data['all_keys'] = keys.copy()
+ *         keys                        = list(data.keys())             # <<<<<<<<<<<<<<
+ *         data['all_keys']            = keys.copy()
+ * 
  */
-  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 79, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 79, __pyx_L1_error)
+  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_keys, ((PyObject*)__pyx_t_2));
   __pyx_t_2 = 0;
 
-  /* "key_py.pyx":81
- *         keys = list(data.keys())
+  /* "key_py.pyx":87
  * 
- *         data['all_keys'] = keys.copy()             # <<<<<<<<<<<<<<
+ *         keys                        = list(data.keys())
+ *         data['all_keys']            = keys.copy()             # <<<<<<<<<<<<<<
  * 
- * 
+ *         return data.copy()
  */
-  __pyx_t_2 = __Pyx_CallUnboundCMethod0(&__pyx_umethod_PyList_Type_copy, __pyx_v_keys); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 81, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CallUnboundCMethod0(&__pyx_umethod_PyList_Type_copy, __pyx_v_keys); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_all_keys, __pyx_t_2) < 0)) __PYX_ERR(1, 81, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_all_keys, __pyx_t_2) < 0)) __PYX_ERR(1, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "key_py.pyx":84
- * 
+  /* "key_py.pyx":89
+ *         data['all_keys']            = keys.copy()
  * 
  *         return data.copy()             # <<<<<<<<<<<<<<
+ * 
+ *     cdef MAMBA(self, str termios = "monokai"):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyDict_Copy(__pyx_v_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 84, __pyx_L1_error)
+  __pyx_t_2 = PyDict_Copy(__pyx_v_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = ((PyObject*)__pyx_t_2);
+  __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "key_py.pyx":11
- *         self.master     = master
- *         self.c          = {"color_name" : [], 'values' : []}
- *     cdef dict PY(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
+  /* "key_py.pyx":16
+ *         else: pass
+ * 
+ *     cdef PY(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
  *         cdef :
  *             dict data = {}
  */
@@ -3336,6 +3835,1308 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_data);
   __Pyx_XDECREF(__pyx_v_keys);
+  __Pyx_XDECREF(__pyx_v_names);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "key_py.pyx":91
+ *         return data.copy()
+ * 
+ *     cdef MAMBA(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
+ *         cdef :
+ *             dict data = {}
+ */
+
+static PyObject *__pyx_f_6key_py_4LANG_MAMBA(struct __pyx_obj_6key_py_LANG *__pyx_v_self, struct __pyx_opt_args_6key_py_4LANG_MAMBA *__pyx_optional_args) {
+  PyObject *__pyx_v_data = 0;
+  PyObject *__pyx_v_keys = 0;
+  PyObject *__pyx_v_names = 0;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("MAMBA", 0);
+  if (__pyx_optional_args) {
+  }
+
+  /* "key_py.pyx":93
+ *     cdef MAMBA(self, str termios = "monokai"):
+ *         cdef :
+ *             dict data = {}             # <<<<<<<<<<<<<<
+ *             list keys = []
+ *             list names
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 93, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_data = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":94
+ *         cdef :
+ *             dict data = {}
+ *             list keys = []             # <<<<<<<<<<<<<<
+ *             list names
+ * 
+ */
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_keys = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":98
+ * 
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}             # <<<<<<<<<<<<<<
+ *         names                       = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray', 'table'
+ *                                         "p_int", "p_float", "n_int", "n_float"]
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 98, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 98, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":99
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
+ *         names                       = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray', 'table'             # <<<<<<<<<<<<<<
+ *                                         "p_int", "p_float", "n_int", "n_float"]
+ *         data['types']               = {"name" : names, "color" : self.c }
+ */
+  __pyx_t_1 = PyList_New(16); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 99, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_int);
+  __Pyx_GIVEREF(__pyx_n_s_int);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_int);
+  __Pyx_INCREF(__pyx_n_s_float);
+  __Pyx_GIVEREF(__pyx_n_s_float);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_float);
+  __Pyx_INCREF(__pyx_n_s_list);
+  __Pyx_GIVEREF(__pyx_n_s_list);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_list);
+  __Pyx_INCREF(__pyx_n_s_tuple);
+  __Pyx_GIVEREF(__pyx_n_s_tuple);
+  PyList_SET_ITEM(__pyx_t_1, 3, __pyx_n_s_tuple);
+  __Pyx_INCREF(__pyx_n_s_bool);
+  __Pyx_GIVEREF(__pyx_n_s_bool);
+  PyList_SET_ITEM(__pyx_t_1, 4, __pyx_n_s_bool);
+  __Pyx_INCREF(__pyx_n_s_cplx);
+  __Pyx_GIVEREF(__pyx_n_s_cplx);
+  PyList_SET_ITEM(__pyx_t_1, 5, __pyx_n_s_cplx);
+  __Pyx_INCREF(__pyx_n_s_dict);
+  __Pyx_GIVEREF(__pyx_n_s_dict);
+  PyList_SET_ITEM(__pyx_t_1, 6, __pyx_n_s_dict);
+  __Pyx_INCREF(__pyx_n_s_string);
+  __Pyx_GIVEREF(__pyx_n_s_string);
+  PyList_SET_ITEM(__pyx_t_1, 7, __pyx_n_s_string);
+  __Pyx_INCREF(__pyx_n_s_any);
+  __Pyx_GIVEREF(__pyx_n_s_any);
+  PyList_SET_ITEM(__pyx_t_1, 8, __pyx_n_s_any);
+  __Pyx_INCREF(__pyx_n_s_none);
+  __Pyx_GIVEREF(__pyx_n_s_none);
+  PyList_SET_ITEM(__pyx_t_1, 9, __pyx_n_s_none);
+  __Pyx_INCREF(__pyx_n_s_range);
+  __Pyx_GIVEREF(__pyx_n_s_range);
+  PyList_SET_ITEM(__pyx_t_1, 10, __pyx_n_s_range);
+  __Pyx_INCREF(__pyx_n_s_ndarray);
+  __Pyx_GIVEREF(__pyx_n_s_ndarray);
+  PyList_SET_ITEM(__pyx_t_1, 11, __pyx_n_s_ndarray);
+  __Pyx_INCREF(__pyx_n_s_tablep_int);
+  __Pyx_GIVEREF(__pyx_n_s_tablep_int);
+  PyList_SET_ITEM(__pyx_t_1, 12, __pyx_n_s_tablep_int);
+  __Pyx_INCREF(__pyx_n_s_p_float);
+  __Pyx_GIVEREF(__pyx_n_s_p_float);
+  PyList_SET_ITEM(__pyx_t_1, 13, __pyx_n_s_p_float);
+  __Pyx_INCREF(__pyx_n_s_n_int);
+  __Pyx_GIVEREF(__pyx_n_s_n_int);
+  PyList_SET_ITEM(__pyx_t_1, 14, __pyx_n_s_n_int);
+  __Pyx_INCREF(__pyx_n_s_n_float);
+  __Pyx_GIVEREF(__pyx_n_s_n_float);
+  PyList_SET_ITEM(__pyx_t_1, 15, __pyx_n_s_n_float);
+  __pyx_v_names = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":101
+ *         names                       = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray', 'table'
+ *                                         "p_int", "p_float", "n_int", "n_float"]
+ *         data['types']               = {"name" : names, "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 101, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_names) < 0) __PYX_ERR(1, 101, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 101, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_types, __pyx_t_1) < 0)) __PYX_ERR(1, 101, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":103
+ *         data['types']               = {"name" : names, "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}             # <<<<<<<<<<<<<<
+ *         data["constructor"]         = {"name" : ['initialize'], "color" : self.c}
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 103, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":104
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+ *         data["constructor"]         = {"name" : ['initialize'], "color" : self.c}             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_initialize);
+  __Pyx_GIVEREF(__pyx_n_s_initialize);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_initialize);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 104, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 104, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_constructor, __pyx_t_1) < 0)) __PYX_ERR(1, 104, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":106
+ *         data["constructor"]         = {"name" : ['initialize'], "color" : self.c}
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}             # <<<<<<<<<<<<<<
+ *         data['class_and_func']      = {"name" : ['def', "class", "func", "lambda"], "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 106, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 106, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 106, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 106, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 106, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 106, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 106, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 106, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 106, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":107
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
+ *         data['class_and_func']      = {"name" : ['def', "class", "func", "lambda"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_def);
+  __Pyx_GIVEREF(__pyx_n_s_def);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_def);
+  __Pyx_INCREF(__pyx_n_s_class);
+  __Pyx_GIVEREF(__pyx_n_s_class);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_class);
+  __Pyx_INCREF(__pyx_n_s_func);
+  __Pyx_GIVEREF(__pyx_n_s_func);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_func);
+  __Pyx_INCREF(__pyx_n_s_lambda);
+  __Pyx_GIVEREF(__pyx_n_s_lambda);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_lambda);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 107, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 107, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_class_and_func, __pyx_t_1) < 0)) __PYX_ERR(1, 107, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":109
+ *         data['class_and_func']      = {"name" : ['def', "class", "func", "lambda"], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}             # <<<<<<<<<<<<<<
+ *         names                       = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
+ *                                         'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 'min', 'max', 'fopen', 'floor',
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 109, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 109, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":110
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
+ *         names                       = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',             # <<<<<<<<<<<<<<
+ *                                         'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 'min', 'max', 'fopen', 'floor',
+ *                                         'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames', 'merge', "prompt, delete"]
+ */
+  __pyx_t_1 = PyList_New(27); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 110, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_integer);
+  __Pyx_GIVEREF(__pyx_n_s_integer);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_integer);
+  __Pyx_INCREF(__pyx_n_s_float);
+  __Pyx_GIVEREF(__pyx_n_s_float);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_float);
+  __Pyx_INCREF(__pyx_n_s_string);
+  __Pyx_GIVEREF(__pyx_n_s_string);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_string);
+  __Pyx_INCREF(__pyx_n_s_complex);
+  __Pyx_GIVEREF(__pyx_n_s_complex);
+  PyList_SET_ITEM(__pyx_t_1, 3, __pyx_n_s_complex);
+  __Pyx_INCREF(__pyx_n_s_type);
+  __Pyx_GIVEREF(__pyx_n_s_type);
+  PyList_SET_ITEM(__pyx_t_1, 4, __pyx_n_s_type);
+  __Pyx_INCREF(__pyx_n_s_list);
+  __Pyx_GIVEREF(__pyx_n_s_list);
+  PyList_SET_ITEM(__pyx_t_1, 5, __pyx_n_s_list);
+  __Pyx_INCREF(__pyx_n_s_tuple);
+  __Pyx_GIVEREF(__pyx_n_s_tuple);
+  PyList_SET_ITEM(__pyx_t_1, 6, __pyx_n_s_tuple);
+  __Pyx_INCREF(__pyx_n_s_boolean);
+  __Pyx_GIVEREF(__pyx_n_s_boolean);
+  PyList_SET_ITEM(__pyx_t_1, 7, __pyx_n_s_boolean);
+  __Pyx_INCREF(__pyx_n_s_dictionary);
+  __Pyx_GIVEREF(__pyx_n_s_dictionary);
+  PyList_SET_ITEM(__pyx_t_1, 8, __pyx_n_s_dictionary);
+  __Pyx_INCREF(__pyx_n_s_length);
+  __Pyx_GIVEREF(__pyx_n_s_length);
+  PyList_SET_ITEM(__pyx_t_1, 9, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_s_range);
+  __Pyx_GIVEREF(__pyx_n_s_range);
+  PyList_SET_ITEM(__pyx_t_1, 10, __pyx_n_s_range);
+  __Pyx_INCREF(__pyx_n_s_ansi);
+  __Pyx_GIVEREF(__pyx_n_s_ansi);
+  PyList_SET_ITEM(__pyx_t_1, 11, __pyx_n_s_ansi);
+  __Pyx_INCREF(__pyx_n_s_rand);
+  __Pyx_GIVEREF(__pyx_n_s_rand);
+  PyList_SET_ITEM(__pyx_t_1, 12, __pyx_n_s_rand);
+  __Pyx_INCREF(__pyx_n_s_GetLine);
+  __Pyx_GIVEREF(__pyx_n_s_GetLine);
+  PyList_SET_ITEM(__pyx_t_1, 13, __pyx_n_s_GetLine);
+  __Pyx_INCREF(__pyx_n_s_scan_test);
+  __Pyx_GIVEREF(__pyx_n_s_scan_test);
+  PyList_SET_ITEM(__pyx_t_1, 14, __pyx_n_s_scan_test);
+  __Pyx_INCREF(__pyx_n_s_min);
+  __Pyx_GIVEREF(__pyx_n_s_min);
+  PyList_SET_ITEM(__pyx_t_1, 15, __pyx_n_s_min);
+  __Pyx_INCREF(__pyx_n_s_max);
+  __Pyx_GIVEREF(__pyx_n_s_max);
+  PyList_SET_ITEM(__pyx_t_1, 16, __pyx_n_s_max);
+  __Pyx_INCREF(__pyx_n_s_fopen);
+  __Pyx_GIVEREF(__pyx_n_s_fopen);
+  PyList_SET_ITEM(__pyx_t_1, 17, __pyx_n_s_fopen);
+  __Pyx_INCREF(__pyx_n_s_floor);
+  __Pyx_GIVEREF(__pyx_n_s_floor);
+  PyList_SET_ITEM(__pyx_t_1, 18, __pyx_n_s_floor);
+  __Pyx_INCREF(__pyx_n_s_License);
+  __Pyx_GIVEREF(__pyx_n_s_License);
+  PyList_SET_ITEM(__pyx_t_1, 19, __pyx_n_s_License);
+  __Pyx_INCREF(__pyx_n_s_help);
+  __Pyx_GIVEREF(__pyx_n_s_help);
+  PyList_SET_ITEM(__pyx_t_1, 20, __pyx_n_s_help);
+  __Pyx_INCREF(__pyx_n_s_matrix1);
+  __Pyx_GIVEREF(__pyx_n_s_matrix1);
+  PyList_SET_ITEM(__pyx_t_1, 21, __pyx_n_s_matrix1);
+  __Pyx_INCREF(__pyx_n_s_sget);
+  __Pyx_GIVEREF(__pyx_n_s_sget);
+  PyList_SET_ITEM(__pyx_t_1, 22, __pyx_n_s_sget);
+  __Pyx_INCREF(__pyx_n_s_GetFuncNames);
+  __Pyx_GIVEREF(__pyx_n_s_GetFuncNames);
+  PyList_SET_ITEM(__pyx_t_1, 23, __pyx_n_s_GetFuncNames);
+  __Pyx_INCREF(__pyx_n_s_GetClassNames);
+  __Pyx_GIVEREF(__pyx_n_s_GetClassNames);
+  PyList_SET_ITEM(__pyx_t_1, 24, __pyx_n_s_GetClassNames);
+  __Pyx_INCREF(__pyx_n_s_merge);
+  __Pyx_GIVEREF(__pyx_n_s_merge);
+  PyList_SET_ITEM(__pyx_t_1, 25, __pyx_n_s_merge);
+  __Pyx_INCREF(__pyx_kp_s_prompt_delete);
+  __Pyx_GIVEREF(__pyx_kp_s_prompt_delete);
+  PyList_SET_ITEM(__pyx_t_1, 26, __pyx_kp_s_prompt_delete);
+  __Pyx_DECREF_SET(__pyx_v_names, ((PyObject*)__pyx_t_1));
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":113
+ *                                         'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 'min', 'max', 'fopen', 'floor',
+ *                                         'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames', 'merge', "prompt, delete"]
+ *         data['iner']                = {"name" : names, "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 113, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_names) < 0) __PYX_ERR(1, 113, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 113, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_iner, __pyx_t_1) < 0)) __PYX_ERR(1, 113, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":115
+ *         data['iner']                = {"name" : names, "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}             # <<<<<<<<<<<<<<
+ *         data["loop"]                = {"name" : ["while", "with", "for", "end"], "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 115, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 115, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":116
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+ *         data["loop"]                = {"name" : ["while", "with", "for", "end"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_while);
+  __Pyx_GIVEREF(__pyx_n_s_while);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_while);
+  __Pyx_INCREF(__pyx_n_s_with);
+  __Pyx_GIVEREF(__pyx_n_s_with);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_with);
+  __Pyx_INCREF(__pyx_n_s_for);
+  __Pyx_GIVEREF(__pyx_n_s_for);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_for);
+  __Pyx_INCREF(__pyx_n_s_end);
+  __Pyx_GIVEREF(__pyx_n_s_end);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_end);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 116, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 116, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_loop, __pyx_t_1) < 0)) __PYX_ERR(1, 116, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":118
+ *         data["loop"]                = {"name" : ["while", "with", "for", "end"], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}             # <<<<<<<<<<<<<<
+ *         names                       = ['if', "elif", "else", "try", "except", "finaly", "unless", "until", "switch", "case", "default", "end", "begin"]
+ *         data['cond']                = {"name" : names, "color" : self.c }
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 118, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 118, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":119
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+ *         names                       = ['if', "elif", "else", "try", "except", "finaly", "unless", "until", "switch", "case", "default", "end", "begin"]             # <<<<<<<<<<<<<<
+ *         data['cond']                = {"name" : names, "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = PyList_New(13); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 119, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_if);
+  __Pyx_GIVEREF(__pyx_n_s_if);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_if);
+  __Pyx_INCREF(__pyx_n_s_elif);
+  __Pyx_GIVEREF(__pyx_n_s_elif);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_elif);
+  __Pyx_INCREF(__pyx_n_s_else);
+  __Pyx_GIVEREF(__pyx_n_s_else);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_else);
+  __Pyx_INCREF(__pyx_n_s_try);
+  __Pyx_GIVEREF(__pyx_n_s_try);
+  PyList_SET_ITEM(__pyx_t_1, 3, __pyx_n_s_try);
+  __Pyx_INCREF(__pyx_n_s_except);
+  __Pyx_GIVEREF(__pyx_n_s_except);
+  PyList_SET_ITEM(__pyx_t_1, 4, __pyx_n_s_except);
+  __Pyx_INCREF(__pyx_n_s_finaly);
+  __Pyx_GIVEREF(__pyx_n_s_finaly);
+  PyList_SET_ITEM(__pyx_t_1, 5, __pyx_n_s_finaly);
+  __Pyx_INCREF(__pyx_n_s_unless);
+  __Pyx_GIVEREF(__pyx_n_s_unless);
+  PyList_SET_ITEM(__pyx_t_1, 6, __pyx_n_s_unless);
+  __Pyx_INCREF(__pyx_n_s_until);
+  __Pyx_GIVEREF(__pyx_n_s_until);
+  PyList_SET_ITEM(__pyx_t_1, 7, __pyx_n_s_until);
+  __Pyx_INCREF(__pyx_n_s_switch);
+  __Pyx_GIVEREF(__pyx_n_s_switch);
+  PyList_SET_ITEM(__pyx_t_1, 8, __pyx_n_s_switch);
+  __Pyx_INCREF(__pyx_n_s_case);
+  __Pyx_GIVEREF(__pyx_n_s_case);
+  PyList_SET_ITEM(__pyx_t_1, 9, __pyx_n_s_case);
+  __Pyx_INCREF(__pyx_n_s_default);
+  __Pyx_GIVEREF(__pyx_n_s_default);
+  PyList_SET_ITEM(__pyx_t_1, 10, __pyx_n_s_default);
+  __Pyx_INCREF(__pyx_n_s_end);
+  __Pyx_GIVEREF(__pyx_n_s_end);
+  PyList_SET_ITEM(__pyx_t_1, 11, __pyx_n_s_end);
+  __Pyx_INCREF(__pyx_n_s_begin);
+  __Pyx_GIVEREF(__pyx_n_s_begin);
+  PyList_SET_ITEM(__pyx_t_1, 12, __pyx_n_s_begin);
+  __Pyx_DECREF_SET(__pyx_v_names, ((PyObject*)__pyx_t_1));
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":120
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+ *         names                       = ['if', "elif", "else", "try", "except", "finaly", "unless", "until", "switch", "case", "default", "end", "begin"]
+ *         data['cond']                = {"name" : names, "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 120, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_names) < 0) __PYX_ERR(1, 120, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 120, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_cond, __pyx_t_1) < 0)) __PYX_ERR(1, 120, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":122
+ *         data['cond']                = {"name" : names, "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}             # <<<<<<<<<<<<<<
+ *         data['general']                = {"name" : ["self", "local", "global", "return", "open",
+ *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 122, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 122, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":123
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+ *         data['general']                = {"name" : ["self", "local", "global", "return", "open",             # <<<<<<<<<<<<<<
+ *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 123, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(10); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 123, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_self);
+  __Pyx_GIVEREF(__pyx_n_s_self);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_self);
+  __Pyx_INCREF(__pyx_n_s_local);
+  __Pyx_GIVEREF(__pyx_n_s_local);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_local);
+  __Pyx_INCREF(__pyx_n_s_global);
+  __Pyx_GIVEREF(__pyx_n_s_global);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_global);
+  __Pyx_INCREF(__pyx_n_s_return);
+  __Pyx_GIVEREF(__pyx_n_s_return);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_return);
+  __Pyx_INCREF(__pyx_n_s_open);
+  __Pyx_GIVEREF(__pyx_n_s_open);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_open);
+  __Pyx_INCREF(__pyx_n_s_close);
+  __Pyx_GIVEREF(__pyx_n_s_close);
+  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_n_s_close);
+  __Pyx_INCREF(__pyx_n_s_readline);
+  __Pyx_GIVEREF(__pyx_n_s_readline);
+  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_n_s_readline);
+  __Pyx_INCREF(__pyx_n_s_write);
+  __Pyx_GIVEREF(__pyx_n_s_write);
+  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_n_s_write);
+  __Pyx_INCREF(__pyx_n_s_read);
+  __Pyx_GIVEREF(__pyx_n_s_read);
+  PyList_SET_ITEM(__pyx_t_2, 8, __pyx_n_s_read);
+  __Pyx_INCREF(__pyx_n_s_readlines);
+  __Pyx_GIVEREF(__pyx_n_s_readlines);
+  PyList_SET_ITEM(__pyx_t_2, 9, __pyx_n_s_readlines);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 123, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "key_py.pyx":124
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+ *         data['general']                = {"name" : ["self", "local", "global", "return", "open",
+ *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
+ */
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 123, __pyx_L1_error)
+
+  /* "key_py.pyx":123
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+ *         data['general']                = {"name" : ["self", "local", "global", "return", "open",             # <<<<<<<<<<<<<<
+ *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
+ * 
+ */
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_general, __pyx_t_1) < 0)) __PYX_ERR(1, 123, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":126
+ *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}             # <<<<<<<<<<<<<<
+ *         data['stop']                = {"name" : ['break', "exit", "continue", "pass", "next"], "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 126, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 126, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":127
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
+ *         data['stop']                = {"name" : ['break', "exit", "continue", "pass", "next"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_break);
+  __Pyx_GIVEREF(__pyx_n_s_break);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_break);
+  __Pyx_INCREF(__pyx_n_s_exit);
+  __Pyx_GIVEREF(__pyx_n_s_exit);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_exit);
+  __Pyx_INCREF(__pyx_n_s_continue);
+  __Pyx_GIVEREF(__pyx_n_s_continue);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_continue);
+  __Pyx_INCREF(__pyx_n_s_pass);
+  __Pyx_GIVEREF(__pyx_n_s_pass);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_pass);
+  __Pyx_INCREF(__pyx_n_s_next);
+  __Pyx_GIVEREF(__pyx_n_s_next);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_next);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 127, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 127, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_stop, __pyx_t_1) < 0)) __PYX_ERR(1, 127, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":129
+ *         data['stop']                = {"name" : ['break', "exit", "continue", "pass", "next"], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}             # <<<<<<<<<<<<<<
+ *         data["bool_func"]           = {"name" : ["True", "Flase", "None" ], "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":130
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}
+ *         data["bool_func"]           = {"name" : ["True", "Flase", "None" ], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_True);
+  __Pyx_GIVEREF(__pyx_n_s_True);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_True);
+  __Pyx_INCREF(__pyx_n_s_Flase);
+  __Pyx_GIVEREF(__pyx_n_s_Flase);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_Flase);
+  __Pyx_INCREF(__pyx_n_s_None);
+  __Pyx_GIVEREF(__pyx_n_s_None);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_None);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 130, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 130, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_bool_func, __pyx_t_1) < 0)) __PYX_ERR(1, 130, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":132
+ *         data["bool_func"]           = {"name" : ["True", "Flase", "None" ], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}             # <<<<<<<<<<<<<<
+ *         data['logical']             = {"name" : ['and', 'or', "only"], "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 132, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 132, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":133
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+ *         data['logical']             = {"name" : ['and', 'or', "only"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_and);
+  __Pyx_GIVEREF(__pyx_n_s_and);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_and);
+  __Pyx_INCREF(__pyx_n_s_or);
+  __Pyx_GIVEREF(__pyx_n_s_or);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_or);
+  __Pyx_INCREF(__pyx_n_s_only);
+  __Pyx_GIVEREF(__pyx_n_s_only);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_only);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 133, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 133, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_logical, __pyx_t_1) < 0)) __PYX_ERR(1, 133, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":135
+ *         data['logical']             = {"name" : ['and', 'or', "only"], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}             # <<<<<<<<<<<<<<
+ *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 135, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 135, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":136
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+ *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(8); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_kp_s__8);
+  __Pyx_GIVEREF(__pyx_kp_s__8);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s__8);
+  __Pyx_INCREF(__pyx_kp_s__9);
+  __Pyx_GIVEREF(__pyx_kp_s__9);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_kp_s__9);
+  __Pyx_INCREF(__pyx_kp_s__10);
+  __Pyx_GIVEREF(__pyx_kp_s__10);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_kp_s__10);
+  __Pyx_INCREF(__pyx_kp_s__11);
+  __Pyx_GIVEREF(__pyx_kp_s__11);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_kp_s__11);
+  __Pyx_INCREF(__pyx_n_s_in);
+  __Pyx_GIVEREF(__pyx_n_s_in);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_in);
+  __Pyx_INCREF(__pyx_kp_s_not_in);
+  __Pyx_GIVEREF(__pyx_kp_s_not_in);
+  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_kp_s_not_in);
+  __Pyx_INCREF(__pyx_n_s_not);
+  __Pyx_GIVEREF(__pyx_n_s_not);
+  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_n_s_not);
+  __Pyx_INCREF(__pyx_kp_s__12);
+  __Pyx_GIVEREF(__pyx_kp_s__12);
+  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_kp_s__12);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 136, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 136, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_bolean, __pyx_t_1) < 0)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":138
+ *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}             # <<<<<<<<<<<<<<
+ *         data["loading"]             = {"name" : ['from',  "module", "load", "as", "save"], "color" : self.c }
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 138, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":139
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
+ *         data["loading"]             = {"name" : ['from',  "module", "load", "as", "save"], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_from);
+  __Pyx_GIVEREF(__pyx_n_s_from);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_from);
+  __Pyx_INCREF(__pyx_n_s_module);
+  __Pyx_GIVEREF(__pyx_n_s_module);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_module);
+  __Pyx_INCREF(__pyx_n_s_load);
+  __Pyx_GIVEREF(__pyx_n_s_load);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_load);
+  __Pyx_INCREF(__pyx_n_s_as);
+  __Pyx_GIVEREF(__pyx_n_s_as);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_as);
+  __Pyx_INCREF(__pyx_n_s_save);
+  __Pyx_GIVEREF(__pyx_n_s_save);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_save);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 139, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 139, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_loading, __pyx_t_1) < 0)) __PYX_ERR(1, 139, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":141
+ *         data["loading"]             = {"name" : ['from',  "module", "load", "as", "save"], "color" : self.c }
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}             # <<<<<<<<<<<<<<
+ *         data['exceptions']          = {"name" : ['NameError', "TypeError", "ArithmeticError", "AttributeError", "EOFError", "FileNotFoundError",
+ *                                                     "ImportError", "IndentationError","IndexError", "IOError", 'KeyError', "KeyboardInterrupt",
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 141, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 141, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_monokai);
+  __Pyx_GIVEREF(__pyx_n_s_monokai);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_monokai);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color_name, __pyx_t_2) < 0) __PYX_ERR(1, 141, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_colors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 141, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 141, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 141, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 141, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 141, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_values, __pyx_t_2) < 0) __PYX_ERR(1, 141, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->c);
+  __Pyx_DECREF(__pyx_v_self->c);
+  __pyx_v_self->c = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "key_py.pyx":142
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
+ *         data['exceptions']          = {"name" : ['NameError', "TypeError", "ArithmeticError", "AttributeError", "EOFError", "FileNotFoundError",             # <<<<<<<<<<<<<<
+ *                                                     "ImportError", "IndentationError","IndexError", "IOError", 'KeyError', "KeyboardInterrupt",
+ *                                                     "MemoryError", "ModuleNotFoundError", "NameError", "OSError","OverflowError",
+ */
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 142, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyList_New(31); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 142, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_NameError);
+  __Pyx_GIVEREF(__pyx_n_s_NameError);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_NameError);
+  __Pyx_INCREF(__pyx_n_s_TypeError);
+  __Pyx_GIVEREF(__pyx_n_s_TypeError);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_TypeError);
+  __Pyx_INCREF(__pyx_n_s_ArithmeticError);
+  __Pyx_GIVEREF(__pyx_n_s_ArithmeticError);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_ArithmeticError);
+  __Pyx_INCREF(__pyx_n_s_AttributeError);
+  __Pyx_GIVEREF(__pyx_n_s_AttributeError);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_AttributeError);
+  __Pyx_INCREF(__pyx_n_s_EOFError);
+  __Pyx_GIVEREF(__pyx_n_s_EOFError);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_EOFError);
+  __Pyx_INCREF(__pyx_n_s_FileNotFoundError);
+  __Pyx_GIVEREF(__pyx_n_s_FileNotFoundError);
+  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_n_s_FileNotFoundError);
+  __Pyx_INCREF(__pyx_n_s_ImportError);
+  __Pyx_GIVEREF(__pyx_n_s_ImportError);
+  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_n_s_ImportError);
+  __Pyx_INCREF(__pyx_n_s_IndentationError);
+  __Pyx_GIVEREF(__pyx_n_s_IndentationError);
+  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_n_s_IndentationError);
+  __Pyx_INCREF(__pyx_n_s_IndexError);
+  __Pyx_GIVEREF(__pyx_n_s_IndexError);
+  PyList_SET_ITEM(__pyx_t_2, 8, __pyx_n_s_IndexError);
+  __Pyx_INCREF(__pyx_n_s_IOError);
+  __Pyx_GIVEREF(__pyx_n_s_IOError);
+  PyList_SET_ITEM(__pyx_t_2, 9, __pyx_n_s_IOError);
+  __Pyx_INCREF(__pyx_n_s_KeyError);
+  __Pyx_GIVEREF(__pyx_n_s_KeyError);
+  PyList_SET_ITEM(__pyx_t_2, 10, __pyx_n_s_KeyError);
+  __Pyx_INCREF(__pyx_n_s_KeyboardInterrupt);
+  __Pyx_GIVEREF(__pyx_n_s_KeyboardInterrupt);
+  PyList_SET_ITEM(__pyx_t_2, 11, __pyx_n_s_KeyboardInterrupt);
+  __Pyx_INCREF(__pyx_n_s_MemoryError);
+  __Pyx_GIVEREF(__pyx_n_s_MemoryError);
+  PyList_SET_ITEM(__pyx_t_2, 12, __pyx_n_s_MemoryError);
+  __Pyx_INCREF(__pyx_n_s_ModuleNotFoundError);
+  __Pyx_GIVEREF(__pyx_n_s_ModuleNotFoundError);
+  PyList_SET_ITEM(__pyx_t_2, 13, __pyx_n_s_ModuleNotFoundError);
+  __Pyx_INCREF(__pyx_n_s_NameError);
+  __Pyx_GIVEREF(__pyx_n_s_NameError);
+  PyList_SET_ITEM(__pyx_t_2, 14, __pyx_n_s_NameError);
+  __Pyx_INCREF(__pyx_n_s_OSError);
+  __Pyx_GIVEREF(__pyx_n_s_OSError);
+  PyList_SET_ITEM(__pyx_t_2, 15, __pyx_n_s_OSError);
+  __Pyx_INCREF(__pyx_n_s_OverflowError);
+  __Pyx_GIVEREF(__pyx_n_s_OverflowError);
+  PyList_SET_ITEM(__pyx_t_2, 16, __pyx_n_s_OverflowError);
+  __Pyx_INCREF(__pyx_n_s_SyntaxError);
+  __Pyx_GIVEREF(__pyx_n_s_SyntaxError);
+  PyList_SET_ITEM(__pyx_t_2, 17, __pyx_n_s_SyntaxError);
+  __Pyx_INCREF(__pyx_n_s_SystemError);
+  __Pyx_GIVEREF(__pyx_n_s_SystemError);
+  PyList_SET_ITEM(__pyx_t_2, 18, __pyx_n_s_SystemError);
+  __Pyx_INCREF(__pyx_n_s_ValueError);
+  __Pyx_GIVEREF(__pyx_n_s_ValueError);
+  PyList_SET_ITEM(__pyx_t_2, 19, __pyx_n_s_ValueError);
+  __Pyx_INCREF(__pyx_n_s_ZeroDivisionError);
+  __Pyx_GIVEREF(__pyx_n_s_ZeroDivisionError);
+  PyList_SET_ITEM(__pyx_t_2, 20, __pyx_n_s_ZeroDivisionError);
+  __Pyx_INCREF(__pyx_n_s_DirectoryNotFoundError);
+  __Pyx_GIVEREF(__pyx_n_s_DirectoryNotFoundError);
+  PyList_SET_ITEM(__pyx_t_2, 21, __pyx_n_s_DirectoryNotFoundError);
+  __Pyx_INCREF(__pyx_n_s_DomainError);
+  __Pyx_GIVEREF(__pyx_n_s_DomainError);
+  PyList_SET_ITEM(__pyx_t_2, 22, __pyx_n_s_DomainError);
+  __Pyx_INCREF(__pyx_n_s_FileError);
+  __Pyx_GIVEREF(__pyx_n_s_FileError);
+  PyList_SET_ITEM(__pyx_t_2, 23, __pyx_n_s_FileError);
+  __Pyx_INCREF(__pyx_n_s_ModuleLoadError);
+  __Pyx_GIVEREF(__pyx_n_s_ModuleLoadError);
+  PyList_SET_ITEM(__pyx_t_2, 24, __pyx_n_s_ModuleLoadError);
+  __Pyx_INCREF(__pyx_n_s_FileModeError);
+  __Pyx_GIVEREF(__pyx_n_s_FileModeError);
+  PyList_SET_ITEM(__pyx_t_2, 25, __pyx_n_s_FileModeError);
+  __Pyx_INCREF(__pyx_n_s_EncodingError);
+  __Pyx_GIVEREF(__pyx_n_s_EncodingError);
+  PyList_SET_ITEM(__pyx_t_2, 26, __pyx_n_s_EncodingError);
+  __Pyx_INCREF(__pyx_n_s_DecodingError);
+  __Pyx_GIVEREF(__pyx_n_s_DecodingError);
+  PyList_SET_ITEM(__pyx_t_2, 27, __pyx_n_s_DecodingError);
+  __Pyx_INCREF(__pyx_n_s_UnicodeError);
+  __Pyx_GIVEREF(__pyx_n_s_UnicodeError);
+  PyList_SET_ITEM(__pyx_t_2, 28, __pyx_n_s_UnicodeError);
+  __Pyx_INCREF(__pyx_n_s_CircularLoadingError);
+  __Pyx_GIVEREF(__pyx_n_s_CircularLoadingError);
+  PyList_SET_ITEM(__pyx_t_2, 29, __pyx_n_s_CircularLoadingError);
+  __Pyx_INCREF(__pyx_n_s_FileNameError);
+  __Pyx_GIVEREF(__pyx_n_s_FileNameError);
+  PyList_SET_ITEM(__pyx_t_2, 30, __pyx_n_s_FileNameError);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 142, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "key_py.pyx":148
+ *                                                     'DomainError', 'FileError', 'ModuleLoadError', 'FileModeError', 'EncodingError', 'DecodingError',
+ *                                                     'UnicodeError', 'CircularLoadingError', 'FileNameError'
+ *                                         ], "color" : self.c }             # <<<<<<<<<<<<<<
+ * 
+ *         keys                        = list(data.keys())
+ */
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(1, 142, __pyx_L1_error)
+
+  /* "key_py.pyx":142
+ * 
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
+ *         data['exceptions']          = {"name" : ['NameError', "TypeError", "ArithmeticError", "AttributeError", "EOFError", "FileNotFoundError",             # <<<<<<<<<<<<<<
+ *                                                     "ImportError", "IndentationError","IndexError", "IOError", 'KeyError', "KeyboardInterrupt",
+ *                                                     "MemoryError", "ModuleNotFoundError", "NameError", "OSError","OverflowError",
+ */
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_exceptions, __pyx_t_1) < 0)) __PYX_ERR(1, 142, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "key_py.pyx":150
+ *                                         ], "color" : self.c }
+ * 
+ *         keys                        = list(data.keys())             # <<<<<<<<<<<<<<
+ *         data['all_keys']            = keys.copy()
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 150, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 150, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_keys, ((PyObject*)__pyx_t_2));
+  __pyx_t_2 = 0;
+
+  /* "key_py.pyx":151
+ * 
+ *         keys                        = list(data.keys())
+ *         data['all_keys']            = keys.copy()             # <<<<<<<<<<<<<<
+ * 
+ *         return data.copy()
+ */
+  __pyx_t_2 = __Pyx_CallUnboundCMethod0(&__pyx_umethod_PyList_Type_copy, __pyx_v_keys); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 151, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (unlikely(PyDict_SetItem(__pyx_v_data, __pyx_n_s_all_keys, __pyx_t_2) < 0)) __PYX_ERR(1, 151, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "key_py.pyx":153
+ *         data['all_keys']            = keys.copy()
+ * 
+ *         return data.copy()             # <<<<<<<<<<<<<<
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = PyDict_Copy(__pyx_v_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 153, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "key_py.pyx":91
+ *         return data.copy()
+ * 
+ *     cdef MAMBA(self, str termios = "monokai"):             # <<<<<<<<<<<<<<
+ *         cdef :
+ *             dict data = {}
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("key_py.LANG.MAMBA", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_data);
+  __Pyx_XDECREF(__pyx_v_keys);
+  __Pyx_XDECREF(__pyx_v_names);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -3456,19 +5257,19 @@ static int __pyx_pf_6key_py_4LANG_6master_4__del__(struct __pyx_obj_6key_py_LANG
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6key_py_4LANG_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6key_py_4LANG_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6key_py_4LANG_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6key_py_4LANG_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6key_py_4LANG_2__reduce_cython__(((struct __pyx_obj_6key_py_LANG *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6key_py_4LANG_4__reduce_cython__(((struct __pyx_obj_6key_py_LANG *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6key_py_4LANG_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6key_py_LANG *__pyx_v_self) {
+static PyObject *__pyx_pf_6key_py_4LANG_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6key_py_LANG *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3483,7 +5284,7 @@ static PyObject *__pyx_pf_6key_py_4LANG_2__reduce_cython__(CYTHON_UNUSED struct 
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3513,19 +5314,19 @@ static PyObject *__pyx_pf_6key_py_4LANG_2__reduce_cython__(CYTHON_UNUSED struct 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6key_py_4LANG_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_6key_py_4LANG_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_6key_py_4LANG_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6key_py_4LANG_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6key_py_4LANG_4__setstate_cython__(((struct __pyx_obj_6key_py_LANG *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_6key_py_4LANG_6__setstate_cython__(((struct __pyx_obj_6key_py_LANG *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6key_py_4LANG_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6key_py_LANG *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6key_py_4LANG_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6key_py_LANG *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3539,7 +5340,7 @@ static PyObject *__pyx_pf_6key_py_4LANG_4__setstate_cython__(CYTHON_UNUSED struc
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3628,8 +5429,9 @@ static int __pyx_setprop_6key_py_4LANG_master(PyObject *o, PyObject *v, CYTHON_U
 }
 
 static PyMethodDef __pyx_methods_6key_py_LANG[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6key_py_4LANG_3__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6key_py_4LANG_5__setstate_cython__, METH_O, 0},
+  {"LANG", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6key_py_4LANG_3LANG, METH_VARARGS|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6key_py_4LANG_5__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6key_py_4LANG_7__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -3765,20 +5567,31 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_BufferError, __pyx_k_BufferError, sizeof(__pyx_k_BufferError), 0, 0, 1, 1},
   {&__pyx_n_s_BytesWarning, __pyx_k_BytesWarning, sizeof(__pyx_k_BytesWarning), 0, 0, 1, 1},
   {&__pyx_n_s_ChildProcessError, __pyx_k_ChildProcessError, sizeof(__pyx_k_ChildProcessError), 0, 0, 1, 1},
+  {&__pyx_n_s_CircularLoadingError, __pyx_k_CircularLoadingError, sizeof(__pyx_k_CircularLoadingError), 0, 0, 1, 1},
   {&__pyx_n_s_ConnectionAbortedError, __pyx_k_ConnectionAbortedError, sizeof(__pyx_k_ConnectionAbortedError), 0, 0, 1, 1},
   {&__pyx_n_s_ConnectionError, __pyx_k_ConnectionError, sizeof(__pyx_k_ConnectionError), 0, 0, 1, 1},
   {&__pyx_n_s_ConnectionRefusedError, __pyx_k_ConnectionRefusedError, sizeof(__pyx_k_ConnectionRefusedError), 0, 0, 1, 1},
   {&__pyx_n_s_ConnectionResetError, __pyx_k_ConnectionResetError, sizeof(__pyx_k_ConnectionResetError), 0, 0, 1, 1},
+  {&__pyx_n_s_DecodingError, __pyx_k_DecodingError, sizeof(__pyx_k_DecodingError), 0, 0, 1, 1},
   {&__pyx_n_s_DeprecationWarning, __pyx_k_DeprecationWarning, sizeof(__pyx_k_DeprecationWarning), 0, 0, 1, 1},
+  {&__pyx_n_s_DirectoryNotFoundError, __pyx_k_DirectoryNotFoundError, sizeof(__pyx_k_DirectoryNotFoundError), 0, 0, 1, 1},
+  {&__pyx_n_s_DomainError, __pyx_k_DomainError, sizeof(__pyx_k_DomainError), 0, 0, 1, 1},
   {&__pyx_n_s_EOFError, __pyx_k_EOFError, sizeof(__pyx_k_EOFError), 0, 0, 1, 1},
+  {&__pyx_n_s_EncodingError, __pyx_k_EncodingError, sizeof(__pyx_k_EncodingError), 0, 0, 1, 1},
   {&__pyx_n_s_EnvironmentError, __pyx_k_EnvironmentError, sizeof(__pyx_k_EnvironmentError), 0, 0, 1, 1},
   {&__pyx_n_s_Exception, __pyx_k_Exception, sizeof(__pyx_k_Exception), 0, 0, 1, 1},
+  {&__pyx_n_s_FileError, __pyx_k_FileError, sizeof(__pyx_k_FileError), 0, 0, 1, 1},
   {&__pyx_n_s_FileExistsError, __pyx_k_FileExistsError, sizeof(__pyx_k_FileExistsError), 0, 0, 1, 1},
+  {&__pyx_n_s_FileModeError, __pyx_k_FileModeError, sizeof(__pyx_k_FileModeError), 0, 0, 1, 1},
+  {&__pyx_n_s_FileNameError, __pyx_k_FileNameError, sizeof(__pyx_k_FileNameError), 0, 0, 1, 1},
   {&__pyx_n_s_FileNotFoundError, __pyx_k_FileNotFoundError, sizeof(__pyx_k_FileNotFoundError), 0, 0, 1, 1},
   {&__pyx_n_s_Flase, __pyx_k_Flase, sizeof(__pyx_k_Flase), 0, 0, 1, 1},
   {&__pyx_n_s_FloatingPointError, __pyx_k_FloatingPointError, sizeof(__pyx_k_FloatingPointError), 0, 0, 1, 1},
   {&__pyx_n_s_FutureWarning, __pyx_k_FutureWarning, sizeof(__pyx_k_FutureWarning), 0, 0, 1, 1},
   {&__pyx_n_s_GeneratorExit, __pyx_k_GeneratorExit, sizeof(__pyx_k_GeneratorExit), 0, 0, 1, 1},
+  {&__pyx_n_s_GetClassNames, __pyx_k_GetClassNames, sizeof(__pyx_k_GetClassNames), 0, 0, 1, 1},
+  {&__pyx_n_s_GetFuncNames, __pyx_k_GetFuncNames, sizeof(__pyx_k_GetFuncNames), 0, 0, 1, 1},
+  {&__pyx_n_s_GetLine, __pyx_k_GetLine, sizeof(__pyx_k_GetLine), 0, 0, 1, 1},
   {&__pyx_n_s_IOError, __pyx_k_IOError, sizeof(__pyx_k_IOError), 0, 0, 1, 1},
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
   {&__pyx_n_s_ImportWarning, __pyx_k_ImportWarning, sizeof(__pyx_k_ImportWarning), 0, 0, 1, 1},
@@ -3789,8 +5602,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_KeyError, __pyx_k_KeyError, sizeof(__pyx_k_KeyError), 0, 0, 1, 1},
   {&__pyx_n_s_KeyboardInterrupt, __pyx_k_KeyboardInterrupt, sizeof(__pyx_k_KeyboardInterrupt), 0, 0, 1, 1},
   {&__pyx_n_s_LANG, __pyx_k_LANG, sizeof(__pyx_k_LANG), 0, 0, 1, 1},
+  {&__pyx_n_s_License, __pyx_k_License, sizeof(__pyx_k_License), 0, 0, 1, 1},
   {&__pyx_n_s_LookupError, __pyx_k_LookupError, sizeof(__pyx_k_LookupError), 0, 0, 1, 1},
   {&__pyx_n_s_MemoryError, __pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 0, 1, 1},
+  {&__pyx_n_s_ModuleLoadError, __pyx_k_ModuleLoadError, sizeof(__pyx_k_ModuleLoadError), 0, 0, 1, 1},
   {&__pyx_n_s_ModuleNotFoundError, __pyx_k_ModuleNotFoundError, sizeof(__pyx_k_ModuleNotFoundError), 0, 0, 1, 1},
   {&__pyx_n_s_NULL, __pyx_k_NULL, sizeof(__pyx_k_NULL), 0, 0, 1, 1},
   {&__pyx_n_s_NameError, __pyx_k_NameError, sizeof(__pyx_k_NameError), 0, 0, 1, 1},
@@ -3832,31 +5647,34 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 0, 1, 0},
   {&__pyx_kp_s__11, __pyx_k__11, sizeof(__pyx_k__11), 0, 0, 1, 0},
   {&__pyx_kp_s__12, __pyx_k__12, sizeof(__pyx_k__12), 0, 0, 1, 0},
-  {&__pyx_kp_s__13, __pyx_k__13, sizeof(__pyx_k__13), 0, 0, 1, 0},
-  {&__pyx_kp_s__14, __pyx_k__14, sizeof(__pyx_k__14), 0, 0, 1, 0},
-  {&__pyx_kp_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 0},
+  {&__pyx_kp_s__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 0, 1, 0},
+  {&__pyx_kp_s__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 0, 1, 0},
   {&__pyx_n_s_add, __pyx_k_add, sizeof(__pyx_k_add), 0, 0, 1, 1},
   {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
   {&__pyx_n_s_all_keys, __pyx_k_all_keys, sizeof(__pyx_k_all_keys), 0, 0, 1, 1},
   {&__pyx_n_s_and, __pyx_k_and, sizeof(__pyx_k_and), 0, 0, 1, 1},
   {&__pyx_n_s_and_2, __pyx_k_and_2, sizeof(__pyx_k_and_2), 0, 0, 1, 1},
+  {&__pyx_n_s_ansi, __pyx_k_ansi, sizeof(__pyx_k_ansi), 0, 0, 1, 1},
   {&__pyx_n_s_any, __pyx_k_any, sizeof(__pyx_k_any), 0, 0, 1, 1},
   {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
   {&__pyx_n_s_arguments, __pyx_k_arguments, sizeof(__pyx_k_arguments), 0, 0, 1, 1},
+  {&__pyx_n_s_as, __pyx_k_as, sizeof(__pyx_k_as), 0, 0, 1, 1},
   {&__pyx_n_s_assert, __pyx_k_assert, sizeof(__pyx_k_assert), 0, 0, 1, 1},
   {&__pyx_n_s_async, __pyx_k_async, sizeof(__pyx_k_async), 0, 0, 1, 1},
+  {&__pyx_n_s_begin, __pyx_k_begin, sizeof(__pyx_k_begin), 0, 0, 1, 1},
   {&__pyx_n_s_bolean, __pyx_k_bolean, sizeof(__pyx_k_bolean), 0, 0, 1, 1},
   {&__pyx_n_s_bool, __pyx_k_bool, sizeof(__pyx_k_bool), 0, 0, 1, 1},
   {&__pyx_n_s_bool_func, __pyx_k_bool_func, sizeof(__pyx_k_bool_func), 0, 0, 1, 1},
+  {&__pyx_n_s_boolean, __pyx_k_boolean, sizeof(__pyx_k_boolean), 0, 0, 1, 1},
   {&__pyx_n_s_break, __pyx_k_break, sizeof(__pyx_k_break), 0, 0, 1, 1},
   {&__pyx_n_s_call, __pyx_k_call, sizeof(__pyx_k_call), 0, 0, 1, 1},
   {&__pyx_n_s_cancel, __pyx_k_cancel, sizeof(__pyx_k_cancel), 0, 0, 1, 1},
+  {&__pyx_n_s_case, __pyx_k_case, sizeof(__pyx_k_case), 0, 0, 1, 1},
   {&__pyx_n_s_cinit, __pyx_k_cinit, sizeof(__pyx_k_cinit), 0, 0, 1, 1},
   {&__pyx_n_s_class, __pyx_k_class, sizeof(__pyx_k_class), 0, 0, 1, 1},
   {&__pyx_n_s_class_and_func, __pyx_k_class_and_func, sizeof(__pyx_k_class_and_func), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
-  {&__pyx_n_s_cmt, __pyx_k_cmt, sizeof(__pyx_k_cmt), 0, 0, 1, 1},
   {&__pyx_n_s_color, __pyx_k_color, sizeof(__pyx_k_color), 0, 0, 1, 1},
   {&__pyx_n_s_color_name, __pyx_k_color_name, sizeof(__pyx_k_color_name), 0, 0, 1, 1},
   {&__pyx_n_s_colors, __pyx_k_colors, sizeof(__pyx_k_colors), 0, 0, 1, 1},
@@ -3867,11 +5685,16 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_contains, __pyx_k_contains, sizeof(__pyx_k_contains), 0, 0, 1, 1},
   {&__pyx_n_s_continue, __pyx_k_continue, sizeof(__pyx_k_continue), 0, 0, 1, 1},
   {&__pyx_n_s_copy, __pyx_k_copy, sizeof(__pyx_k_copy), 0, 0, 1, 1},
+  {&__pyx_n_s_cplx, __pyx_k_cplx, sizeof(__pyx_k_cplx), 0, 0, 1, 1},
   {&__pyx_n_s_def, __pyx_k_def, sizeof(__pyx_k_def), 0, 0, 1, 1},
+  {&__pyx_n_s_default, __pyx_k_default, sizeof(__pyx_k_default), 0, 0, 1, 1},
+  {&__pyx_n_s_del, __pyx_k_del, sizeof(__pyx_k_del), 0, 0, 1, 1},
   {&__pyx_n_s_delitem, __pyx_k_delitem, sizeof(__pyx_k_delitem), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
+  {&__pyx_n_s_dictionary, __pyx_k_dictionary, sizeof(__pyx_k_dictionary), 0, 0, 1, 1},
   {&__pyx_n_s_elif, __pyx_k_elif, sizeof(__pyx_k_elif), 0, 0, 1, 1},
   {&__pyx_n_s_else, __pyx_k_else, sizeof(__pyx_k_else), 0, 0, 1, 1},
+  {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_eq, __pyx_k_eq, sizeof(__pyx_k_eq), 0, 0, 1, 1},
   {&__pyx_n_s_except, __pyx_k_except, sizeof(__pyx_k_except), 0, 0, 1, 1},
   {&__pyx_n_s_exceptions, __pyx_k_exceptions, sizeof(__pyx_k_exceptions), 0, 0, 1, 1},
@@ -3880,28 +5703,38 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_filter, __pyx_k_filter, sizeof(__pyx_k_filter), 0, 0, 1, 1},
   {&__pyx_n_s_finaly, __pyx_k_finaly, sizeof(__pyx_k_finaly), 0, 0, 1, 1},
   {&__pyx_n_s_float, __pyx_k_float, sizeof(__pyx_k_float), 0, 0, 1, 1},
+  {&__pyx_n_s_floor, __pyx_k_floor, sizeof(__pyx_k_floor), 0, 0, 1, 1},
   {&__pyx_n_s_floordiv, __pyx_k_floordiv, sizeof(__pyx_k_floordiv), 0, 0, 1, 1},
+  {&__pyx_n_s_fopen, __pyx_k_fopen, sizeof(__pyx_k_fopen), 0, 0, 1, 1},
   {&__pyx_n_s_for, __pyx_k_for, sizeof(__pyx_k_for), 0, 0, 1, 1},
   {&__pyx_n_s_from, __pyx_k_from, sizeof(__pyx_k_from), 0, 0, 1, 1},
+  {&__pyx_n_s_func, __pyx_k_func, sizeof(__pyx_k_func), 0, 0, 1, 1},
   {&__pyx_n_s_ge, __pyx_k_ge, sizeof(__pyx_k_ge), 0, 0, 1, 1},
+  {&__pyx_n_s_general, __pyx_k_general, sizeof(__pyx_k_general), 0, 0, 1, 1},
   {&__pyx_n_s_getitem, __pyx_k_getitem, sizeof(__pyx_k_getitem), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_global, __pyx_k_global, sizeof(__pyx_k_global), 0, 0, 1, 1},
   {&__pyx_n_s_gt, __pyx_k_gt, sizeof(__pyx_k_gt), 0, 0, 1, 1},
+  {&__pyx_n_s_help, __pyx_k_help, sizeof(__pyx_k_help), 0, 0, 1, 1},
   {&__pyx_n_s_if, __pyx_k_if, sizeof(__pyx_k_if), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_import_2, __pyx_k_import_2, sizeof(__pyx_k_import_2), 0, 0, 1, 1},
   {&__pyx_n_s_in, __pyx_k_in, sizeof(__pyx_k_in), 0, 0, 1, 1},
   {&__pyx_n_s_iner, __pyx_k_iner, sizeof(__pyx_k_iner), 0, 0, 1, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
+  {&__pyx_n_s_initialize, __pyx_k_initialize, sizeof(__pyx_k_initialize), 0, 0, 1, 1},
+  {&__pyx_n_s_input, __pyx_k_input, sizeof(__pyx_k_input), 0, 0, 1, 1},
   {&__pyx_n_s_int, __pyx_k_int, sizeof(__pyx_k_int), 0, 0, 1, 1},
+  {&__pyx_n_s_integer, __pyx_k_integer, sizeof(__pyx_k_integer), 0, 0, 1, 1},
   {&__pyx_n_s_iter, __pyx_k_iter, sizeof(__pyx_k_iter), 0, 0, 1, 1},
   {&__pyx_n_s_keys, __pyx_k_keys, sizeof(__pyx_k_keys), 0, 0, 1, 1},
   {&__pyx_n_s_kwargs, __pyx_k_kwargs, sizeof(__pyx_k_kwargs), 0, 0, 1, 1},
   {&__pyx_n_s_lambda, __pyx_k_lambda, sizeof(__pyx_k_lambda), 0, 0, 1, 1},
   {&__pyx_n_s_le, __pyx_k_le, sizeof(__pyx_k_le), 0, 0, 1, 1},
   {&__pyx_n_s_len, __pyx_k_len, sizeof(__pyx_k_len), 0, 0, 1, 1},
+  {&__pyx_n_s_length, __pyx_k_length, sizeof(__pyx_k_length), 0, 0, 1, 1},
   {&__pyx_n_s_list, __pyx_k_list, sizeof(__pyx_k_list), 0, 0, 1, 1},
+  {&__pyx_n_s_load, __pyx_k_load, sizeof(__pyx_k_load), 0, 0, 1, 1},
   {&__pyx_n_s_loading, __pyx_k_loading, sizeof(__pyx_k_loading), 0, 0, 1, 1},
   {&__pyx_n_s_local, __pyx_k_local, sizeof(__pyx_k_local), 0, 0, 1, 1},
   {&__pyx_n_s_logical, __pyx_k_logical, sizeof(__pyx_k_logical), 0, 0, 1, 1},
@@ -3909,27 +5742,44 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_lt, __pyx_k_lt, sizeof(__pyx_k_lt), 0, 0, 1, 1},
   {&__pyx_n_s_magic_method, __pyx_k_magic_method, sizeof(__pyx_k_magic_method), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_mamba, __pyx_k_mamba, sizeof(__pyx_k_mamba), 0, 0, 1, 1},
   {&__pyx_n_s_map, __pyx_k_map, sizeof(__pyx_k_map), 0, 0, 1, 1},
   {&__pyx_n_s_master, __pyx_k_master, sizeof(__pyx_k_master), 0, 0, 1, 1},
+  {&__pyx_n_s_matrix1, __pyx_k_matrix1, sizeof(__pyx_k_matrix1), 0, 0, 1, 1},
+  {&__pyx_n_s_max, __pyx_k_max, sizeof(__pyx_k_max), 0, 0, 1, 1},
+  {&__pyx_n_s_merge, __pyx_k_merge, sizeof(__pyx_k_merge), 0, 0, 1, 1},
+  {&__pyx_n_s_min, __pyx_k_min, sizeof(__pyx_k_min), 0, 0, 1, 1},
   {&__pyx_n_s_mod, __pyx_k_mod, sizeof(__pyx_k_mod), 0, 0, 1, 1},
+  {&__pyx_n_s_module, __pyx_k_module, sizeof(__pyx_k_module), 0, 0, 1, 1},
   {&__pyx_n_s_monokai, __pyx_k_monokai, sizeof(__pyx_k_monokai), 0, 0, 1, 1},
   {&__pyx_n_s_mul, __pyx_k_mul, sizeof(__pyx_k_mul), 0, 0, 1, 1},
+  {&__pyx_n_s_n_float, __pyx_k_n_float, sizeof(__pyx_k_n_float), 0, 0, 1, 1},
+  {&__pyx_n_s_n_int, __pyx_k_n_int, sizeof(__pyx_k_n_int), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
+  {&__pyx_n_s_ndarray, __pyx_k_ndarray, sizeof(__pyx_k_ndarray), 0, 0, 1, 1},
   {&__pyx_n_s_ne, __pyx_k_ne, sizeof(__pyx_k_ne), 0, 0, 1, 1},
+  {&__pyx_n_s_next, __pyx_k_next, sizeof(__pyx_k_next), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
+  {&__pyx_n_s_none, __pyx_k_none, sizeof(__pyx_k_none), 0, 0, 1, 1},
   {&__pyx_n_s_not, __pyx_k_not, sizeof(__pyx_k_not), 0, 0, 1, 1},
   {&__pyx_kp_s_not_in, __pyx_k_not_in, sizeof(__pyx_k_not_in), 0, 0, 1, 0},
+  {&__pyx_n_s_only, __pyx_k_only, sizeof(__pyx_k_only), 0, 0, 1, 1},
   {&__pyx_n_s_open, __pyx_k_open, sizeof(__pyx_k_open), 0, 0, 1, 1},
   {&__pyx_n_s_or, __pyx_k_or, sizeof(__pyx_k_or), 0, 0, 1, 1},
   {&__pyx_n_s_or_2, __pyx_k_or_2, sizeof(__pyx_k_or_2), 0, 0, 1, 1},
   {&__pyx_n_s_other, __pyx_k_other, sizeof(__pyx_k_other), 0, 0, 1, 1},
+  {&__pyx_n_s_p_float, __pyx_k_p_float, sizeof(__pyx_k_p_float), 0, 0, 1, 1},
+  {&__pyx_n_s_pass, __pyx_k_pass, sizeof(__pyx_k_pass), 0, 0, 1, 1},
   {&__pyx_n_s_pow, __pyx_k_pow, sizeof(__pyx_k_pow), 0, 0, 1, 1},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
+  {&__pyx_kp_s_prompt_delete, __pyx_k_prompt_delete, sizeof(__pyx_k_prompt_delete), 0, 0, 1, 0},
+  {&__pyx_n_s_python, __pyx_k_python, sizeof(__pyx_k_python), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
   {&__pyx_n_s_quit, __pyx_k_quit, sizeof(__pyx_k_quit), 0, 0, 1, 1},
   {&__pyx_n_s_radd, __pyx_k_radd, sizeof(__pyx_k_radd), 0, 0, 1, 1},
   {&__pyx_n_s_raise, __pyx_k_raise, sizeof(__pyx_k_raise), 0, 0, 1, 1},
+  {&__pyx_n_s_rand, __pyx_k_rand, sizeof(__pyx_k_rand), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_n_s_rbg, __pyx_k_rbg, sizeof(__pyx_k_rbg), 0, 0, 1, 1},
   {&__pyx_n_s_read, __pyx_k_read, sizeof(__pyx_k_read), 0, 0, 1, 1},
@@ -3939,21 +5789,32 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
   {&__pyx_n_s_return, __pyx_k_return, sizeof(__pyx_k_return), 0, 0, 1, 1},
+  {&__pyx_n_s_round, __pyx_k_round, sizeof(__pyx_k_round), 0, 0, 1, 1},
+  {&__pyx_n_s_save, __pyx_k_save, sizeof(__pyx_k_save), 0, 0, 1, 1},
+  {&__pyx_n_s_scan_test, __pyx_k_scan_test, sizeof(__pyx_k_scan_test), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_set, __pyx_k_set, sizeof(__pyx_k_set), 0, 0, 1, 1},
   {&__pyx_n_s_setitem, __pyx_k_setitem, sizeof(__pyx_k_setitem), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_sget, __pyx_k_sget, sizeof(__pyx_k_sget), 0, 0, 1, 1},
   {&__pyx_n_s_stop, __pyx_k_stop, sizeof(__pyx_k_stop), 0, 0, 1, 1},
   {&__pyx_n_s_str, __pyx_k_str, sizeof(__pyx_k_str), 0, 0, 1, 1},
   {&__pyx_n_s_str_2, __pyx_k_str_2, sizeof(__pyx_k_str_2), 0, 0, 1, 1},
+  {&__pyx_n_s_string, __pyx_k_string, sizeof(__pyx_k_string), 0, 0, 1, 1},
   {&__pyx_n_s_sub, __pyx_k_sub, sizeof(__pyx_k_sub), 0, 0, 1, 1},
   {&__pyx_n_s_super, __pyx_k_super, sizeof(__pyx_k_super), 0, 0, 1, 1},
+  {&__pyx_n_s_switch, __pyx_k_switch, sizeof(__pyx_k_switch), 0, 0, 1, 1},
+  {&__pyx_n_s_tablep_int, __pyx_k_tablep_int, sizeof(__pyx_k_tablep_int), 0, 0, 1, 1},
+  {&__pyx_n_s_termios, __pyx_k_termios, sizeof(__pyx_k_termios), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_truediv, __pyx_k_truediv, sizeof(__pyx_k_truediv), 0, 0, 1, 1},
   {&__pyx_n_s_try, __pyx_k_try, sizeof(__pyx_k_try), 0, 0, 1, 1},
   {&__pyx_n_s_tuple, __pyx_k_tuple, sizeof(__pyx_k_tuple), 0, 0, 1, 1},
+  {&__pyx_n_s_type, __pyx_k_type, sizeof(__pyx_k_type), 0, 0, 1, 1},
   {&__pyx_n_s_types, __pyx_k_types, sizeof(__pyx_k_types), 0, 0, 1, 1},
+  {&__pyx_n_s_unless, __pyx_k_unless, sizeof(__pyx_k_unless), 0, 0, 1, 1},
+  {&__pyx_n_s_until, __pyx_k_until, sizeof(__pyx_k_until), 0, 0, 1, 1},
   {&__pyx_n_s_values, __pyx_k_values, sizeof(__pyx_k_values), 0, 0, 1, 1},
   {&__pyx_n_s_while, __pyx_k_while, sizeof(__pyx_k_while), 0, 0, 1, 1},
   {&__pyx_n_s_with, __pyx_k_with, sizeof(__pyx_k_with), 0, 0, 1, 1},
@@ -3973,115 +5834,104 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "key_py.pyx":17
- * 
- * 
- *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153, 153, 255)]}             # <<<<<<<<<<<<<<
- *         data['cmt']                 = {"name" : "#" , "color" : self.c}
- * 
- */
-  __pyx_tuple_ = PyTuple_Pack(3, __pyx_int_153, __pyx_int_153, __pyx_int_255); if (unlikely(!__pyx_tuple_)) __PYX_ERR(1, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple_);
-  __Pyx_GIVEREF(__pyx_tuple_);
-
-  /* "key_py.pyx":20
- *         data['cmt']                 = {"name" : "#" , "color" : self.c}
+  /* "key_py.pyx":21
+ *             list keys = []
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}             # <<<<<<<<<<<<<<
  *         data['types']               = {"name" : ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list", "bool"], "color" : self.c }
  * 
  */
-  __pyx_tuple__3 = PyTuple_Pack(3, __pyx_int_240, __pyx_int_128, __pyx_int_128); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(1, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__3);
-  __Pyx_GIVEREF(__pyx_tuple__3);
+  __pyx_tuple_ = PyTuple_Pack(3, __pyx_int_240, __pyx_int_128, __pyx_int_128); if (unlikely(!__pyx_tuple_)) __PYX_ERR(1, 21, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple_);
+  __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "key_py.pyx":23
+  /* "key_py.pyx":24
  *         data['types']               = {"name" : ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list", "bool"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}             # <<<<<<<<<<<<<<
  *         data["constructor"]         = {"name" : ['__init__', '__name__', "__cinit__"], "color" : self.c}
  * 
  */
-  __pyx_tuple__4 = PyTuple_Pack(3, __pyx_int_25, __pyx_int_165, __pyx_int_200); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(1, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_tuple__2 = PyTuple_Pack(3, __pyx_int_25, __pyx_int_165, __pyx_int_200); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(1, 24, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__2);
+  __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "key_py.pyx":26
+  /* "key_py.pyx":27
  *         data["constructor"]         = {"name" : ['__init__', '__name__', "__cinit__"], "color" : self.c}
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}             # <<<<<<<<<<<<<<
  *         data['class_and_func']      = {"name" : ['def', "class", "super"], "color" : self.c }
  * 
  */
-  __pyx_tuple__5 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_165, __pyx_int_0); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(1, 26, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__5);
-  __Pyx_GIVEREF(__pyx_tuple__5);
+  __pyx_tuple__3 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_165, __pyx_int_0); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(1, 27, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "key_py.pyx":32
- *         data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range", "async"], "color" : self.c }
+  /* "key_py.pyx":34
+ *                                                 "async", "type", "input", "round", "del"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}             # <<<<<<<<<<<<<<
  *         data["loop"]                = {"name" : ["while", "with", "for", "yield"], "color" : self.c }
  * 
  */
-  __pyx_tuple__6 = PyTuple_Pack(3, __pyx_int_51, __pyx_int_102, __pyx_int_255); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(1, 32, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__6);
-  __Pyx_GIVEREF(__pyx_tuple__6);
+  __pyx_tuple__4 = PyTuple_Pack(3, __pyx_int_51, __pyx_int_102, __pyx_int_255); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(1, 34, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "key_py.pyx":38
+  /* "key_py.pyx":40
  *         data['cond']                = {"name" : ['if', "elif", "else", "try", "except", "finaly"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}             # <<<<<<<<<<<<<<
- *         data['stop']                = {"name" : ['break', "cancel", "exit", "continue", "self", "local", "global", "quit", "return", "open",
- *                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
+ *         names                       = ['break', "cancel", "exit", "continue", "quit", "next"]
+ *         data['stop']                = {"name" : names, "color" : self.c }
  */
-  __pyx_tuple__7 = PyTuple_Pack(3, __pyx_int_153, __pyx_int_204, __pyx_int_0); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(1, 38, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__7);
-  __Pyx_GIVEREF(__pyx_tuple__7);
+  __pyx_tuple__5 = PyTuple_Pack(3, __pyx_int_153, __pyx_int_204, __pyx_int_0); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(1, 40, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__5);
+  __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "key_py.pyx":45
+  /* "key_py.pyx":51
  *         data['arguments']           = {"name" : ["args", "kwargs", "other", "all", "any"], "color" : self.c }
  * 
- *         self.cancel                 = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}             # <<<<<<<<<<<<<<
+ *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]}             # <<<<<<<<<<<<<<
  *         data["bool_func"]           = {"name" : ["True", "Flase", "None", "NULL"], "color" : self.c }
  * 
  */
-  __pyx_tuple__8 = PyTuple_Pack(3, __pyx_int_204, __pyx_int_153, __pyx_int_255); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_tuple__6 = PyTuple_Pack(3, __pyx_int_204, __pyx_int_153, __pyx_int_255); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(1, 51, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "key_py.pyx":48
+  /* "key_py.pyx":54
  *         data["bool_func"]           = {"name" : ["True", "Flase", "None", "NULL"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}             # <<<<<<<<<<<<<<
  *         data['logical']             = {"name" : ['and', 'or'], "color" : self.c }
  * 
  */
-  __pyx_tuple__9 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_102, __pyx_int_0); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 48, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
+  __pyx_tuple__7 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_102, __pyx_int_0); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(1, 54, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "key_py.pyx":54
+  /* "key_py.pyx":60
  *         data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "not in", "not", "->"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}             # <<<<<<<<<<<<<<
- *         data["loading"]             = {"name" : ['from',  "import"], "color" : self.c }
+ *         data["loading"]             = {"name" : ['from',  "import", "as"], "color" : self.c }
  * 
  */
-  __pyx_tuple__15 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(1, 54, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__15);
-  __Pyx_GIVEREF(__pyx_tuple__15);
+  __pyx_tuple__13 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(1, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "key_py.pyx":57
- *         data["loading"]             = {"name" : ['from',  "import"], "color" : self.c }
+  /* "key_py.pyx":63
+ *         data["loading"]             = {"name" : ['from',  "import", "as"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}             # <<<<<<<<<<<<<<
  *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",
  *                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
  */
-  __pyx_tuple__16 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_204, __pyx_int_0); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(1, 57, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__16);
-  __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_tuple__14 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_204, __pyx_int_0); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -4089,18 +5939,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__18);
-  __Pyx_GIVEREF(__pyx_tuple__18);
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4168,7 +6018,9 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   __pyx_vtabptr_6key_py_LANG = &__pyx_vtable_6key_py_LANG;
+  __pyx_vtable_6key_py_LANG.LANG = (PyObject *(*)(struct __pyx_obj_6key_py_LANG *, int __pyx_skip_dispatch, struct __pyx_opt_args_6key_py_4LANG_LANG *__pyx_optional_args))__pyx_f_6key_py_4LANG_LANG;
   __pyx_vtable_6key_py_LANG.PY = (PyObject *(*)(struct __pyx_obj_6key_py_LANG *, struct __pyx_opt_args_6key_py_4LANG_PY *__pyx_optional_args))__pyx_f_6key_py_4LANG_PY;
+  __pyx_vtable_6key_py_LANG.MAMBA = (PyObject *(*)(struct __pyx_obj_6key_py_LANG *, struct __pyx_opt_args_6key_py_4LANG_MAMBA *__pyx_optional_args))__pyx_f_6key_py_4LANG_MAMBA;
   if (PyType_Ready(&__pyx_type_6key_py_LANG) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_6key_py_LANG.tp_print = 0;
@@ -4681,6 +6533,427 @@ static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UIN
 }
 #endif
 
+/* PyCFunctionFastCall */
+#if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, PyObject **args, Py_ssize_t nargs) {
+    PyCFunctionObject *func = (PyCFunctionObject*)func_obj;
+    PyCFunction meth = PyCFunction_GET_FUNCTION(func);
+    PyObject *self = PyCFunction_GET_SELF(func);
+    int flags = PyCFunction_GET_FLAGS(func);
+    assert(PyCFunction_Check(func));
+    assert(METH_FASTCALL == (flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_KEYWORDS | METH_STACKLESS)));
+    assert(nargs >= 0);
+    assert(nargs == 0 || args != NULL);
+    /* _PyCFunction_FastCallDict() must not be called with an exception set,
+       because it may clear it (directly or indirectly) and so the
+       caller loses its exception */
+    assert(!PyErr_Occurred());
+    if ((PY_VERSION_HEX < 0x030700A0) || unlikely(flags & METH_KEYWORDS)) {
+        return (*((__Pyx_PyCFunctionFastWithKeywords)(void*)meth)) (self, args, nargs, NULL);
+    } else {
+        return (*((__Pyx_PyCFunctionFast)(void*)meth)) (self, args, nargs);
+    }
+}
+#endif
+
+/* PyFunctionFastCall */
+#if CYTHON_FAST_PYCALL
+static PyObject* __Pyx_PyFunction_FastCallNoKw(PyCodeObject *co, PyObject **args, Py_ssize_t na,
+                                               PyObject *globals) {
+    PyFrameObject *f;
+    PyThreadState *tstate = __Pyx_PyThreadState_Current;
+    PyObject **fastlocals;
+    Py_ssize_t i;
+    PyObject *result;
+    assert(globals != NULL);
+    /* XXX Perhaps we should create a specialized
+       PyFrame_New() that doesn't take locals, but does
+       take builtins without sanity checking them.
+       */
+    assert(tstate != NULL);
+    f = PyFrame_New(tstate, co, globals, NULL);
+    if (f == NULL) {
+        return NULL;
+    }
+    fastlocals = __Pyx_PyFrame_GetLocalsplus(f);
+    for (i = 0; i < na; i++) {
+        Py_INCREF(*args);
+        fastlocals[i] = *args++;
+    }
+    result = PyEval_EvalFrameEx(f,0);
+    ++tstate->recursion_depth;
+    Py_DECREF(f);
+    --tstate->recursion_depth;
+    return result;
+}
+#if 1 || PY_VERSION_HEX < 0x030600B1
+static PyObject *__Pyx_PyFunction_FastCallDict(PyObject *func, PyObject **args, Py_ssize_t nargs, PyObject *kwargs) {
+    PyCodeObject *co = (PyCodeObject *)PyFunction_GET_CODE(func);
+    PyObject *globals = PyFunction_GET_GLOBALS(func);
+    PyObject *argdefs = PyFunction_GET_DEFAULTS(func);
+    PyObject *closure;
+#if PY_MAJOR_VERSION >= 3
+    PyObject *kwdefs;
+#endif
+    PyObject *kwtuple, **k;
+    PyObject **d;
+    Py_ssize_t nd;
+    Py_ssize_t nk;
+    PyObject *result;
+    assert(kwargs == NULL || PyDict_Check(kwargs));
+    nk = kwargs ? PyDict_Size(kwargs) : 0;
+    if (Py_EnterRecursiveCall((char*)" while calling a Python object")) {
+        return NULL;
+    }
+    if (
+#if PY_MAJOR_VERSION >= 3
+            co->co_kwonlyargcount == 0 &&
+#endif
+            likely(kwargs == NULL || nk == 0) &&
+            co->co_flags == (CO_OPTIMIZED | CO_NEWLOCALS | CO_NOFREE)) {
+        if (argdefs == NULL && co->co_argcount == nargs) {
+            result = __Pyx_PyFunction_FastCallNoKw(co, args, nargs, globals);
+            goto done;
+        }
+        else if (nargs == 0 && argdefs != NULL
+                 && co->co_argcount == Py_SIZE(argdefs)) {
+            /* function called with no arguments, but all parameters have
+               a default value: use default values as arguments .*/
+            args = &PyTuple_GET_ITEM(argdefs, 0);
+            result =__Pyx_PyFunction_FastCallNoKw(co, args, Py_SIZE(argdefs), globals);
+            goto done;
+        }
+    }
+    if (kwargs != NULL) {
+        Py_ssize_t pos, i;
+        kwtuple = PyTuple_New(2 * nk);
+        if (kwtuple == NULL) {
+            result = NULL;
+            goto done;
+        }
+        k = &PyTuple_GET_ITEM(kwtuple, 0);
+        pos = i = 0;
+        while (PyDict_Next(kwargs, &pos, &k[i], &k[i+1])) {
+            Py_INCREF(k[i]);
+            Py_INCREF(k[i+1]);
+            i += 2;
+        }
+        nk = i / 2;
+    }
+    else {
+        kwtuple = NULL;
+        k = NULL;
+    }
+    closure = PyFunction_GET_CLOSURE(func);
+#if PY_MAJOR_VERSION >= 3
+    kwdefs = PyFunction_GET_KW_DEFAULTS(func);
+#endif
+    if (argdefs != NULL) {
+        d = &PyTuple_GET_ITEM(argdefs, 0);
+        nd = Py_SIZE(argdefs);
+    }
+    else {
+        d = NULL;
+        nd = 0;
+    }
+#if PY_MAJOR_VERSION >= 3
+    result = PyEval_EvalCodeEx((PyObject*)co, globals, (PyObject *)NULL,
+                               args, (int)nargs,
+                               k, (int)nk,
+                               d, (int)nd, kwdefs, closure);
+#else
+    result = PyEval_EvalCodeEx(co, globals, (PyObject *)NULL,
+                               args, (int)nargs,
+                               k, (int)nk,
+                               d, (int)nd, closure);
+#endif
+    Py_XDECREF(kwtuple);
+done:
+    Py_LeaveRecursiveCall();
+    return result;
+}
+#endif
+#endif
+
+/* PyObjectCall */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
+    PyObject *result;
+    ternaryfunc call = Py_TYPE(func)->tp_call;
+    if (unlikely(!call))
+        return PyObject_Call(func, arg, kw);
+    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
+        return NULL;
+    result = (*call)(func, arg, kw);
+    Py_LeaveRecursiveCall();
+    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
+        PyErr_SetString(
+            PyExc_SystemError,
+            "NULL result without error in PyObject_Call");
+    }
+    return result;
+}
+#endif
+
+/* PyObjectCall2Args */
+static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
+    PyObject *args, *result = NULL;
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(function)) {
+        PyObject *args[2] = {arg1, arg2};
+        return __Pyx_PyFunction_FastCall(function, args, 2);
+    }
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(function)) {
+        PyObject *args[2] = {arg1, arg2};
+        return __Pyx_PyCFunction_FastCall(function, args, 2);
+    }
+    #endif
+    args = PyTuple_New(2);
+    if (unlikely(!args)) goto done;
+    Py_INCREF(arg1);
+    PyTuple_SET_ITEM(args, 0, arg1);
+    Py_INCREF(arg2);
+    PyTuple_SET_ITEM(args, 1, arg2);
+    Py_INCREF(function);
+    result = __Pyx_PyObject_Call(function, args, NULL);
+    Py_DECREF(args);
+    Py_DECREF(function);
+done:
+    return result;
+}
+
+/* PyObjectCallMethO */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
+    PyObject *self, *result;
+    PyCFunction cfunc;
+    cfunc = PyCFunction_GET_FUNCTION(func);
+    self = PyCFunction_GET_SELF(func);
+    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
+        return NULL;
+    result = cfunc(self, arg);
+    Py_LeaveRecursiveCall();
+    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
+        PyErr_SetString(
+            PyExc_SystemError,
+            "NULL result without error in PyObject_Call");
+    }
+    return result;
+}
+#endif
+
+/* PyObjectCallOneArg */
+#if CYTHON_COMPILING_IN_CPYTHON
+static PyObject* __Pyx__PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+    PyObject *result;
+    PyObject *args = PyTuple_New(1);
+    if (unlikely(!args)) return NULL;
+    Py_INCREF(arg);
+    PyTuple_SET_ITEM(args, 0, arg);
+    result = __Pyx_PyObject_Call(func, args, NULL);
+    Py_DECREF(args);
+    return result;
+}
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+#if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(func)) {
+        return __Pyx_PyFunction_FastCall(func, &arg, 1);
+    }
+#endif
+    if (likely(PyCFunction_Check(func))) {
+        if (likely(PyCFunction_GET_FLAGS(func) & METH_O)) {
+            return __Pyx_PyObject_CallMethO(func, arg);
+#if CYTHON_FAST_PYCCALL
+        } else if (__Pyx_PyFastCFunction_Check(func)) {
+            return __Pyx_PyCFunction_FastCall(func, &arg, 1);
+#endif
+        }
+    }
+    return __Pyx__PyObject_CallOneArg(func, arg);
+}
+#else
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+    PyObject *result;
+    PyObject *args = PyTuple_Pack(1, arg);
+    if (unlikely(!args)) return NULL;
+    result = __Pyx_PyObject_Call(func, args, NULL);
+    Py_DECREF(args);
+    return result;
+}
+#endif
+
+/* BytesEquals */
+static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals) {
+#if CYTHON_COMPILING_IN_PYPY
+    return PyObject_RichCompareBool(s1, s2, equals);
+#else
+    if (s1 == s2) {
+        return (equals == Py_EQ);
+    } else if (PyBytes_CheckExact(s1) & PyBytes_CheckExact(s2)) {
+        const char *ps1, *ps2;
+        Py_ssize_t length = PyBytes_GET_SIZE(s1);
+        if (length != PyBytes_GET_SIZE(s2))
+            return (equals == Py_NE);
+        ps1 = PyBytes_AS_STRING(s1);
+        ps2 = PyBytes_AS_STRING(s2);
+        if (ps1[0] != ps2[0]) {
+            return (equals == Py_NE);
+        } else if (length == 1) {
+            return (equals == Py_EQ);
+        } else {
+            int result;
+#if CYTHON_USE_UNICODE_INTERNALS
+            Py_hash_t hash1, hash2;
+            hash1 = ((PyBytesObject*)s1)->ob_shash;
+            hash2 = ((PyBytesObject*)s2)->ob_shash;
+            if (hash1 != hash2 && hash1 != -1 && hash2 != -1) {
+                return (equals == Py_NE);
+            }
+#endif
+            result = memcmp(ps1, ps2, (size_t)length);
+            return (equals == Py_EQ) ? (result == 0) : (result != 0);
+        }
+    } else if ((s1 == Py_None) & PyBytes_CheckExact(s2)) {
+        return (equals == Py_NE);
+    } else if ((s2 == Py_None) & PyBytes_CheckExact(s1)) {
+        return (equals == Py_NE);
+    } else {
+        int result;
+        PyObject* py_result = PyObject_RichCompare(s1, s2, equals);
+        if (!py_result)
+            return -1;
+        result = __Pyx_PyObject_IsTrue(py_result);
+        Py_DECREF(py_result);
+        return result;
+    }
+#endif
+}
+
+/* UnicodeEquals */
+static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals) {
+#if CYTHON_COMPILING_IN_PYPY
+    return PyObject_RichCompareBool(s1, s2, equals);
+#else
+#if PY_MAJOR_VERSION < 3
+    PyObject* owned_ref = NULL;
+#endif
+    int s1_is_unicode, s2_is_unicode;
+    if (s1 == s2) {
+        goto return_eq;
+    }
+    s1_is_unicode = PyUnicode_CheckExact(s1);
+    s2_is_unicode = PyUnicode_CheckExact(s2);
+#if PY_MAJOR_VERSION < 3
+    if ((s1_is_unicode & (!s2_is_unicode)) && PyString_CheckExact(s2)) {
+        owned_ref = PyUnicode_FromObject(s2);
+        if (unlikely(!owned_ref))
+            return -1;
+        s2 = owned_ref;
+        s2_is_unicode = 1;
+    } else if ((s2_is_unicode & (!s1_is_unicode)) && PyString_CheckExact(s1)) {
+        owned_ref = PyUnicode_FromObject(s1);
+        if (unlikely(!owned_ref))
+            return -1;
+        s1 = owned_ref;
+        s1_is_unicode = 1;
+    } else if (((!s2_is_unicode) & (!s1_is_unicode))) {
+        return __Pyx_PyBytes_Equals(s1, s2, equals);
+    }
+#endif
+    if (s1_is_unicode & s2_is_unicode) {
+        Py_ssize_t length;
+        int kind;
+        void *data1, *data2;
+        if (unlikely(__Pyx_PyUnicode_READY(s1) < 0) || unlikely(__Pyx_PyUnicode_READY(s2) < 0))
+            return -1;
+        length = __Pyx_PyUnicode_GET_LENGTH(s1);
+        if (length != __Pyx_PyUnicode_GET_LENGTH(s2)) {
+            goto return_ne;
+        }
+#if CYTHON_USE_UNICODE_INTERNALS
+        {
+            Py_hash_t hash1, hash2;
+        #if CYTHON_PEP393_ENABLED
+            hash1 = ((PyASCIIObject*)s1)->hash;
+            hash2 = ((PyASCIIObject*)s2)->hash;
+        #else
+            hash1 = ((PyUnicodeObject*)s1)->hash;
+            hash2 = ((PyUnicodeObject*)s2)->hash;
+        #endif
+            if (hash1 != hash2 && hash1 != -1 && hash2 != -1) {
+                goto return_ne;
+            }
+        }
+#endif
+        kind = __Pyx_PyUnicode_KIND(s1);
+        if (kind != __Pyx_PyUnicode_KIND(s2)) {
+            goto return_ne;
+        }
+        data1 = __Pyx_PyUnicode_DATA(s1);
+        data2 = __Pyx_PyUnicode_DATA(s2);
+        if (__Pyx_PyUnicode_READ(kind, data1, 0) != __Pyx_PyUnicode_READ(kind, data2, 0)) {
+            goto return_ne;
+        } else if (length == 1) {
+            goto return_eq;
+        } else {
+            int result = memcmp(data1, data2, (size_t)(length * kind));
+            #if PY_MAJOR_VERSION < 3
+            Py_XDECREF(owned_ref);
+            #endif
+            return (equals == Py_EQ) ? (result == 0) : (result != 0);
+        }
+    } else if ((s1 == Py_None) & s2_is_unicode) {
+        goto return_ne;
+    } else if ((s2 == Py_None) & s1_is_unicode) {
+        goto return_ne;
+    } else {
+        int result;
+        PyObject* py_result = PyObject_RichCompare(s1, s2, equals);
+        #if PY_MAJOR_VERSION < 3
+        Py_XDECREF(owned_ref);
+        #endif
+        if (!py_result)
+            return -1;
+        result = __Pyx_PyObject_IsTrue(py_result);
+        Py_DECREF(py_result);
+        return result;
+    }
+return_eq:
+    #if PY_MAJOR_VERSION < 3
+    Py_XDECREF(owned_ref);
+    #endif
+    return (equals == Py_EQ);
+return_ne:
+    #if PY_MAJOR_VERSION < 3
+    Py_XDECREF(owned_ref);
+    #endif
+    return (equals == Py_NE);
+#endif
+}
+
+/* ArgTypeTest */
+static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact)
+{
+    if (unlikely(!type)) {
+        PyErr_SetString(PyExc_SystemError, "Missing type object");
+        return 0;
+    }
+    else if (exact) {
+        #if PY_MAJOR_VERSION == 2
+        if ((type == &PyBaseString_Type) && likely(__Pyx_PyBaseString_CheckExact(obj))) return 1;
+        #endif
+    }
+    else {
+        if (likely(__Pyx_TypeCheck(obj, type))) return 1;
+    }
+    PyErr_Format(PyExc_TypeError,
+        "Argument '%.200s' has incorrect type (expected %.200s, got %.200s)",
+        name, type->tp_name, Py_TYPE(obj)->tp_name);
+    return 0;
+}
+
 /* GetModuleGlobalName */
 #if CYTHON_USE_DICT_VERSIONS
 static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
@@ -4715,40 +6988,6 @@ static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
 #endif
     return __Pyx_GetBuiltinName(name);
 }
-
-/* PyObjectCall */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
-    PyObject *result;
-    ternaryfunc call = Py_TYPE(func)->tp_call;
-    if (unlikely(!call))
-        return PyObject_Call(func, arg, kw);
-    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
-        return NULL;
-    result = (*call)(func, arg, kw);
-    Py_LeaveRecursiveCall();
-    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
-        PyErr_SetString(
-            PyExc_SystemError,
-            "NULL result without error in PyObject_Call");
-    }
-    return result;
-}
-#endif
-
-/* PyObjectSetAttrStr */
-#if CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value) {
-    PyTypeObject* tp = Py_TYPE(obj);
-    if (likely(tp->tp_setattro))
-        return tp->tp_setattro(obj, attr_name, value);
-#if PY_MAJOR_VERSION < 3
-    if (likely(tp->tp_setattr))
-        return tp->tp_setattr(obj, PyString_AS_STRING(attr_name), value);
-#endif
-    return PyObject_SetAttr(obj, attr_name, value);
-}
-#endif
 
 /* UnpackUnboundCMethod */
 static int __Pyx_TryUnpackUnboundCMethod(__Pyx_CachedCFunction* target) {
