@@ -1364,6 +1364,7 @@ static const char __pyx_k_ge[] = "__ge__";
 static const char __pyx_k_gt[] = "__gt__";
 static const char __pyx_k_if[] = "if";
 static const char __pyx_k_in[] = "in";
+static const char __pyx_k_is[] = "is";
 static const char __pyx_k_le[] = "__le__";
 static const char __pyx_k_lt[] = "__lt__";
 static const char __pyx_k_ne[] = "__ne__";
@@ -1789,6 +1790,7 @@ static PyObject *__pyx_n_s_initialize;
 static PyObject *__pyx_n_s_input;
 static PyObject *__pyx_n_s_int;
 static PyObject *__pyx_n_s_integer;
+static PyObject *__pyx_n_s_is;
 static PyObject *__pyx_n_s_iter;
 static PyObject *__pyx_n_s_keys;
 static PyObject *__pyx_n_s_kwargs;
@@ -3358,7 +3360,7 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
  *         data["loading"]             = {"name" : ['from',  "import", "as"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}             # <<<<<<<<<<<<<<
- *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",
+ *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError", "is",
  *                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 63, __pyx_L1_error)
@@ -3397,13 +3399,13 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   /* "key_py.pyx":64
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
- *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",             # <<<<<<<<<<<<<<
+ *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError", "is",             # <<<<<<<<<<<<<<
  *                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
  *                                         "UserWarning", "ArithmeticError", "AssertionError", "AttributeError", "BaseException", "BlockingIOError",
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(70); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 64, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(71); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_NameError);
   __Pyx_GIVEREF(__pyx_n_s_NameError);
@@ -3417,204 +3419,207 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   __Pyx_INCREF(__pyx_n_s_UnicodeEncodeError);
   __Pyx_GIVEREF(__pyx_n_s_UnicodeEncodeError);
   PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_UnicodeEncodeError);
+  __Pyx_INCREF(__pyx_n_s_is);
+  __Pyx_GIVEREF(__pyx_n_s_is);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_is);
   __Pyx_INCREF(__pyx_n_s_UnboundLocalError);
   __Pyx_GIVEREF(__pyx_n_s_UnboundLocalError);
-  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_UnboundLocalError);
+  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_n_s_UnboundLocalError);
   __Pyx_INCREF(__pyx_n_s_UnicodeDecodeError);
   __Pyx_GIVEREF(__pyx_n_s_UnicodeDecodeError);
-  PyList_SET_ITEM(__pyx_t_2, 5, __pyx_n_s_UnicodeDecodeError);
+  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_n_s_UnicodeDecodeError);
   __Pyx_INCREF(__pyx_n_s_UnicodeError);
   __Pyx_GIVEREF(__pyx_n_s_UnicodeError);
-  PyList_SET_ITEM(__pyx_t_2, 6, __pyx_n_s_UnicodeError);
+  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_n_s_UnicodeError);
   __Pyx_INCREF(__pyx_n_s_UnicodeTranslateError);
   __Pyx_GIVEREF(__pyx_n_s_UnicodeTranslateError);
-  PyList_SET_ITEM(__pyx_t_2, 7, __pyx_n_s_UnicodeTranslateError);
+  PyList_SET_ITEM(__pyx_t_2, 8, __pyx_n_s_UnicodeTranslateError);
   __Pyx_INCREF(__pyx_n_s_UnicodeWarning);
   __Pyx_GIVEREF(__pyx_n_s_UnicodeWarning);
-  PyList_SET_ITEM(__pyx_t_2, 8, __pyx_n_s_UnicodeWarning);
+  PyList_SET_ITEM(__pyx_t_2, 9, __pyx_n_s_UnicodeWarning);
   __Pyx_INCREF(__pyx_n_s_UserWarning);
   __Pyx_GIVEREF(__pyx_n_s_UserWarning);
-  PyList_SET_ITEM(__pyx_t_2, 9, __pyx_n_s_UserWarning);
+  PyList_SET_ITEM(__pyx_t_2, 10, __pyx_n_s_UserWarning);
   __Pyx_INCREF(__pyx_n_s_ArithmeticError);
   __Pyx_GIVEREF(__pyx_n_s_ArithmeticError);
-  PyList_SET_ITEM(__pyx_t_2, 10, __pyx_n_s_ArithmeticError);
+  PyList_SET_ITEM(__pyx_t_2, 11, __pyx_n_s_ArithmeticError);
   __Pyx_INCREF(__pyx_n_s_AssertionError);
   __Pyx_GIVEREF(__pyx_n_s_AssertionError);
-  PyList_SET_ITEM(__pyx_t_2, 11, __pyx_n_s_AssertionError);
+  PyList_SET_ITEM(__pyx_t_2, 12, __pyx_n_s_AssertionError);
   __Pyx_INCREF(__pyx_n_s_AttributeError);
   __Pyx_GIVEREF(__pyx_n_s_AttributeError);
-  PyList_SET_ITEM(__pyx_t_2, 12, __pyx_n_s_AttributeError);
+  PyList_SET_ITEM(__pyx_t_2, 13, __pyx_n_s_AttributeError);
   __Pyx_INCREF(__pyx_n_s_BaseException);
   __Pyx_GIVEREF(__pyx_n_s_BaseException);
-  PyList_SET_ITEM(__pyx_t_2, 13, __pyx_n_s_BaseException);
+  PyList_SET_ITEM(__pyx_t_2, 14, __pyx_n_s_BaseException);
   __Pyx_INCREF(__pyx_n_s_BlockingIOError);
   __Pyx_GIVEREF(__pyx_n_s_BlockingIOError);
-  PyList_SET_ITEM(__pyx_t_2, 14, __pyx_n_s_BlockingIOError);
+  PyList_SET_ITEM(__pyx_t_2, 15, __pyx_n_s_BlockingIOError);
   __Pyx_INCREF(__pyx_n_s_BrokenPipeError);
   __Pyx_GIVEREF(__pyx_n_s_BrokenPipeError);
-  PyList_SET_ITEM(__pyx_t_2, 15, __pyx_n_s_BrokenPipeError);
+  PyList_SET_ITEM(__pyx_t_2, 16, __pyx_n_s_BrokenPipeError);
   __Pyx_INCREF(__pyx_n_s_BufferError);
   __Pyx_GIVEREF(__pyx_n_s_BufferError);
-  PyList_SET_ITEM(__pyx_t_2, 16, __pyx_n_s_BufferError);
+  PyList_SET_ITEM(__pyx_t_2, 17, __pyx_n_s_BufferError);
   __Pyx_INCREF(__pyx_n_s_BytesWarning);
   __Pyx_GIVEREF(__pyx_n_s_BytesWarning);
-  PyList_SET_ITEM(__pyx_t_2, 17, __pyx_n_s_BytesWarning);
+  PyList_SET_ITEM(__pyx_t_2, 18, __pyx_n_s_BytesWarning);
   __Pyx_INCREF(__pyx_n_s_ConnectionResetError);
   __Pyx_GIVEREF(__pyx_n_s_ConnectionResetError);
-  PyList_SET_ITEM(__pyx_t_2, 18, __pyx_n_s_ConnectionResetError);
+  PyList_SET_ITEM(__pyx_t_2, 19, __pyx_n_s_ConnectionResetError);
   __Pyx_INCREF(__pyx_n_s_ChildProcessError);
   __Pyx_GIVEREF(__pyx_n_s_ChildProcessError);
-  PyList_SET_ITEM(__pyx_t_2, 19, __pyx_n_s_ChildProcessError);
+  PyList_SET_ITEM(__pyx_t_2, 20, __pyx_n_s_ChildProcessError);
   __Pyx_INCREF(__pyx_n_s_ConnectionError);
   __Pyx_GIVEREF(__pyx_n_s_ConnectionError);
-  PyList_SET_ITEM(__pyx_t_2, 20, __pyx_n_s_ConnectionError);
+  PyList_SET_ITEM(__pyx_t_2, 21, __pyx_n_s_ConnectionError);
   __Pyx_INCREF(__pyx_n_s_ConnectionRefusedError);
   __Pyx_GIVEREF(__pyx_n_s_ConnectionRefusedError);
-  PyList_SET_ITEM(__pyx_t_2, 21, __pyx_n_s_ConnectionRefusedError);
+  PyList_SET_ITEM(__pyx_t_2, 22, __pyx_n_s_ConnectionRefusedError);
   __Pyx_INCREF(__pyx_n_s_ConnectionAbortedError);
   __Pyx_GIVEREF(__pyx_n_s_ConnectionAbortedError);
-  PyList_SET_ITEM(__pyx_t_2, 22, __pyx_n_s_ConnectionAbortedError);
+  PyList_SET_ITEM(__pyx_t_2, 23, __pyx_n_s_ConnectionAbortedError);
   __Pyx_INCREF(__pyx_n_s_DeprecationWarning);
   __Pyx_GIVEREF(__pyx_n_s_DeprecationWarning);
-  PyList_SET_ITEM(__pyx_t_2, 23, __pyx_n_s_DeprecationWarning);
+  PyList_SET_ITEM(__pyx_t_2, 24, __pyx_n_s_DeprecationWarning);
   __Pyx_INCREF(__pyx_n_s_EnvironmentError);
   __Pyx_GIVEREF(__pyx_n_s_EnvironmentError);
-  PyList_SET_ITEM(__pyx_t_2, 24, __pyx_n_s_EnvironmentError);
+  PyList_SET_ITEM(__pyx_t_2, 25, __pyx_n_s_EnvironmentError);
   __Pyx_INCREF(__pyx_n_s_EOFError);
   __Pyx_GIVEREF(__pyx_n_s_EOFError);
-  PyList_SET_ITEM(__pyx_t_2, 25, __pyx_n_s_EOFError);
+  PyList_SET_ITEM(__pyx_t_2, 26, __pyx_n_s_EOFError);
   __Pyx_INCREF(__pyx_n_s_FileExistsError);
   __Pyx_GIVEREF(__pyx_n_s_FileExistsError);
-  PyList_SET_ITEM(__pyx_t_2, 26, __pyx_n_s_FileExistsError);
+  PyList_SET_ITEM(__pyx_t_2, 27, __pyx_n_s_FileExistsError);
   __Pyx_INCREF(__pyx_n_s_FileNotFoundError);
   __Pyx_GIVEREF(__pyx_n_s_FileNotFoundError);
-  PyList_SET_ITEM(__pyx_t_2, 27, __pyx_n_s_FileNotFoundError);
+  PyList_SET_ITEM(__pyx_t_2, 28, __pyx_n_s_FileNotFoundError);
   __Pyx_INCREF(__pyx_n_s_FloatingPointError);
   __Pyx_GIVEREF(__pyx_n_s_FloatingPointError);
-  PyList_SET_ITEM(__pyx_t_2, 28, __pyx_n_s_FloatingPointError);
+  PyList_SET_ITEM(__pyx_t_2, 29, __pyx_n_s_FloatingPointError);
   __Pyx_INCREF(__pyx_n_s_FutureWarning);
   __Pyx_GIVEREF(__pyx_n_s_FutureWarning);
-  PyList_SET_ITEM(__pyx_t_2, 29, __pyx_n_s_FutureWarning);
+  PyList_SET_ITEM(__pyx_t_2, 30, __pyx_n_s_FutureWarning);
   __Pyx_INCREF(__pyx_n_s_GeneratorExit);
   __Pyx_GIVEREF(__pyx_n_s_GeneratorExit);
-  PyList_SET_ITEM(__pyx_t_2, 30, __pyx_n_s_GeneratorExit);
+  PyList_SET_ITEM(__pyx_t_2, 31, __pyx_n_s_GeneratorExit);
   __Pyx_INCREF(__pyx_n_s_ImportError);
   __Pyx_GIVEREF(__pyx_n_s_ImportError);
-  PyList_SET_ITEM(__pyx_t_2, 31, __pyx_n_s_ImportError);
+  PyList_SET_ITEM(__pyx_t_2, 32, __pyx_n_s_ImportError);
   __Pyx_INCREF(__pyx_n_s_ImportWarning);
   __Pyx_GIVEREF(__pyx_n_s_ImportWarning);
-  PyList_SET_ITEM(__pyx_t_2, 32, __pyx_n_s_ImportWarning);
+  PyList_SET_ITEM(__pyx_t_2, 33, __pyx_n_s_ImportWarning);
   __Pyx_INCREF(__pyx_n_s_IndentationError);
   __Pyx_GIVEREF(__pyx_n_s_IndentationError);
-  PyList_SET_ITEM(__pyx_t_2, 33, __pyx_n_s_IndentationError);
+  PyList_SET_ITEM(__pyx_t_2, 34, __pyx_n_s_IndentationError);
   __Pyx_INCREF(__pyx_n_s_IndexError);
   __Pyx_GIVEREF(__pyx_n_s_IndexError);
-  PyList_SET_ITEM(__pyx_t_2, 34, __pyx_n_s_IndexError);
+  PyList_SET_ITEM(__pyx_t_2, 35, __pyx_n_s_IndexError);
   __Pyx_INCREF(__pyx_n_s_InterruptedError);
   __Pyx_GIVEREF(__pyx_n_s_InterruptedError);
-  PyList_SET_ITEM(__pyx_t_2, 35, __pyx_n_s_InterruptedError);
+  PyList_SET_ITEM(__pyx_t_2, 36, __pyx_n_s_InterruptedError);
   __Pyx_INCREF(__pyx_n_s_IOError);
   __Pyx_GIVEREF(__pyx_n_s_IOError);
-  PyList_SET_ITEM(__pyx_t_2, 36, __pyx_n_s_IOError);
+  PyList_SET_ITEM(__pyx_t_2, 37, __pyx_n_s_IOError);
   __Pyx_INCREF(__pyx_n_s_IsADirectoryError);
   __Pyx_GIVEREF(__pyx_n_s_IsADirectoryError);
-  PyList_SET_ITEM(__pyx_t_2, 37, __pyx_n_s_IsADirectoryError);
+  PyList_SET_ITEM(__pyx_t_2, 38, __pyx_n_s_IsADirectoryError);
   __Pyx_INCREF(__pyx_n_s_KeyError);
   __Pyx_GIVEREF(__pyx_n_s_KeyError);
-  PyList_SET_ITEM(__pyx_t_2, 38, __pyx_n_s_KeyError);
+  PyList_SET_ITEM(__pyx_t_2, 39, __pyx_n_s_KeyError);
   __Pyx_INCREF(__pyx_n_s_KeyboardInterrupt);
   __Pyx_GIVEREF(__pyx_n_s_KeyboardInterrupt);
-  PyList_SET_ITEM(__pyx_t_2, 39, __pyx_n_s_KeyboardInterrupt);
+  PyList_SET_ITEM(__pyx_t_2, 40, __pyx_n_s_KeyboardInterrupt);
   __Pyx_INCREF(__pyx_n_s_LookupError);
   __Pyx_GIVEREF(__pyx_n_s_LookupError);
-  PyList_SET_ITEM(__pyx_t_2, 40, __pyx_n_s_LookupError);
+  PyList_SET_ITEM(__pyx_t_2, 41, __pyx_n_s_LookupError);
   __Pyx_INCREF(__pyx_n_s_MemoryError);
   __Pyx_GIVEREF(__pyx_n_s_MemoryError);
-  PyList_SET_ITEM(__pyx_t_2, 41, __pyx_n_s_MemoryError);
+  PyList_SET_ITEM(__pyx_t_2, 42, __pyx_n_s_MemoryError);
   __Pyx_INCREF(__pyx_n_s_ModuleNotFoundError);
   __Pyx_GIVEREF(__pyx_n_s_ModuleNotFoundError);
-  PyList_SET_ITEM(__pyx_t_2, 42, __pyx_n_s_ModuleNotFoundError);
+  PyList_SET_ITEM(__pyx_t_2, 43, __pyx_n_s_ModuleNotFoundError);
   __Pyx_INCREF(__pyx_n_s_NameError);
   __Pyx_GIVEREF(__pyx_n_s_NameError);
-  PyList_SET_ITEM(__pyx_t_2, 43, __pyx_n_s_NameError);
+  PyList_SET_ITEM(__pyx_t_2, 44, __pyx_n_s_NameError);
   __Pyx_INCREF(__pyx_n_s_NotADirectoryError);
   __Pyx_GIVEREF(__pyx_n_s_NotADirectoryError);
-  PyList_SET_ITEM(__pyx_t_2, 44, __pyx_n_s_NotADirectoryError);
+  PyList_SET_ITEM(__pyx_t_2, 45, __pyx_n_s_NotADirectoryError);
   __Pyx_INCREF(__pyx_n_s_NotImplemented);
   __Pyx_GIVEREF(__pyx_n_s_NotImplemented);
-  PyList_SET_ITEM(__pyx_t_2, 45, __pyx_n_s_NotImplemented);
+  PyList_SET_ITEM(__pyx_t_2, 46, __pyx_n_s_NotImplemented);
   __Pyx_INCREF(__pyx_n_s_NotImplementedError);
   __Pyx_GIVEREF(__pyx_n_s_NotImplementedError);
-  PyList_SET_ITEM(__pyx_t_2, 46, __pyx_n_s_NotImplementedError);
+  PyList_SET_ITEM(__pyx_t_2, 47, __pyx_n_s_NotImplementedError);
   __Pyx_INCREF(__pyx_n_s_OSError);
   __Pyx_GIVEREF(__pyx_n_s_OSError);
-  PyList_SET_ITEM(__pyx_t_2, 47, __pyx_n_s_OSError);
+  PyList_SET_ITEM(__pyx_t_2, 48, __pyx_n_s_OSError);
   __Pyx_INCREF(__pyx_n_s_OverflowError);
   __Pyx_GIVEREF(__pyx_n_s_OverflowError);
-  PyList_SET_ITEM(__pyx_t_2, 48, __pyx_n_s_OverflowError);
+  PyList_SET_ITEM(__pyx_t_2, 49, __pyx_n_s_OverflowError);
   __Pyx_INCREF(__pyx_n_s_PendingDeprecationWarning);
   __Pyx_GIVEREF(__pyx_n_s_PendingDeprecationWarning);
-  PyList_SET_ITEM(__pyx_t_2, 49, __pyx_n_s_PendingDeprecationWarning);
+  PyList_SET_ITEM(__pyx_t_2, 50, __pyx_n_s_PendingDeprecationWarning);
   __Pyx_INCREF(__pyx_n_s_PermissionError);
   __Pyx_GIVEREF(__pyx_n_s_PermissionError);
-  PyList_SET_ITEM(__pyx_t_2, 50, __pyx_n_s_PermissionError);
+  PyList_SET_ITEM(__pyx_t_2, 51, __pyx_n_s_PermissionError);
   __Pyx_INCREF(__pyx_n_s_ProcessLookupError);
   __Pyx_GIVEREF(__pyx_n_s_ProcessLookupError);
-  PyList_SET_ITEM(__pyx_t_2, 51, __pyx_n_s_ProcessLookupError);
+  PyList_SET_ITEM(__pyx_t_2, 52, __pyx_n_s_ProcessLookupError);
   __Pyx_INCREF(__pyx_n_s_RecursionError);
   __Pyx_GIVEREF(__pyx_n_s_RecursionError);
-  PyList_SET_ITEM(__pyx_t_2, 52, __pyx_n_s_RecursionError);
+  PyList_SET_ITEM(__pyx_t_2, 53, __pyx_n_s_RecursionError);
   __Pyx_INCREF(__pyx_n_s_ReferenceError);
   __Pyx_GIVEREF(__pyx_n_s_ReferenceError);
-  PyList_SET_ITEM(__pyx_t_2, 53, __pyx_n_s_ReferenceError);
+  PyList_SET_ITEM(__pyx_t_2, 54, __pyx_n_s_ReferenceError);
   __Pyx_INCREF(__pyx_n_s_ResourceWarning);
   __Pyx_GIVEREF(__pyx_n_s_ResourceWarning);
-  PyList_SET_ITEM(__pyx_t_2, 54, __pyx_n_s_ResourceWarning);
+  PyList_SET_ITEM(__pyx_t_2, 55, __pyx_n_s_ResourceWarning);
   __Pyx_INCREF(__pyx_n_s_RuntimeError);
   __Pyx_GIVEREF(__pyx_n_s_RuntimeError);
-  PyList_SET_ITEM(__pyx_t_2, 55, __pyx_n_s_RuntimeError);
+  PyList_SET_ITEM(__pyx_t_2, 56, __pyx_n_s_RuntimeError);
   __Pyx_INCREF(__pyx_n_s_RuntimeWarning);
   __Pyx_GIVEREF(__pyx_n_s_RuntimeWarning);
-  PyList_SET_ITEM(__pyx_t_2, 56, __pyx_n_s_RuntimeWarning);
+  PyList_SET_ITEM(__pyx_t_2, 57, __pyx_n_s_RuntimeWarning);
   __Pyx_INCREF(__pyx_n_s_StopAsyncIteration);
   __Pyx_GIVEREF(__pyx_n_s_StopAsyncIteration);
-  PyList_SET_ITEM(__pyx_t_2, 57, __pyx_n_s_StopAsyncIteration);
+  PyList_SET_ITEM(__pyx_t_2, 58, __pyx_n_s_StopAsyncIteration);
   __Pyx_INCREF(__pyx_n_s_StopIteration);
   __Pyx_GIVEREF(__pyx_n_s_StopIteration);
-  PyList_SET_ITEM(__pyx_t_2, 58, __pyx_n_s_StopIteration);
+  PyList_SET_ITEM(__pyx_t_2, 59, __pyx_n_s_StopIteration);
   __Pyx_INCREF(__pyx_n_s_SyntaxError);
   __Pyx_GIVEREF(__pyx_n_s_SyntaxError);
-  PyList_SET_ITEM(__pyx_t_2, 59, __pyx_n_s_SyntaxError);
+  PyList_SET_ITEM(__pyx_t_2, 60, __pyx_n_s_SyntaxError);
   __Pyx_INCREF(__pyx_n_s_SystemError);
   __Pyx_GIVEREF(__pyx_n_s_SystemError);
-  PyList_SET_ITEM(__pyx_t_2, 60, __pyx_n_s_SystemError);
+  PyList_SET_ITEM(__pyx_t_2, 61, __pyx_n_s_SystemError);
   __Pyx_INCREF(__pyx_n_s_SystemExit);
   __Pyx_GIVEREF(__pyx_n_s_SystemExit);
-  PyList_SET_ITEM(__pyx_t_2, 61, __pyx_n_s_SystemExit);
+  PyList_SET_ITEM(__pyx_t_2, 62, __pyx_n_s_SystemExit);
   __Pyx_INCREF(__pyx_n_s_SyntaxWarning);
   __Pyx_GIVEREF(__pyx_n_s_SyntaxWarning);
-  PyList_SET_ITEM(__pyx_t_2, 62, __pyx_n_s_SyntaxWarning);
+  PyList_SET_ITEM(__pyx_t_2, 63, __pyx_n_s_SyntaxWarning);
   __Pyx_INCREF(__pyx_n_s_TabError);
   __Pyx_GIVEREF(__pyx_n_s_TabError);
-  PyList_SET_ITEM(__pyx_t_2, 63, __pyx_n_s_TabError);
+  PyList_SET_ITEM(__pyx_t_2, 64, __pyx_n_s_TabError);
   __Pyx_INCREF(__pyx_n_s_TimeoutError);
   __Pyx_GIVEREF(__pyx_n_s_TimeoutError);
-  PyList_SET_ITEM(__pyx_t_2, 64, __pyx_n_s_TimeoutError);
+  PyList_SET_ITEM(__pyx_t_2, 65, __pyx_n_s_TimeoutError);
   __Pyx_INCREF(__pyx_n_s_TypeError);
   __Pyx_GIVEREF(__pyx_n_s_TypeError);
-  PyList_SET_ITEM(__pyx_t_2, 65, __pyx_n_s_TypeError);
+  PyList_SET_ITEM(__pyx_t_2, 66, __pyx_n_s_TypeError);
   __Pyx_INCREF(__pyx_n_s_ValueError);
   __Pyx_GIVEREF(__pyx_n_s_ValueError);
-  PyList_SET_ITEM(__pyx_t_2, 66, __pyx_n_s_ValueError);
+  PyList_SET_ITEM(__pyx_t_2, 67, __pyx_n_s_ValueError);
   __Pyx_INCREF(__pyx_n_s_Warning);
   __Pyx_GIVEREF(__pyx_n_s_Warning);
-  PyList_SET_ITEM(__pyx_t_2, 67, __pyx_n_s_Warning);
+  PyList_SET_ITEM(__pyx_t_2, 68, __pyx_n_s_Warning);
   __Pyx_INCREF(__pyx_n_s_WindowsError);
   __Pyx_GIVEREF(__pyx_n_s_WindowsError);
-  PyList_SET_ITEM(__pyx_t_2, 68, __pyx_n_s_WindowsError);
+  PyList_SET_ITEM(__pyx_t_2, 69, __pyx_n_s_WindowsError);
   __Pyx_INCREF(__pyx_n_s_ZeroDivisionError);
   __Pyx_GIVEREF(__pyx_n_s_ZeroDivisionError);
-  PyList_SET_ITEM(__pyx_t_2, 69, __pyx_n_s_ZeroDivisionError);
+  PyList_SET_ITEM(__pyx_t_2, 70, __pyx_n_s_ZeroDivisionError);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(1, 64, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
@@ -3630,7 +3635,7 @@ static PyObject *__pyx_f_6key_py_4LANG_PY(struct __pyx_obj_6key_py_LANG *__pyx_v
   /* "key_py.pyx":64
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
- *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",             # <<<<<<<<<<<<<<
+ *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError", "is",             # <<<<<<<<<<<<<<
  *                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
  *                                         "UserWarning", "ArithmeticError", "AssertionError", "AttributeError", "BaseException", "BlockingIOError",
  */
@@ -5736,6 +5741,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_input, __pyx_k_input, sizeof(__pyx_k_input), 0, 0, 1, 1},
   {&__pyx_n_s_int, __pyx_k_int, sizeof(__pyx_k_int), 0, 0, 1, 1},
   {&__pyx_n_s_integer, __pyx_k_integer, sizeof(__pyx_k_integer), 0, 0, 1, 1},
+  {&__pyx_n_s_is, __pyx_k_is, sizeof(__pyx_k_is), 0, 0, 1, 1},
   {&__pyx_n_s_iter, __pyx_k_iter, sizeof(__pyx_k_iter), 0, 0, 1, 1},
   {&__pyx_n_s_keys, __pyx_k_keys, sizeof(__pyx_k_keys), 0, 0, 1, 1},
   {&__pyx_n_s_kwargs, __pyx_k_kwargs, sizeof(__pyx_k_kwargs), 0, 0, 1, 1},
@@ -5947,7 +5953,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         data["loading"]             = {"name" : ['from',  "import", "as"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}             # <<<<<<<<<<<<<<
- *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",
+ *         data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError", "is",
  *                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
  */
   __pyx_tuple__15 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_204, __pyx_int_0); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(1, 63, __pyx_L1_error)
