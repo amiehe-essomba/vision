@@ -255,7 +255,7 @@ class IDE:
                         self.m      = 0
                     else: 
                         self.color  = __color__["color"]
-                        self.locked = __color__["locked"]
+                        self.locked = True
                         self.m      = __color__["rest"]
                     ######################################################################################
                     

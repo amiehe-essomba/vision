@@ -10,12 +10,11 @@ Overall, VISION is a powerful and versatile IDE that offers a range of features 
 
 ## VISION DESIGN 
 
-![logo](/images/termios-beta.png)
+![logo](/images/termios-alpha.png)
 
 ## BUILT WITH 
 - __**Python**__ 
 - __**Cython**__ 
-
 
 
 ## CONTRIBUTING
@@ -23,6 +22,9 @@ pull requests are welcome. Fore major changes, please open an issue first to dis
 That's very impotant.
 
 Please make sure to update tests as appropriate.
+
+## EXAMPLES OF CODES
+![logo](/images/examples.png)
 
 ## 🤵 Author 
 __**Amiehe Essomba**__ 

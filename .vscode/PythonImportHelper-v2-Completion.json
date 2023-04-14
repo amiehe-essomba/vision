@@ -732,7 +732,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']\n    elif name in ['mamba']      : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]\n    else: return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]",
+        "peekOfCode": "def decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -741,7 +741,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']\n    elif name in ['mamba']      : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]\n    else: return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]",
+        "peekOfCode": "def delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -750,7 +750,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']\n    elif name in ['mamba']      : return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]\n    else: return ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]",
+        "peekOfCode": "def characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },

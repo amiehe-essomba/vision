@@ -11,13 +11,13 @@ class config:
         # loading initialization cursor parameters 
         self.init               = init.init
         
-    def main(self, char : str = "=", language : str = "python", cmt : str = "", cc : str = ""):
+    def main(self, char : str = "=", language : str = "python", cmt : str = "", cc : str = "", color: str = ""):
         self.return_char  = ""
         
         if char and char != cmt:
             if   char in {'<', '>', '=', '!', '|', '&', '?', "~"}   : self.return_char =  config(self.termios).operators(char=char, language=language, cc=cc)
             elif char in {'+', '-', '*', '^', '%', '/'}             : self.return_char =  config(self.termios).arithmetic(char=char, language=language,cc=cc)
-            elif char in {"'", '"'}                                 : self.return_char =  config(self.termios).quote(char=char, language=language,cc=cc)
+            elif char in {"'", '"'}                                 : self.return_char =  config(self.termios).quote(char=char, language=language,cc=cc, color=color)
             elif char in {str(x) for x in range(10)}                : self.return_char =  config(self.termios).number(char=char, language=language,cc=cc)
             elif char in {"[","]",'{','}', "(", ")"}                : self.return_char =  config(self.termios).bracket(char=char, language=language,cc=cc)
             elif char in {"@", "$"}                                 : self.return_char =  config(self.termios).decorators(char=char, language=language,cc=cc)
@@ -53,14 +53,18 @@ class config:
         
         return self.text
     
-    def quote(self, char: str = "'", language : str = "mamba", cc : str = "")          :
+    def quote(self, char: str = "'", language : str = "mamba", cc : str = "", color: str = "")          :
         # initialization 
         self.text = ""
         
         if language in ['python', 'mamba'] : 
             # default text color white 
-            if   self.termios == "monokai":  self.text = self.init.bold+cc+self.color_fg.rbg(255, 153, 204) + char + self.init.reset
-            elif self.termios == "orion"  :  self.text = self.init.bold+cc+self.color_fg.rbg(255, 153, 204) + self.init.blink+ char + self.init.reset
+            if not color:
+                if   self.termios == "monokai":  self.text = self.init.bold+cc+self.color_fg.rbg(255, 153, 204) + char + self.init.reset
+                elif self.termios == "orion"  :  self.text = self.init.bold+cc+self.color_fg.rbg(255, 153, 204) + self.init.blink+ char + self.init.reset
+            else: 
+                if   self.termios == "monokai":  self.text = color + char + self.init.reset
+                elif self.termios == "orion"  :  self.text = color +  self.init.blink+ char + self.init.reset
         else: pass 
         
         return self.text

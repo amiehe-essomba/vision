@@ -38,10 +38,10 @@ cdef class LANG:
         data['cond']                = {"name" : ['if', "elif", "else", "try", "except", "finaly"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
-        names                       = ['break', "cancel", "exit", "continue", "quit", "next"]
+        names                       = ['break', "cancel", "exit", "continue", "quit", "next", "pass"]
         data['stop']                = {"name" : names, "color" : self.c }
 
-        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(120,145,250)]}
         names                       = [ "self", "local", "global",  "return", "open", "close", "readline", "write", "read", "readlines"]
         data['global']                = {"name" : names, "color" : self.c }
 
@@ -49,7 +49,7 @@ cdef class LANG:
         data['arguments']           = {"name" : ["args", "kwargs", "other", "all", "any"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]} 
-        data["bool_func"]           = {"name" : ["True", "Flase", "None", "NULL"], "color" : self.c }
+        data["bool_func"]           = {"name" : ["True", "False", "None", "NULL"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
         data['logical']             = {"name" : ['and', 'or'], "color" : self.c }
@@ -61,7 +61,7 @@ cdef class LANG:
         data["loading"]             = {"name" : ['from',  "import", "as"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
-        data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",
+        data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError", "is"
                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
                                         "UserWarning", "ArithmeticError", "AssertionError", "AttributeError", "BaseException", "BlockingIOError",
                                         "BrokenPipeError", "BufferError", "BytesWarning", "ConnectionResetError", "ChildProcessError", "ConnectionError",
