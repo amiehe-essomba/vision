@@ -98,14 +98,13 @@ class IDE:
                 
                 # delecting char <backspace>
                 elif self.char in {127, 8}:
-                    if self.Data["I_S"] > 0:
+                    if self.Data['get']:
                         self.Data['string']     =  self.Data['string'][ : self.Data["I_S"] - 1] + self.Data['string'][ self.Data["I_S"] : ]
                         self.Data['I_S']       -= 1
                         if type( self.Data['get'][self.Data['I_S']] ) == type(list()):
-                            for i in range(4):
-                                self.Data['input']  =  self.Data['input'][ : self.Data["index"] - 1] + self.Data['input'][ self.Data["index"] : ]
-                                self.x                 -= 1
-                                self.Data['index']     -= 1
+                            self.Data['input']  =  self.Data['input'][ : self.Data["index"] - 4] + self.Data['input'][ self.Data["index"] : ]
+                            self.x                 -= 4
+                            self.Data['index']     -= 4
                         else:
                             self.Data['input']      =  self.Data['input'][ : self.Data["index"] - 1] + self.Data['input'][ self.Data["index"] : ]
                             self.x                 -= 1
@@ -148,17 +147,19 @@ class IDE:
                         else: pass 
                     # move up
                     elif next2 == 65:
-                        if self.if_line > 0:
+                        if self.if_line > 0:    
                             self.if_line           -= 1 
                             self.y                 -= 1
                             self.if_line_max       -= 1
+                            
                             self.input, self.size   = header.counter( self.if_line + 1)
                             self.Data['string']     = self.Data['string_tabular'][self.if_line]
                             self.Data['I_S']        = self.Data['string_tab'][self.if_line]
                             self.Data['input']      = self.Data['liste'][self.if_line]
                             self.Data['index']      = self.Data['tabular'][self.if_line]
                             self.x, self.y          = self.Data['x_y'][self.if_line]
-
+                            self.Data['get']        = self.Data['memory'][self.if_line].copy()
+                            
                             sys.stdout.write(
                             self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
                             self.move.TO(x=self.x, y=self.y) + self.c_bg+self.Data['string'] + 
@@ -179,24 +180,20 @@ class IDE:
                                 self.Data['input']      = self.Data['liste'][self.if_line]
                                 self.Data['index']      = self.Data['tabular'][self.if_line]
                                 self.x, self.y          = self.Data['x_y'][self.if_line]
+                                self.Data['get']        = self.Data['memory'][self.if_line].copy()
                             except IndexError:
-                                ####################################################
-                                self.Data['string_tabular'][self.if_line-1] = self.Data['string']
-                                self.Data['string_tab'][self.if_line-1]     = self.Data['I_S']
-                                self.Data['liste'][self.if_line-1]          = self.Data['input']   
-                                self.Data['tabular'][self.if_line-1]        = self.Data['index']
-                                self.Data['x_y'][self.if_line-1]            = (self.x, self.y-1)        
-                                #####################################################
                                 self.Data['string']     = ""
                                 self.Data['input']      = ""
                                 self.Data['index']      = 0 
                                 self.Data["I_S"]        = 0
+                                self.Data['get']        = []
                                 self.x                  = self.size+1
                                 self.Data['string_tabular'].append(self.Data['string'])
                                 self.Data['string_tab'].append(self.Data['I_S'])
                                 self.Data['liste'].append( self.Data['input'] )
                                 self.Data['tabular'].append( self.Data['index'] )
                                 self.Data['x_y'].append((self.x, self.y))
+                                self.Data['memory'].append(self.Data['get'].copy())
                                 
                             sys.stdout.write( 
                             self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
@@ -229,25 +226,32 @@ class IDE:
                         self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
                         )
                     #####################################################################################
-                    # storing string
-                    self.Data['string_tabular'].append( self.Data['string'] )
-                    # storing input
-                    self.Data['liste'].append( self.Data['input'] )
-                    # saving index
-                    self.Data['string_tab'].append( self.Data['I_S'] )
-                    # storing index
-                    self.Data['tabular'].append( self.Data['index'] )
-                    # saving cursor coordinates(x,y)
-                    self.Data['x_y'].append( (self.x, self.y) )
+                   
+                    try : self.Data['string_tabular'][self.if_line+1]
+                    except IndexError:
+                        # storing string
+                        self.Data['string_tabular'].append( self.Data['string'] )
+                        # storing input
+                        self.Data['liste'].append( self.Data['input'] )
+                        # saving index
+                        self.Data['string_tab'].append( self.Data['I_S'] )
+                        # storing index
+                        self.Data['tabular'].append( self.Data['index'] )
+                        # saving cursor coordinates(x,y)
+                        self.Data['x_y'].append( (self.x, self.y) )
+                        # saving get 
+                        self.Data['memory'].append( self.Data['get'] )
+                    
                     #####################################################################################
                     # initializing all variables
-                    self.if_line        += 1 
-                    self.if_line_max    += 1
-                    self.Data['string'] = ""
-                    self.Data['input']  = ""
-                    self.Data["I_S"]    = 0
-                    self.Data["index"]  = 0
-                    self.input, self.size = header.counter( self.if_line + 1 )
+                    self.if_line            += 1 
+                    self.if_line_max        += 1
+                    self.Data['string']      = ""
+                    self.Data['input']       = ""
+                    self.Data["I_S"]         = 0
+                    self.Data["index"]       = 0
+                    self.Data['get']         = []
+                    self.input, self.size    = header.counter( self.if_line + 1 )
                     ######################################################################################
                     # changing color or reset color  
                     if __color__["locked"] is False:  
@@ -258,10 +262,10 @@ class IDE:
                         self.locked = True
                         self.m      = __color__["rest"]
                     ######################################################################################
-                    
+                    # moving cursor 
                     if self.y < (self.max_y-3 ):
-                        self.y += 1
-                        self.x = self.size + 1
+                        self.y      += 1
+                        self.x       = self.size + 1
                         sys.stdout.write(self.move.TO(x=self.x, y=self.y))
                     else: 
                         self.scrollUp   += 1
@@ -269,6 +273,7 @@ class IDE:
                         self.scrollEnter = True
                         sys.stdout.write( self.scroll.UP(1) )
                         sys.stdout.flush()
+                        
                 # indentation Tab
                 elif self.char == 9:
                     self.tt                  = ' ' * 4
@@ -317,6 +322,13 @@ class IDE:
                         self.scrollEnter = False
                     else: self.scrollEnter = False
                 sys.stdout.flush()
+                
+                self.Data['string_tabular'][self.if_line] = self.Data['string']
+                self.Data['string_tab'][self.if_line]     = self.Data['I_S']
+                self.Data['liste'][self.if_line]          = self.Data['input']   
+                self.Data['tabular'][self.if_line]        = self.Data['index']
+                self.Data['x_y'][self.if_line]            = (self.x, self.y) 
+                self.Data['memory'][self.if_line]         = self.Data['get'].copy() 
                 
             except KeyboardInterrupt: 
                 # breaking whyle loop 

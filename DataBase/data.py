@@ -28,7 +28,7 @@ def base():
     # initialization of list associated to the string s
     structure['sub_liste']                      = []
     # the memory contains the history of get value
-    structure['memory']                         = []
+    structure['memory']                         = [[]]
     # initilization of last
     structure['last']                           = 0
     # initialisation of list associated to the index value

@@ -6510,7 +6510,7 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  *                     cmt_str  = ""
  *                     if self.ss :             # <<<<<<<<<<<<<<
  *                         if self.cmt in self.ss:
- *                             self.ss += self.cc + ' ' + init.init.reset
+ *                             self.ss += ' '
  */
         __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_v_self->ss); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 243, __pyx_L1_error)
         if (__pyx_t_16) {
@@ -6519,7 +6519,7 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  *                     cmt_str  = ""
  *                     if self.ss :
  *                         if self.cmt in self.ss:             # <<<<<<<<<<<<<<
- *                             self.ss += self.cc + ' ' + init.init.reset
+ *                             self.ss += ' '
  *                             if i < len(self.string) - 1:  pass
  */
           __pyx_t_16 = (__Pyx_PySequence_ContainsTF(__pyx_v_self->cmt, __pyx_v_self->ss, Py_EQ)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 244, __pyx_L1_error)
@@ -6529,45 +6529,29 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
             /* "words.pyx":245
  *                     if self.ss :
  *                         if self.cmt in self.ss:
- *                             self.ss += self.cc + ' ' + init.init.reset             # <<<<<<<<<<<<<<
+ *                             self.ss += ' '             # <<<<<<<<<<<<<<
  *                             if i < len(self.string) - 1:  pass
  *                             else:
  */
-            __pyx_t_1 = PyNumber_Add(__pyx_v_self->cc, __pyx_kp_s__36); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+            __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_self->ss, __pyx_kp_s__36); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_init); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 245, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_init); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 245, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_8);
-            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_reset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 245, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_7);
-            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-            __pyx_t_8 = PyNumber_Add(__pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 245, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_8);
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_self->ss, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 245, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_7);
-            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-            if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 245, __pyx_L1_error)
-            __Pyx_GIVEREF(__pyx_t_7);
+            __Pyx_GIVEREF(__pyx_t_1);
             __Pyx_GOTREF(__pyx_v_self->ss);
             __Pyx_DECREF(__pyx_v_self->ss);
-            __pyx_v_self->ss = ((PyObject*)__pyx_t_7);
-            __pyx_t_7 = 0;
+            __pyx_v_self->ss = ((PyObject*)__pyx_t_1);
+            __pyx_t_1 = 0;
 
             /* "words.pyx":246
  *                         if self.cmt in self.ss:
- *                             self.ss += self.cc + ' ' + init.init.reset
+ *                             self.ss += ' '
  *                             if i < len(self.string) - 1:  pass             # <<<<<<<<<<<<<<
  *                             else:
  *                                 if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
  */
-            __pyx_t_7 = __pyx_v_self->string;
-            __Pyx_INCREF(__pyx_t_7);
-            __pyx_t_18 = PyObject_Length(__pyx_t_7); if (unlikely(__pyx_t_18 == ((Py_ssize_t)-1))) __PYX_ERR(0, 246, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+            __pyx_t_1 = __pyx_v_self->string;
+            __Pyx_INCREF(__pyx_t_1);
+            __pyx_t_18 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_18 == ((Py_ssize_t)-1))) __PYX_ERR(0, 246, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_12 = ((__pyx_v_i < (__pyx_t_18 - 1)) != 0);
             if (__pyx_t_12) {
               goto __pyx_L64;
@@ -6583,37 +6567,37 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
             /*else*/ {
               __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_self->ss); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 248, __pyx_L1_error)
               if (__pyx_t_12) {
-                __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 248, __pyx_L1_error)
-                __Pyx_GOTREF(__pyx_t_7);
+                __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_INCREF(__pyx_v_self->ss);
                 __Pyx_GIVEREF(__pyx_v_self->ss);
-                PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_self->ss);
+                PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_self->ss);
                 __Pyx_INCREF(__pyx_v_self->color);
                 __Pyx_GIVEREF(__pyx_v_self->color);
-                PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_self->color);
-                __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5words_words), __pyx_t_7, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 248, __pyx_L1_error)
-                __Pyx_GOTREF(__pyx_t_8);
-                __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-                __pyx_t_7 = __pyx_v_self->count;
-                __Pyx_INCREF(__pyx_t_7);
+                PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_self->color);
+                __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5words_words), __pyx_t_1, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 248, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_7);
+                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                __pyx_t_1 = __pyx_v_self->count;
+                __Pyx_INCREF(__pyx_t_1);
                 __pyx_t_19.__pyx_n = 4;
                 __pyx_t_19.n = __pyx_v_n;
                 __pyx_t_19.locked = __pyx_v_locked;
-                __pyx_t_19.count = ((PyObject*)__pyx_t_7);
+                __pyx_t_19.count = ((PyObject*)__pyx_t_1);
                 __pyx_t_19.b_ = __pyx_v_b_;
-                __pyx_t_1 = ((struct __pyx_vtabstruct_5words_words *)((struct __pyx_obj_5words_words *)__pyx_t_8)->__pyx_vtab)->keywords(((struct __pyx_obj_5words_words *)__pyx_t_8), &__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
+                __pyx_t_8 = ((struct __pyx_vtabstruct_5words_words *)((struct __pyx_obj_5words_words *)__pyx_t_7)->__pyx_vtab)->keywords(((struct __pyx_obj_5words_words *)__pyx_t_7), &__pyx_t_19); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 248, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_8);
+                __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-                __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 248, __pyx_L1_error)
-                __Pyx_GOTREF(__pyx_t_7);
-                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 248, __pyx_L1_error)
-                __Pyx_GIVEREF(__pyx_t_7);
+                if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 248, __pyx_L1_error)
+                __Pyx_GIVEREF(__pyx_t_1);
                 __Pyx_GOTREF(__pyx_v_self->newS);
                 __Pyx_DECREF(__pyx_v_self->newS);
-                __pyx_v_self->newS = ((PyObject*)__pyx_t_7);
-                __pyx_t_7 = 0;
+                __pyx_v_self->newS = ((PyObject*)__pyx_t_1);
+                __pyx_t_1 = 0;
                 goto __pyx_L65;
               }
 
@@ -6634,7 +6618,7 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  *                     cmt_str  = ""
  *                     if self.ss :
  *                         if self.cmt in self.ss:             # <<<<<<<<<<<<<<
- *                             self.ss += self.cc + ' ' + init.init.reset
+ *                             self.ss += ' '
  *                             if i < len(self.string) - 1:  pass
  */
             goto __pyx_L63;
@@ -6652,24 +6636,24 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
               __PYX_ERR(0, 251, __pyx_L1_error)
             }
-            __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_self->count, __pyx_n_s_int); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 251, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_1 = __Pyx_PyInt_RemainderObjC(__pyx_t_7, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->count, __pyx_n_s_int); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __pyx_t_7 = __Pyx_PyInt_EqObjC(__pyx_t_1, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 251, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_7);
+            __pyx_t_8 = __Pyx_PyInt_RemainderObjC(__pyx_t_1, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 251, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_8);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 251, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+            __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_8, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+            __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 251, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             if (__pyx_t_12) {
-              __pyx_t_7 = __pyx_v_self->cc;
-              __Pyx_INCREF(__pyx_t_7);
-              __Pyx_GIVEREF(__pyx_t_7);
+              __pyx_t_1 = __pyx_v_self->cc;
+              __Pyx_INCREF(__pyx_t_1);
+              __Pyx_GIVEREF(__pyx_t_1);
               __Pyx_GOTREF(__pyx_v_self->color);
               __Pyx_DECREF(__pyx_v_self->color);
-              __pyx_v_self->color = ((PyObject*)__pyx_t_7);
-              __pyx_t_7 = 0;
+              __pyx_v_self->color = ((PyObject*)__pyx_t_1);
+              __pyx_t_1 = 0;
               goto __pyx_L66;
             }
 
@@ -6681,13 +6665,13 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  *                             self.newS   += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
  */
             /*else*/ {
-              __pyx_t_7 = __pyx_v_self->c;
-              __Pyx_INCREF(__pyx_t_7);
-              __Pyx_GIVEREF(__pyx_t_7);
+              __pyx_t_1 = __pyx_v_self->c;
+              __Pyx_INCREF(__pyx_t_1);
+              __Pyx_GIVEREF(__pyx_t_1);
               __Pyx_GOTREF(__pyx_v_self->color);
               __Pyx_DECREF(__pyx_v_self->color);
-              __pyx_v_self->color = ((PyObject*)__pyx_t_7);
-              __pyx_t_7 = 0;
+              __pyx_v_self->color = ((PyObject*)__pyx_t_1);
+              __pyx_t_1 = 0;
             }
             __pyx_L66:;
 
@@ -6698,37 +6682,37 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  *                             if code_w is False: self.newS   += self.cc + ' '
  *                             else: self.newS   += self.cc + ' '
  */
-            __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 254, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_7);
+            __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
             __Pyx_INCREF(__pyx_v_self->ss);
             __Pyx_GIVEREF(__pyx_v_self->ss);
-            PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_self->ss);
+            PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_self->ss);
             __Pyx_INCREF(__pyx_v_self->color);
             __Pyx_GIVEREF(__pyx_v_self->color);
-            PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_self->color);
-            __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5words_words), __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __pyx_t_7 = __pyx_v_self->count;
-            __Pyx_INCREF(__pyx_t_7);
+            PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_self->color);
+            __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5words_words), __pyx_t_1, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 254, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_8);
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __pyx_t_1 = __pyx_v_self->count;
+            __Pyx_INCREF(__pyx_t_1);
             __pyx_t_19.__pyx_n = 4;
             __pyx_t_19.n = __pyx_v_n;
             __pyx_t_19.locked = __pyx_v_locked;
-            __pyx_t_19.count = ((PyObject*)__pyx_t_7);
+            __pyx_t_19.count = ((PyObject*)__pyx_t_1);
             __pyx_t_19.b_ = __pyx_v_b_;
-            __pyx_t_8 = ((struct __pyx_vtabstruct_5words_words *)((struct __pyx_obj_5words_words *)__pyx_t_1)->__pyx_vtab)->keywords(((struct __pyx_obj_5words_words *)__pyx_t_1), &__pyx_t_19); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 254, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_8);
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 254, __pyx_L1_error)
+            __pyx_t_7 = ((struct __pyx_vtabstruct_5words_words *)((struct __pyx_obj_5words_words *)__pyx_t_8)->__pyx_vtab)->keywords(((struct __pyx_obj_5words_words *)__pyx_t_8), &__pyx_t_19); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 254, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-            if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 254, __pyx_L1_error)
-            __Pyx_GIVEREF(__pyx_t_7);
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+            if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 254, __pyx_L1_error)
+            __Pyx_GIVEREF(__pyx_t_1);
             __Pyx_GOTREF(__pyx_v_self->newS);
             __Pyx_DECREF(__pyx_v_self->newS);
-            __pyx_v_self->newS = ((PyObject*)__pyx_t_7);
-            __pyx_t_7 = 0;
+            __pyx_v_self->newS = ((PyObject*)__pyx_t_1);
+            __pyx_t_1 = 0;
 
             /* "words.pyx":255
  * 
@@ -6739,16 +6723,16 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  */
             __pyx_t_12 = ((__pyx_v_code_w == 0) != 0);
             if (__pyx_t_12) {
-              __pyx_t_7 = PyNumber_Add(__pyx_v_self->cc, __pyx_kp_s__36); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
+              __pyx_t_1 = PyNumber_Add(__pyx_v_self->cc, __pyx_kp_s__36); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_1);
+              __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
-              __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 255, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_8);
-              __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-              __Pyx_GIVEREF(__pyx_t_8);
+              __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+              __Pyx_GIVEREF(__pyx_t_7);
               __Pyx_GOTREF(__pyx_v_self->newS);
               __Pyx_DECREF(__pyx_v_self->newS);
-              __pyx_v_self->newS = ((PyObject*)__pyx_t_8);
-              __pyx_t_8 = 0;
+              __pyx_v_self->newS = ((PyObject*)__pyx_t_7);
+              __pyx_t_7 = 0;
               goto __pyx_L67;
             }
 
@@ -6760,16 +6744,16 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  *                     else:
  */
             /*else*/ {
-              __pyx_t_8 = PyNumber_Add(__pyx_v_self->cc, __pyx_kp_s__36); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 256, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_8);
-              __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 256, __pyx_L1_error)
+              __pyx_t_7 = PyNumber_Add(__pyx_v_self->cc, __pyx_kp_s__36); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 256, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
-              __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-              __Pyx_GIVEREF(__pyx_t_7);
+              __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_1);
+              __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+              __Pyx_GIVEREF(__pyx_t_1);
               __Pyx_GOTREF(__pyx_v_self->newS);
               __Pyx_DECREF(__pyx_v_self->newS);
-              __pyx_v_self->newS = ((PyObject*)__pyx_t_7);
-              __pyx_t_7 = 0;
+              __pyx_v_self->newS = ((PyObject*)__pyx_t_1);
+              __pyx_t_1 = 0;
             }
             __pyx_L67:;
 
@@ -6793,7 +6777,7 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  *                     cmt_str  = ""
  *                     if self.ss :             # <<<<<<<<<<<<<<
  *                         if self.cmt in self.ss:
- *                             self.ss += self.cc + ' ' + init.init.reset
+ *                             self.ss += ' '
  */
           goto __pyx_L62;
         }
@@ -6808,16 +6792,16 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
         /*else*/ {
           __pyx_t_12 = ((__pyx_v_code_w == 0) != 0);
           if (__pyx_t_12) {
-            __pyx_t_7 = PyNumber_Add(__pyx_v_self->cc, __pyx_kp_s__36); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
+            __pyx_t_1 = PyNumber_Add(__pyx_v_self->cc, __pyx_kp_s__36); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_8 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 259, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_8);
-            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __Pyx_GIVEREF(__pyx_t_8);
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __Pyx_GIVEREF(__pyx_t_7);
             __Pyx_GOTREF(__pyx_v_self->newS);
             __Pyx_DECREF(__pyx_v_self->newS);
-            __pyx_v_self->newS = ((PyObject*)__pyx_t_8);
-            __pyx_t_8 = 0;
+            __pyx_v_self->newS = ((PyObject*)__pyx_t_7);
+            __pyx_t_7 = 0;
             goto __pyx_L68;
           }
 
@@ -6829,16 +6813,16 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  * 
  */
           /*else*/ {
-            __pyx_t_8 = PyNumber_Add(__pyx_v_self->cc, __pyx_kp_s__36); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 260, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_8);
-            __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 260, __pyx_L1_error)
+            __pyx_t_7 = PyNumber_Add(__pyx_v_self->cc, __pyx_kp_s__36); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 260, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-            __Pyx_GIVEREF(__pyx_t_7);
+            __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_self->newS, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+            __Pyx_GIVEREF(__pyx_t_1);
             __Pyx_GOTREF(__pyx_v_self->newS);
             __Pyx_DECREF(__pyx_v_self->newS);
-            __pyx_v_self->newS = ((PyObject*)__pyx_t_7);
-            __pyx_t_7 = 0;
+            __pyx_v_self->newS = ((PyObject*)__pyx_t_1);
+            __pyx_t_1 = 0;
           }
           __pyx_L68:;
 
@@ -7010,8 +6994,8 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
     __Pyx_INCREF(__pyx_v_self->color);
     __Pyx_GIVEREF(__pyx_v_self->color);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_self->color);
-    __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5words_words), __pyx_t_2, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 269, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5words_words), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = __pyx_v_self->count;
     __Pyx_INCREF(__pyx_t_2);
@@ -7020,16 +7004,16 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
     __pyx_t_19.locked = __pyx_v_locked;
     __pyx_t_19.count = ((PyObject*)__pyx_t_2);
     __pyx_t_19.b_ = __pyx_v_b_;
-    __pyx_t_8 = ((struct __pyx_vtabstruct_5words_words *)((struct __pyx_obj_5words_words *)__pyx_t_7)->__pyx_vtab)->keywords(((struct __pyx_obj_5words_words *)__pyx_t_7), &__pyx_t_19); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 269, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_7 = ((struct __pyx_vtabstruct_5words_words *)((struct __pyx_obj_5words_words *)__pyx_t_1)->__pyx_vtab)->keywords(((struct __pyx_obj_5words_words *)__pyx_t_1), &__pyx_t_19); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 269, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_8)->tp_name), 0))) __PYX_ERR(0, 269, __pyx_L1_error)
-    __Pyx_GIVEREF(__pyx_t_8);
+    if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 269, __pyx_L1_error)
+    __Pyx_GIVEREF(__pyx_t_7);
     __Pyx_GOTREF(__pyx_v_self->newS);
     __Pyx_DECREF(__pyx_v_self->newS);
-    __pyx_v_self->newS = ((PyObject*)__pyx_t_8);
-    __pyx_t_8 = 0;
+    __pyx_v_self->newS = ((PyObject*)__pyx_t_7);
+    __pyx_t_7 = 0;
   }
   __pyx_L4:;
 
@@ -7039,16 +7023,16 @@ static PyObject *__pyx_f_5words_5words_final(struct __pyx_obj_5words_words *__py
  *         return self.newS, color_return             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 271, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
   __Pyx_INCREF(__pyx_v_self->newS);
   __Pyx_GIVEREF(__pyx_v_self->newS);
-  PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_v_self->newS);
+  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_self->newS);
   __Pyx_INCREF(__pyx_v_color_return);
   __Pyx_GIVEREF(__pyx_v_color_return);
-  PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_v_color_return);
-  __pyx_r = __pyx_t_8;
-  __pyx_t_8 = 0;
+  PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_color_return);
+  __pyx_r = __pyx_t_7;
+  __pyx_t_7 = 0;
   goto __pyx_L0;
 
   /* "words.pyx":125
