@@ -242,7 +242,7 @@ cdef class words:
                     cmt_str  = ""
                     if self.ss :
                         if self.cmt in self.ss:
-                            self.ss += self.cc + ' ' + init.init.reset
+                            self.ss += ' '
                             if i < len(self.string) - 1:  pass
                             else:
                                 if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
@@ -259,7 +259,6 @@ cdef class words:
                         if code_w is False: self.newS   += self.cc + ' '
                         else: self.newS   += self.cc + ' '
                         self.ss      = ''
-
         else: 
             try:
                 if self.string[-3 : ] == '"""' : color_return = {"color" : _init_, "locked" : False, "rest" : 0, 'init' : _init_}
