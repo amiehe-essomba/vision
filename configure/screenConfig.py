@@ -30,7 +30,6 @@ def cursorWin():
     if (res): return ( int(res.group("x")),  int(res.group("y")) )
     else: return (-1, -1)
     
-    
 def cursorLinux():
     OldStdinMode = termios.tcgetattr(sys.stdin)
     _ = termios.tcgetattr(sys.stdin)

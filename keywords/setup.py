@@ -2,7 +2,6 @@ from setuptools import setup, Extension
 from Cython.Build import  cythonize
 
 
-
 setup(
     name = "my cython modules",
     author='amiehe',
@@ -10,6 +9,7 @@ setup(
     ext_modules=cythonize( 
         [
         "key_py.pyx", 
+        "words.pyx"
         ], 
         annotate = False
         )
