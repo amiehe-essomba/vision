@@ -16,6 +16,49 @@ Overall, VISION is a powerful and versatile IDE that offers a range of features 
 - __**Python**__ 
 - __**Cython**__ 
 
+## PLATFORMS
+- __**WINDOWS**__ 
+- __**LINUX**__ 
+- __**MacOS**__ 
+
+<p align="left"> One interesting thing about VISION's multi-platform distribution on Linux, macOS, and Windows is that it allows developers and programmers to use their preferred operating system without having to worry about compatibility issues or missing out on any of VISION's features and tools.
+
+For example, developers who prefer to work on macOS can use VISION without having to switch to a different operating system, and can take advantage of macOS-specific features such as the touch bar. Similarly, developers who work on Windows can use VISION without having to worry about compatibility issues or missing out on any of its features, and can take advantage of Windows-specific features such as the Windows Subsystem for Linux (WSL) integration.
+
+By offering multi-platform support, VISION makes it easy for developers and programmers to work on the platform of their choice, without having to switch to a different operating system or compromise on features or functionality. This helps to promote productivity and efficiency, and allows developers to focus on their work rather than on technical issues or compatibility problems.</p>
+
+<p align="left">Another interesting aspect of VISION's multi-platform distribution is that it promotes collaboration among developers and programmers who work on different platforms. With VISION, a developer working on Linux can easily collaborate with a colleague who uses macOS or Windows, without having to worry about compatibility issues or differences in their coding environments.
+
+This is particularly important in today's globalized and interconnected world, where teams of developers often work remotely and across different time zones. By offering multi-platform support, VISION helps to bridge the gap between different operating systems and coding environments, making it easier for developers to work together and collaborate on projects.
+
+Additionally, VISION's multi-platform support allows developers to take advantage of the unique strengths and features of each operating system. For example, macOS users can use VISION's touch bar feature to quickly access frequently used commands, while Windows users can use VISION's WSL integration to work seamlessly with Linux tools and applications.
+
+Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a significant advantage for developers and programmers, as it allows them to work on the platform of their choice and collaborate with colleagues who use different operating systems, while also taking advantage of the unique features and strengths of each platform.</p>
+
+## LANGUAGES
+- __**Black Mamba**__ 
+- __**Python**__ 
+- __**Julia**__ 
+- __**GO**__ 
+- __**CPMD**__ 
+- __**C and C++**__ 
+- __**Fortran**__ 
+- __**Bash**__ 
+- __**R**__
+- __**Ruby**__ 
+- __**Kotlin**__ 
+- __**SQL**__ 
+
+
+
+
+<p align="left">One interesting aspect of VISION as an IDE for multiple programming languages is that it provides a single, integrated environment for developers to work on different projects and programming languages. This can help to streamline their workflow and increase their productivity by allowing them to switch between different projects and languages without having to switch to different tools or environments.
+
+For example, a developer working on a Python project can easily switch to a C or C++ project within the same IDE, without having to switch to a different tool or environment. This can help to save time and reduce cognitive load, as the developer can stay in the same familiar environment and use the same tools and features across different languages and projects.
+
+Another interesting aspect of VISION's support for different languages is that it allows developers to take advantage of the unique strengths and features of each language within the same IDE. For example, VISION's support for Fortran allows developers to work on high-performance computing projects, while its support for Go and Julia allows them to work on projects that require high concurrency and distributed computing.
+
+Additionally, VISION's support for Black Mamba, a Python-based web framework, allows developers to work on web development projects within the same IDE as their other projects. This can help to streamline their workflow and reduce context switching, as they can work on both the front-end and back-end of web applications within the same environment.</p>
 
 ## CONTRIBUTING
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
