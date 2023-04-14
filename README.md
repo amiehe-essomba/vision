@@ -67,13 +67,13 @@ That's very impotant.
 Please make sure to update tests as appropriate.
 
 ## EXAMPLES OF CODES
-- __**Black Mamba**__ 
+### Black Mamba 
 ![logo](/images/mamba.png)
 
-- __**Python**__ 
+### Python  
 ![logo](/images/python.png)
 
-- __**C++**__ 
+### C++ 
 ![logo](/images/c++.png)
 
 ## 🤵 Author 
