@@ -226,8 +226,8 @@ class IDE:
                         self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
                         )
                     #####################################################################################
-                    """
-                    try : self.Data['string_tabular'][self.if_line]
+                   
+                    try : self.Data['string_tabular'][self.if_line+1]
                     except IndexError:
                         # storing string
                         self.Data['string_tabular'].append( self.Data['string'] )
@@ -241,7 +241,7 @@ class IDE:
                         self.Data['x_y'].append( (self.x, self.y) )
                         # saving get 
                         self.Data['memory'].append( self.Data['get'] )
-                    """ 
+                    
                     #####################################################################################
                     # initializing all variables
                     self.if_line            += 1 
