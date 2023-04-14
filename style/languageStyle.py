@@ -19,10 +19,12 @@ def decorator( name : str = "python"):
     
 def delimitor(name : str = "python"):
     if name in ['mamba', "python"]  : return {"name" : ":"}
+    elif name in ['c', "c++"]       : return {"name" : ";"}
     else: return {"name" : None}
     
 def characters(name : str = "python"):
     if   name in ["python"]     : return {"name" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', "~", "[","]",'{','}', "(", ")", '.']}
     elif name in ['mamba']      : return {"name" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', "~", "[","]",'{','}', "(", ")", '.', "$", "?"]}
+    elif name in ['c', "c++"]   : return {"name" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', "~", "[","]",'{','}', "(", ")", '.', ";"]}
     else: return {"name" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', "~", "[","]",'{','}', "(", ")", '.', "$", ";", ":"]}
     

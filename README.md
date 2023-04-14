@@ -67,7 +67,14 @@ That's very impotant.
 Please make sure to update tests as appropriate.
 
 ## EXAMPLES OF CODES
-![logo](/images/examples.png)
+- __**Black Mamba**__ 
+![logo](/images/mamba.png)
+
+- __**Python**__ 
+![logo](/images/python.png)
+
+- __**C++**__ 
+![logo](/images/c++.png)
 
 ## 🤵 Author 
 __**Amiehe Essomba**__ 

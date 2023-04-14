@@ -38,7 +38,7 @@ cdef class words:
         list chars 
         list mul_cmt
 
-    def __cinit__(self, string, color, language = "python", termios = "monokai" ):
+    def __cinit__(self, string, color, language,  termios = "monokai" ):
         self.string         = string 
         self.color          = color 
         self.language       = language
@@ -87,22 +87,22 @@ cdef class words:
                     if self.counter % 2 == 0:
                         if active is False: 
                             if s in self.chars:
-                               newString += style.config().main(char=s, language="python", cmt="", cc=cc) 
+                               newString += style.config().main(char=s, language=self.language, cmt="", cc=cc) 
                             elif s in num:
                                 if i == 0:
                                     try: 
                                         if self.string[1] in case(): newString += bold + cc + self.color + s + init.init.reset
-                                        else: newString += style.config().main(char=s, language="python", cmt="", cc=cc)
-                                    except IndexError: newString += style.config().main(char=s, language="python", cmt="", cc=cc)
+                                        else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
+                                    except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
                                 else:
                                     if self.string[i - 1] in case(): newString += bold + cc + self.color + s + init.init.reset
-                                    else: newString += style.config().main(char=s, language="python", cmt="",cc=cc)
+                                    else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc)
                             elif s in self.comment:
-                                newString += style.config().main(char=s, language="python", cmt=s, cc=cc)
+                                newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)
                                 if self.string[ 0 ] not in [ "'", '"']: active = True
                                 else: active = False
                             elif s  in {"'", '"'}:
-                                newString += style.config().main(char=s, language="python", cmt="", cc=cc)
+                                newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
                                 my_list.append(s)
                                 self.counter += 1
                             elif s == self.delimitor: 
@@ -132,10 +132,10 @@ cdef class words:
             dict color_return   = {"color" : self.color, "locked" : False, "rest" : 0, "init" : _init_}
             bint string_locked  = False
             str cmt_str         = ""
-          
+        
+       
         if blink is False : b_ = ""
         else : b_ = init.init.blink
-
         if locked is False:
             for i , s in enumerate(self.string ):
                 if self.count['int'] % 2 == 0: self.color = init.init.bold+self.cc 
@@ -147,7 +147,7 @@ cdef class words:
                         cmt_str  = ""
                         if i < len(self.string)-1: pass 
                         else:
-                            if self.ss: self.newS +=  words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                            if self.ss: self.newS +=  words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                             else: pass  
                     else:
                         if s in self.comment    :
@@ -155,7 +155,7 @@ cdef class words:
                             self.ss += s 
                             if i < len( self.string ) - 1: pass 
                             else:
-                                if self.ss: self.newS +=  words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                if self.ss: self.newS +=  words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                 else: pass 
                         elif s in ['"', "'"]    :
                             self.color = init.init.bold + colors.bg.rgb(10, 10, 10) + colors.fg.rbg(255, 153, 204)
@@ -173,13 +173,12 @@ cdef class words:
                                     if i < len( self.string ) - 1: pass 
                                     else:
                                         color_return = {"color" : _init_, "locked" : False, "rest" : 0, 'init' : _init_}
-                                        if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n, locked=False, count=self.count, b_=b_)
+                                        if self.ss:  self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                         else:  pass
                             else:
-                                self.ss += s 
                                 if i < len( self.string ) - 1: pass 
                                 else:
-                                    if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    if self.ss:  self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                     else:  pass
                         elif s == "-"           :
                             cmt_str  = ""
@@ -188,39 +187,61 @@ cdef class words:
                                     if self.string[i+1] == '>': 
                                         self.ss += s
                                         if i < len( self.string ) - 1: pass 
-                                        else: self.newS += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                        else: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                     else: 
-                                        self.newS   += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
-                                        self.newS   += words(s, self.color).keywords(n=n,locked=locked, count=self.count, b_=b_)
+                                        self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                        self.newS   += words(s, self.color, language=self.language).keywords(n=n,locked=locked, count=self.count, b_=b_)
                                         self.ss     = ""
                                 except IndexError: 
-                                    self.newS   += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
-                                    self.newS   += words(s, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                     self.ss      = ""
                             else: 
-                                self.newS   += words(s, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                 self.ss      = ""
+                        elif s == "<"           : 
+                            self.ss += s
+                            if self.language in ['c', "c++"]:
+                                if i < len(self.string) - 1: pass
+                                else:
+                                    if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    else:  pass
+                            else: 
+                                if i < len(self.string) - 1: pass
+                                else:
+                                    if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    else:  pass
                         elif s == ">"           :
                             cmt_str  = ""
                             if self.language in ['python', "mamba"]: 
                                 if i == 0:
-                                    self.newS   += words(s, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                     self.ss      = ""
                                 else:
                                     try:
                                         if self.string[i-1] in ['-']:
                                             self.ss += s 
                                             if i < len(self.string)-1: pass 
-                                            else: self.newS += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                            else: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                         else: 
                                             self.ss     += s
-                                            self.newS   += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                            self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                             self.ss     = ""
                                     except IndexError: 
-                                        self.newS   += words(s, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_) 
+                                        self.newS   += words(self.s, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_) 
                                         self.ss      = ""
+                            elif self.language in ['c', "c++"]:
+                                self.ss += s
+                                if self.ss[0] == '<':
+                                    
+                                    self.newS   += words(self.ss, _cmt_, language=self.language).keywords(n=n, locked=True, count=self.count, b_=b_) 
+                                    self.ss      = ""
+                                else:
+                                    self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_) 
+                                    self.ss      = ""
                             else: 
-                                self.newS   += words(s, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_) 
+                                self.ss     += s
+                                self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_) 
                                 self.ss      = ""
                         else                    :
                             cmt_str  = ""
@@ -229,14 +250,14 @@ cdef class words:
                                     self.ss += s
                                     if i < len(self.string) - 1: pass
                                     else:
-                                        if self.ss: self.newS += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                        if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                         else:  pass
                                 else:
-                                    self.newS   += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
-                                    self.newS   += words(s, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                     self.ss      = ''
                             else :
-                                self.newS   += words(s, self.color).keywords(n=n,locked=locked, count=self.count, b_=b_)
+                                self.newS   += words(s, self.color, language=self.language).keywords(n=n,locked=locked, count=self.count, b_=b_)
                                 self.ss      = ''
                 else:
                     cmt_str  = ""
@@ -245,13 +266,13 @@ cdef class words:
                             self.ss += ' '
                             if i < len(self.string) - 1:  pass
                             else:
-                                if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                if self.ss:  self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                 else:  pass
                         else:
                             if self.count['int'] % 2 == 0: self.color = self.cc
                             else: self.color = self.c
 
-                            self.newS   += words(self.ss, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                            self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                             if code_w is False: self.newS   += self.cc + ' '
                             else: self.newS   += self.cc + ' '
                             self.ss     = ''
@@ -265,6 +286,6 @@ cdef class words:
                 else: pass 
             except IndexError: pass
 
-            self.newS = words(self.string, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
+            self.newS = words(self.string, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
 
         return self.newS, color_return
