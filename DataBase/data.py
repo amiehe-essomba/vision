@@ -60,7 +60,7 @@ def base():
     # alphabetic char + underscore char
     structure['alpha']                          = case()
     # last cursor position
-    structure['x_y']                            = []
+    structure['x_y']                            = [(0,0)]
     
     return structure
     

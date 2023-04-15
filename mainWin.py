@@ -1,12 +1,15 @@
 import sys, os 
 from getUserInput   import input
-from configure      import colors, init, clear, state, screenConfig, moveCursor
+from configure      import colors, init, clear, state, screenConfig, moveCursor, scroll
 from frame          import frame
 from DataBase       import data
 from header         import header
+from saving         import save, writing
+from keywords       import words
+import time
 
 class IDE:
-    def __init__(self, termios : str = "monokai"):
+    def __init__(self, termios : str = "none", lang : str = "unknown"):
         # border configuration 
         self.acs                = frame.frame(custom=True)
         # loading backgroung color 
@@ -25,14 +28,25 @@ class IDE:
         self.x, self.y          = screenConfig.cursor()
         # loading the keywords for moving cursor on a particular region of the screen 
         self.move               = moveCursor.cursor
+        # scrolling the cursor 
+        self.scroll             = scroll.scrolled
         # set termios style (theme ), default value = monokai 
         self.termios            = termios
+        # language type 
+        self.lang                   = lang
         
-    def VISION(self):
+    def VISION(self, importation : dict = {}, writeData : dict = {}, path : str = ""):
+        # loading external data 
+        self.importation            = importation
+        
+        # initialization of data 
         self.Data                   = data.base()
+        # 
         self.indexation             = data.indexation()
         # accounting line
         self.if_line                = 0
+        # max lines
+        self.if_line_max            = 0
         # move curor up fist time 
         self.key_up_first_time      = True
         # storing key_up_first_time
@@ -46,11 +60,33 @@ class IDE:
         self.last_line              = {"last": self.max_y-2, "now" : 0}
         # counter 
         self.np                     = 0
-        
+        # writing data in a file
+        self.writeData              = writeData
+        # bg color 
+        self.c_bg                   = self.init.bold + self.color_bg.rgb(10, 10, 10)
+        # fg color 
+        self.c                      = self.init.bold + self.color_fg.rbg(255, 255, 255)
+        # building color 
+        self.color                  = self.c_bg + self.c
+        # locked the writings 
+        self.locked                 = False 
+        # 
+        self.m                      = 0
+        self.max_down               = 3
         ###########################################################
         self.input, self.size = header.counter( self.if_line )
-        header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white")
+        self.gama = header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white", dataBase=self.Data, 
+                        data=self.importation, lang=self.lang)
+        self.x, self.y              = screenConfig.cursor()
         ###########################################################
+        self.counterL, self.counterR        = 0, 0
+        self.scrollUp, self.scrollDown      = 0, 0
+        self.scrollEnter                    = False
+        self.insert_is_used                 = False
+        ###########################################################
+        self.Data['x_y'][self.gama]         = (self.x, self.y)
+        self.if_line, self.if_line_max      = self.gama, self.gama
+        ########################################################### 
         
         while True:
             # getting max size (max_x, max_y) of the window 
@@ -62,8 +98,304 @@ class IDE:
                 if self.char:
                     _ = self.char[1]
                     self.char = self.char[0]
-                    if self.char is not None: pass 
-                    else: pass 
+
+                    if self.char is not None: 
+                        # breaking whyle loop 
+                        if   self.char == 3         :
+                            self._string_ = self.color_bg.red_L + self.color_fg.rbg(255, 255, 255) +"KeyboardInterrupt" + self.init.reset
+                            sys.stdout.write(
+                                self.clear.screen(pos=2)+ self.move.TO(x=0, y=0)+
+                                self._string_ + "\n"
+                            )
+                            return
+                    
+                        # saving data <ctrl+s>
+                        elif self.char == 19        : 
+                            if self.writeData['FileName'] is None: save.saveData(self.writeData).build(self.x, self.y)
+                            else: writing.writeInput(self.writeData['data'], self.writeData['FileName'])
+                            
+                        # delecting char <backspace>
+                        elif self.char in {127, 8}  :
+                            if self.Data['get']:
+                                self.Data['string']     =  self.Data['string'][ : self.Data["I_S"] - 1] + self.Data['string'][ self.Data["I_S"] : ]
+                                self.Data['I_S']       -= 1
+                                if type( self.Data['get'][self.Data['I_S']] ) == type(list()):
+                                    self.Data['input']  =  self.Data['input'][ : self.Data["index"] - 4] + self.Data['input'][ self.Data["index"] : ]
+                                    self.x                 -= 4
+                                    self.Data['index']     -= 4
+                                else:
+                                    self.Data['input']      =  self.Data['input'][ : self.Data["index"] - 1] + self.Data['input'][ self.Data["index"] : ]
+                                    self.x                 -= 1
+                                    self.Data['index']     -= 1
+                                
+                                del self.Data['get'][self.Data['I_S']]
+                                self.counterL           = 0
+                                self.counterR          -= 1
+                            else: pass
+                        
+                        # moving cursor up, down, left, right   
+                        elif self.char == 27        :
+                            next1, next2 = 91,  _[0]
+                            if next1 == 91:
+                                # move left 
+                                if   next2 == 68:
+                                    if self.Data['I_S'] > 0:
+                                        try:
+                                            self.Data['I_S']        -= 1
+                                            if type(self.Data['get'][self.Data['I_S']]) == type(list()):
+                                                self.x              -= 4
+                                                self.Data['index']  -= 4
+                                            else:
+                                                self.x              -= 1
+                                                self.Data['index']  -= 1
+                                        except IndexError : pass
+                                    else: pass
+                                # move right
+                                elif next2 == 67:
+                                    if self.x <=  (self.size + len(self.Data['input'])): #( self.size + self.Data["I_S"] - 1) : 
+                                        try:
+                                            if type(self.Data['get'][self.Data['I_S']]) == type(list()):
+                                                self.x              += 4
+                                                self.Data['index']  += 4
+                                            else:
+                                                self.x              += 1
+                                                self.Data['index']  += 1
+                                            self.Data['I_S']        += 1
+                                        except IndexError: pass
+                                    else: pass 
+                                # move up
+                                elif next2 == 65:
+                                    if self.if_line > 0:    
+                                        self.if_line           -= 1 
+                                        self.y                 -= 1
+                                        self.if_line_max       -= 1
+                                        
+                                        self.input, self.size   = header.counter( self.if_line + 1)
+                                        self.Data['string']     = self.Data['string_tabular'][self.if_line]
+                                        self.Data['I_S']        = self.Data['string_tab'][self.if_line]
+                                        self.Data['input']      = self.Data['liste'][self.if_line]
+                                        self.Data['index']      = self.Data['tabular'][self.if_line]
+                                        self.x, self.y          = self.Data['x_y'][self.if_line]
+                                        self.Data['get']        = self.Data['memory'][self.if_line].copy()
+                                        
+                                        sys.stdout.write(
+                                        self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
+                                        self.move.TO(x=self.x, y=self.y) + self.c_bg + 
+                                        self.move.TO(x=self.x, y=self.y) + self.init.reset 
+                                        )
+                                        
+                                        sys.stdout.flush()
+                                    else: pass 
+                                # move down 
+                                elif next2 == 66: 
+                                    if self.y < self.max_y-self.max_down:
+                                        self.y                     += 1
+                                        self.if_line               += 1 
+                                        self.if_line_max           += 1
+                                        self.input, self.size       = header.counter( self.if_line + 1)
+                                        try:
+                                            self.Data['string']     = self.Data['string_tabular'][self.if_line]
+                                            self.Data['I_S']        = self.Data['string_tab'][self.if_line]
+                                            self.Data['input']      = self.Data['liste'][self.if_line]
+                                            self.Data['index']      = self.Data['tabular'][self.if_line]
+                                            self.x, self.y          = self.Data['x_y'][self.if_line]
+                                            self.Data['get']        = self.Data['memory'][self.if_line].copy()
+                                        except IndexError:
+                                            self.Data['string']     = ""
+                                            self.Data['input']      = ""
+                                            self.Data['index']      = 0 
+                                            self.Data["I_S"]        = 0
+                                            self.Data['get']        = []
+                                            self.x                  = self.size+1
+                                            self.Data['string_tabular'].append(self.Data['string'])
+                                            self.Data['string_tab'].append(self.Data['I_S'])
+                                            self.Data['liste'].append( self.Data['input'] )
+                                            self.Data['tabular'].append( self.Data['index'] )
+                                            self.Data['x_y'].append((self.x, self.y))
+                                            self.Data['memory'].append(self.Data['get'].copy())
+                                            
+                                        sys.stdout.write( 
+                                        self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
+                                        self.move.TO(x=self.x, y=self.y) + self.c_bg + 
+                                        self.move.TO(x=self.x, y=self.y) + self.init.reset 
+                                        )
+                                        sys.stdout.flush()
+                                    else: pass
+                                # ctrl-up is handled 
+                                elif next2 == 49:
+                                    if self.str_drop_down:
+                                        next3, next4, next5 = 0, 0, _[1]
+                                        if next5 in {67, 68}: pass # ctrl-up, ctrl-down is handled 
+                                        # ctrl-right is handled 
+                                        elif next5 == 65: pass
+                                        # ctrl-left is handled 
+                                        elif next5 == 66: pass
+                                        else: pass
+                                        self.char = _[1]
+                                    else: pass
+                            else: pass
+                        
+                        # when <enter> is pressed  
+                        elif self.char in {13, 10}  :
+                            # moving cursor left 
+                            sys.stdout.write(self.move.LEFT(pos=1000))
+                            # erasing entire line 
+                            sys.stdout.write(self.clear.line(2))
+                            # writing string 
+                            if self.lang != "unknown" : 
+                                __string__, __color__ = words.words(self.Data['input'], self.color, self.lang ).final()
+                            else: __string__ = self.Data['input']
+                            
+                            sys.stdout.write(
+                                self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
+                                self.move.TO(x=self.max_x, y=self.y) + self.c + f"{self.acs['v']}" +
+                                self.move.TO(x=self.size+1, y=self.y) + self.c_bg+  __string__ + 
+                                self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
+                                )
+                            #####################################################################################
+                        
+                            try : self.Data['string_tabular'][self.if_line-1]
+                            except IndexError:
+                                # storing string
+                                self.Data['string_tabular'].append( self.Data['string'] )
+                                # storing input
+                                self.Data['liste'].append( self.Data['input'] )
+                                # saving index
+                                self.Data['string_tab'].append( self.Data['I_S'] )
+                                # storing index
+                                self.Data['tabular'].append( self.Data['index'] )
+                                # saving cursor coordinates(x,y)
+                                self.Data['x_y'].append( (self.x, self.y) )
+                                # saving get 
+                                self.Data['memory'].append( self.Data['get'] )
+                                
+                            #####################################################################################
+                            # initializing all variables
+                            self.if_line            += 1 
+                            self.if_line_max        += 1
+                            self.Data['string']      = ""
+                            self.Data['input']       = ""
+                            self.Data["I_S"]         = 0
+                            self.Data["index"]       = 0
+                            self.Data['get']         = []
+                            self.input, self.size    = header.counter( self.if_line + 1 )
+                            
+                            ######################################################################################
+                            if self.lang != "unknown" : 
+                                # changing color or reset color  
+                                if __color__["locked"] is False:  
+                                    self.locked = False
+                                    self.m      = 0
+                                else: 
+                                    self.color  = __color__["color"]
+                                    self.locked = True
+                                    self.m      = __color__["rest"]
+                            else: pass
+                            ######################################################################################
+                            # moving cursor 
+                            if self.y < (self.max_y-self.max_down):
+                                self.y      += 1
+                                self.x       = self.size + 1
+                                sys.stdout.write(self.move.TO(x=self.x, y=self.y))
+                            else: 
+                                self.scrollUp   += 1
+                                self.x           = self.size + 1
+                                self.scrollEnter = True
+                                sys.stdout.write( self.scroll.UP(1) )
+                                sys.stdout.flush()
+                            #######################################################################################
+                            if self.if_line == len(self.Data['liste']):    
+                                self.Data['string_tabular'].append(self.Data['string'])
+                                self.Data['string_tab'].append(self.Data['I_S'])
+                                self.Data['liste'].append( self.Data['input'] )
+                                self.Data['tabular'].append( self.Data['index'] )
+                                self.Data['x_y'].append((self.x, self.y))
+                                self.Data['memory'].append(self.Data['get'].copy())
+                            else:
+                                self.Data['string_tabular'].insert(self.if_line, self.Data['string'])
+                                self.Data['string_tab'].insert(self.if_line, self.Data['I_S'])
+                                self.Data['liste'].insert(self.if_line, self.Data['input'] )
+                                self.Data['tabular'].insert(self.if_line, self.Data['index'] )
+                                self.Data['x_y'].insert(self.if_line, (self.x, self.y))
+                                self.Data['memory'].insert(self.if_line, self.Data['get'])
+                                sys.stdout.write( self.clear.screen(0) + self.move.LEFT(1000))
+                                w = header.Insert(data=self.Data['liste'][self.if_line : ].copy(), x=self.x, y=self.y, max_x=self.max_x,
+                                            max_y=self.max_y, lang=self.lang, Color=self.color,locked=self.locked, m=self.m)
+                                sys.stdout.flush()
+                                self.insert_is_used = True
+                                self.scrollUp += w
+                                self.scrollEnter = True
+                                
+                                if (len(self.Data['liste'][self.if_line : ])+self.y) < (self.max_y - self.max_down): pass 
+                                else:
+                                    w = ( (len(self.Data['liste'][self.if_line : ])+self.y) - (self.max_y - self.max_down) )
+                            #######################################################################################
+                        # indentation Tab
+                        elif self.char == 9         :
+                            self.tt                  = ' ' * 4
+                            self.Data['string']      =  self.Data['string'][ : self.Data["I_S"] ] + chr( self.char ) + self.Data['string'][ self.Data["I_S"] : ]
+                            self.Data['input']       =  self.Data['input'][ : self.Data["index"] ] + str( self.tt ) + self.Data['input'][ self.Data["index"] : ]
+                            self.Data['index']      += 4
+                            self.Data['I_S']        += 1
+                            self.x                  += 4
+                            self.Data['get'].append([1 for x in range(4)])
+                        
+                        # building scring 
+                        else: 
+                            self.Data['string']      =  self.Data['string'][ : self.Data["I_S"] ] + chr( self.char ) + self.Data['string'][ self.Data["I_S"] : ]
+                            self.Data['input']       =  self.Data['input'][ : self.Data["index"] ] + chr( self.char ) + self.Data['input'][ self.Data["index"] : ]
+                            self.Data['index']      += 1
+                            self.Data['I_S']        += 1
+                            self.x                  += 1
+                            self.Data['get'].append(1)
+
+                        # moving cursor left 
+                        sys.stdout.write(self.move.LEFT(pos=1000))
+                        # erasing entire line 
+                        sys.stdout.write(self.clear.line(2))
+                        # writing string 
+                        if self.lang != "unknown" : 
+                            __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, m = self.m)
+                        else: __string__ = self.Data['input']
+                        
+                        sys.stdout.write(
+                            self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
+                            self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
+                            self.move.TO(x=self.size+1, y=self.y) + self.c_bg+ __string__ + 
+                            self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
+                            )
+                        
+                        # replace the cussor 
+                        if self.Data['I_S'] > 0: sys.stdout.write(self.move.RIGHT(pos=(self.x)) )
+                        else: pass 
+                        
+                        if self.scrollUp == 0:
+                            sys.stdout.write( self.move.TO(y=self.max_y-2, x=self.size) )
+                            header.line(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y-2, lang=self.lang)
+                            if self.insert_is_used is False: pass 
+                            else: 
+                                sys.stdout.write(self.move.TO(x=self.x, y=self.max_y-1))
+                                sys.stdout.write(self.clear.screen(0)+self.move.LEFT(1000))
+                                header.bottom(self.max_x)
+                                sys.stdout.write(self.move.TO(x=self.x, y=self.y))
+                        else:
+                            sys.stdout.write( self.move.TO(y=self.max_y-2, x=self.size) )
+                            sys.stdout.write(self.clear.screen(0))
+                            header.line(x=self.x, y=self.y , max_x=self.max_x, max_y=self.max_y-2,scrollUp=self.scrollUp, lang=self.lang)
+                            if self.scrollEnter is True:
+                                sys.stdout.write(self.move.DOWN(2)+self.move.LEFT(1000))
+                                header.bottom(self.max_x)
+                                sys.stdout.write(self.move.TO(x=self.x, y=self.y))
+                                self.scrollEnter = False
+                            else: self.scrollEnter = False
+                        sys.stdout.flush()
+                        
+                        self.Data['string_tabular'][self.if_line] = self.Data['string']
+                        self.Data['string_tab'][self.if_line]     = self.Data['I_S']
+                        self.Data['liste'][self.if_line]          = self.Data['input']   
+                        self.Data['tabular'][self.if_line]        = self.Data['index']
+                        self.Data['x_y'][self.if_line]            = (self.x, self.y) 
+                        self.Data['memory'][self.if_line]         = self.Data['get'].copy() 
                 else: pass 
             except KeyboardInterrupt: 
                 # breaking whyle loop 
@@ -77,4 +409,5 @@ class IDE:
             
 
 if __name__ == '__main__':
+    sys.stdout.write(clear.clear.screen(2))
     IDE().VISION()

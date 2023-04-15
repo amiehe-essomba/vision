@@ -21,7 +21,7 @@ cdef class LANG:
             list keys = []
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
-        data['types']               = {"name" : ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list", "bool"], "color" : self.c }
+        data['types']               = {"name" : ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list", "bool", "self"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
         data["constructor"]         = {"name" : ['__init__', '__name__', "__cinit__"], "color" : self.c}
@@ -43,8 +43,8 @@ cdef class LANG:
         names                       = ['break', "cancel", "exit", "continue", "quit", "next", "pass"]
         data['stop']                = {"name" : names, "color" : self.c }
 
-        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(120,145,250)]}
-        names                       = [ "self", "local", "global",  "return", "open", "close", "readline", "write", "read", "readlines"]
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
+        names                       = [ "local", "global",  "return", "open", "close", "readline", "write", "read", "readlines"]
         data['global']                = {"name" : names, "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
@@ -100,7 +100,7 @@ cdef class LANG:
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
         names                       = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray', 'table'
-                                        "p_int", "p_float", "n_int", "n_float"]
+                                        "p_int", "p_float", "n_int", "n_float", "self"]
         data['types']               = {"name" : names, "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
@@ -122,8 +122,8 @@ cdef class LANG:
         names                       = ['if', "elif", "else", "try", "except", "finaly", "unless", "until", "switch", "case", "default", "end", "begin"]
         data['cond']                = {"name" : names, "color" : self.c }
 
-        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
-        data['general']                = {"name" : ["self", "local", "global", "return", "open", 
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
+        data['general']                = {"name" : [ "local", "global", "return", "open", 
                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}

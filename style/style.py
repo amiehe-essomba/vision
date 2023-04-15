@@ -105,7 +105,7 @@ class config:
             if   self.termios == "monokai":  
                 if char in ['(', ')']: self.text = self.init.bold+cc+self.color_fg.rbg(0, 255, 0) + char + self.init.reset
                 if char in ['[', ']']: self.text = self.init.bold+cc+self.color_fg.rbg(255, 255, 0) + char + self.init.reset
-                if char in ['{', '}']: self.text = self.init.bold+cc+self.color_fg.rbg(0, 102, 204) + char + self.init.reset
+                if char in ['{', '}']: self.text = self.init.bold+cc+self.color_fg.rbg(255, 255, 153) + char + self.init.reset
             elif self.termios == "orion"  :  self.text = self.init.bold+cc+self.color_fg.rbg(153, 153, 255) + self.init.blink+ char + self.init.reset
         else: pass 
         
