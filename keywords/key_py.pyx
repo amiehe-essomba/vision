@@ -1,5 +1,27 @@
 from configure  import colors
 
+cdef list case():
+    lower_case = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
+    upper_case = lower_case.upper().split()
+
+    return upper_case
+
+cdef list pseudo():
+    cdef:
+        str ext     = "psp"
+        list psp    = ["MT", 'GTH', "SPRINK", 'MT_GIA']
+        list func   = ["BLYP", "PBE", "B3LYP", "HSE", "PBE0", "BLYP2"]
+        list all_psp= []
+        str strin   = ""
+
+    for i, s in enumerate(case()):
+        for j, ss in enumerate(psp):
+            for k, sss in enumerate( func):
+                string = s + "_" + ss + "_" + ss + "." + ext
+                all_psp.append(string)
+    
+    return all_psp
+
 cdef class LANG:
     cdef public :
         str master 
@@ -13,6 +35,7 @@ cdef class LANG:
         elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios)
         elif  self.master == "c"     : return LANG(self.master).C(termios=termios)
         elif  self.master == "c++"   : return LANG(self.master).C(termios=termios)
+        elif  self.master == "cpmd"  : return LANG(self.master).CPMD(termios=termios)
         else: pass
 
     cdef PY(self, str termios = "monokai"):
@@ -211,6 +234,70 @@ cdef class LANG:
         data['exceptions']          = {"name" : ['logic_error', "exception", "bad_alloc", "bad_cast", "bad_exception", "bad_typeid", 
                                                     "invalid_argument", "length_error","out_of_range", "runtime_error", 'overflow_error', "range_error",
                                                     "underflow_error", "runtime_error"  ], "color" : self.c }
+
+        keys                        = list(data.keys())
+        data['all_keys']            = keys.copy()
+
+        return data.copy()
+
+    cdef CPMD(self, str termios = "monokai"):
+        cdef :
+            dict data = {}
+            list keys = []
+            list names, _names_
+            str  x
+
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+        names                       = ["CPMD", "CONTROL", "SYSTEM", "POTENTIAL", "PARAMETERS", "PRINT", "ATOMS",
+                                            "RESTART", "CONSTRAINTS", "THERMOSTAT", "BAROSTAT", "CELL_OPT", "GEO_OPT", "INFO", "END", "DFT", "VDW"]
+        data['types']               = {"name" : names, "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+        names                       = ['OPTIMIZE', "WAVEFUNCTION", "INITIALIZE", "MOLECULAR", "DYNAMICS", "CP", "COORDINATES", "RESTFILES", "RESTART", "LATEST",
+                                        "VELOCITIES", "ACCUMULATORS", "NOSEP", "NOSEE", "LASTES", "QUENCH", "ELECTRONS", "BO", "ANNEALING", 
+                                        "IONS", "TIMESTEP", "EMASS", "MAXSTEP", "ENERGIES", "FORCES", "STORE", "PCG", "MINIMIZE", "STRESS",
+                                        "TENSOR", "CONVERGENCE", "ORBITALS", "NOSE", "TRAJECTORY", "SAMPLE", "XYZ", "SUBTRACT", "COMVEL", "ROTVEL",
+                                        "MEMORY", "BIG", "REAL", "SPACE", "WFN", "KEEP", "DISTRIBUTE", "FNL", "ON", "WANNIER", "TYPE", "VANDERBILT",
+                                        "SD", "JACOBI", "OPTIMIZATION", "PARAMETER"] 
+        _names_                     = [x.lower() for x in names]
+        data["CPMD_UPPER"]          = {"name" : names, "color" : self.c}
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
+        data['CPMD_LOWER']          = {"name" : _names_, "color" : self.c }
+
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
+        names                       = ["FUNCTIONAL", "PBE", "BLYP", "B3LYP", "PBE0", "HSE", "GCC-CUTOFF"]
+        _names_                     = [x.lower() for x in names]
+        data['DFT_UPPER']           = {"name" : names, "color" : self.c }   
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]} 
+        data["DFT_LOWER"]           = {"name" : _names_, "color" : self.c }
+
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}  
+        names                       = ["ANGSTROM", "BOHR", "ATMIC", "UNIT", "SYMMETRY","CELL", "CUTOFF"]
+        _names_                     = [x.lower() for x in names]
+        data['SYSTEM_UPPER']        = {"name" : names, "color" : self.c }
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+        data['SYSTEM_LOWER']        = {"name" : _names_, "color" : self.c }
+
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+        names                       = ["CORRECTION", "VERSION", "FRAGMENT", "BOND", "TOLERANCE","CELL", "CUTOFF"]
+        _names_                     = [x.lower() for x in names]
+        data["VWD_UPPER"]           = {"name" : names, "color" : self.c }
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+        data['VDW_LOWER']           = {"name" : _names_, "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 25, 10)]}
+        names                       = ["LMAX", "LOC", "KLEINMAN", "BYLANDER"]
+        _names_                     = [x.lower() for x in names]
+        data['ATOMS_UPPER']         = {"name" : names, "color" : self.c }  
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
+        data['ATOMS_LOWER']         = {"name" : _names_, "color" : self.c }  
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(90, 75, 75)]}
+        data['PSEUDO']              = {"name" : pseudo(), "color" : self.c }  
 
         keys                        = list(data.keys())
         data['all_keys']            = keys.copy()

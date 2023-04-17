@@ -33,7 +33,7 @@ def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white"
     # position of the first line 
     LINE = y
     
-    if not data:
+    if not data['input']:
         middle(max_x=max_x, n=max_y-5 ,x=x, y=y, color=color, lang=lang)
         sys.stdout.write(move.LEFT(pos=1000))
         bottom(max_x=max_x, color=color)

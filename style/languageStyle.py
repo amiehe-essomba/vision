@@ -2,6 +2,7 @@ def comment( name : str = "python"):
     if   name in ['mamba', "python", "bash"]    : return {"name" : '#'}
     elif name in ['fortran']                    : return {"name" : "!"}
     elif name in ['c', 'c++']                   : return {"name" : "//"}
+    elif name in ['cpmd']                       : return {"name" : "#"}
     else: return None
     
 def mul_cmt(name : str = "python"):
@@ -26,5 +27,6 @@ def characters(name : str = "python"):
     if   name in ["python"]     : return {"name" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', "~", "[","]",'{','}', "(", ")", '.']}
     elif name in ['mamba']      : return {"name" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', "~", "[","]",'{','}', "(", ")", '.', "$", "?"]}
     elif name in ['c', "c++"]   : return {"name" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', "~", "[","]",'{','}', "(", ")", '.', ";", "#"]}
+    elif name in ["cpmd"]       : return {"name" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', "~", "[","]",'{','}', "(", ")", '.', ";"]}
     else: return {"name" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', "~", "[","]",'{','}', "(", ")", '.', "$", ";", ":"]}
     

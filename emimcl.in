@@ -1,0 +1,53 @@
+&INFO
+[DMIM][NTF2]= BLYP + vdWWannier (20 pairs).
+Input from melt-quenching classical MD.
+V = V_exp - 1%*V_exp
+rho_exp=1.5620 g/cm3
+a_exp = 20.02019250
+a_sim = 19.95324231
+&END
+
+&CPMD
+	OPTIMIZE WAVEFUNCTION
+	INITIALIZE WAVEFUNCTION ATOMS
+	molecular dynamics cp
+	restart wavefunction coordinates
+	restart velocities accumulators nosep nosee
+	restart latest
+
+	quench electrons bo
+	annealing ions
+	0.95
+	TIMESTEP
+	3.0
+	EMASS
+	400.0
+	MAXSTEP
+	30000
+	PRINT coordinates energies FORCES
+	500
+	STORE
+	500
+	PCG MINIMIZE
+	RESTFILES
+	2
+	STRESS TENSOR
+	100
+	CONVERGENCE ORBITALS
+	1.0E-05
+	nose ions
+	300.0  400.0
+	TRAJECTORY SAMPLE xyz
+	5
+	SUBTRACT COMVEL
+	1
+	SUBTRACT ROTVEL
+	1
+	MEMORY BIG
+	distribute fnl on
+	REAL SPACE WFN KEEP
+	VDW WANNIER ON
+	WANNIER TYPE restart VANDERBILT
+	WANNIER OPTIMIZATION SD jacobi  # default are jacobi rotations
+	WANNIER PARAMETER
+&END
