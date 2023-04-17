@@ -3,7 +3,7 @@ from getUserInput   import input
 from configure      import colors, init, clear, state, screenConfig, moveCursor, scroll
 from frame          import frame
 from DataBase       import data
-from header         import header
+from header         import header, formating
 from saving         import save, writing
 from keywords       import words
 import time
@@ -72,7 +72,8 @@ class IDE:
         self.locked                 = False 
         # 
         self.m                      = 0
-        self.max_down               = 3
+        self.max_down               = 2
+        w = 0
         ###########################################################
         self.input, self.size = header.counter( self.if_line )
         self.gama = header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white", dataBase=self.Data, 
@@ -83,9 +84,21 @@ class IDE:
         self.scrollUp, self.scrollDown      = 0, 0
         self.scrollEnter                    = False
         self.insert_is_used                 = False
+        self.scrollDown_counter             = 0
         ###########################################################
-        self.Data['x_y'][self.gama]         = (self.x, self.y)
-        self.if_line, self.if_line_max      = self.gama, self.gama
+        self.Data['x_y'][self.gama]         = (self.x, self.y+self.gama)
+        self.if_line, self.if_line_max = 0, 0
+        self.Data['string']     = self.Data['string_tabular'][self.if_line]
+        self.Data['I_S']        = self.Data['string_tab'][self.if_line]
+        self.Data['input']      = self.Data['liste'][self.if_line]
+        self.Data['index']      = self.Data['tabular'][self.if_line]
+        self.x, self.y          = self.Data['x_y'][self.if_line]
+        self.Data['get']        = self.Data['memory'][self.if_line].copy()
+        self.str_               = self.importation["writing"].copy()
+        self.str_.append("")
+        sys.stdout.write(self.move.TO(self.x, self.y))
+        
+        sys.stdout.flush()
         ########################################################### 
         
         while True:
@@ -112,7 +125,7 @@ class IDE:
                         # saving data <ctrl+s>
                         elif self.char == 19        : 
                             if self.writeData['FileName'] is None: save.saveData(self.writeData).build(self.x, self.y)
-                            else: writing.writeInput(self.writeData['data'], self.writeData['FileName'])
+                            else: writing.writeInput(self.Data['string_tabular'], self.writeData["FileName"])
                             
                         # delecting char <backspace>
                         elif self.char in {127, 8}  :
@@ -165,7 +178,7 @@ class IDE:
                                     else: pass 
                                 # move up
                                 elif next2 == 65:
-                                    if self.if_line > 0:    
+                                    if self.if_line > 0 and self.scrollDown == -10:    
                                         self.if_line           -= 1 
                                         self.y                 -= 1
                                         self.if_line_max       -= 1
@@ -185,10 +198,37 @@ class IDE:
                                         )
                                         
                                         sys.stdout.flush()
-                                    else: pass 
+                                    else: 
+                                        if self.scrollDown  > 0 : 
+                                            if self.y > 0 : self.y   -= 1 
+                                            else: self.y = 0
+                                            
+                                            self.scrollDown         -= 1
+                                            self.input, self.size   = header.counter( self.if_line + 1)
+                                            self.Data['string']     = self.Data['string_tabular'][self.if_line+self.scrollDown]
+                                            self.Data['I_S']        = self.Data['string_tab'][self.if_line+self.scrollDown]
+                                            self.Data['input']      = self.Data['liste'][self.if_line+self.scrollDown]
+                                            self.Data['index']      = self.Data['tabular'][self.if_line+self.scrollDown]
+                                            self.x, self.Y          = self.Data['x_y'][self.if_line+self.scrollDown]
+                                            
+                                            self.Data['get']        = self.Data['memory'][self.if_line+self.scrollDown].copy()
+                                            if self.y > 0 :
+                                                sys.stdout.write( 
+                                                    self.move.TO(x=self.x, y=self.y) + self.init.reset 
+                                                    )
+                                                sys.stdout.flush()
+                                            else:
+                                                formating.formating(data=self.str_, x=self.x, y=self.y, max_x=self.max_x, idd=self.scrollDown,
+                                                                    size=self.size)
+                                                sys.stdout.write(
+                                                self.move.TO(x=self.x, y=4) + self.init.reset 
+                                                )
+                                                sys.stdout.flush()
+                                                
+                                        else: pass 
                                 # move down 
                                 elif next2 == 66: 
-                                    if self.y < self.max_y-self.max_down:
+                                    if self.y < self.max_y-self.max_down-1:
                                         self.y                     += 1
                                         self.if_line               += 1 
                                         self.if_line_max           += 1
@@ -220,7 +260,28 @@ class IDE:
                                         self.move.TO(x=self.x, y=self.y) + self.init.reset 
                                         )
                                         sys.stdout.flush()
-                                    else: pass
+                                    else: 
+                                        if self.gama > (self.max_y-4):
+                                            if self.scrollDown < self.gama - 8:
+                                                self.scrollDown         += 1
+                                                n                       = self.scrollDown
+                                                self.input, self.size   = header.counter( self.if_line + 1)
+                                                self.Data['string']     = self.Data['string_tabular'][self.if_line+self.scrollDown]
+                                                self.Data['I_S']        = self.Data['string_tab'][self.if_line+self.scrollDown]
+                                                self.Data['input']      = self.Data['liste'][self.if_line+self.scrollDown]
+                                                self.Data['index']      = self.Data['tabular'][self.if_line+self.scrollDown]
+                                                self.x, self.y          = self.Data['x_y'][self.if_line+self.scrollDown]
+                                                self.y                  = self.max_y-self.max_down-1
+                                                self.Data['get']        = self.Data['memory'][self.if_line+self.scrollDown].copy()
+                                                formating.formating(data=self.str_, x=self.x, y=self.y, max_x=self.max_x, idd=n,
+                                                                    size=self.size)
+                                                sys.stdout.write(
+                                                self.move.TO(x=self.x, y=self.y) + self.init.reset 
+                                                )
+                                                
+                                                sys.stdout.flush()
+                                            else: pass
+                                        else: pass
                                 # ctrl-up is handled 
                                 elif next2 == 49:
                                     if self.str_drop_down:
@@ -293,7 +354,7 @@ class IDE:
                             else: pass
                             ######################################################################################
                             # moving cursor 
-                            if self.y < (self.max_y-self.max_down):
+                            if self.y < (self.max_y-self.max_down+self.scrollDown_counter):
                                 self.y      += 1
                                 self.x       = self.size + 1
                                 sys.stdout.write(self.move.TO(x=self.x, y=self.y))
@@ -318,19 +379,27 @@ class IDE:
                                 self.Data['tabular'].insert(self.if_line, self.Data['index'] )
                                 self.Data['x_y'].insert(self.if_line, (self.x, self.y))
                                 self.Data['memory'].insert(self.if_line, self.Data['get'])
-                                sys.stdout.write( self.clear.screen(0) + self.move.LEFT(1000))
-                                w = header.Insert(data=self.Data['liste'][self.if_line : ].copy(), x=self.x, y=self.y, max_x=self.max_x,
-                                            max_y=self.max_y, lang=self.lang, Color=self.color,locked=self.locked, m=self.m)
+                                
+                                w = len(self.Data['liste'][self.if_line: ])
+                                if w+self.y < (self.max_y-self.max_down): 
+                                    self.scrollUp += 0
+                                    w = 0
+                                else: 
+                                    if self.y < self.max_y-self.max_down: 
+                                        self.scrollUp += ((w+self.y) - (self.max_y-self.max_down))
+                                        w = ((w+self.y) - (self.max_y-self.max_down))
+                                    else:
+                                        w = ((w+self.y) - (self.max_y-self.max_down))
+                                        self.scrollUp += ((w+self.y) - (self.max_y-self.max_down))
+                                if w == 0: pass 
+                                else:  sys.stdout.write( self.scroll.UP(w) )
                                 sys.stdout.flush()
                                 self.insert_is_used = True
-                                self.scrollUp += w
-                                self.scrollEnter = True
-                                
-                                if (len(self.Data['liste'][self.if_line : ])+self.y) < (self.max_y - self.max_down): pass 
-                                else:
-                                    w = ( (len(self.Data['liste'][self.if_line : ])+self.y) - (self.max_y - self.max_down) )
+                                self.scrollEnter    = True
                             #######################################################################################
+                        
                         # indentation Tab
+                        
                         elif self.char == 9         :
                             self.tt                  = ' ' * 4
                             self.Data['string']      =  self.Data['string'][ : self.Data["I_S"] ] + chr( self.char ) + self.Data['string'][ self.Data["I_S"] : ]
@@ -364,30 +433,11 @@ class IDE:
                             self.move.TO(x=self.size+1, y=self.y) + self.c_bg+ __string__ + 
                             self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
                             )
-                        
+                    
                         # replace the cussor 
-                        if self.Data['I_S'] > 0: sys.stdout.write(self.move.RIGHT(pos=(self.x)) )
+                        if self.Data['I_S'] > 0: sys.stdout.write(self.move.TO(self.x, self.y) )
                         else: pass 
                         
-                        if self.scrollUp == 0:
-                            sys.stdout.write( self.move.TO(y=self.max_y-2, x=self.size) )
-                            header.line(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y-2, lang=self.lang)
-                            if self.insert_is_used is False: pass 
-                            else: 
-                                sys.stdout.write(self.move.TO(x=self.x, y=self.max_y-1))
-                                sys.stdout.write(self.clear.screen(0)+self.move.LEFT(1000))
-                                header.bottom(self.max_x)
-                                sys.stdout.write(self.move.TO(x=self.x, y=self.y))
-                        else:
-                            sys.stdout.write( self.move.TO(y=self.max_y-2, x=self.size) )
-                            sys.stdout.write(self.clear.screen(0))
-                            header.line(x=self.x, y=self.y , max_x=self.max_x, max_y=self.max_y-2,scrollUp=self.scrollUp, lang=self.lang)
-                            if self.scrollEnter is True:
-                                sys.stdout.write(self.move.DOWN(2)+self.move.LEFT(1000))
-                                header.bottom(self.max_x)
-                                sys.stdout.write(self.move.TO(x=self.x, y=self.y))
-                                self.scrollEnter = False
-                            else: self.scrollEnter = False
                         sys.stdout.flush()
                         
                         self.Data['string_tabular'][self.if_line] = self.Data['string']
@@ -396,6 +446,7 @@ class IDE:
                         self.Data['tabular'][self.if_line]        = self.Data['index']
                         self.Data['x_y'][self.if_line]            = (self.x, self.y) 
                         self.Data['memory'][self.if_line]         = self.Data['get'].copy() 
+                        
                 else: pass 
             except KeyboardInterrupt: 
                 # breaking whyle loop 

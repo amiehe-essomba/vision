@@ -13,30 +13,34 @@ def readFile(fileName, termios : str , language :  str ):
     locked                 = False 
     m                      = 0
     
-    with open(fileName) as file:
-        for line in file.readlines():  
-            if line[-1] == '\n': line = line[:-1]
-            else: pass
-            if termios == "none": 
-                data["writing"].append( line.replace("\t", " " * 4) )
-                data["input"].append( line.replace("\t", " " * 4) )
-                data["string"].append( line)
-            else:
-                __line__, __color__ = words.words(string=line.replace("\t", " " * 4), color=color, language=language ).final(locked=locked, m=m)
-                data["writing"].append( __line__ )
-                data["input"].append( line.replace("\t", " " * 4) )
-                data["string"].append( line.replace(" " * 4, '\t') )
-                #######################################
-                # changing color or reset color  
-                if __color__["locked"] is False:  
-                    locked = False
-                    m      = 0
-                else: 
-                    color  = __color__["color"]
-                    locked = True
-                    m      = __color__["rest"]
-                #######################################
-    file.close()
+    try:
+        with open(fileName) as file:
+            for line in file.readlines():  
+                if line[-1] == '\n': line = line[:-1]
+                else: pass
+                if termios == "none": 
+                    data["writing"].append( line.replace("\t", " " * 4) )
+                    data["input"].append( line.replace("\t", " " * 4) )
+                    data["string"].append( line)
+                else:
+                    __line__, __color__ = words.words(string=line.replace("\t", " " * 4), color=color, language=language ).final(locked=locked, m=m)
+                    data["writing"].append( __line__ )
+                    data["input"].append( line.replace("\t", " " * 4) )
+                    data["string"].append( line.replace(" " * 4, '\t') )
+                    #######################################
+                    # changing color or reset color  
+                    if __color__["locked"] is False:  
+                        locked = False
+                        m      = 0
+                    else: 
+                        color  = __color__["color"]
+                        locked = True
+                        m      = __color__["rest"]
+                    #######################################
+        file.close()
+    except FileNotFoundError: 
+        data = {"writing" : [""], "string" : [""], "input" : [""]}
+    
     return data 
 
 def transform(fileName, termios : str , language :  str ):

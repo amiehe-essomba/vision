@@ -2,7 +2,7 @@ import os, sys
 import platform
 import mainLinux
 import mainWin
-from configure      import clear
+from configure      import clear, moveCursor
 from pathlib        import Path
 from fileType       import fileType as FT
 from fileType       import readfile as RT
@@ -41,22 +41,23 @@ def visionEditor():
                     
                     #if os.stat(name) == 0 :  data = RT.readFile(fileName=name, termios=termios, language=language)
                     #else:  data = {} 
+                    
                     data                    = RT.readFile(fileName=name, termios=termios, language=language)
                     writeData["FileName"]   = arg[1]
                     writeData["data"]       = data['string'].copy()
                     writeData["action"]     = True
+                    
                 else: termios, language = "none", "unknown"
             else : termios, language = "none", "unknown"
         elif len(arg) == 3 : pass 
         
-        if   system == "Windows"    : mainWin.IDE(termios=termios, lang=language).VISION(importation=data, writeData = arg[1], path = root)
-        elif system == "Linux"      : mainLinux.IDE(termios=termios, lang=language).VISION(importation=data, writeData = arg[1], path = root)
+        if   system == "Windows"    : mainWin.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)
+        elif system == "Linux"      : mainLinux.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)
         else: pass 
         
     else: pass
     
     
 if __name__ == '__main__':
-    sys.stdout.write(clear.clear.screen(2))
+    sys.stdout.write(clear.clear.screen(2)+moveCursor.cursor.TO(0,0))
     visionEditor()
-        

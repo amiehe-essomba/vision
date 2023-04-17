@@ -30,18 +30,24 @@ def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white"
     # currently cursor position (x, y)    
     x, y = screenConfig.cursor()
     
+    # position of the first line 
+    LINE = y
+    
     if not data:
-        middle(max_x=max_x, n=max_y-5 ,x=x, y=y, color=color)
+        middle(max_x=max_x, n=max_y-5 ,x=x, y=y, color=color, lang=lang)
         sys.stdout.write(move.LEFT(pos=1000))
         bottom(max_x=max_x, color=color)
-        sys.stdout.write(move.TO(x=size+1, y=6))
+        sys.stdout.write(move.TO(x=size+1, y=4))
         sys.stdout.write(action.save)
         N = 0
     else: 
-        N = writingData(max_x=max_x, n=max_y-5 ,x=x, y=y, color=color, dataBase=dataBase, data=data, lang=lang)
+        N, scrolledUp = writingData(max_x=max_x, n=max_y-LINE, x=x, y=y, color=color, dataBase=dataBase, data=data, lang=lang)
         sys.stdout.write(move.LEFT(pos=1000))
         bottom(max_x=max_x, color=color)
-        sys.stdout.write(move.UP(pos=max_y-N-6)+move.RIGHT(pos=size))
+        
+        if scrolledUp is True: sys.stdout.write(move.UP(pos=3)+move.RIGHT(pos=size))
+        else: sys.stdout.write(move.TO(x=size+1, y=LINE))
+        
         sys.stdout.write(action.save)
         add.add(dataBase)
         
@@ -61,10 +67,14 @@ def writingData(max_x: int, n : int, x : int, y : int, color : str = "white",
     string      = data['string'].copy()
     Input       = data["input"].copy()
     N           = len(Input)
-    if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
-    else: c = bold + colors.fg.rbg(0, 0, 0)
-    input, length = counter(n=0, color=color)
     
+    if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
+    else: c  = bold + colors.fg.rbg(0, 0, 0)
+    input, length       = counter(n=0, color=color)
+    scrolledUp          = False 
+    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset 
+    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"{x}, {N+1}"+ reset 
+
     for i in range(N-1):
         dataBase['memory'].append( [] )
         dataBase['tabular'].append( [] )
@@ -79,34 +89,68 @@ def writingData(max_x: int, n : int, x : int, y : int, color : str = "white",
         
         checkFile.check(data=string[i], dataBase=dataBase, x=length+1, y=y, w=i)
         
-        sys.stdout.write(move_left.LEFT(pos=1000))
-        sys.stdout.write(
-            input + c_bg + " " * (max_x - (length+2) ) + reset + 
-            position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
-            position.TO(x=length+1, y=y) + c_bg + print_data[i] + reset + "\n"
-            )
-        y += 1
-    
-    if N == n-1: pass 
-    else:
-        for i in range(n-1-N):
+        if i < n-3 :
             sys.stdout.write(move_left.LEFT(pos=1000))
             sys.stdout.write(
                 input + c_bg + " " * (max_x - (length+2) ) + reset + 
                 position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
-                position.TO(x=x, y=y) + reset + "\n"
+                position.TO(x=length+1, y=y) + c_bg + print_data[i] + reset + "\n"
+                )
+        elif i == n -3 :
+            sys.stdout.write(move_left.LEFT(pos=1000))
+            sys.stdout.write(
+                input + c_bg + " " * (max_x - (length+2) ) + reset + 
+                position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
+                position.TO(x=length+1, y=y) + c_bg +  print_data[i] + reset + "\n"
+                )
+        else: pass
+        y += 1
+    
+    if N > (n-2): 
+        scrolledUp = True
+        sys.stdout.write(
+            input + c_bg + " " * (max_x - (length+2) ) + reset + 
+            position.TO(x=max_x, y=n+2) + c + f"{asc['v']}" +
+            position.TO(x=x, y=n+2) + reset + position.TO(x=length+2, y=n+2)+ _lang_+
+            position.TO(x=max_x-10, y=n+2) + magenta + position.DOWN(1)
+            )
+    elif N == (n-2):
+        scrolledUp = True
+        h = 2
+        for i in range(h):
+            sys.stdout.write(
+                input + c_bg + " " * (max_x - (length+2) ) + reset + 
+                position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
+                position.TO(x=x, y=y) + reset + "\n" 
+                )
+            y += 1
+        sys.stdout.write(position.TO(x=length+2, y=y-1)+ _lang_+
+            position.TO(x=max_x-10, y=y-1) + magenta +  position.DOWN(1)
+        )
+    else:
+        n -= (N+1)
+        for i in range(n):
+            sys.stdout.write(move_left.LEFT(pos=1000))
+            sys.stdout.write(
+                input + c_bg + " " * (max_x - (length+2) ) + reset + 
+                position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
+                position.TO(x=x, y=y) + reset + "\n" if i != n-1 else ""
                 )
             y += 1
 
-    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"{x}, {N+1}"+ reset 
-    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset 
-    sys.stdout.write(position.TO(x=length+2, y=y-2)+ _lang_+
-        position.TO(x=max_x-10, y=y-2) + magenta +  position.TO(x=x, y=y-1) 
-    )
+        sys.stdout.write(
+            input + c_bg + " " * (max_x - (length+2) ) + reset + 
+            position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
+            position.TO(x=x, y=y) + reset
+            )
+        sys.stdout.write(position.TO(x=length+2, y=y-1)+ _lang_+
+            position.TO(x=max_x-10, y=y-1) + magenta + 
+            position.TO(x=max_x, y=y-1) + c + f"{asc['v']}" + position.DOWN(1)
+        )
     
-    return N 
+    return N, scrolledUp
 
-def middle(max_x: int, n : int, x : int, y : int, color : str = "white"):
+def middle(max_x: int, n : int, x : int, y : int, color : str = "white", lang : str = "unknown"):
     asc         = frame.frame(custom=True)
     bold        = init.init.bold
     reset       = init.init.reset
@@ -114,13 +158,14 @@ def middle(max_x: int, n : int, x : int, y : int, color : str = "white"):
     position    = moveCursor.cursor
     c_bg        = colors.bg.rgb(10, 10, 10)
     magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+"1, 1"+ reset   
+    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset 
     
     if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
     else: c = bold + colors.fg.rbg(0, 0, 0)
     
     input, length = counter(n=0, color=color)
     
-    for i in range(n-1): 
+    for i in range(n+1): 
         sys.stdout.write(move_left.LEFT(pos=1000))
         sys.stdout.write(
             input + c_bg + " " * (max_x - (length+2) ) + reset + 
@@ -129,7 +174,9 @@ def middle(max_x: int, n : int, x : int, y : int, color : str = "white"):
             )
         y += 1
     sys.stdout.write(
-        position.TO(x=max_x-10, y=y-2) + magenta +  position.TO(x=x, y=y-1) 
+        position.TO(x=max_x-10, y=y-2) + magenta + 
+        position.TO(x=length+2, y=y-2) + _lang_ + 
+        position.TO(x=x, y=y-1) 
     )
     
 def counter(n :int , color : str = "white"):
@@ -176,7 +223,7 @@ def line(x : int, y : int, max_x : int, max_y : int, scrollUp : int = 0, lang : 
     input, length   = counter(n=1)
     asc             = frame.frame(custom=True)
     c_bg            = colors.bg.rgb(10, 10, 10)
-    magenta         = init.init.bold + init.init.blink + c_bg + colors.fg.rbg(255, 0, 255) + f"{x-2}, {y+scrollUp-5}" + reset
+    magenta         = init.init.bold + init.init.blink + c_bg + colors.fg.rbg(255, 0, 255) + f"{x-2}, {y+scrollUp-3}" + reset
     c               = init.init.bold + colors.fg.rbg(255, 255, 255)
     size            = len(f"{x-2}, {y+scrollUp-5}")
     _lang_          = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset 
@@ -199,9 +246,8 @@ def line(x : int, y : int, max_x : int, max_y : int, scrollUp : int = 0, lang : 
             position.TO(x=max_x-10-n, y=max_y) + magenta +  position.TO(x=x, y=y) 
         )
     sys.stdout.flush()
-    
-    
-def Insert(data, x : int, y : int, max_x : int, max_y : int, lang : str = "unknwon", Color : str ="", locked : bool=False, m : int = 0):
+        
+def Insert(data, x : int, y : int, max_x : int, max_y : int, lang : str = "unknwon", Color : str ="", locked : bool=False, m : int = 0, line : int=0):
     asc         = frame.frame(custom=True)
     bold        = init.init.bold
     reset       = init.init.reset
@@ -211,6 +257,8 @@ def Insert(data, x : int, y : int, max_x : int, max_y : int, lang : str = "unknw
     N           = len(data)
     color       = "white"
     X, Y        = x, y
+    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"1, {line+1}"+ reset 
+    _lang_      = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset  
     
     if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
     else: c = bold + colors.fg.rbg(0, 0, 0)
@@ -220,29 +268,12 @@ def Insert(data, x : int, y : int, max_x : int, max_y : int, lang : str = "unknw
     for i in range(N):
         __line__, __color__ = words.words(string=data[i], color=Color, language=lang ).final(locked=locked, m=m)
         sys.stdout.write(position.LEFT(pos=1000))
-        if y < (max_y-3):
-            sys.stdout.write(
-                input + c_bg + " " * (max_x - (length+2) ) + reset + 
-                position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
-                position.TO(x=length+1, y=y) + c_bg + __line__ + reset + "\n"
-                )
-        else:
-            sys.stdout.write(
-                input + c_bg + " " * (max_x - (length+2) ) + reset + 
-                position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
-                position.TO(x=length+1, y=y) + c_bg + __line__ + reset + "\n"
-                )
-            scrollUp = 1
-            """
-            #sys.stdout.write( scroll.scrolled.UP(1) )
-            sys.stdout.write( position.TO(y=max_y-2, x=length) )
-            sys.stdout.write(clear.clear.screen(0))
-            line(x=x, y=y, max_x=max_x, max_y=max_y,scrollUp=scrollUp, lang=lang)
-            sys.stdout.write(position.DOWN(2)+position.LEFT(1000))
-            bottom(max_x)
-            sys.stdout.write(position.TO(x=x, y=y))
-            """
-        y += 1
+        sys.stdout.write(
+            input + c_bg + " " * (max_x - (length+2) ) + reset + 
+            position.TO(x=max_x, y=Y+i) + c + f"{asc['v']}" +
+            position.TO(x=length+1, y=Y+i) + c_bg + __line__ + 
+            position.TO(x=length+1, y=Y+i)+reset+'\n' if i != N-1 else ""
+            )
         #######################################
         # changing color or reset color  
         if __color__["locked"] is False:  
@@ -253,20 +284,47 @@ def Insert(data, x : int, y : int, max_x : int, max_y : int, lang : str = "unknw
             locked = True
             m      = __color__["rest"]
         #######################################
-    n = max_y
-    
-    if n-3 < y : pass 
-    else:
-        for i in range(n-y-2):
+        XX, YY = screenConfig.cursor()
+        
+        if YY <= max_y-3: 
+            n = (max_y-3)-YY + 2
+            for i in range(n):
+                i -= 1 
+                sys.stdout.write(move_left.LEFT(pos=1000))
+                sys.stdout.write(
+                    input + c_bg + " " * (max_x - (length+2) ) + reset + 
+                    position.TO(x=max_x, y=YY+i) + c + f"{asc['v']}" +
+                    position.TO(x=x, y=YY+i) + reset + "\n" if  i != n-1 else "" 
+                    )
+            XX, YY = screenConfig.cursor()
             sys.stdout.write(move_left.LEFT(pos=1000))
             sys.stdout.write(
                 input + c_bg + " " * (max_x - (length+2) ) + reset + 
-                position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
-                position.TO(x=x, y=y) + reset + "\n"
+                position.TO(x=max_x, y=YY) + c + f"{asc['v']}" +
+                position.TO(x=max_x-10, y=YY) + magenta + 
+                position.TO(x=length+2, y=YY) + _lang_ 
+                + reset 
                 )
-            y += 1
-    sys.stdout.write(
-        position.TO(x=X, y=Y)
-    )
+        else: pass
+                
+def subTitle(max_x:int, x:int, y:int, lang : str="", scrollUp : int = 0):
+    bold            = init.init.bold
+    position        = moveCursor.cursor
+    reset           = init.init.reset
+    input, length   = counter(n=1)
+    asc             = frame.frame(custom=True)
+    c_bg            = colors.bg.rgb(10, 10, 10)
+    magenta         = init.init.bold + init.init.blink + c_bg + colors.fg.rbg(255, 0, 255) + f"{x-2}, {y+scrollUp-5}" + reset
+    c               = init.init.bold + colors.fg.rbg(255, 255, 255)
+    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"{x}, {y}"+ reset 
+    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset  
     
-    return scrollUp
+    sys.stdout.write(
+    input + c_bg + " " * (max_x - (length+2) ) + reset + 
+    position.TO(x=max_x, y=y) + c + f"{asc['v']}" +
+    position.TO(x=length+1, y=y) + reset
+    )
+    sys.stdout.write(position.TO(x=length+2, y=y)+ _lang_+
+        position.TO(x=max_x-10, y=y) + magenta +  position.TO(x=x, y=y)+'\n'+position.LEFT(1000)
+    )
+    sys.stdout.flush()

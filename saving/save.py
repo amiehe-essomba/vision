@@ -17,6 +17,7 @@ def bottom(max_x :int = 0, color : str = "white"):
         f"{asc['h']}" + f"{asc['h']}" * (max_x - 10) + 
         f"{asc['dr']}" + reset + "\n"
         )
+
 def case():
     lower_case = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
     upper_case = lower_case.upper().split()
