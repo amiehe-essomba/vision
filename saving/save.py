@@ -176,18 +176,18 @@ class saveData:
             else: 
                 if  self.i < self.max_x - (2 + self.length+1):
                     if chr(self.char) in case() :
-                        self.string = self.string[ : self.i] + chr(self.char) + self.string[self.i : ]
-                        self.i              += 1 
-                        self.counterR       = len(self.string)
-                        self.counterL       = 0
-                        self._x_, self._y_  = screenConfig.cursor()
+                        self.string              = self.string[ : self.i] + chr(self.char) + self.string[self.i : ]
+                        self.i                  += 1 
+                        self.counterR            = len(self.string)
+                        self.counterL            = 0
+                        self._x_, self._y_       = screenConfig.cursor()
                     else: pass
                 else: 
                     if chr(self.char) in case() :
-                        self.string      = self.string[ : self.i] + chr(self.char) + self.string[self.i : ]
-                        self.i          += 1 
-                        self.counterL   += 1
-                        self.counterR    = len(self.string)
+                        self.string              = self.string[ : self.i] + chr(self.char) + self.string[self.i : ]
+                        self.i                  += 1 
+                        self.counterL           += 1
+                        self.counterR            = len(self.string)
                     else: pass
             
             sys.stdout.write(self.move.LEFT(pos=1000))

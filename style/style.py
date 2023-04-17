@@ -33,7 +33,7 @@ class config:
         # initialization 
         self.text = ""
         
-        if language in ['python', 'mamba',  "c", "c++"] : 
+        if language in ['python', 'mamba',  "c", "c++", "cpmd"] : 
             # default text color white 
             if   self.termios == "monokai":  self.text = self.init.bold+cc+self.color_fg.rbg(255, 102, 0) + char + self.init.reset
             elif self.termios == "orion"  :  self.text = self.init.bold+cc+self.color_fg.rbg(255, 102, 0) + self.init.blink+ char + self.init.reset
@@ -45,7 +45,7 @@ class config:
         # initialization 
         self.text = ""
         
-        if language in ['python', 'mamba',  "c", "c++"] : 
+        if language in ['python', 'mamba',  "c", "c++", "cpmd"] : 
             # default text color white 
             if   self.termios == "monokai":  self.text = self.init.bold+cc+self.color_fg.rbg(255, 0, 0) + char + self.init.reset
             elif self.termios == "orion"  :  self.text = self.init.bold+cc+self.color_fg.rbg(255, 0, 0) + self.init.blink+ char + self.init.reset
@@ -57,7 +57,7 @@ class config:
         # initialization 
         self.text = ""
         
-        if language in ['python', 'mamba', "c", "c++"] : 
+        if language in ['python', 'mamba', "c", "c++", "cpmd"] : 
             # default text color white 
             if not color:
                 if   self.termios == "monokai":  self.text = self.init.bold+cc+self.color_fg.rbg(255, 153, 204) + char + self.init.reset
@@ -73,7 +73,7 @@ class config:
         # initialization 
         self.text = ""
         
-        if language in ['python', 'mamba', "c", "c++"] : 
+        if language in ['python', 'mamba', "c", "c++", "cpmd"] : 
             # default text color white 
             if   self.termios == "monokai":  self.text = self.init.bold+cc+self.color_fg.rbg(255, 0, 255) + char + self.init.reset
             elif self.termios == "orion"  :  self.text = self.init.bold+cc+self.color_fg.rbg(255, 0, 255) + self.init.blink+ char + self.init.reset
@@ -85,7 +85,7 @@ class config:
         # initialization 
         self.text = ""
         
-        if language in ['python', 'mamba', "c", "c++"] : 
+        if language in ['python', 'mamba', "c", "c++", "cpmd"] : 
             # default text color white 
             if language in ['c', 'c++']: self.c = self.init.bold+cc+self.color_fg.rbg(255, 0, 0)
             else: self.c = self.init.bold+cc+self.color_fg.rbg(153, 153, 255)
@@ -100,7 +100,7 @@ class config:
         # initialization 
         self.text = ""
         
-        if language in ['python', 'mamba',"c", "c++"] : 
+        if language in ['python', 'mamba',"c", "c++", "cpmd"] : 
             # default text color white 
             if   self.termios == "monokai":  
                 if char in ['(', ')']: self.text = self.init.bold+cc+self.color_fg.rbg(0, 255, 0) + char + self.init.reset
@@ -129,7 +129,7 @@ class config:
         # initialization 
         self.text = ""
         
-        if language in ['python', 'mamba', "c", "c++"] : 
+        if language in ['python', 'mamba', "c", "c++", "cpmd"] : 
             # default text color white 
             if   self.termios == "monokai":  
                 if char == ":"  :  self.text = self.init.bold+cc+self.color_fg.rbg(255, 255, 153) + char + self.init.reset
@@ -143,7 +143,7 @@ class config:
         # initialization 
         self.text = ""
         
-        if language in ['python', 'mamba', "c", "c++"] : 
+        if language in ['python', 'mamba', "c", "c++", "cpmd"] : 
             # default text color white 
             if   self.termios == "monokai":  self.text = self.init.bold+cc+self.color_fg.rbg(255, 255, 255) + char + self.init.reset
             elif self.termios == "orion"  :  self.text = self.init.bold+cc+self.color_fg.rbg(255, 255, 255) + self.init.blink+ char + self.init.reset

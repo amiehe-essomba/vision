@@ -18,6 +18,230 @@
         "documentation": {}
     },
     {
+        "label": "words",
+        "importPath": "keywords      ",
+        "description": "keywords      ",
+        "isExtraImport": true,
+        "detail": "keywords      ",
+        "documentation": {}
+    },
+    {
+        "label": "words",
+        "importPath": "keywords      ",
+        "description": "keywords      ",
+        "isExtraImport": true,
+        "detail": "keywords      ",
+        "documentation": {}
+    },
+    {
+        "label": "words",
+        "importPath": "keywords      ",
+        "description": "keywords      ",
+        "isExtraImport": true,
+        "detail": "keywords      ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
         "label": "os,",
         "kind": 6,
         "isExtraImport": true,
@@ -27,12 +251,76 @@
         "documentation": {}
     },
     {
-        "label": "sys",
+        "label": "os",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
         "documentation": {}
     },
     {
@@ -84,11 +372,84 @@
         "documentation": {}
     },
     {
+        "label": "scroll",
+        "importPath": "configure ",
+        "description": "configure ",
+        "isExtraImport": true,
+        "detail": "configure ",
+        "documentation": {}
+    },
+    {
         "label": "frame",
         "importPath": "frame     ",
         "description": "frame     ",
         "isExtraImport": true,
         "detail": "frame     ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame     ",
+        "description": "frame     ",
+        "isExtraImport": true,
+        "detail": "frame     ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame     ",
+        "description": "frame     ",
+        "isExtraImport": true,
+        "detail": "frame     ",
+        "documentation": {}
+    },
+    {
+        "label": "header",
+        "importPath": "header    ",
+        "description": "header    ",
+        "isExtraImport": true,
+        "detail": "header    ",
+        "documentation": {}
+    },
+    {
+        "label": "header",
+        "importPath": "header    ",
+        "description": "header    ",
+        "isExtraImport": true,
+        "detail": "header    ",
+        "documentation": {}
+    },
+    {
+        "label": "checkFile",
+        "importPath": "header    ",
+        "description": "header    ",
+        "isExtraImport": true,
+        "detail": "header    ",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "importPath": "header    ",
+        "description": "header    ",
+        "isExtraImport": true,
+        "detail": "header    ",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "words",
+        "importPath": "keywords  ",
+        "description": "keywords  ",
+        "isExtraImport": true,
+        "detail": "keywords  ",
         "documentation": {}
     },
     {
@@ -113,182 +474,6 @@
         "description": "Cython.Build",
         "isExtraImport": true,
         "detail": "Cython.Build",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "clear",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "state",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "screenConfig",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "moveCursor",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "scroll",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "clear",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "state",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "screenConfig",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "moveCursor",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "scroll",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "clear",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "state",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "screenConfig",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "moveCursor",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
         "documentation": {}
     },
     {
@@ -364,6 +549,22 @@
         "documentation": {}
     },
     {
+        "label": "save",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
         "label": "sys,",
         "kind": 6,
         "isExtraImport": true,
@@ -397,6 +598,22 @@
         "documentation": {}
     },
     {
+        "label": "formating",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "counter",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
         "label": "header",
         "importPath": "header        ",
         "description": "header        ",
@@ -405,11 +622,119 @@
         "documentation": {}
     },
     {
-        "label": "words",
-        "importPath": "keywords      ",
-        "description": "keywords      ",
+        "label": "formating",
+        "importPath": "header        ",
+        "description": "header        ",
         "isExtraImport": true,
-        "detail": "keywords      ",
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "counter",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "platform",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "platform",
+        "description": "platform",
+        "detail": "platform",
+        "documentation": {}
+    },
+    {
+        "label": "mainLinux",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mainLinux",
+        "description": "mainLinux",
+        "detail": "mainLinux",
+        "documentation": {}
+    },
+    {
+        "label": "mainWin",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mainWin",
+        "description": "mainWin",
+        "detail": "mainWin",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure\t ",
+        "description": "configure\t ",
+        "isExtraImport": true,
+        "detail": "configure\t ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure\t ",
+        "description": "configure\t ",
+        "isExtraImport": true,
+        "detail": "configure\t ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure\t ",
+        "description": "configure\t ",
+        "isExtraImport": true,
+        "detail": "configure\t ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure\t ",
+        "description": "configure\t ",
+        "isExtraImport": true,
+        "detail": "configure\t ",
+        "documentation": {}
+    },
+    {
+        "label": "fileType",
+        "importPath": "fileType\t  ",
+        "description": "fileType\t  ",
+        "isExtraImport": true,
+        "detail": "fileType\t  ",
+        "documentation": {}
+    },
+    {
+        "label": "readfile",
+        "importPath": "fileType\t  ",
+        "description": "fileType\t  ",
+        "isExtraImport": true,
+        "detail": "fileType\t  ",
+        "documentation": {}
+    },
+    {
+        "label": "fileType",
+        "importPath": "fileType\t  ",
+        "description": "fileType\t  ",
+        "isExtraImport": true,
+        "detail": "fileType\t  ",
+        "documentation": {}
+    },
+    {
+        "label": "readfile",
+        "importPath": "fileType\t  ",
+        "description": "fileType\t  ",
+        "isExtraImport": true,
+        "detail": "fileType\t  ",
         "documentation": {}
     },
     {
@@ -566,6 +891,33 @@
         "documentation": {}
     },
     {
+        "label": "file",
+        "kind": 2,
+        "importPath": "fileType.fileType",
+        "description": "fileType.fileType",
+        "peekOfCode": "def file(FileName : str = \"\"):\n    # get extension\n    ext = FileName.split(\".\")\n    if len(ext) >= 2:\n        ext = ext[-1]\n        # python extention \n        if   ext == \"py\"            : return \"python\"\n        # R extension \n        elif ext in ['r', \"R\"]      : return \"r\"\n        # black mamba extention ",
+        "detail": "fileType.fileType",
+        "documentation": {}
+    },
+    {
+        "label": "readFile",
+        "kind": 2,
+        "importPath": "fileType.readfile",
+        "description": "fileType.readfile",
+        "peekOfCode": "def readFile(fileName, termios : str , language :  str ):\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # storing data \n    data                   = {\"writing\" : [], \"string\" : [], \"input\" : []}\n    locked                 = False ",
+        "detail": "fileType.readfile",
+        "documentation": {}
+    },
+    {
+        "label": "transform",
+        "kind": 2,
+        "importPath": "fileType.readfile",
+        "description": "fileType.readfile",
+        "peekOfCode": "def transform(fileName, termios : str , language :  str ):\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # storing data \n    data                   = {\"writing\" : [], \"string\" : [], \"input\" : []}\n    locked                 = False ",
+        "detail": "fileType.readfile",
+        "documentation": {}
+    },
+    {
         "label": "ascii",
         "kind": 2,
         "importPath": "frame.frame",
@@ -620,11 +972,56 @@
         "documentation": {}
     },
     {
+        "label": "add",
+        "kind": 2,
+        "importPath": "header.add",
+        "description": "header.add",
+        "peekOfCode": "def add(dataBase):         \n    dataBase['string']  = \"\"\n    dataBase['input']   = \"\" \n    dataBase['I_S']     = 0\n    dataBase[\"index\"]   = 0 \n    dataBase['get']     = []\n    dataBase['memory'].append( dataBase['get'] )\n    dataBase['tabular'].append( dataBase['index'] )\n    dataBase['string_tab'].append( dataBase['I_S'] )\n    dataBase['liste'].append( dataBase['input'] )",
+        "detail": "header.add",
+        "documentation": {}
+    },
+    {
+        "label": "check",
+        "kind": 2,
+        "importPath": "header.checkFile",
+        "description": "header.checkFile",
+        "peekOfCode": "def check(data, dataBase, x, y, w):\n    idd = 0\n    for s in data:\n        if s == '\\t': \n            idd += 4\n            dataBase['get'].append([x for x in range(4)])\n        else:\n            idd += 1\n            dataBase['get'].append(1)\n    dataBase['memory'][w]           = dataBase['get'] ",
+        "detail": "header.checkFile",
+        "documentation": {}
+    },
+    {
+        "label": "count",
+        "kind": 2,
+        "importPath": "header.counter",
+        "description": "header.counter",
+        "peekOfCode": "def count(number : int , x : int , y : int , max_x : int, max_y : int, lang : str = 'python'):\n    move                = moveCursor.cursor\n    asc                 = frame.frame(custom=True)\n    bold                = init.init.bold\n    reset               = init.init.reset\n    c_bg                = colors.bg.rgb(10, 10, 10)  \n    c                   = bold + colors.fg.rbg(255, 255, 255)\n    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f\"{lang} programm\"+ reset \n    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f\"{x}, {number+1}\"+ reset \n    input, length       = header.counter(n=0)",
+        "detail": "header.counter",
+        "documentation": {}
+    },
+    {
+        "label": "formating",
+        "kind": 2,
+        "importPath": "header.formating",
+        "description": "header.formating",
+        "peekOfCode": "def formating(LINE : int = 4, data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, MAX  = None):\n    move        = moveCursor.cursor\n    N           = max_y-(LINE+1) \n    Y           = LINE\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)\n    input, length       = header.counter(n=0)",
+        "detail": "header.formating",
+        "documentation": {}
+    },
+    {
         "label": "title",
         "kind": 2,
         "importPath": "header.header",
         "description": "header.header",
-        "peekOfCode": "def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = \"white\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    cc          = init.init.bold + colors.fg.rbg(0, 255, 255)\n    string      = \"VISION EDITOR V-1.0.0\".center(max_x - 2)\n    move        = moveCursor.cursor \n    action      = state.save\n    blink       = init.init.blink+init.init.underline\n    if color == \"white\": c   = colors.fg.rbg(255, 255, 255)",
+        "peekOfCode": "def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = \"white\",  \n                                dataBase : dict = {}, data : dict = {}, lang=\"unknwon\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    cc          = init.init.bold + colors.fg.rbg(0, 255, 255)\n    string      = \"VISION EDITOR V-1.0.0\".center(max_x - 2)\n    move        = moveCursor.cursor \n    action      = state.save\n    blink       = init.init.blink+init.init.underline",
+        "detail": "header.header",
+        "documentation": {}
+    },
+    {
+        "label": "writingData",
+        "kind": 2,
+        "importPath": "header.header",
+        "description": "header.header",
+        "peekOfCode": "def writingData(max_x: int, n : int, x : int, y : int, color : str = \"white\", \n                dataBase : dict = {}, data : dict = {}, lang : str = \"\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    move_left   = moveCursor.cursor \n    position    = moveCursor.cursor\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    print_data  = data['writing'].copy()\n    string      = data['string'].copy()",
         "detail": "header.header",
         "documentation": {}
     },
@@ -633,7 +1030,7 @@
         "kind": 2,
         "importPath": "header.header",
         "description": "header.header",
-        "peekOfCode": "def middle(max_x: int, n : int, x : int, y : int, color : str = \"white\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    move_left   = moveCursor.cursor \n    position    = moveCursor.cursor\n    c_bg        = colors.bg.rgb(10, 10, 10)\n    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+\"1, 1\"+ reset   \n    if color == \"white\": c   = bold + colors.fg.rbg(255, 255, 255)\n    else: c = bold + colors.fg.rbg(0, 0, 0)",
+        "peekOfCode": "def middle(max_x: int, n : int, x : int, y : int, color : str = \"white\", lang : str = \"unknown\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    move_left   = moveCursor.cursor \n    position    = moveCursor.cursor\n    c_bg        = colors.bg.rgb(10, 10, 10)\n    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+\"1, 1\"+ reset   \n    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f\"{lang} programm\"+ reset \n    if color == \"white\": c   = bold + colors.fg.rbg(255, 255, 255)",
         "detail": "header.header",
         "documentation": {}
     },
@@ -660,7 +1057,25 @@
         "kind": 2,
         "importPath": "header.header",
         "description": "header.header",
-        "peekOfCode": "def line(x : int, y : int, max_x : int, max_y : int, scrollUp : int = 0):\n    \"\"\"\n    This block is used to set column and row of the cusror a each time \n    on the terminal \n    x       = is the currently row of the cursor \n    y       = is the currently column of the cursor \n    x_max   = width of the screen \n    y_max   = height of the screen \n    \"\"\"\n    position        = moveCursor.cursor",
+        "peekOfCode": "def line(x : int, y : int, max_x : int, max_y : int, scrollUp : int = 0, lang : str = \"unknwon\"):\n    \"\"\"\n    This block is used to set column and row of the cusror a each time \n    on the terminal \n    x       = is the currently row of the cursor \n    y       = is the currently column of the cursor \n    x_max   = width of the screen \n    y_max   = height of the screen \n    \"\"\"\n    bold            = init.init.bold",
+        "detail": "header.header",
+        "documentation": {}
+    },
+    {
+        "label": "Insert",
+        "kind": 2,
+        "importPath": "header.header",
+        "description": "header.header",
+        "peekOfCode": "def Insert(data, x : int, y : int, max_x : int, max_y : int, lang : str = \"unknwon\", Color : str =\"\", locked : bool=False, m : int = 0, line : int=0):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    move_left   = moveCursor.cursor \n    position    = moveCursor.cursor\n    c_bg        = colors.bg.rgb(10, 10, 10) \n    N           = len(data)\n    color       = \"white\"\n    X, Y        = x, y",
+        "detail": "header.header",
+        "documentation": {}
+    },
+    {
+        "label": "subTitle",
+        "kind": 2,
+        "importPath": "header.header",
+        "description": "header.header",
+        "peekOfCode": "def subTitle(max_x:int, x:int, y:int, lang : str=\"\", scrollUp : int = 0):\n    bold            = init.init.bold\n    position        = moveCursor.cursor\n    reset           = init.init.reset\n    input, length   = counter(n=1)\n    asc             = frame.frame(custom=True)\n    c_bg            = colors.bg.rgb(10, 10, 10)\n    magenta         = init.init.bold + init.init.blink + c_bg + colors.fg.rbg(255, 0, 255) + f\"{x-2}, {y+scrollUp-5}\" + reset\n    c               = init.init.bold + colors.fg.rbg(255, 255, 255)\n    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f\"{x}, {y}\"+ reset ",
         "detail": "header.header",
         "documentation": {}
     },
@@ -705,7 +1120,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def comment( name : str = \"python\"):\n    if   name in ['mamba', \"python\", \"bash\"]    : return {\"name\" : '#'}\n    elif name in ['fortran']                    : return {\"name\" : \"!\"}\n    elif name in ['c', 'c++']                   : return {\"name\" : \"//\"}\n    else: return None\ndef mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}\ndef ouput( name : str = \"python\"):",
+        "peekOfCode": "def comment( name : str = \"python\"):\n    if   name in ['mamba', \"python\", \"bash\"]    : return {\"name\" : '#'}\n    elif name in ['fortran']                    : return {\"name\" : \"!\"}\n    elif name in ['c', 'c++']                   : return {\"name\" : \"//\"}\n    elif name in ['cpmd']                       : return {\"name\" : \"#\"}\n    else: return None\ndef mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -741,7 +1156,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
+        "peekOfCode": "def delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -750,7 +1165,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
+        "peekOfCode": "def characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -768,7 +1183,7 @@
         "kind": 6,
         "importPath": "mainLinux",
         "description": "mainLinux",
-        "peekOfCode": "class IDE:\n    def __init__(self, termios : str = \"monokai\"):\n        # border configuration \n        self.acs                = frame.frame(custom=True)\n        # loading backgroung color \n        self.color_bg           = colors.bg\n        # loading foreground color \n        self.color_fg           = colors.fg\n        # loading initialization cursor parameters \n        self.init               = init.init",
+        "peekOfCode": "class IDE:\n    def __init__(self, termios : str = \"none\", lang : str =\"unknown\"):\n        # border configuration \n        self.acs                = frame.frame(custom=True)\n        # loading backgroung color \n        self.color_bg           = colors.bg\n        # loading foreground color \n        self.color_fg           = colors.fg\n        # loading initialization cursor parameters \n        self.init               = init.init",
         "detail": "mainLinux",
         "documentation": {}
     },
@@ -777,8 +1192,134 @@
         "kind": 6,
         "importPath": "mainWin",
         "description": "mainWin",
-        "peekOfCode": "class IDE:\n    def __init__(self, termios : str = \"monokai\"):\n        # border configuration \n        self.acs                = frame.frame(custom=True)\n        # loading backgroung color \n        self.color_bg           = colors.bg\n        # loading foreground color \n        self.color_fg           = colors.fg\n        # loading initialization cursor parameters \n        self.init               = init.init",
+        "peekOfCode": "class IDE:\n    def __init__(self, termios : str = \"none\", lang : str = \"unknown\"):\n        # border configuration \n        self.acs                = frame.frame(custom=True)\n        # loading backgroung color \n        self.color_bg           = colors.bg\n        # loading foreground color \n        self.color_fg           = colors.fg\n        # loading initialization cursor parameters \n        self.init               = init.init",
         "detail": "mainWin",
+        "documentation": {}
+    },
+    {
+        "label": "visionEditor",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def visionEditor():\n\t# get root path \n\troot\t= os.path.abspath(os.curdir)\n\t# path parent\n\ts = Path(__file__).resolve().parents[2]\n\t# get system name\n\tsystem  = platform.system()\n\t# get arguments \n\targ\t = sys.argv\n\t# coustomized terminal ",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "\ts",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "\ts = Path(__file__).resolve().parents[2]\n\t# get system name\n\tsystem  = platform.system()\n\t# get arguments \n\targ\t = sys.argv\n\t# coustomized terminal \n\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: ",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "\targ\t",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "\targ\t = sys.argv\n\t# coustomized terminal \n\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {}\n\t\telif len(arg) == 2 : ",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "\tterminal",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {}\n\t\telif len(arg) == 2 : \n\t\t\tif arg[1]: \n\t\t\t\text = FT.file(arg[1])",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "\twriteData",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {}\n\t\telif len(arg) == 2 : \n\t\t\tif arg[1]: \n\t\t\t\text = FT.file(arg[1])\n\t\t\t\tif ext is not None : \n\t\t\t\t\ttermios, language = terminal, ext",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\text",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "\t\t\t\text = FT.file(arg[1])\n\t\t\t\tif ext is not None : \n\t\t\t\t\ttermios, language = terminal, ext\n\t\t\t\t\tif system == \"Windows\" :  name = root + f\"\\\\{arg[1]}\"\n\t\t\t\t\telse:  name = root + f\"/{arg[1]}\"\n\t\t\t\t\t#if os.stat(name) == 0 :  data = RT.readFile(fileName=name, termios=termios, language=language)\n\t\t\t\t\t#else:  data = {} \n\t\t\t\t\tdata\t\t\t\t\t= RT.readFile(fileName=name, termios=termios, language=language)\n\t\t\t\t\twriteData[\"FileName\"]   = arg[1]\n\t\t\t\t\twriteData[\"data\"]\t   = data['string'].copy()",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\twriteData[\"action\"]\t",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "\t\t\t\t\twriteData[\"action\"]\t = True\n\t\t\t\telse: termios, language = \"none\", \"unknown\"\n\t\t\telse : termios, language = \"none\", \"unknown\"\n\t\telif len(arg) == 3 : pass \n\t\tif   system == \"Windows\"\t: mainWin.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)\n\t\telif system == \"Linux\"\t  : mainLinux.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)\n\t\telse: pass \n\telse: pass\nif __name__ == '__main__':\n\tsys.stdout.write(clear.clear.screen(2)+moveCursor.cursor.TO(0,0))",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "visionEditor",
+        "kind": 2,
+        "importPath": "vision",
+        "description": "vision",
+        "peekOfCode": "def visionEditor():\n\t# get root path \n\troot\t= os.path.abspath(os.curdir)\n\t# path parent\n\ts = Path(__file__).resolve().parents[2]\n\t# get system name\n\tsystem  = platform.system()\n\t# get arguments \n\targ\t = sys.argv\n\t# coustomized terminal ",
+        "detail": "vision",
+        "documentation": {}
+    },
+    {
+        "label": "\ts",
+        "kind": 5,
+        "importPath": "vision",
+        "description": "vision",
+        "peekOfCode": "\ts = Path(__file__).resolve().parents[2]\n\t# get system name\n\tsystem  = platform.system()\n\t# get arguments \n\targ\t = sys.argv\n\t# coustomized terminal \n\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: ",
+        "detail": "vision",
+        "documentation": {}
+    },
+    {
+        "label": "\targ\t",
+        "kind": 5,
+        "importPath": "vision",
+        "description": "vision",
+        "peekOfCode": "\targ\t = sys.argv\n\t# coustomized terminal \n\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {\"writing\" : [\"\"], \"string\" : [\"\"], \"input\" : []}\n\t\telif len(arg) == 2 : ",
+        "detail": "vision",
+        "documentation": {}
+    },
+    {
+        "label": "\tterminal",
+        "kind": 5,
+        "importPath": "vision",
+        "description": "vision",
+        "peekOfCode": "\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {\"writing\" : [\"\"], \"string\" : [\"\"], \"input\" : []}\n\t\telif len(arg) == 2 : \n\t\t\tif arg[1]: \n\t\t\t\text = FT.file(arg[1])",
+        "detail": "vision",
+        "documentation": {}
+    },
+    {
+        "label": "\twriteData",
+        "kind": 5,
+        "importPath": "vision",
+        "description": "vision",
+        "peekOfCode": "\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {\"writing\" : [\"\"], \"string\" : [\"\"], \"input\" : []}\n\t\telif len(arg) == 2 : \n\t\t\tif arg[1]: \n\t\t\t\text = FT.file(arg[1])\n\t\t\t\tif ext is not None : \n\t\t\t\t\ttermios, language = terminal, ext",
+        "detail": "vision",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\text",
+        "kind": 5,
+        "importPath": "vision",
+        "description": "vision",
+        "peekOfCode": "\t\t\t\text = FT.file(arg[1])\n\t\t\t\tif ext is not None : \n\t\t\t\t\ttermios, language = terminal, ext\n\t\t\t\t\tif system == \"Windows\" :  name = root + f\"\\\\{arg[1]}\"\n\t\t\t\t\telse:  name = root + f\"/{arg[1]}\"\n\t\t\t\t\t#if os.stat(name) == 0 :  data = RT.readFile(fileName=name, termios=termios, language=language)\n\t\t\t\t\t#else:  data = {} \n\t\t\t\t\tdata\t\t\t\t\t= RT.readFile(fileName=name, termios=termios, language=language)\n\t\t\t\t\twriteData[\"FileName\"]   = arg[1]\n\t\t\t\t\twriteData[\"data\"]\t   = data['string'].copy()",
+        "detail": "vision",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\twriteData[\"action\"]\t",
+        "kind": 5,
+        "importPath": "vision",
+        "description": "vision",
+        "peekOfCode": "\t\t\t\t\twriteData[\"action\"]\t = True\n\t\t\t\telse: termios, language = \"none\", \"unknown\"\n\t\t\telse : termios, language = \"none\", \"unknown\"\n\t\telif len(arg) == 3 : pass \n\t\tif   system == \"Windows\"\t: mainWin.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)\n\t\telif system == \"Linux\"\t  : mainLinux.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)\n\t\telse: pass \n\telse: pass\nif __name__ == '__main__':\n\tsys.stdout.write(clear.clear.screen(2)+moveCursor.cursor.TO(0,0))",
+        "detail": "vision",
         "documentation": {}
     }
 ]
