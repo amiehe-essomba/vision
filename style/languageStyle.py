@@ -3,7 +3,7 @@ def comment( name : str = "python"):
     elif name in ['fortran']                    : return {"name" : "!"}
     elif name in ['c', 'c++']                   : return {"name" : "//"}
     elif name in ['cpmd']                       : return {"name" : "#"}
-    else: return None
+    else                                        : return {"name" : None}
     
 def mul_cmt(name : str = "python"):
     if   name in ["python"]     : return {"name" : ['"""', '"""']}

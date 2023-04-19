@@ -2,6 +2,9 @@ from configure      import colors, init, clear, state, screenConfig, moveCursor,
 from frame          import frame
 from getUserInput   import input
 from saving         import writing
+from fileType       import fileType as FT
+from header         import header, formating
+from saving         import writing 
 import sys
 
 def bottom(max_x :int = 0, color : str = "white"):
@@ -25,7 +28,7 @@ def case():
     return lower_case.split()+upper_case+['-', '_', '.']+ [str(x) for x in range(10)]
 
 class saveData:
-    def __init__(self, dataBase : dict = {}):
+    def __init__(self, dataBase ):
         self.dataBase = dataBase
         # getting max size (max_x, max_y) of the window 
         self.max_x, self.max_y  = screenConfig.cursorMax()
@@ -42,23 +45,31 @@ class saveData:
         # Scroll display down and up
         self.scr                = scroll.scrolled
         
-    def build(self, x: int = 0, y : int = 0):
+    def build(self, x: int = 0, y : int = 0, lang : str = "", WRITE : list = []):
         sys.stdout.write(
             self.move.DOWN(pos=self.max_y+1)+self.clear.screen(pos=0)
         )
         sys.stdout.write(self.clear.screen(0))
-        saveData().write(x, y)
-        
-    def write(self, x :int = 0, y:int = 0):
+        lang = saveData(self.dataBase).write(x, y, WRITE, lang)
+        return lang 
+    
+    def write(self, x :int = 0, y:int = 0, WRITE : list = [], lang : str = "unknown", LINE : int = 4):
         self.c              = self.init.bold + colors.fg.rbg(255, 255, 255)
         self.blink          = self.init.bold + colors.fg.rbg(255, 0, 255)
         self.c_bg           = self.init.bold + colors.bg.rgb(10, 10, 10)
-        self.input          = f"{self.acs['v']} {self.blink}INPUT NAME : " +self.init.reset
+        self.input          = f"{self.acs['v']} {self.blink}FILE NAME : " + self.init.reset
         self.length         = len("| input name : ")
         self.cc             = init.init.bold + colors.fg.rbg(0, 255, 255)
         self._string_       = "VISION EDITOR V-1.0.0".center(self._max_x_ - 2)
+        self.language_type  = "unknown"
+        _input_, _length_   = header.counter(n=0)
         
-        sys.stdout.write(self.move.LEFT(pos=1000))
+        
+        sys.stdout.write(
+            self.move.TO(x=0, y=self.max_y-3) +
+            self.clear.screen(0) + 
+            self.move.LEFT(pos=1000))
+        
         sys.stdout.write(self.c + f"{self.acs['ul']}" + f"{self.acs['h']}" * (self.max_x-2) + f"{self.acs['ur']}" + self.init.reset + "\n")
         
         # getting the cursor coordiantes (x, y)
@@ -83,52 +94,65 @@ class saveData:
         self.counterL, self.counterR    = 0, 0
         # getting the cursor coordiantes (x, y)
         self._x_, self._y_              = screenConfig.cursor()
+        self.Y                          = self._y_
+        sys.stdout.write(self.move.TO(x=self.length+1, y=self._y_+2))
+        sys.stdout.flush()
+        
         
         while True:
             self.char = input.convert() 
             # <enter> is pressed 
             if self.char in {10, 13}:
                 self.max_x  = self._max_x_
+                for i in range(2):
+                    sys.stdout.write(self.move.LEFT(pos=1000))
+                    sys.stdout.write(
+                        _input_ + self.c_bg + " " * (self.max_x - (_length_+2) ) + self.init.reset + 
+                        self.move.TO(x=self.max_x, y=self.Y) + self.c + f"{self.acs['v']}" +
+                        self.move.TO(x=x, y=self.Y) + self.init.reset + "\n"
+                        )
+                    self.Y += 1
                 sys.stdout.write(
-                    self.move.LEFT(pos=1000)+self.move.UP(pos=1)+
-                    self.clear.screen(0) + self.move.TO(x=x, y=y-2) 
-                    +self.scr.DOWN(3)+self.move.LEFT(pos=1000)+self.move.UP(pos=1)
+                    self.move.DOWN(1)+
+                    self.move.LEFT(pos=1000)
                     )
-                # first line     
-                sys.stdout.write(self.c + f"{self.acs['ul']}" + f"{self.acs['h']}" * (self.max_x-2) + f"{self.acs['ur']}" + self.init.reset + 
-                            self.move.DOWN(1) + self.move.LEFT(pos=1000)+ self.clear.line(2) ) 
-                # second line 
-                sys.stdout.write(self.c + f"{self.acs['v']}"  + self.cc +  self._string_ + self.c + f"{self.acs['v']}" + self.init.reset + 
-                    self.move.DOWN(1) + self.move.LEFT(pos=1000)+ self.clear.line(2) ) 
-                # third line 
-                sys.stdout.write(self.c + f"{self.acs['vl']}" + f"{self.acs['h']}" * 7 + f"{self.acs['m1']}" +  
-                        f"{self.acs['h']}"*(self.max_x - 10) + f"{self.acs['vr']}" + self.init.reset+'\n' ) 
-                
+                header.bottom(max_x=self.max_x)
                 sys.stdout.write(self.move.TO(x=x, y=y))
-                self.dataBase["FileName"], self.dataBase["action"]  = self.string, True
-                writing.writeInput(self.dataBase["data"], self.string)
                 
+                self.dataBase["FileName"], self.dataBase["action"]  = self.string, True
+                
+                self.language_type = FT.file(self.string)
+                if self.language_type is None: 
+                    writing.writeInput(self.dataBase["data"], self.string)
+                else: 
+                    writing.writeInput(self.dataBase["data"], self.string)
+                    if self.dataBase["data"]:
+                        WRITE       = writing.BLACK_M(self.dataBase["data"], self.language_type)
+                        sys.stdout.write(
+                            self.move.TO(x=0, y=LINE)+ 
+                            self.move.LEFT(1000)
+                            )
+                        formating.scrollUP(WRITE, self.max_x, 0, self.max_y, LINE)
+                        sys.stdout.write(self.move.TO(x=x, y=y))
+                    else: pass
                 break
             # <ctrl+c> is pressed 
             elif self.char == 3:
                 self.max_x  = self._max_x_
+                for i in range(2):
+                    sys.stdout.write(self.move.LEFT(pos=1000))
+                    sys.stdout.write(
+                        _input_ + self.c_bg + " " * (self.max_x - (_length_+2) ) + self.init.reset + 
+                        self.move.TO(x=self.max_x, y=self.Y) + self.c + f"{self.acs['v']}" +
+                        self.move.TO(x=x, y=self.Y) + self.init.reset + "\n"
+                        )
+                    self.Y += 1
                 sys.stdout.write(
-                    self.move.LEFT(pos=1000)+self.move.UP(pos=1)+
-                    self.clear.screen(0) + self.move.TO(x=x, y=y-2) 
-                    +self.scr.DOWN(3)+self.move.LEFT(pos=1000)+self.move.UP(pos=1)
+                    self.move.DOWN(1)+
+                    self.move.LEFT(pos=1000)
                     )
-                # first line     
-                sys.stdout.write(self.c + f"{self.acs['ul']}" + f"{self.acs['h']}" * (self.max_x-2) + f"{self.acs['ur']}" + self.init.reset + 
-                            self.move.DOWN(1) + self.move.LEFT(pos=1000)+ self.clear.line(2) ) 
-                # second line 
-                sys.stdout.write(self.c + f"{self.acs['v']}"  + self.cc +  self._string_ + self.c + f"{self.acs['v']}" + self.init.reset + 
-                    self.move.DOWN(1) + self.move.LEFT(pos=1000)+ self.clear.line(2) ) 
-                # third line 
-                sys.stdout.write(self.c + f"{self.acs['vl']}" + f"{self.acs['h']}" * 7 + f"{self.acs['h']}" +  
-                        f"{self.acs['h']}"*(self.max_x - 10) + f"{self.acs['vr']}" + self.init.reset+'\n' ) 
-                
+                header.bottom(max_x=self.max_x)
                 sys.stdout.write(self.move.TO(x=x, y=y))
-                
                 break
             # moving cursor up, down, left, reight
             elif self.char == 27:
@@ -207,3 +231,4 @@ class saveData:
             
             sys.stdout.flush()
         
+        return self.language_type

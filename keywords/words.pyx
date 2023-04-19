@@ -281,11 +281,6 @@ cdef class words:
                         else: self.newS   += self.cc + ' '
                         self.ss      = ''
         else: 
-            try:
-                if self.string[-3 : ] == '"""' : color_return = {"color" : _init_, "locked" : False, "rest" : 0, 'init' : _init_}
-                else: pass 
-            except IndexError: pass
-
             self.newS = words(self.string, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
 
         return self.newS, color_return
