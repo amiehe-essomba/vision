@@ -81,12 +81,17 @@ def keys(count : int = 0, lang : str='', string : str = ""):
         if lang == 'cpmd':
             if    string[count : 5] == "&INFO": key_found = True 
             else: pass 
-        elif lang == 'cpmd':
+        elif lang == 'mamba':
             if   string[count : 5] == "begin"   : key_found = True 
             elif string[count : 5] == "class"   : idd = 1
             elif string[count : 3] == "def"     : idd = 1
             elif string[count : 4] == "func"    : idd = 1
             else: pass
+        elif lang == "python":
+            if   string[count : 3] == '"""'   : key_found = True 
+            elif string[count : 3] == "'''"   : key_found = True 
+            else: pass 
+        else: pass
     else: pass 
     
     return key_found, idd
@@ -95,8 +100,9 @@ def OPEN(count : int , lang : str, locked : bool = False):
     
     if locked is False : return None
     else:
-        if   lang == "mamba": return "\t"*count + "end"
-        elif lang == "cpmd" : return "\t"*count + "&END"
+        if   lang == "mamba"    : return "\t"*count + "end"
+        elif lang == "cpmd"     : return "\t"*count + "&END"
+        elif lang == "python"   : return "\t"*count + '"""'
         else: return None
         
 def STR(STR : str, string : str):

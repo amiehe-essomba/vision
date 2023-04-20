@@ -242,6 +242,22 @@
         "documentation": {}
     },
     {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
         "label": "writing",
         "importPath": "saving        ",
         "description": "saving        ",
@@ -928,7 +944,7 @@
         "kind": 2,
         "importPath": "fileType.readfile",
         "description": "fileType.readfile",
-        "peekOfCode": "def readFile(fileName: str, termios : str , language :  str ):\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # storing data \n    data                   = {\"writing\" : [], \"string\" : [], \"input\" : []}\n    # locked string to set it as a comment line ",
+        "peekOfCode": "def readFile(fileName: str, termios : str , language :  str ):\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # storing data \n    data                   = {\"writing\" : [], \"string\" : [], \"input\" : [], \"color\" : {\"m\" : [], \"n\" : [], \"color\" : [], \"locked\" : []}}\n    # locked string to set it as a comment line ",
         "detail": "fileType.readfile",
         "documentation": {}
     },
@@ -1055,6 +1071,24 @@
         "importPath": "header.formating",
         "description": "header.formating",
         "peekOfCode": "def scrollUP(data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, y : int = 0):\n    move        = moveCursor.cursor\n    N           = max_y-(y+1) \n    Y           = y\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)\n    input, length       = header.counter(n=0)",
+        "detail": "header.formating",
+        "documentation": {}
+    },
+    {
+        "label": "ClearScreen",
+        "kind": 2,
+        "importPath": "header.formating",
+        "description": "header.formating",
+        "peekOfCode": "def ClearScreen(max_x : int = 0, max_y : int = 0, LINE : int = 4):\n    move        = moveCursor.cursor\n    N           = max_y-(LINE+1) \n    Y           = LINE\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)\n    input, length       = header.counter(n=0)",
+        "detail": "header.formating",
+        "documentation": {}
+    },
+    {
+        "label": "RestoringSTring",
+        "kind": 2,
+        "importPath": "header.formating",
+        "description": "header.formating",
+        "peekOfCode": "def RestoringSTring(max_x : int = 0, max_y : int = 0, LINE : int = 4, WRITE : list = [], y : int = 0, x : int = 0 ):\n    ClearScreen(max_x=max_x, max_y=max_y, LINE=LINE)\n    move        = moveCursor.cursor\n    N           = max_y-(LINE+1) \n    Y           = LINE\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)",
         "detail": "header.formating",
         "documentation": {}
     },
@@ -1189,7 +1223,7 @@
         "kind": 2,
         "importPath": "saving.writing",
         "description": "saving.writing",
-        "peekOfCode": "def keys(count : int = 0, lang : str='', string : str = \"\"):\n    key_found = False \n    idd       = 0\n    if string: \n        if lang == 'cpmd':\n            if    string[count : 5] == \"&INFO\": key_found = True \n            else: pass \n        elif lang == 'cpmd':\n            if   string[count : 5] == \"begin\"   : key_found = True \n            elif string[count : 5] == \"class\"   : idd = 1",
+        "peekOfCode": "def keys(count : int = 0, lang : str='', string : str = \"\"):\n    key_found = False \n    idd       = 0\n    if string: \n        if lang == 'cpmd':\n            if    string[count : 5] == \"&INFO\": key_found = True \n            else: pass \n        elif lang == 'mamba':\n            if   string[count : 5] == \"begin\"   : key_found = True \n            elif string[count : 5] == \"class\"   : idd = 1",
         "detail": "saving.writing",
         "documentation": {}
     },
@@ -1198,7 +1232,7 @@
         "kind": 2,
         "importPath": "saving.writing",
         "description": "saving.writing",
-        "peekOfCode": "def OPEN(count : int , lang : str, locked : bool = False):\n    if locked is False : return None\n    else:\n        if   lang == \"mamba\": return \"\\t\"*count + \"end\"\n        elif lang == \"cpmd\" : return \"\\t\"*count + \"&END\"\n        else: return None\ndef STR(STR : str, string : str):\n    open = True \n    try:\n        if string[:len(STR)] == STR: open = False",
+        "peekOfCode": "def OPEN(count : int , lang : str, locked : bool = False):\n    if locked is False : return None\n    else:\n        if   lang == \"mamba\"    : return \"\\t\"*count + \"end\"\n        elif lang == \"cpmd\"     : return \"\\t\"*count + \"&END\"\n        elif lang == \"python\"   : return \"\\t\"*count + '\"\"\"'\n        else: return None\ndef STR(STR : str, string : str):\n    open = True \n    try:",
         "detail": "saving.writing",
         "documentation": {}
     },
@@ -1342,7 +1376,7 @@
         "kind": 2,
         "importPath": "vision",
         "description": "vision",
-        "peekOfCode": "def visionEditor( ):\n    # get root path \n    root\t= os.path.abspath(os.curdir)\n    # path parent\n    s = Path(__file__).resolve().parents[2]\n    # get system name\n    system  = platform.system()\n    # get arguments \n    arg\t = sys.argv\n    # coustomized terminal ",
+        "peekOfCode": "def visionEditor( ):\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # get root path \n    root\t= os.path.abspath(os.curdir)\n    # path parent",
         "detail": "vision",
         "documentation": {}
     }

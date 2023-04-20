@@ -2,6 +2,7 @@ import os, sys
 import platform
 import mainLinux
 import mainWin
+from configure      import colors, init
 from configure	    import clear, moveCursor
 from pathlib		import Path
 from fileType	    import fileType as FT
@@ -9,6 +10,12 @@ from fileType	    import readfile as RT
  
 
 def visionEditor( ):
+    # bg color 
+    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)
+    # fg color 
+    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)
+    # building color 
+    color                  = c_bg + c_fg
     # get root path 
     root	= os.path.abspath(os.curdir)
 
@@ -30,7 +37,7 @@ def visionEditor( ):
     if system in ['Windows', "Linux", "MacOS"]: 
         if   len(arg) == 1 : 
             termios, language   = "none", "unknown"
-            data				= {"writing" : [""], "string" : [""], "input" : []}
+            data				= {"writing" : [""], "string" : [""], "input" : [], "color" : {"color" : [color], "m" : [0], "n" : [0], "locked": [False]}}
         elif len(arg) == 2 : 
             if arg[1]: 
                 ext = FT.file(arg[1])

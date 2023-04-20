@@ -10,13 +10,14 @@ def readFile(fileName: str, termios : str , language :  str ):
     # building color 
     color                  = c_bg + c_fg
     # storing data 
-    data                   = {"writing" : [], "string" : [], "input" : []}
+    data                   = {"writing" : [], "string" : [], "input" : [], "color" : {"m" : [], "n" : [], "color" : [], "locked" : []}}
     # locked string to set it as a comment line 
     locked                 = False 
     # initialization
     m, idd                 = 0, 0
     cmt                    = init.init.bold + colors.bg.rgb(10, 10, 10) + colors.fg.rbg(153, 153, 255) 
     no_cmt                 = color
+    colorList              = []
     
     try:
         with open(fileName) as file:
@@ -31,6 +32,10 @@ def readFile(fileName: str, termios : str , language :  str ):
                     data["writing"].append( __line__ )
                     data["input"].append( line.replace("\t", " " * 4) )
                     data["string"].append( line.replace(" " * 4, '\t') )
+                    data["color"]["color"].append(color)
+                    data["color"]["m"].append(m)
+                    data["color"]['n'].append(idd)
+                    data["color"]['locked'].append(locked)
                     locked, idd         = writing.keys(tab, language, line)
                     if locked is True: color = cmt 
                     else: color = no_cmt
@@ -50,13 +55,15 @@ def readFile(fileName: str, termios : str , language :  str ):
                         data["writing"].append( __line__ )
                         data["input"].append( line.replace("\t", " " * 4) )
                         data["string"].append( line.replace(" " * 4, '\t') )
-                    
+                        data["color"]["color"].append(color)
+                        data["color"]["m"].append(m)
+                        data["color"]['n'].append(idd)
+                        data["color"]['locked'].append(locked)
                     if locked is True: color = cmt 
-                    else: color = no_cmt
-                    
+                    else: color = no_cmt                 
         file.close()
     except FileNotFoundError: 
-        data = {"writing" : [""], "string" : [""], "input" : [""]}
+        data = {"writing" : [""], "string" : [""], "input" : [""], "color" : {"color" : [color], "m" : [0], "n" : [0]}}
     
     return data 
 
