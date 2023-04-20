@@ -72,7 +72,7 @@ def writingData(max_x: int, n : int, x : int, y : int, color : str = "white",
     else: c  = bold + colors.fg.rbg(0, 0, 0)
     input, length       = counter(n=0, color=color)
     scrolledUp          = False 
-    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset 
+    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+colors.fg.rbg(0, 255, 255) + " opened"+ reset 
     magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"{x}, {N+1}"+ reset 
 
     for i in range(N-1):
@@ -158,7 +158,7 @@ def middle(max_x: int, n : int, x : int, y : int, color : str = "white", lang : 
     position    = moveCursor.cursor
     c_bg        = colors.bg.rgb(10, 10, 10)
     magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+"1, 1"+ reset   
-    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset 
+    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ colors.fg.rbg(0, 255, 255) + " opened" + reset 
     
     if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
     else: c = bold + colors.fg.rbg(0, 0, 0)

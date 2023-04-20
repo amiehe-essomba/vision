@@ -242,6 +242,78 @@
         "documentation": {}
     },
     {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
         "label": "os,",
         "kind": 6,
         "isExtraImport": true,
@@ -525,43 +597,83 @@
         "documentation": {}
     },
     {
-        "label": "writing",
-        "importPath": "saving        ",
-        "description": "saving        ",
+        "label": "input",
+        "importPath": "getUserInput  ",
+        "description": "getUserInput  ",
         "isExtraImport": true,
-        "detail": "saving        ",
+        "detail": "getUserInput  ",
         "documentation": {}
     },
     {
-        "label": "save",
-        "importPath": "saving        ",
-        "description": "saving        ",
+        "label": "fileType",
+        "importPath": "fileType      ",
+        "description": "fileType      ",
         "isExtraImport": true,
-        "detail": "saving        ",
+        "detail": "fileType      ",
         "documentation": {}
     },
     {
-        "label": "writing",
-        "importPath": "saving        ",
-        "description": "saving        ",
+        "label": "header",
+        "importPath": "header        ",
+        "description": "header        ",
         "isExtraImport": true,
-        "detail": "saving        ",
+        "detail": "header        ",
         "documentation": {}
     },
     {
-        "label": "save",
-        "importPath": "saving        ",
-        "description": "saving        ",
+        "label": "formating",
+        "importPath": "header        ",
+        "description": "header        ",
         "isExtraImport": true,
-        "detail": "saving        ",
+        "detail": "header        ",
         "documentation": {}
     },
     {
-        "label": "writing",
-        "importPath": "saving        ",
-        "description": "saving        ",
+        "label": "header",
+        "importPath": "header        ",
+        "description": "header        ",
         "isExtraImport": true,
-        "detail": "saving        ",
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "formating",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "counter",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "header",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "formating",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "counter",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
         "documentation": {}
     },
     {
@@ -590,60 +702,20 @@
         "documentation": {}
     },
     {
-        "label": "header",
-        "importPath": "header        ",
-        "description": "header        ",
-        "isExtraImport": true,
-        "detail": "header        ",
-        "documentation": {}
-    },
-    {
-        "label": "formating",
-        "importPath": "header        ",
-        "description": "header        ",
-        "isExtraImport": true,
-        "detail": "header        ",
-        "documentation": {}
-    },
-    {
-        "label": "counter",
-        "importPath": "header        ",
-        "description": "header        ",
-        "isExtraImport": true,
-        "detail": "header        ",
-        "documentation": {}
-    },
-    {
-        "label": "header",
-        "importPath": "header        ",
-        "description": "header        ",
-        "isExtraImport": true,
-        "detail": "header        ",
-        "documentation": {}
-    },
-    {
-        "label": "formating",
-        "importPath": "header        ",
-        "description": "header        ",
-        "isExtraImport": true,
-        "detail": "header        ",
-        "documentation": {}
-    },
-    {
-        "label": "counter",
-        "importPath": "header        ",
-        "description": "header        ",
-        "isExtraImport": true,
-        "detail": "header        ",
-        "documentation": {}
-    },
-    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "time",
         "description": "time",
         "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "mouse",
+        "importPath": "pynput",
+        "description": "pynput",
+        "isExtraImport": true,
+        "detail": "pynput",
         "documentation": {}
     },
     {
@@ -675,66 +747,34 @@
     },
     {
         "label": "clear",
-        "importPath": "configure\t ",
-        "description": "configure\t ",
+        "importPath": "configure\t   ",
+        "description": "configure\t   ",
         "isExtraImport": true,
-        "detail": "configure\t ",
+        "detail": "configure\t   ",
         "documentation": {}
     },
     {
         "label": "moveCursor",
-        "importPath": "configure\t ",
-        "description": "configure\t ",
+        "importPath": "configure\t   ",
+        "description": "configure\t   ",
         "isExtraImport": true,
-        "detail": "configure\t ",
-        "documentation": {}
-    },
-    {
-        "label": "clear",
-        "importPath": "configure\t ",
-        "description": "configure\t ",
-        "isExtraImport": true,
-        "detail": "configure\t ",
-        "documentation": {}
-    },
-    {
-        "label": "moveCursor",
-        "importPath": "configure\t ",
-        "description": "configure\t ",
-        "isExtraImport": true,
-        "detail": "configure\t ",
+        "detail": "configure\t   ",
         "documentation": {}
     },
     {
         "label": "fileType",
-        "importPath": "fileType\t  ",
-        "description": "fileType\t  ",
+        "importPath": "fileType\t   ",
+        "description": "fileType\t   ",
         "isExtraImport": true,
-        "detail": "fileType\t  ",
+        "detail": "fileType\t   ",
         "documentation": {}
     },
     {
         "label": "readfile",
-        "importPath": "fileType\t  ",
-        "description": "fileType\t  ",
+        "importPath": "fileType\t   ",
+        "description": "fileType\t   ",
         "isExtraImport": true,
-        "detail": "fileType\t  ",
-        "documentation": {}
-    },
-    {
-        "label": "fileType",
-        "importPath": "fileType\t  ",
-        "description": "fileType\t  ",
-        "isExtraImport": true,
-        "detail": "fileType\t  ",
-        "documentation": {}
-    },
-    {
-        "label": "readfile",
-        "importPath": "fileType\t  ",
-        "description": "fileType\t  ",
-        "isExtraImport": true,
-        "detail": "fileType\t  ",
+        "detail": "fileType\t   ",
         "documentation": {}
     },
     {
@@ -904,7 +944,7 @@
         "kind": 2,
         "importPath": "fileType.readfile",
         "description": "fileType.readfile",
-        "peekOfCode": "def readFile(fileName, termios : str , language :  str ):\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # storing data \n    data                   = {\"writing\" : [], \"string\" : [], \"input\" : []}\n    locked                 = False ",
+        "peekOfCode": "def readFile(fileName: str, termios : str , language :  str ):\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # storing data \n    data                   = {\"writing\" : [], \"string\" : [], \"input\" : [], \"color\" : {\"m\" : [], \"n\" : [], \"color\" : [], \"locked\" : []}}\n    # locked string to set it as a comment line ",
         "detail": "fileType.readfile",
         "documentation": {}
     },
@@ -967,7 +1007,25 @@
         "kind": 2,
         "importPath": "getUserInput.input",
         "description": "getUserInput.input",
-        "peekOfCode": "def convert():\n    if os.name == \"nt\": return windows()\n    else: return linux()",
+        "peekOfCode": "def convert():\n    if os.name == \"nt\": return windows()\n    else: return linux()\ndef inter():\n    char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0\n    while True:\n        char1 = convert() \n        if char1 == 91: \n            char2 = ord(sys.stdin.read(1)) \n            if char2 == 49:",
+        "detail": "getUserInput.input",
+        "documentation": {}
+    },
+    {
+        "label": "inter",
+        "kind": 2,
+        "importPath": "getUserInput.input",
+        "description": "getUserInput.input",
+        "peekOfCode": "def inter():\n    char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0\n    while True:\n        char1 = convert() \n        if char1 == 91: \n            char2 = ord(sys.stdin.read(1)) \n            if char2 == 49:\n                char3, char4, char5 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1)), ord(sys.stdin.read(1))\n            else: pass \n        elif char1 == 27:",
+        "detail": "getUserInput.input",
+        "documentation": {}
+    },
+    {
+        "label": "outer",
+        "kind": 2,
+        "importPath": "getUserInput.input",
+        "description": "getUserInput.input",
+        "peekOfCode": "def outer():\n    char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0\n    while True:\n        char1 = convert() \n        if char1 == 91: \n            char2 = ord(sys.stdin.read(1)) \n            if char2 == 49:\n                char3, char4, char5 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1)), ord(sys.stdin.read(1))\n            else: pass \n        elif char1 == 27:",
         "detail": "getUserInput.input",
         "documentation": {}
     },
@@ -994,7 +1052,7 @@
         "kind": 2,
         "importPath": "header.counter",
         "description": "header.counter",
-        "peekOfCode": "def count(number : int , x : int , y : int , max_x : int, max_y : int, lang : str = 'python'):\n    move                = moveCursor.cursor\n    asc                 = frame.frame(custom=True)\n    bold                = init.init.bold\n    reset               = init.init.reset\n    c_bg                = colors.bg.rgb(10, 10, 10)  \n    c                   = bold + colors.fg.rbg(255, 255, 255)\n    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f\"{lang} programm\"+ reset \n    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f\"{x}, {number+1}\"+ reset \n    input, length       = header.counter(n=0)",
+        "peekOfCode": "def count(number : int , x : int , y : int , max_x : int, max_y : int, lang : str = 'python', action : bool = False):\n    move                = moveCursor.cursor\n    asc                 = frame.frame(custom=True)\n    bold                = init.init.bold\n    reset               = init.init.reset\n    c_bg                = colors.bg.rgb(10, 10, 10)  \n    c                   = bold + colors.fg.rbg(255, 255, 255)\n    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f\"{lang} programm\"+ reset \n    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f\"{x}, {number+1}\"+ reset \n    if action is False:",
         "detail": "header.counter",
         "documentation": {}
     },
@@ -1004,6 +1062,33 @@
         "importPath": "header.formating",
         "description": "header.formating",
         "peekOfCode": "def formating(LINE : int = 4, data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, MAX  = None):\n    move        = moveCursor.cursor\n    N           = max_y-(LINE+1) \n    Y           = LINE\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)\n    input, length       = header.counter(n=0)",
+        "detail": "header.formating",
+        "documentation": {}
+    },
+    {
+        "label": "scrollUP",
+        "kind": 2,
+        "importPath": "header.formating",
+        "description": "header.formating",
+        "peekOfCode": "def scrollUP(data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, y : int = 0):\n    move        = moveCursor.cursor\n    N           = max_y-(y+1) \n    Y           = y\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)\n    input, length       = header.counter(n=0)",
+        "detail": "header.formating",
+        "documentation": {}
+    },
+    {
+        "label": "ClearScreen",
+        "kind": 2,
+        "importPath": "header.formating",
+        "description": "header.formating",
+        "peekOfCode": "def ClearScreen(max_x : int = 0, max_y : int = 0, LINE : int = 4):\n    move        = moveCursor.cursor\n    N           = max_y-(LINE+1) \n    Y           = LINE\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)\n    input, length       = header.counter(n=0)",
+        "detail": "header.formating",
+        "documentation": {}
+    },
+    {
+        "label": "RestoringSTring",
+        "kind": 2,
+        "importPath": "header.formating",
+        "description": "header.formating",
+        "peekOfCode": "def RestoringSTring(max_x : int = 0, max_y : int = 0, LINE : int = 4, WRITE : list = [], y : int = 0, x : int = 0 ):\n    ClearScreen(max_x=max_x, max_y=max_y, LINE=LINE)\n    move        = moveCursor.cursor\n    N           = max_y-(LINE+1) \n    Y           = LINE\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)",
         "detail": "header.formating",
         "documentation": {}
     },
@@ -1030,7 +1115,7 @@
         "kind": 2,
         "importPath": "header.header",
         "description": "header.header",
-        "peekOfCode": "def middle(max_x: int, n : int, x : int, y : int, color : str = \"white\", lang : str = \"unknown\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    move_left   = moveCursor.cursor \n    position    = moveCursor.cursor\n    c_bg        = colors.bg.rgb(10, 10, 10)\n    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+\"1, 1\"+ reset   \n    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f\"{lang} programm\"+ reset \n    if color == \"white\": c   = bold + colors.fg.rbg(255, 255, 255)",
+        "peekOfCode": "def middle(max_x: int, n : int, x : int, y : int, color : str = \"white\", lang : str = \"unknown\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    move_left   = moveCursor.cursor \n    position    = moveCursor.cursor\n    c_bg        = colors.bg.rgb(10, 10, 10)\n    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+\"1, 1\"+ reset   \n    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f\"{lang} programm\"+ colors.fg.rbg(0, 255, 255) + \" opened\" + reset \n    if color == \"white\": c   = bold + colors.fg.rbg(255, 255, 255)",
         "detail": "header.header",
         "documentation": {}
     },
@@ -1084,7 +1169,7 @@
         "kind": 6,
         "importPath": "saving.save",
         "description": "saving.save",
-        "peekOfCode": "class saveData:\n    def __init__(self, dataBase : dict = {}):\n        self.dataBase = dataBase\n        # getting max size (max_x, max_y) of the window \n        self.max_x, self.max_y  = screenConfig.cursorMax()\n        self._max_x_            = self.max_x \n        self.max_x            //= 2 \n        # loading the keywords for moving cursor on a particular region of the screen \n        self.move               = moveCursor.cursor\n        # loading keywords for cleaning screen and lines ",
+        "peekOfCode": "class saveData:\n    def __init__(self, dataBase ):\n        self.dataBase = dataBase\n        # getting max size (max_x, max_y) of the window \n        self.max_x, self.max_y  = screenConfig.cursorMax()\n        self._max_x_            = self.max_x \n        self.max_x            //= 2 \n        # loading the keywords for moving cursor on a particular region of the screen \n        self.move               = moveCursor.cursor\n        # loading keywords for cleaning screen and lines ",
         "detail": "saving.save",
         "documentation": {}
     },
@@ -1102,7 +1187,7 @@
         "kind": 2,
         "importPath": "saving.save",
         "description": "saving.save",
-        "peekOfCode": "def case():\n    lower_case = \"a b c d e f g h i j k l m n o p q r s t u v w x y z\"\n    upper_case = lower_case.upper().split()\n    return lower_case.split()+upper_case+['-', '_', '.']+ [str(x) for x in range(10)]\nclass saveData:\n    def __init__(self, dataBase : dict = {}):\n        self.dataBase = dataBase\n        # getting max size (max_x, max_y) of the window \n        self.max_x, self.max_y  = screenConfig.cursorMax()\n        self._max_x_            = self.max_x ",
+        "peekOfCode": "def case():\n    lower_case = \"a b c d e f g h i j k l m n o p q r s t u v w x y z\"\n    upper_case = lower_case.upper().split()\n    return lower_case.split()+upper_case+['-', '_', '.']+ [str(x) for x in range(10)]\nclass saveData:\n    def __init__(self, dataBase ):\n        self.dataBase = dataBase\n        # getting max size (max_x, max_y) of the window \n        self.max_x, self.max_y  = screenConfig.cursorMax()\n        self._max_x_            = self.max_x ",
         "detail": "saving.save",
         "documentation": {}
     },
@@ -1111,7 +1196,52 @@
         "kind": 2,
         "importPath": "saving.writing",
         "description": "saving.writing",
-        "peekOfCode": "def writeInput(dataFile: list , FileName : str):\n    with open(FileName, \"w\") as file:\n        for i, string in enumerate(dataFile): \n            if i != len(dataFile)-1: file.write(f\"{string}\\n\")\n            else: file.write(f\"{string}\")\n    file.close()",
+        "peekOfCode": "def writeInput(dataFile: list , FileName : str):\n    with open(FileName, \"w\") as file:\n        for i, string in enumerate(dataFile): \n            if i != len(dataFile)-1: file.write(f\"{string}\\n\")\n            else: file.write(f\"{string}\")\n    file.close()\ndef BLACK_M(WRITE : list = [], lang : str = \"unknown\"):\n    from keywords       import words\n    from configure      import colors, init\n    # bg color ",
+        "detail": "saving.writing",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK_M",
+        "kind": 2,
+        "importPath": "saving.writing",
+        "description": "saving.writing",
+        "peekOfCode": "def BLACK_M(WRITE : list = [], lang : str = \"unknown\"):\n    from keywords       import words\n    from configure      import colors, init\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # locking string ",
+        "detail": "saving.writing",
+        "documentation": {}
+    },
+    {
+        "label": "tabular",
+        "kind": 2,
+        "importPath": "saving.writing",
+        "description": "saving.writing",
+        "peekOfCode": "def tabular(string : str, lang: str = \"\"):\n    # tabular initialization\n    count   = 0\n    # locking \n    locaked = False \n    if lang in [\"python\", \"mamba\", \"c++\", \"c\"]:\n        if string: \n            for i, s in enumerate(string):\n                if string[0] == '\\t': \n                    if locaked is False:",
+        "detail": "saving.writing",
+        "documentation": {}
+    },
+    {
+        "label": "keys",
+        "kind": 2,
+        "importPath": "saving.writing",
+        "description": "saving.writing",
+        "peekOfCode": "def keys(count : int = 0, lang : str='', string : str = \"\"):\n    key_found = False \n    idd       = 0\n    if string: \n        if lang == 'cpmd':\n            if    string[count : 5] == \"&INFO\": key_found = True \n            else: pass \n        elif lang == 'mamba':\n            if   string[count : 5] == \"begin\"   : key_found = True \n            elif string[count : 5] == \"class\"   : idd = 1",
+        "detail": "saving.writing",
+        "documentation": {}
+    },
+    {
+        "label": "OPEN",
+        "kind": 2,
+        "importPath": "saving.writing",
+        "description": "saving.writing",
+        "peekOfCode": "def OPEN(count : int , lang : str, locked : bool = False):\n    if locked is False : return None\n    else:\n        if   lang == \"mamba\"    : return \"\\t\"*count + \"end\"\n        elif lang == \"cpmd\"     : return \"\\t\"*count + \"&END\"\n        elif lang == \"python\"   : return \"\\t\"*count + '\"\"\"'\n        else: return None\ndef STR(STR : str, string : str):\n    open = True \n    try:",
+        "detail": "saving.writing",
+        "documentation": {}
+    },
+    {
+        "label": "STR",
+        "kind": 2,
+        "importPath": "saving.writing",
+        "description": "saving.writing",
+        "peekOfCode": "def STR(STR : str, string : str):\n    open = True \n    try:\n        if string[:len(STR)] == STR: open = False\n    except IndexError: pass\n    return open",
         "detail": "saving.writing",
         "documentation": {}
     },
@@ -1120,7 +1250,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def comment( name : str = \"python\"):\n    if   name in ['mamba', \"python\", \"bash\"]    : return {\"name\" : '#'}\n    elif name in ['fortran']                    : return {\"name\" : \"!\"}\n    elif name in ['c', 'c++']                   : return {\"name\" : \"//\"}\n    elif name in ['cpmd']                       : return {\"name\" : \"#\"}\n    else: return None\ndef mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}",
+        "peekOfCode": "def comment( name : str = \"python\"):\n    if   name in ['mamba', \"python\", \"bash\"]    : return {\"name\" : '#'}\n    elif name in ['fortran']                    : return {\"name\" : \"!\"}\n    elif name in ['c', 'c++']                   : return {\"name\" : \"//\"}\n    elif name in ['cpmd']                       : return {\"name\" : \"#\"}\n    else                                        : return {\"name\" : None}\ndef mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1197,66 +1327,48 @@
         "documentation": {}
     },
     {
-        "label": "visionEditor",
+        "label": "on_scroll",
         "kind": 2,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "def visionEditor():\n\t# get root path \n\troot\t= os.path.abspath(os.curdir)\n\t# path parent\n\ts = Path(__file__).resolve().parents[2]\n\t# get system name\n\tsystem  = platform.system()\n\t# get arguments \n\targ\t = sys.argv\n\t# coustomized terminal ",
-        "detail": "test",
+        "importPath": "move_even",
+        "description": "move_even",
+        "peekOfCode": "def on_scroll(x, y, dx, dy):\n    traiter_mouvement(x, y, dx, dy)\ndef traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\n\"\"\"_summary_\nwhile True:\n                try:",
+        "detail": "move_even",
         "documentation": {}
     },
     {
-        "label": "\ts",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "\ts = Path(__file__).resolve().parents[2]\n\t# get system name\n\tsystem  = platform.system()\n\t# get arguments \n\targ\t = sys.argv\n\t# coustomized terminal \n\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: ",
-        "detail": "test",
+        "label": "traiter_mouvement",
+        "kind": 2,
+        "importPath": "move_even",
+        "description": "move_even",
+        "peekOfCode": "def traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\n\"\"\"_summary_\nwhile True:\n                try:\n                    char1 = input.convert() \n                    if char1 == 91: ",
+        "detail": "move_even",
         "documentation": {}
     },
     {
-        "label": "\targ\t",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "\targ\t = sys.argv\n\t# coustomized terminal \n\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {}\n\t\telif len(arg) == 2 : ",
-        "detail": "test",
+        "label": "R",
+        "kind": 2,
+        "importPath": "move_even",
+        "description": "move_even",
+        "peekOfCode": "def R():\n    next1, next2,  next3, next4, next5 = 0, 0, 0, 0, 0\n    data = []\n    while True:\n        try:\n            char = input.convert() \n            if char == 27:\n                while True:\n                    next1 = input.convert() \n                    if next1 == 91: ",
+        "detail": "move_even",
         "documentation": {}
     },
     {
-        "label": "\tterminal",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {}\n\t\telif len(arg) == 2 : \n\t\t\tif arg[1]: \n\t\t\t\text = FT.file(arg[1])",
-        "detail": "test",
+        "label": "outer",
+        "kind": 2,
+        "importPath": "move_even",
+        "description": "move_even",
+        "peekOfCode": "def outer():\n    char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0\n    while True:\n        char1 = input.convert() \n        if char1 == 91: \n            char2 = ord(sys.stdin.read(1)) \n            if char2 == 49:\n                char3, char4, char5 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1)), ord(sys.stdin.read(1))\n            else: pass \n        elif char1 == 27:",
+        "detail": "move_even",
         "documentation": {}
     },
     {
-        "label": "\twriteData",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {}\n\t\telif len(arg) == 2 : \n\t\t\tif arg[1]: \n\t\t\t\text = FT.file(arg[1])\n\t\t\t\tif ext is not None : \n\t\t\t\t\ttermios, language = terminal, ext",
-        "detail": "test",
-        "documentation": {}
-    },
-    {
-        "label": "\t\t\t\text",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "\t\t\t\text = FT.file(arg[1])\n\t\t\t\tif ext is not None : \n\t\t\t\t\ttermios, language = terminal, ext\n\t\t\t\t\tif system == \"Windows\" :  name = root + f\"\\\\{arg[1]}\"\n\t\t\t\t\telse:  name = root + f\"/{arg[1]}\"\n\t\t\t\t\t#if os.stat(name) == 0 :  data = RT.readFile(fileName=name, termios=termios, language=language)\n\t\t\t\t\t#else:  data = {} \n\t\t\t\t\tdata\t\t\t\t\t= RT.readFile(fileName=name, termios=termios, language=language)\n\t\t\t\t\twriteData[\"FileName\"]   = arg[1]\n\t\t\t\t\twriteData[\"data\"]\t   = data['string'].copy()",
-        "detail": "test",
-        "documentation": {}
-    },
-    {
-        "label": "\t\t\t\t\twriteData[\"action\"]\t",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "\t\t\t\t\twriteData[\"action\"]\t = True\n\t\t\t\telse: termios, language = \"none\", \"unknown\"\n\t\t\telse : termios, language = \"none\", \"unknown\"\n\t\telif len(arg) == 3 : pass \n\t\tif   system == \"Windows\"\t: mainWin.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)\n\t\telif system == \"Linux\"\t  : mainLinux.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)\n\t\telse: pass \n\telse: pass\nif __name__ == '__main__':\n\tsys.stdout.write(clear.clear.screen(2)+moveCursor.cursor.TO(0,0))",
-        "detail": "test",
+        "label": "inter",
+        "kind": 2,
+        "importPath": "move_even",
+        "description": "move_even",
+        "peekOfCode": "def inter():\n    char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0\n    while True:\n        char1 = input.convert() \n        if char1 == 91: \n            char2 = ord(sys.stdin.read(1)) \n            if char2 == 49:\n                char3, char4, char5 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1)), ord(sys.stdin.read(1))\n            else: pass \n        elif char1 == 27:",
+        "detail": "move_even",
         "documentation": {}
     },
     {
@@ -1264,61 +1376,7 @@
         "kind": 2,
         "importPath": "vision",
         "description": "vision",
-        "peekOfCode": "def visionEditor():\n\t# get root path \n\troot\t= os.path.abspath(os.curdir)\n\t# path parent\n\ts = Path(__file__).resolve().parents[2]\n\t# get system name\n\tsystem  = platform.system()\n\t# get arguments \n\targ\t = sys.argv\n\t# coustomized terminal ",
-        "detail": "vision",
-        "documentation": {}
-    },
-    {
-        "label": "\ts",
-        "kind": 5,
-        "importPath": "vision",
-        "description": "vision",
-        "peekOfCode": "\ts = Path(__file__).resolve().parents[2]\n\t# get system name\n\tsystem  = platform.system()\n\t# get arguments \n\targ\t = sys.argv\n\t# coustomized terminal \n\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: ",
-        "detail": "vision",
-        "documentation": {}
-    },
-    {
-        "label": "\targ\t",
-        "kind": 5,
-        "importPath": "vision",
-        "description": "vision",
-        "peekOfCode": "\targ\t = sys.argv\n\t# coustomized terminal \n\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {\"writing\" : [\"\"], \"string\" : [\"\"], \"input\" : []}\n\t\telif len(arg) == 2 : ",
-        "detail": "vision",
-        "documentation": {}
-    },
-    {
-        "label": "\tterminal",
-        "kind": 5,
-        "importPath": "vision",
-        "description": "vision",
-        "peekOfCode": "\tterminal = \"monokai\"\n\t# \n\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {\"writing\" : [\"\"], \"string\" : [\"\"], \"input\" : []}\n\t\telif len(arg) == 2 : \n\t\t\tif arg[1]: \n\t\t\t\text = FT.file(arg[1])",
-        "detail": "vision",
-        "documentation": {}
-    },
-    {
-        "label": "\twriteData",
-        "kind": 5,
-        "importPath": "vision",
-        "description": "vision",
-        "peekOfCode": "\twriteData = {\"data\" : [], \"FileName\" : None, \"action\" : False}\n\tif system in ['Windows', \"Linux\", \"MacOS\"]: \n\t\tif   len(arg) == 1 : \n\t\t\ttermios, language   = \"none\", \"unknown\"\n\t\t\tdata\t\t\t\t= {\"writing\" : [\"\"], \"string\" : [\"\"], \"input\" : []}\n\t\telif len(arg) == 2 : \n\t\t\tif arg[1]: \n\t\t\t\text = FT.file(arg[1])\n\t\t\t\tif ext is not None : \n\t\t\t\t\ttermios, language = terminal, ext",
-        "detail": "vision",
-        "documentation": {}
-    },
-    {
-        "label": "\t\t\t\text",
-        "kind": 5,
-        "importPath": "vision",
-        "description": "vision",
-        "peekOfCode": "\t\t\t\text = FT.file(arg[1])\n\t\t\t\tif ext is not None : \n\t\t\t\t\ttermios, language = terminal, ext\n\t\t\t\t\tif system == \"Windows\" :  name = root + f\"\\\\{arg[1]}\"\n\t\t\t\t\telse:  name = root + f\"/{arg[1]}\"\n\t\t\t\t\t#if os.stat(name) == 0 :  data = RT.readFile(fileName=name, termios=termios, language=language)\n\t\t\t\t\t#else:  data = {} \n\t\t\t\t\tdata\t\t\t\t\t= RT.readFile(fileName=name, termios=termios, language=language)\n\t\t\t\t\twriteData[\"FileName\"]   = arg[1]\n\t\t\t\t\twriteData[\"data\"]\t   = data['string'].copy()",
-        "detail": "vision",
-        "documentation": {}
-    },
-    {
-        "label": "\t\t\t\t\twriteData[\"action\"]\t",
-        "kind": 5,
-        "importPath": "vision",
-        "description": "vision",
-        "peekOfCode": "\t\t\t\t\twriteData[\"action\"]\t = True\n\t\t\t\telse: termios, language = \"none\", \"unknown\"\n\t\t\telse : termios, language = \"none\", \"unknown\"\n\t\telif len(arg) == 3 : pass \n\t\tif   system == \"Windows\"\t: mainWin.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)\n\t\telif system == \"Linux\"\t  : mainLinux.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)\n\t\telse: pass \n\telse: pass\nif __name__ == '__main__':\n\tsys.stdout.write(clear.clear.screen(2)+moveCursor.cursor.TO(0,0))",
+        "peekOfCode": "def visionEditor( ):\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # get root path \n    root\t= os.path.abspath(os.curdir)\n    # path parent",
         "detail": "vision",
         "documentation": {}
     }

@@ -66,3 +66,36 @@ def linux():
 def convert():
     if os.name == "nt": return windows()
     else: return linux()
+    
+
+def inter():
+    char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0
+    while True:
+        char1 = convert() 
+        if char1 == 91: 
+            char2 = ord(sys.stdin.read(1)) 
+            if char2 == 49:
+                char3, char4, char5 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1)), ord(sys.stdin.read(1))
+            else: pass 
+        elif char1 == 27:
+            char1, char2, char3, char4, char5 = outer()
+        else: pass 
+        
+        break
+    return [char1, char2, char3, char4, char5]
+
+def outer():
+    char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0
+    while True:
+        char1 = convert() 
+        if char1 == 91: 
+            char2 = ord(sys.stdin.read(1)) 
+            if char2 == 49:
+                char3, char4, char5 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1)), ord(sys.stdin.read(1))
+            else: pass 
+        elif char1 == 27:
+            char1, char2, char3, char4, char5 = inter()
+        else: pass 
+        
+        break
+    return [char1, char2, char3, char4, char5]
