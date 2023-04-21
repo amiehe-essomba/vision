@@ -29,17 +29,30 @@ def formating(LINE : int = 4, data : list = [], max_x : int = 0, idd : int = 0, 
         
     else:
         Y = MAX['y']
-        sys.stdout.write( move.TO(MAX['x'], MAX['y']) )
-        for i in range(MAX['max'], len(data)):
-            sys.stdout.write(move.LEFT(pos=1000) + clear.clear.line(2))
-            sys.stdout.write(
-                input + c_bg + " " * (max_x - (length+2) ) + reset + 
-                move.TO(x=max_x, y=Y) + c + f"{asc['v']}" +
-                move.TO(x=length+1, y=Y) + c_bg+ data[i] + reset + "\n"
-                )
-            Y += 1
-            sys.stdout.flush()
-            
+        line = N - Y +  (LINE+1)
+        if len(data[MAX['max'] : ]) <  line :
+            sys.stdout.write( move.TO(MAX['x'], MAX['y']) )
+            for i in range(MAX['max'], len(data)):
+                sys.stdout.write(move.LEFT(pos=1000) + clear.clear.line(2))
+                sys.stdout.write(
+                    input + c_bg + " " * (max_x - (length+2) ) + reset + 
+                    move.TO(x=max_x, y=Y) + c + f"{asc['v']}" +
+                    move.TO(x=length+1, y=Y) + c_bg+ data[i] + reset + "\n"
+                    )
+                Y += 1
+                sys.stdout.flush()
+        else:
+            sys.stdout.write( move.TO(MAX['x'], MAX['y']) )
+            for i in range(line ):
+                i += MAX['max'] 
+                sys.stdout.write(move.LEFT(pos=1000) + clear.clear.line(2))
+                sys.stdout.write(
+                    input + c_bg + " " * (max_x - (length+2) ) + reset + 
+                    move.TO(x=max_x, y=Y) + c + f"{asc['v']}" +
+                    move.TO(x=length+1, y=Y) + c_bg+ data[i] + reset +"\n"
+                    )
+                Y += 1
+                sys.stdout.flush()
 
 def scrollUP(data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, y : int = 0):
     move        = moveCursor.cursor
@@ -54,36 +67,22 @@ def scrollUP(data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, 
     sys.stdout.write(move.TO(x=length, y=Y) )
     
     if data[idd : ] : 
-      
-        if len(data[idd : ]) > N :
-            for i in range(N):
-                i += idd
-                sys.stdout.write(move.TO(x=length+1, y=Y) + move.LEFT(pos=1000) + clear.clear.line(2))
+        for i in range(N):
+            i += idd
+            sys.stdout.write(move.TO(x=length+1, y=Y) + move.LEFT(pos=1000) + clear.clear.line(2))
+            try:
                 sys.stdout.write(
                     input + c_bg + " " * (max_x - (length+2) ) + reset +
                     move.TO(x=max_x, y=Y) + c + f"{asc['v']}" + 
                     move.TO(x=length+1, y=Y) + c_bg + data[i]  + reset 
+                    )     
+            except IndexError:
+                sys.stdout.write(
+                    input + c_bg + " " * (max_x - (length+2) ) + reset +
+                    move.TO(x=max_x, y=Y) + c + f"{asc['v']}" + 
+                    move.TO(x=length+1, y=Y) + c_bg + reset 
                     )
-                Y += 1
-            sys.stdout.flush()
-        else:
-            for i in range(N):
-                sys.stdout.write(move.TO(x=length+1, y=Y) + move.LEFT(pos=1000) + clear.clear.line(2))
-                if i < len(data[idd : ]) : 
-                    i += idd
-                    sys.stdout.write(
-                        input + c_bg + " " * (max_x - (length+2) ) + reset +
-                        move.TO(x=max_x, y=Y) + c + f"{asc['v']}" + 
-                        move.TO(x=length+1, y=Y) + c_bg + data[i]  + reset 
-                        )
-                else:
-                    i += idd
-                    sys.stdout.write(
-                        input + c_bg + " " * (max_x - (length+2) ) + reset +
-                        move.TO(x=max_x, y=Y) + c + f"{asc['v']}" + 
-                        move.TO(x=length+1, y=Y) + c_bg + reset 
-                        )
-                Y += 1
+            Y += 1
             sys.stdout.flush()
     else: pass
     

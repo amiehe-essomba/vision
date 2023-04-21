@@ -1,5 +1,318 @@
 [
     {
+        "label": "sys,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys.",
+        "description": "sys.",
+        "detail": "sys.",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame         ",
+        "description": "frame         ",
+        "isExtraImport": true,
+        "detail": "frame         ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame         ",
+        "description": "frame         ",
+        "isExtraImport": true,
+        "detail": "frame         ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame         ",
+        "description": "frame         ",
+        "isExtraImport": true,
+        "detail": "frame         ",
+        "documentation": {}
+    },
+    {
+        "label": "frame",
+        "importPath": "frame         ",
+        "description": "frame         ",
+        "isExtraImport": true,
+        "detail": "frame         ",
+        "documentation": {}
+    },
+    {
         "label": "re",
         "kind": 6,
         "isExtraImport": true,
@@ -39,222 +352,6 @@
         "description": "keywords      ",
         "isExtraImport": true,
         "detail": "keywords      ",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "clear",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "state",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "screenConfig",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "moveCursor",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "scroll",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "clear",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "state",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "screenConfig",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "moveCursor",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "scroll",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "clear",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "state",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "screenConfig",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "moveCursor",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "scroll",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "colors",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
-        "documentation": {}
-    },
-    {
-        "label": "init",
-        "importPath": "configure     ",
-        "description": "configure     ",
-        "isExtraImport": true,
-        "detail": "configure     ",
         "documentation": {}
     },
     {
@@ -549,30 +646,6 @@
         "documentation": {}
     },
     {
-        "label": "frame",
-        "importPath": "frame         ",
-        "description": "frame         ",
-        "isExtraImport": true,
-        "detail": "frame         ",
-        "documentation": {}
-    },
-    {
-        "label": "frame",
-        "importPath": "frame         ",
-        "description": "frame         ",
-        "isExtraImport": true,
-        "detail": "frame         ",
-        "documentation": {}
-    },
-    {
-        "label": "frame",
-        "importPath": "frame         ",
-        "description": "frame         ",
-        "isExtraImport": true,
-        "detail": "frame         ",
-        "documentation": {}
-    },
-    {
         "label": "input",
         "importPath": "getUserInput  ",
         "description": "getUserInput  ",
@@ -677,15 +750,6 @@
         "documentation": {}
     },
     {
-        "label": "sys,",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys.",
-        "description": "sys.",
-        "detail": "sys.",
-        "documentation": {}
-    },
-    {
         "label": "data",
         "importPath": "DataBase      ",
         "description": "DataBase      ",
@@ -708,6 +772,24 @@
         "importPath": "time",
         "description": "time",
         "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
         "documentation": {}
     },
     {
@@ -775,6 +857,24 @@
         "description": "fileType\t   ",
         "isExtraImport": true,
         "detail": "fileType\t   ",
+        "documentation": {}
+    },
+    {
+        "label": "scrollBar",
+        "kind": 6,
+        "importPath": "AUTO.scrollBar",
+        "description": "AUTO.scrollBar",
+        "peekOfCode": "class scrollBar:\n    def __init__(self): \n        pass\n    def vertical(self):\n        pass",
+        "detail": "AUTO.scrollBar",
+        "documentation": {}
+    },
+    {
+        "label": "ckeck",
+        "kind": 2,
+        "importPath": "AUTO.scrollBar",
+        "description": "AUTO.scrollBar",
+        "peekOfCode": "def ckeck(self, x : int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE : int = 4, max_DOWN : int = 5):\n    line = max_y - (LINE+1) - y \n    if self.line > max_DOWN: pass \n    else: pass\nclass scrollBar:\n    def __init__(self): \n        pass\n    def vertical(self):\n        pass",
+        "detail": "AUTO.scrollBar",
         "documentation": {}
     },
     {
@@ -1196,7 +1296,7 @@
         "kind": 2,
         "importPath": "saving.writing",
         "description": "saving.writing",
-        "peekOfCode": "def writeInput(dataFile: list , FileName : str):\n    with open(FileName, \"w\") as file:\n        for i, string in enumerate(dataFile): \n            if i != len(dataFile)-1: file.write(f\"{string}\\n\")\n            else: file.write(f\"{string}\")\n    file.close()\ndef BLACK_M(WRITE : list = [], lang : str = \"unknown\"):\n    from keywords       import words\n    from configure      import colors, init\n    # bg color ",
+        "peekOfCode": "def writeInput(dataFile: list , FileName : str):\n    with open(FileName, \"w\") as file:\n        for i, string in enumerate(dataFile): \n            if i != len(dataFile)-1: file.write(f\"{string}\\n\")\n            else: file.write(f\"{string}\")\n    file.close()\ndef BLACK_M(WRITE : list = [], lang : str = \"unknown\", history : dict = {}):\n    from keywords       import words\n    from configure      import colors, init\n    # bg color ",
         "detail": "saving.writing",
         "documentation": {}
     },
@@ -1205,7 +1305,7 @@
         "kind": 2,
         "importPath": "saving.writing",
         "description": "saving.writing",
-        "peekOfCode": "def BLACK_M(WRITE : list = [], lang : str = \"unknown\"):\n    from keywords       import words\n    from configure      import colors, init\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # locking string ",
+        "peekOfCode": "def BLACK_M(WRITE : list = [], lang : str = \"unknown\", history : dict = {}):\n    from keywords       import words\n    from configure      import colors, init\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # locking string ",
         "detail": "saving.writing",
         "documentation": {}
     },
@@ -1223,7 +1323,7 @@
         "kind": 2,
         "importPath": "saving.writing",
         "description": "saving.writing",
-        "peekOfCode": "def keys(count : int = 0, lang : str='', string : str = \"\"):\n    key_found = False \n    idd       = 0\n    if string: \n        if lang == 'cpmd':\n            if    string[count : 5] == \"&INFO\": key_found = True \n            else: pass \n        elif lang == 'mamba':\n            if   string[count : 5] == \"begin\"   : key_found = True \n            elif string[count : 5] == \"class\"   : idd = 1",
+        "peekOfCode": "def keys(count : int = 0, lang : str='', string : str = \"\"):\n    key_found = False \n    idd       = 0\n    if string: \n        if lang == 'cpmd':\n            if    string[count : 5+count] == \"&INFO\": key_found = True \n            else: pass \n        elif lang == 'mamba':\n            if   string[count : 5+count] == \"begin\"   : key_found = True \n            elif string[count : 5+count] == \"class\"   : idd = 1",
         "detail": "saving.writing",
         "documentation": {}
     },
@@ -1232,7 +1332,7 @@
         "kind": 2,
         "importPath": "saving.writing",
         "description": "saving.writing",
-        "peekOfCode": "def OPEN(count : int , lang : str, locked : bool = False):\n    if locked is False : return None\n    else:\n        if   lang == \"mamba\"    : return \"\\t\"*count + \"end\"\n        elif lang == \"cpmd\"     : return \"\\t\"*count + \"&END\"\n        elif lang == \"python\"   : return \"\\t\"*count + '\"\"\"'\n        else: return None\ndef STR(STR : str, string : str):\n    open = True \n    try:",
+        "peekOfCode": "def OPEN(count : int , lang : str, locked : bool = False):\n    if locked is False : return None\n    else:\n        if   lang == \"mamba\"    : return [\"\\t\"*count + \"end\", \"\\t\"*count + \"save\" ]\n        elif lang == \"cpmd\"     : return [\"\\t\"*count + \"&END\"]\n        elif lang == \"python\"   : return [\"\\t\"*count + '\"\"\"']\n        else: return None\ndef STR(STR : str, string : str):\n    open = True \n    try:",
         "detail": "saving.writing",
         "documentation": {}
     },
@@ -1324,6 +1424,195 @@
         "description": "mainWin",
         "peekOfCode": "class IDE:\n    def __init__(self, termios : str = \"none\", lang : str = \"unknown\"):\n        # border configuration \n        self.acs                = frame.frame(custom=True)\n        # loading backgroung color \n        self.color_bg           = colors.bg\n        # loading foreground color \n        self.color_fg           = colors.fg\n        # loading initialization cursor parameters \n        self.init               = init.init",
         "detail": "mainWin",
+        "documentation": {}
+    },
+    {
+        "label": "R",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "R = 8.14\nF = 9.648533289e+4\nep_rr = 9.4#12\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "F",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "F = 9.648533289e+4\nep_rr = 9.4#12\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "ep_rr",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "ep_rr = 9.4#12\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "T",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "T = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "ep_0",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "ep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N ",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "A",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "A = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "C0",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "C0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "gama",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "gama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "sigma",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "sigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  ",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "Kb",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "Kb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "a = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "b = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "N",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "N = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "dx",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "dx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)\nW = np.array(W)",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "V",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "V = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)\nW = np.array(W)\nQ = [0]",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "W",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "W = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)\nW = np.array(W)\nQ = [0]\nfor i in range(N):",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "\tB",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)\nW = np.array(W)\nQ = [0]\nfor i in range(N):\n\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "V",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "V = np.array(V)\nW = np.array(W)\nQ = [0]\nfor i in range(N):\n\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)\nplt.plot(V, Q)\nplt.show()",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "W",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "W = np.array(W)\nQ = [0]\nfor i in range(N):\n\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)\nplt.plot(V, Q)\nplt.show()",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "Q",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "Q = [0]\nfor i in range(N):\n\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)\nplt.plot(V, Q)\nplt.show()",
+        "detail": "mamba",
+        "documentation": {}
+    },
+    {
+        "label": "\tQ_M",
+        "kind": 5,
+        "importPath": "mamba",
+        "description": "mamba",
+        "peekOfCode": "\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)\nplt.plot(V, Q)\nplt.show()",
+        "detail": "mamba",
         "documentation": {}
     },
     {

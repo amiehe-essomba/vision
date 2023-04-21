@@ -33,17 +33,16 @@ cdef class words:
         str  cc          
         str  cmt         
         list comment  
-        dict LANG 
         str  decorator, delimitor
         list chars 
         list mul_cmt
+        dict LANG
 
     def __cinit__(self, string, color, language,  termios = "monokai" ):
         self.string         = string 
         self.color          = color 
         self.language       = language
         self.termios        = termios
-        self.LANG           = key_py.LANG(master = self.language).LANG(termios = self.termios )
         self.counter        = 0
         self.newS           = ""
         self.ss             = ""
@@ -57,8 +56,10 @@ cdef class words:
         self.delimitor      = languageStyle.delimitor(name=self.language)['name']
         self.chars          = languageStyle.characters(name=self.language)['name']
         self.mul_cmt        = languageStyle.mul_cmt(name=self.language)['name']
+        self.LANG           = {}
         
     cdef keywords(self, unsigned long long int n = 0, bint locked = False, dict count = {'int' : 0, 'sys' : []}, str b_ = ''):
+        self.LANG  = key_py.LANG(master = self.language).LANG(termios = self.termios, n = n )
         cdef :
             str newString   = ""
             bint active     = False

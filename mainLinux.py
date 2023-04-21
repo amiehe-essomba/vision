@@ -133,6 +133,7 @@ class IDE:
         ##########################################################
         self.no_cmt                         = self.color
         self.cmt                            = init.init.bold + colors.bg.rgb(10, 10, 10) + colors.fg.rbg(153, 153, 255) 
+        self.conservingColor                = self.color
         ###########################################################
         sys.stdout.write(self.move.TO(self.x, self.y))
         sys.stdout.flush()
@@ -169,8 +170,9 @@ class IDE:
                 elif self.char == 19        : 
                     if self.screenLocked is False : 
                         if self.writeData['FileName'] is None: 
+                            self.histotyOfColors   = {"m" : [], "n" : [], "color" : [], "locked" : []}
                             self.writeData["data"] =  self.Data['string_tabular'].copy()
-                            self.lang = save.saveData( self.writeData ).build(self.x, self.y, self.lang, self.str_)
+                            self.lang = save.saveData( self.writeData ).build(self.x, self.y, self.lang, self.str_, history = self.histotyOfColors)
                         else: writing.writeInput(self.Data['string_tabular'], self.writeData["FileName"])
                         self.differentStates['data'] = {
                             self.differentStates['index'] : {
@@ -210,6 +212,20 @@ class IDE:
                             del self.Data['get'][self.Data['I_S']]
                             self.counterL           = 0
                             self.counterR          -= 1
+                            
+                            if self.Data['input']:
+                                if self.Data['input'][self.Data['index']-1] in save.case():
+                                    _id_ = self.Data['index']
+                                    while _id_ > 0:
+                                        try:
+                                            _id_ -= 1
+                                            if self.Data['input'][_id_] in save.case():pass 
+                                            else: break
+                                        except IndexError: break
+                                    self.Data['str_drop_down'] = self.Data['input'][_id_ : self.Data['index']]
+                                    self.Data['drop_idd'] = len(self.Data['str_drop_down'])
+                                elif self.Data['input'][self.Data['index']] in save.case(): pass 
+                            else: self.Data['str_drop_down'],self.Data['drop_idd'] = "", 0
                         else: pass
                     else: pass
                 
@@ -269,20 +285,21 @@ class IDE:
                                     else:
                                         if self.if_line == 0 : pass 
                                         else: 
-                                            self.if_line_max       -= 1
-                                            self.if_line           -= 1
-                                            self.y                  = self.LINE
-                                            self.input, self.size   = header.counter( self.if_line )
-                                            self.Data['string']     = self.Data['string_tabular'][self.if_line]
-                                            self.Data['I_S']        = self.Data['string_tab'][self.if_line]
-                                            self.Data['input']      = self.Data['liste'][self.if_line]
-                                            self.Data['index']      = self.Data['tabular'][self.if_line]
-                                            self.x, self.Y          = self.Data['x_y'][self.if_line] 
-                                            self.Data['get']        = self.Data['memory'][self.if_line].copy()
-                                            formating.formating(LINE=self.LINE, data=self.str_, idd=self.if_line_max, max_y=self.max_y-self.max_down+1, max_x=self.max_x) 
-                                            sys.stdout.write( self.move.TO(x=self.x, y=self.LINE) + self.init.reset )
-                                            sys.stdout.flush()
-                                            
+                                            if self.if_line > 0 :
+                                                self.if_line_max       -= 1
+                                                self.if_line           -= 1
+                                                self.y                  = self.LINE
+                                                self.input, self.size   = header.counter( self.if_line )
+                                                self.Data['string']     = self.Data['string_tabular'][self.if_line]
+                                                self.Data['I_S']        = self.Data['string_tab'][self.if_line]
+                                                self.Data['input']      = self.Data['liste'][self.if_line]
+                                                self.Data['index']      = self.Data['tabular'][self.if_line]
+                                                self.x, self.Y          = self.Data['x_y'][self.if_line] 
+                                                self.Data['get']        = self.Data['memory'][self.if_line].copy()
+                                                formating.formating(LINE=self.LINE, data=self.str_, idd=self.if_line_max, max_y=self.max_y-self.max_down+1, max_x=self.max_x) 
+                                                sys.stdout.write( self.move.TO(x=self.x, y=self.LINE) + self.init.reset )
+                                                sys.stdout.flush()
+                                            else: pass
                                 else: 
                                     if self.scrollDown  > 0 : 
                                         if self.y > self.LINE       : self.y   -= 1 
@@ -336,6 +353,10 @@ class IDE:
                                         self.Data['x_y'].append((self.x, self.y))
                                         self.Data['memory'].append(self.Data['get'].copy())
                                         self.str_.append("")
+                                        self.histotyOfColors["color"].append(self.conservingColor)
+                                        self.histotyOfColors['m'].append(0)
+                                        self.histotyOfColors['locked'].append(False)
+                                        self.histotyOfColors['n'].append(0)
                                     sys.stdout.write( 
                                     self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
                                     self.move.TO(x=self.x, y=self.y) + self.c_bg +
@@ -526,6 +547,7 @@ class IDE:
                             self.x                  += 4
                             self.Data['get'].append([1 for x in range(4)])
                             self.counterR            = len( self.Data['input'] )
+                            self.Data['str_drop_down'],self.Data['drop_idd'] = "", 0
                         else: pass 
                     else: pass
                 
@@ -541,13 +563,6 @@ class IDE:
                     self.Data['index']  = len(self.Data['input'])
                     self.x              = self.Data['index'] + (self.size + 1)
                 
-                # maj + d 
-                
-                elif self.char == 68        :
-                    self.Data['string']   = self.Data['string'][self.Data['I_S']]
-                    self.Data['input']    = self.Data['input'][self.Data['index']]
-                    self.x              = self.Data['index'] + (self.size + 1)
-                
                 # building scring 
                 else: 
                     if self.screenLocked is False : 
@@ -559,6 +574,12 @@ class IDE:
                             self.x                  += 1
                             self.counterR            = len( self.Data['input'] )
                             self.Data['get'].append(1)
+                            
+                            if chr(self.char ) in save.case():
+                                self.Data['str_drop_down'] = self.Data['str_drop_down'][ : self.Data['drop_idd'] ] + \
+                                    chr( self.char ) + self.Data['str_drop_down'][ self.Data['drop_idd']  : ]
+                                self.Data['drop_idd'] += 1
+                            else: self.Data['drop_idd'], self.Data['str_drop_down'] = 0, ""
                         else : pass
                     else: 
                         if self.overwriting is False:
@@ -580,7 +601,7 @@ class IDE:
                                     self.Data['string']                         = self.stringCopy
                                     self.x                                      = self.xCopy['pos']
                                     self.Data['index']                          = self.xCopy['x_i']
-                                    self.Data['string']                         = self.xCopy['x_s']
+                                    self.Data['I_S']                            = self.xCopy['x_s']
                                     self.Data['get']                            = self.getCopy.copy()
                                     
                                     self.Data['string_tabular'][self.if_line]   = self.stringCopy
@@ -632,17 +653,22 @@ class IDE:
                             elif chr(self.char) == "d"  :
                                 if self.if_line < len(self.Data['string_tabular']):   
                                     try:           
-                                        del self.Data['string_tabular'][self.if_line] 
-                                        del self.Data['string_tab'][self.if_line]  
-                                        del self.Data['liste'][self.if_line]          
-                                        del self.Data['tabular'][self.if_line]     
-                                        del self.Data['memory'][self.if_line]         
-                                        del self.Data['x_y'][self.if_line] 
-                                        del self.str_[self.if_line]    
+                                        self.Data['string_tabular'] = self.Data['string_tabular'][ : self.if_line] + self.Data['string_tabular'][self.if_line+1 : ] + ['']
+                                        self.Data['string_tab']     = self.Data['string_tab'][ : self.if_line]  + self.Data['string_tab'][self.if_line +1 : ] + [0]
+                                        self.Data['liste']          = self.Data['liste'][: self.if_line] + self.Data['liste'][self.if_line+1 : ] + ['']      
+                                        self.Data['tabular']        = self.Data['tabular'][ : self.if_line] + self.Data['tabular'][self.if_line+1 : ] + [0]      
+                                        self.Data['memory']         = self.Data['memory'][ : self.if_line] + self.Data['memory'][self.if_line+1 : ] + [[]]        
+                                        self.Data['x_y']            = self.Data['x_y'][ : self.if_line] + self.Data['x_y'][self.if_line+1 : ] + [(self.size+1, len(self.Data['memory']))]
+                                        self.str_                   = self.str_[ : self.if_line] + self.str_[self.if_line+1 : ] + ['']    
                                         
                                         formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
-                                        self.if_line        -= 1
-                                        self.if_line_max    -= 1
+                                        
+                                        self.Data['input']                          = self.Data['liste'][self.if_line]
+                                        self.Data['string']                         = self.Data['string_tabular'][self.if_line]
+                                        self.x, self.Y                              = self.Data['x_y'][self.if_line]
+                                        self.Data['index']                          = self.Data['tabular'][self.if_line] 
+                                        self.Data['I_S']                            = self.Data['string_tab'][self.if_line]
+                                        self.Data['get']                            = self.Data['memory'][self.if_line]
                                     except IndexError: pass 
                                 else: pass
 
@@ -689,6 +715,7 @@ class IDE:
                 self.m      = self.histotyOfColors['m'][self.if_line]
                 self.nn     = self.histotyOfColors['n'][self.if_line]
                 self.locked = self.histotyOfColors['locked'][self.if_line]
+            
                 if self.lang != "unknown" : 
                     __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, m = self.m, n=self.nn)
                 else:  __string__ = self.Data['input']
@@ -725,7 +752,9 @@ class IDE:
                 else:
                     _open_                                = writing.OPEN(tab, self.lang, self.locked)
                     if _open_ is None: pass
-                    else: self.locked =  writing.STR(_open_, self.Data['string'])
+                    else:
+                        for s in _open_: 
+                            self.locked =  writing.STR(s, self.Data['string'])
                     
                     if  self.locked is True: self.color   = self.cmt 
                     else: self.color = self.no_cmt

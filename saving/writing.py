@@ -7,7 +7,7 @@ def writeInput(dataFile: list , FileName : str):
             
     file.close()
     
-def BLACK_M(WRITE : list = [], lang : str = "unknown"):
+def BLACK_M(WRITE : list = [], lang : str = "unknown", history : dict = {}):
     from keywords       import words
     from configure      import colors, init
     
@@ -29,17 +29,30 @@ def BLACK_M(WRITE : list = [], lang : str = "unknown"):
         for string in WRITE :
             tab = tabular(string, lang)
             if locked is False:
+                locked, idd         = keys(tab, lang, string)
                 _string_            = string.replace("\t", " " * 4)
                 __line__, __color__ = words.words(string=_string_, color=color, language=lang ).final(locked=locked, m=m, n=idd)
-                locked, idd         = keys(tab, lang, string)
+                
+                history["color"].append(color)
+                history["m"].append(m)
+                history['n'].append(idd)
+                history['locked'].append(locked)
+                
                 if locked is True: color = cmt 
                 else: color = no_cmt
             else:
                 _open_                  = OPEN(tab, lang, locked)
                 if _open_ is None: pass
-                else: locked = STR(_open_, string )
+                else:
+                    for s in _open_: 
+                        locked = STR(s, string )
                 _string_            = string.replace("\t", " " * 4)
                 __line__, __color__ = words.words(string=_string_, color=color, language=lang ).final(locked=locked, m=m, n=idd)
+                
+                history["color"].append(color)
+                history["m"].append(m)
+                history['n'].append(idd)
+                history['locked'].append(locked)
                 
                 if locked is True: color = cmt 
                 else: color = no_cmt
@@ -47,7 +60,7 @@ def BLACK_M(WRITE : list = [], lang : str = "unknown"):
             LIST.append(__line__)
             
     else: pass 
-    
+
     return LIST        
     
 def tabular(string : str, lang: str = ""):
@@ -79,13 +92,13 @@ def keys(count : int = 0, lang : str='', string : str = ""):
     
     if string: 
         if lang == 'cpmd':
-            if    string[count : 5] == "&INFO": key_found = True 
+            if    string[count : 5+count] == "&INFO": key_found = True 
             else: pass 
         elif lang == 'mamba':
-            if   string[count : 5] == "begin"   : key_found = True 
-            elif string[count : 5] == "class"   : idd = 1
-            elif string[count : 3] == "def"     : idd = 1
-            elif string[count : 4] == "func"    : idd = 1
+            if   string[count : 5+count] == "begin"   : key_found = True 
+            elif string[count : 5+count] == "class"   : idd = 1
+            elif string[count : 3+count] == "def"     : idd = 1
+            elif string[count : 4+count] == "func"    : idd = 1
             else: pass
         elif lang == "python":
             if   string[count : 3] == '"""'   : key_found = True 
@@ -100,9 +113,9 @@ def OPEN(count : int , lang : str, locked : bool = False):
     
     if locked is False : return None
     else:
-        if   lang == "mamba"    : return "\t"*count + "end"
-        elif lang == "cpmd"     : return "\t"*count + "&END"
-        elif lang == "python"   : return "\t"*count + '"""'
+        if   lang == "mamba"    : return ["\t"*count + "end", "\t"*count + "save" ]
+        elif lang == "cpmd"     : return ["\t"*count + "&END"]
+        elif lang == "python"   : return ["\t"*count + '"""']
         else: return None
         
 def STR(STR : str, string : str):
