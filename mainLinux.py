@@ -195,6 +195,63 @@ class IDE:
                         self.differentStates['index'] += 1
                     else: pass
                 
+                # adding a new line on top <ctrl+o>
+                elif self.char  == 15       : 
+                    self.Data['string']      = ""
+                    self.Data['input']       = ""
+                    self.Data["I_S"]         = 0
+                    self.Data["index"]       = 0
+                    self.Data['get']         = []
+                    self.x                   = self.size + 1
+                    
+                    self.Data['string_tabular'].insert(self.if_line, self.Data['string'])
+                    self.Data['string_tab'].insert(self.if_line, self.Data['I_S'])
+                    self.Data['liste'].insert(self.if_line, self.Data['input'] )
+                    self.Data['tabular'].insert(self.if_line, self.Data['index'] )
+                    self.Data['x_y'].insert(self.if_line, (self.x, self.y))
+                    self.Data['memory'].insert(self.if_line, self.Data['get'])
+                    self.str_.insert(self.if_line, self.Data['input'])
+                    
+                    self.histotyOfColors['color'].insert(self.if_line, self.color)
+                    self.histotyOfColors['m'].insert(self.if_line, 0)
+                    self.histotyOfColors['n'].insert(self.if_line, 0)
+                    self.histotyOfColors['locked'].insert(self.if_line, self.locked)
+                    
+                    formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
+                    
+                    self.if_line_max        += 1
+                    self.if_line            += 1
+                   
+                # clear screen  <ctrl+l>
+                elif self.char == 12        :
+                    self.Data['string']             = ""
+                    self.Data['input']              = ""
+                    self.Data["I_S"]                = 0
+                    self.Data["index"]              = 0
+                    self.Data['get']                = []
+                    self.x                          = self.size + 1
+                    self.y                          = self.LINE
+                    ####################################################
+                    self.Data['string_tabular']     = [""]
+                    self.Data['string_tab']         = [0]
+                    self.Data['liste']              = [""]    
+                    self.Data['tabular']            = [0]
+                    self.Data['x_y']                = [(self.x, self.y)]
+                    self.Data['memory']             = [[]]
+                    self.str_                       = ['']
+                    self.if_line_max                = 0
+                    self.if_line                    = 0
+                    ####################################################
+                    self.histotyOfColors['color']   = [self.color]
+                    self.histotyOfColors['m']       = [0]
+                    self.histotyOfColors['n']       = [0]
+                    self.histotyOfColors['locked']  = [False]
+                    ####################################################
+                    self.Data['drop_idd'],self.Data['str_drop_down'] = 0, ""
+                    ####################################################
+                    
+                    formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
+                    
                 # delecting char <backspace>
                 elif self.char in {127, 8}  :
                     if self.screenLocked is False : 
@@ -485,9 +542,9 @@ class IDE:
                             self.str_.append(self.Data['input'])
                             self.action = "ADD"
                             self.histotyOfColors['color'].append(self.color)
-                            self.histotyOfColors['m'].append(self.color)
-                            self.histotyOfColors['n'].append(self.color)
-                            self.histotyOfColors['locked'].append(self.color)
+                            self.histotyOfColors['m'].append(self.m)
+                            self.histotyOfColors['n'].append(self.nn)
+                            self.histotyOfColors['locked'].append(self.locked)
                             
                         if self.y < self.max_y-(self.max_down+1): 
                             self.y    += 1
@@ -731,6 +788,7 @@ class IDE:
                 #########################################################################################################
                 #########################################################################################################
                 tab = writing.tabular(self.Data['string'], self.lang)
+                
                 if self.locked is False:         
                     self.locked, self.nn                  = writing.keys(tab, self.lang, self.Data['string'])
                     if self.locked is True: self.color    = self.cmt 

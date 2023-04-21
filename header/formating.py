@@ -129,7 +129,6 @@ def RestoringSTring(max_x : int = 0, max_y : int = 0, LINE : int = 4, WRITE : li
     for i in range(N):
         sys.stdout.write(move.TO(x=length+1, y=Y) + move.LEFT(pos=1000) + clear.clear.line(2))
         try:
-            #i += line
             sys.stdout.write(
                 input + c_bg + " " * (max_x - (length+2) ) + reset +
                 move.TO(x=max_x, y=Y) + c + f"{asc['v']}" + 

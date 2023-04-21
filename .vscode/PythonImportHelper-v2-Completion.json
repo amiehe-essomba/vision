@@ -1185,7 +1185,7 @@
         "kind": 2,
         "importPath": "header.counter",
         "description": "header.counter",
-        "peekOfCode": "def count(number : int , x : int , y : int , max_x : int, max_y : int, lang : str = 'python', action : bool = False):\n    move                = moveCursor.cursor\n    asc                 = frame.frame(custom=True)\n    bold                = init.init.bold\n    reset               = init.init.reset\n    c_bg                = colors.bg.rgb(10, 10, 10)  \n    c                   = bold + colors.fg.rbg(255, 255, 255)\n    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f\"{lang} programm\"+ reset \n    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f\"{x}, {number+1}\"+ reset \n    if action is False:",
+        "peekOfCode": "def count(number : int , x : int , y : int , max_x : int, max_y : int, lang : str = 'python', action : bool = False):\n    move                = moveCursor.cursor\n    asc                 = frame.frame(custom=True)\n    bold                = init.init.bold\n    reset               = init.init.reset\n    c_bg                = colors.bg.rgb(10, 10, 10)  \n    c                   = bold + colors.fg.rbg(255, 255, 255)\n    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f\"{lang} programm\"+ reset \n    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f\"{x-2}, {number+1}\"+ reset \n    if action is False:",
         "detail": "header.counter",
         "documentation": {}
     },
@@ -1230,7 +1230,7 @@
         "kind": 2,
         "importPath": "header.header",
         "description": "header.header",
-        "peekOfCode": "def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = \"white\",  \n                                dataBase : dict = {}, data : dict = {}, lang=\"unknwon\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    cc          = init.init.bold + colors.fg.rbg(0, 255, 255)\n    string      = \"VISION EDITOR V-1.0.0\".center(max_x - 2)\n    move        = moveCursor.cursor \n    action      = state.save\n    blink       = init.init.blink+init.init.underline",
+        "peekOfCode": "def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = \"white\",  \n                                dataBase : dict = {}, data : dict = {}, lang=\"unknwon\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    cc          = init.init.bold + colors.fg.rbg(0, 255, 255)\n    string      = \"VISION EDITOR V-1.0.0-beta\".center(max_x - 2)\n    move        = moveCursor.cursor \n    action      = state.save\n    blink       = init.init.blink+init.init.underline",
         "detail": "header.header",
         "documentation": {}
     },
@@ -1464,7 +1464,7 @@
         "kind": 5,
         "importPath": "mamba",
         "description": "mamba",
-        "peekOfCode": "R = 8.14\nF = 9.648533289e+4\nep_rr = 9.4#12\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23",
+        "peekOfCode": "R = 8.14\nF = 9.648533289e+4\nep_rr = 9.4\u0013\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23",
         "detail": "mamba",
         "documentation": {}
     },
@@ -1473,7 +1473,7 @@
         "kind": 5,
         "importPath": "mamba",
         "description": "mamba",
-        "peekOfCode": "F = 9.648533289e+4\nep_rr = 9.4#12\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50",
+        "peekOfCode": "F = 9.648533289e+4\nep_rr = 9.4\u0013\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50",
         "detail": "mamba",
         "documentation": {}
     },
@@ -1482,7 +1482,7 @@
         "kind": 5,
         "importPath": "mamba",
         "description": "mamba",
-        "peekOfCode": "ep_rr = 9.4#12\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50",
+        "peekOfCode": "ep_rr = 9.4\u0013\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50",
         "detail": "mamba",
         "documentation": {}
     },

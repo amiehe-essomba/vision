@@ -11,7 +11,7 @@ def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white"
     bold        = init.init.bold
     reset       = init.init.reset
     cc          = init.init.bold + colors.fg.rbg(0, 255, 255)
-    string      = "VISION EDITOR V-1.0.0".center(max_x - 2)
+    string      = "VISION EDITOR V-1.0.0-beta".center(max_x - 2)
     move        = moveCursor.cursor 
     action      = state.save
     blink       = init.init.blink+init.init.underline
@@ -73,7 +73,7 @@ def writingData(max_x: int, n : int, x : int, y : int, color : str = "white",
     input, length       = counter(n=0, color=color)
     scrolledUp          = False 
     _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+colors.fg.rbg(0, 255, 255) + " opened"+ reset 
-    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"{x}, {N+1}"+ reset 
+    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"{x}, {N}"+ reset 
 
     for i in range(N-1):
         dataBase['memory'].append( [] )

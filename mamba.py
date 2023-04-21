@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 R = 8.14
 F = 9.648533289e+4
-ep_rr = 9.4#12
+ep_rr = 9.4
 T = 300 
 ep_0 = epsilon = 8.854e-12
 A = 0.66

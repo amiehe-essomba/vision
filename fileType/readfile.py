@@ -66,7 +66,7 @@ def readFile(fileName: str, termios : str , language :  str ):
                     else: color = no_cmt                 
         file.close()
     except FileNotFoundError: 
-        data = {"writing" : [""], "string" : [""], "input" : [""], "color" : {"color" : [color], "m" : [0], "n" : [0]}}
+        data = {"writing" : [""], "string" : [""], "input" : [""], "color" : {"color" : [color], "m" : [0], "n" : [0], "locked" : [False]}}
         
     data["color"]["color"].append(color)
     data["color"]["m"].append(m)
