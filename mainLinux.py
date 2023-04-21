@@ -7,6 +7,7 @@ from header         import header, formating, counter
 from saving         import save, writing
 from keywords       import words
 import time
+from AUTO           import buildString as BS
 
 class IDE:
     def __init__(self, termios : str = "none", lang : str ="unknown"):
@@ -213,19 +214,6 @@ class IDE:
                             self.counterL           = 0
                             self.counterR          -= 1
                             
-                            if self.Data['input']:
-                                if self.Data['input'][self.Data['index']-1] in save.case():
-                                    _id_ = self.Data['index']
-                                    while _id_ > 0:
-                                        try:
-                                            _id_ -= 1
-                                            if self.Data['input'][_id_] in save.case():pass 
-                                            else: break
-                                        except IndexError: break
-                                    self.Data['str_drop_down'] = self.Data['input'][_id_ : self.Data['index']]
-                                    self.Data['drop_idd'] = len(self.Data['str_drop_down'])
-                                elif self.Data['input'][self.Data['index']] in save.case(): pass 
-                            else: self.Data['str_drop_down'],self.Data['drop_idd'] = "", 0
                         else: pass
                     else: pass
                 
@@ -547,7 +535,6 @@ class IDE:
                             self.x                  += 4
                             self.Data['get'].append([1 for x in range(4)])
                             self.counterR            = len( self.Data['input'] )
-                            self.Data['str_drop_down'],self.Data['drop_idd'] = "", 0
                         else: pass 
                     else: pass
                 
@@ -574,12 +561,6 @@ class IDE:
                             self.x                  += 1
                             self.counterR            = len( self.Data['input'] )
                             self.Data['get'].append(1)
-                            
-                            if chr(self.char ) in save.case():
-                                self.Data['str_drop_down'] = self.Data['str_drop_down'][ : self.Data['drop_idd'] ] + \
-                                    chr( self.char ) + self.Data['str_drop_down'][ self.Data['drop_idd']  : ]
-                                self.Data['drop_idd'] += 1
-                            else: self.Data['drop_idd'], self.Data['str_drop_down'] = 0, ""
                         else : pass
                     else: 
                         if self.overwriting is False:
@@ -733,6 +714,9 @@ class IDE:
                 
                 counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
                                             max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked)
+                #########################################################################################################
+                self.Data['drop_idd'],self.Data['str_drop_down'] = BS.string( self.Data['input'], self.Data['index']-1 )
+                #########################################################################################################
                 
                 sys.stdout.flush()
                 
@@ -744,6 +728,8 @@ class IDE:
                 self.Data['memory'][self.if_line]         = self.Data['get'].copy() 
                 self.str_[self.if_line]                   = __string__ 
                 
+                #########################################################################################################
+                #########################################################################################################
                 tab = writing.tabular(self.Data['string'], self.lang)
                 if self.locked is False:         
                     self.locked, self.nn                  = writing.keys(tab, self.lang, self.Data['string'])
@@ -763,7 +749,8 @@ class IDE:
                 self.histotyOfColors['m'][self.if_line]     = self.m 
                 self.histotyOfColors['n'][self.if_line]     = self.nn
                 self.histotyOfColors['locked'][self.if_line]= self.locked
-                
+                #########################################################################################################
+                #########################################################################################################
             except KeyboardInterrupt: 
                 # breaking whyle loop 
                 self._string_ = self.color_bg.red_L + self.color_fg.rbg(255, 255, 255) +"KeyboardInterrupt" + self.init.reset

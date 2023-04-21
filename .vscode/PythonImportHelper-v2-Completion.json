@@ -1,5 +1,77 @@
 [
     {
+        "label": "save",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
         "label": "sys,",
         "kind": 6,
         "isExtraImport": true,
@@ -352,62 +424,6 @@
         "description": "keywords      ",
         "isExtraImport": true,
         "detail": "keywords      ",
-        "documentation": {}
-    },
-    {
-        "label": "writing",
-        "importPath": "saving        ",
-        "description": "saving        ",
-        "isExtraImport": true,
-        "detail": "saving        ",
-        "documentation": {}
-    },
-    {
-        "label": "writing",
-        "importPath": "saving        ",
-        "description": "saving        ",
-        "isExtraImport": true,
-        "detail": "saving        ",
-        "documentation": {}
-    },
-    {
-        "label": "writing",
-        "importPath": "saving        ",
-        "description": "saving        ",
-        "isExtraImport": true,
-        "detail": "saving        ",
-        "documentation": {}
-    },
-    {
-        "label": "save",
-        "importPath": "saving        ",
-        "description": "saving        ",
-        "isExtraImport": true,
-        "detail": "saving        ",
-        "documentation": {}
-    },
-    {
-        "label": "writing",
-        "importPath": "saving        ",
-        "description": "saving        ",
-        "isExtraImport": true,
-        "detail": "saving        ",
-        "documentation": {}
-    },
-    {
-        "label": "save",
-        "importPath": "saving        ",
-        "description": "saving        ",
-        "isExtraImport": true,
-        "detail": "saving        ",
-        "documentation": {}
-    },
-    {
-        "label": "writing",
-        "importPath": "saving        ",
-        "description": "saving        ",
-        "isExtraImport": true,
-        "detail": "saving        ",
         "documentation": {}
     },
     {
@@ -775,6 +791,14 @@
         "documentation": {}
     },
     {
+        "label": "buildString",
+        "importPath": "AUTO          ",
+        "description": "AUTO          ",
+        "isExtraImport": true,
+        "detail": "AUTO          ",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -857,6 +881,15 @@
         "description": "fileType\t   ",
         "isExtraImport": true,
         "detail": "fileType\t   ",
+        "documentation": {}
+    },
+    {
+        "label": "string",
+        "kind": 2,
+        "importPath": "AUTO.buildString",
+        "description": "AUTO.buildString",
+        "peekOfCode": "def string(string, idd ):\n    str_ = \"\"\n    try:\n        if string: \n            if string[idd] in save.case(): \n                _id_ = idd \n                newString = string[ : idd]\n                while _id_ > 0:\n                    _id_ -= 1 \n                    if string[_id_] in save.case(): pass ",
+        "detail": "AUTO.buildString",
         "documentation": {}
     },
     {
