@@ -18,6 +18,7 @@ def readFile(fileName: str, termios : str , language :  str ):
     cmt                    = init.init.bold + colors.bg.rgb(10, 10, 10) + colors.fg.rbg(153, 153, 255) 
     no_cmt                 = color
     colorList              = []
+    end                    = False
     
     try:
         with open(fileName) as file:
@@ -36,6 +37,7 @@ def readFile(fileName: str, termios : str , language :  str ):
                     data["color"]["m"].append(m)
                     data["color"]['n'].append(idd)
                     data["color"]['locked'].append(locked)
+                    
                     locked, idd         = writing.keys(tab, language, line)
                     if locked is True: color = cmt 
                     else: color = no_cmt
@@ -43,7 +45,8 @@ def readFile(fileName: str, termios : str , language :  str ):
                     _open_                  = writing.OPEN(tab, language, locked)
                     if _open_ is None: pass
                     else:
-                        locked = writing.STR(_open_, line )
+                        for s in _open_:
+                            locked = writing.STR(s, line )
                     
                     if termios == "none": 
                         data["writing"].append( line.replace("\t", " " * 4) )
@@ -63,7 +66,13 @@ def readFile(fileName: str, termios : str , language :  str ):
                     else: color = no_cmt                 
         file.close()
     except FileNotFoundError: 
-        data = {"writing" : [""], "string" : [""], "input" : [""], "color" : {"color" : [color], "m" : [0], "n" : [0]}}
+        data = {"writing" : [""], "string" : [""], "input" : [""], "color" : {"color" : [color], "m" : [0], "n" : [0], "locked" : [False]}}
+        
+    data["color"]["color"].append(color)
+    data["color"]["m"].append(m)
+    data["color"]['n'].append(idd)
+    data["color"]['locked'].append(locked)
+    data["writing"].append('')
     
     return data 
 

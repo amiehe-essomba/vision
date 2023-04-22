@@ -11,7 +11,7 @@ def count(number : int , x : int , y : int , max_x : int, max_y : int, lang : st
     c_bg                = colors.bg.rgb(10, 10, 10)  
     c                   = bold + colors.fg.rbg(255, 255, 255)
     _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset 
-    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"{x}, {number+1}"+ reset 
+    magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"{x-2}, {number+1}"+ reset 
     if action is False:
         _opened_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 255)+f" opened"+ reset 
     else: _opened_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 255)+f" locked"+ reset 

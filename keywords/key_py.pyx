@@ -30,9 +30,9 @@ cdef class LANG:
     def __cinit__(self, master) -> None:
         self.master     = master
         self.c          = {"color_name" : [], 'values' : []}
-    cpdef LANG(self, str termios = "monokai"):
+    cpdef LANG(self, str termios = "monokai", unsigned long int  n = 0):
         if    self.master == "python": return LANG(self.master).PY(termios=termios)
-        elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios)
+        elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios, n = n)
         elif  self.master == "c"     : return LANG(self.master).C(termios=termios)
         elif  self.master == "c++"   : return LANG(self.master).C(termios=termios)
         elif  self.master == "cpmd"  : return LANG(self.master).CPMD(termios=termios)
@@ -114,7 +114,7 @@ cdef class LANG:
 
         return data.copy()
 
-    cdef MAMBA(self, str termios = "monokai"):
+    cdef MAMBA(self, str termios = "monokai", unsigned long int n = 0):
         cdef :
             dict data = {}
             list keys = []
@@ -135,18 +135,23 @@ cdef class LANG:
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}  
         names                       = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
                                         'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 'min', 'max', 'fopen', 'floor', 
-                                        'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames', 'merge', "prompt, delete"]
-        data['iner']                = {"name" : names, "color" : self.c }
+                                        'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames', 'merge', "prompt, delete" ]
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
-        data["loop"]                = {"name" : ["while", "with", "for", "end"], "color" : self.c }
+        data["loop"]                = {"name" : ["while", "with", "for"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
-        names                       = ['if', "elif", "else", "try", "except", "finaly", "unless", "until", "switch", "case", "default", "end", "begin"]
+        names                       = ['if', "elif", "else", "try", "except", "finaly", "unless", "until", "switch", "case", "default",  "begin"]
         data['cond']                = {"name" : names, "color" : self.c }
 
+        if n == 0:
+            self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+        else: self.c                    = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]} 
+        names                       = ["end"]
+        data['end']                = {"name" : names, "color" : self.c }
+
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
-        data['general']                = {"name" : [ "local", "global", "return", "open", 
+        data['general']                = {"name" : [ "local", "global", "return", "open",  
                                             "close", "readline", "write", "read", "readlines"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}

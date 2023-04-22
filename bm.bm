@@ -1,0 +1,38 @@
+begin:
+	jekkk
+	hello
+save as cmt:
+end:
+
+
+
+
+
+
+
+
+
+
+
+
+class iris:
+	def initialize( self, color : string = "green" ) -> None:
+		self.color = color
+	end:
+end:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

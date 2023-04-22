@@ -45,15 +45,15 @@ class saveData:
         # Scroll display down and up
         self.scr                = scroll.scrolled
         
-    def build(self, x: int = 0, y : int = 0, lang : str = "", WRITE : list = []):
+    def build(self, x: int = 0, y : int = 0, lang : str = "", WRITE : list = [], history : dict = {}):
         sys.stdout.write(
             self.move.DOWN(pos=self.max_y+1)+self.clear.screen(pos=0)
         )
         sys.stdout.write(self.clear.screen(0))
-        lang = saveData(self.dataBase).write(x, y, WRITE, lang)
+        lang = saveData(self.dataBase).write(x, y, WRITE, lang, history = history)
         return lang 
     
-    def write(self, x :int = 0, y:int = 0, WRITE : list = [], lang : str = "unknown", LINE : int = 4):
+    def write(self, x :int = 0, y:int = 0, WRITE : list = [], lang : str = "unknown", LINE : int = 4, history : dict = {}):
         self.c              = self.init.bold + colors.fg.rbg(255, 255, 255)
         self.blink          = self.init.bold + colors.fg.rbg(255, 0, 255)
         self.c_bg           = self.init.bold + colors.bg.rgb(10, 10, 10)
@@ -127,7 +127,7 @@ class saveData:
                 else: 
                     writing.writeInput(self.dataBase["data"], self.string)
                     if self.dataBase["data"]:
-                        WRITE       = writing.BLACK_M(self.dataBase["data"], self.language_type)
+                        WRITE       = writing.BLACK_M(self.dataBase["data"], self.language_type, history)
                         sys.stdout.write(
                             self.move.TO(x=0, y=LINE)+ 
                             self.move.LEFT(1000)
