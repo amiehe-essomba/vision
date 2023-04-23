@@ -28,27 +28,39 @@ def windows( ):
             s = s[0].decode("utf-8")
             try: number =  [ord(s), None]
             except TypeError: 
-                if   s == "\x0e":
-                    number =  [14, None]
-                elif s == "\x04":
-                    number =  [4,  None]
-                elif s == "\x01":
-                    number =  [17, None]
-                elif s == "\x0c":
-                    number =  [12, None]
-                else:  
-                    number =  [None, None]
-        except UnicodeDecodeError: number =  [None, None]
+                #<ctrl+n>
+                if   s == "\x0e":  number =  [14, None]
+                #<ctrl+d>
+                elif s == "\x04":  number =  [4,  None]
+                #<ctrl+a>
+                elif s == "\x01":  number =  [17, None]
+                #<ctrl+g>
+                elif s == "\x07":  number =  [20, None]
+                #<ctrl+l>
+                elif s == "\x0c":  number =  [12, None]
+                #<ctrl+s>
+                elif s == "\x13":  number =  [19, None]
+                #rest 
+                else:  number =  [None, None]
+        except UnicodeDecodeError: 
+            number =  [None, None]
     else:
         if s[0] in [b'\x00']:
             s = s[1].decode("utf-8")
+            #up
             if   s == "H" : number = [27, [65, 0]]
+            #down
             elif s == "P" : number = [27, [66, 0]]
+            #left
             elif s == "K" : number = [27, [68, 0]]
+            #right
             elif s == "M" : number = [27, [67, 0]]
+            #<ctrl+right>
             elif s == "t" : number = [27, [49, 65]]
+            #<ctrl+left>
             elif s == "s" : number = [27, [49, 66]]
         else: number =  [None, None]
+        
     return number
  
 def linux():
@@ -67,7 +79,6 @@ def convert():
     if os.name == "nt": return windows()
     else: return linux()
     
-
 def inter():
     char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0
     while True:
@@ -99,3 +110,53 @@ def outer():
         
         break
     return [char1, char2, char3, char4, char5]
+
+def win_inter():
+    char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0
+    while True:
+        char1 = convert() 
+        if char1:
+            _     = char1[1]
+            char1 = char1[0]
+            if char1 is not None:
+                if char1 == 27:
+                    if _ is None: char1, char2, char3, char4 = win_outer()
+                    else:
+                        char2, char3 = _
+                else: pass
+            else: pass 
+        else: pass
+        break
+    
+    return [char1, char2, char3, char4]
+
+def win_outer():
+    char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0
+    while True:
+        char1 = convert() 
+        if char1:
+            _     = char1[1]
+            char1 = char1[0]
+            if char1 is not None:
+                if char1 == 27:
+                    if _ is None: char1, char2, char3, char4 = win_inter()
+                    else:
+                        char2, char3 = _
+                else: pass
+            else: pass 
+        else: pass
+        break
+    
+    return [char1, char2, char3, char4]
+
+if __name__ == "__main__":
+    while True:
+        try:
+            s = convert()
+            if s:
+                _ = s[1]
+            else: pass 
+            
+            #print(s)
+        except KeyboardInterrupt: break
+        

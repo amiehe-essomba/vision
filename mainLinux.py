@@ -8,6 +8,7 @@ from saving         import save, writing
 from keywords       import words
 import time
 from AUTO           import buildString as BS
+from AUTO           import KEYS
 
 class IDE:
     def __init__(self, termios : str = "none", lang : str ="unknown"):
@@ -223,7 +224,7 @@ class IDE:
                     self.if_line            += 1
                    
                 # clear screen  <ctrl+l>
-                elif self.char == 12        :
+                elif self.char  == 12       :
                     self.Data['string']             = ""
                     self.Data['input']              = ""
                     self.Data["I_S"]                = 0
@@ -277,9 +278,8 @@ class IDE:
                 # moving cursor up, down, left, right   
                 elif self.char == 27        :
                     while True  :
-                        #next1, next2  = ord(sys.stdin.read(1)), ord(sys.stdin.read(1)) 
                         next1 = input.convert() 
-                        if next1 == 91:
+                        if   next1 == 91:
                             next2 = ord(sys.stdin.read(1)) 
                             # move left 
                             if   next2 == 68:
@@ -341,7 +341,8 @@ class IDE:
                                                 self.Data['index']      = self.Data['tabular'][self.if_line]
                                                 self.x, self.Y          = self.Data['x_y'][self.if_line] 
                                                 self.Data['get']        = self.Data['memory'][self.if_line].copy()
-                                                formating.formating(LINE=self.LINE, data=self.str_, idd=self.if_line_max, max_y=self.max_y-self.max_down+1, max_x=self.max_x) 
+                                                formating.formating(LINE=self.LINE, data=self.str_, idd=self.if_line_max, 
+                                                                    max_y=self.max_y-self.max_down+1, max_x=self.max_x) 
                                                 sys.stdout.write( self.move.TO(x=self.x, y=self.LINE) + self.init.reset )
                                                 sys.stdout.flush()
                                             else: pass
@@ -459,7 +460,7 @@ class IDE:
                                                 self.Data['index']      += 1
                                                 self.Data['I_S']        += 1
                                             else: pass
-                                    else: print(True)
+                                    else: pass
                                 # <ctrl+up> is handled 
                                 elif next5 == 65: pass 
                                 # <ctrl+dow> is handled 
@@ -807,8 +808,11 @@ class IDE:
                 self.histotyOfColors['m'][self.if_line]     = self.m 
                 self.histotyOfColors['n'][self.if_line]     = self.nn
                 self.histotyOfColors['locked'][self.if_line]= self.locked
-                #########################################################################################################
-                #########################################################################################################
+                ########################################################################################################
+                self.KEYS, self.keys_items = KW.keys(language=self.lang, termios=self.termios, n=self.nn)
+                KEYS.auto(x=self.x, y=self.y,max_x=self.max_x, max_y=self.max_y, keys=self.KEYS, keys_items=self.keys_items,
+                        drop_string=self.Data['str_drop_down'], my_strings=self.str_, I=self.if_line, LEN=self.Data['index'])
+                #########################################################################################################  
             except KeyboardInterrupt: 
                 # breaking whyle loop 
                 self._string_ = self.color_bg.red_L + self.color_fg.rbg(255, 255, 255) +"KeyboardInterrupt" + self.init.reset

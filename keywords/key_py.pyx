@@ -87,7 +87,7 @@ cdef class LANG:
         data["loading"]             = {"name" : ['from',  "import", "as"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
-        data['exceptions']          = {"name" : ['NameError', "TypeError", "Exception", "UnicodeEncodeError",
+        data['exceptions']          = {"name" : [ "Exception", "UnicodeEncodeError",
                                         "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
                                         "UserWarning", "ArithmeticError", "AssertionError", "AttributeError", "BaseException", "BlockingIOError",
                                         "BrokenPipeError", "BufferError", "BytesWarning", "ConnectionResetError", "ChildProcessError", "ConnectionError",
