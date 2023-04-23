@@ -68,13 +68,21 @@ Additionally, VISION's support for Black Mamba, a Python-based web framework, al
 - **ctrl+v :** __pasting copied line__
 - **ctrl+c :** __code exit__
 - **esc    :** __locking screen__
+
 > **d   :**
+
 > **x   :**
+
 > **c   :**
+
 > **u   :**
+
 > **p   :**
+
 > **r   :**
+
 > **ctrl + left  :**
+
 > **ctrl + righh :**
 
 ## CONTRIBUTING
