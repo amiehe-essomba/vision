@@ -61,8 +61,7 @@ def visionEditor( ):
                     data					= RT.readFile(fileName=name, termios=termios, language=language)
                     writeData["FileName"]   = arg[1]
                     writeData["data"]	    = data['string'].copy()
-                    writeData["action"]	    = True
-                    
+                    writeData["action"]	    = True     
                 else: termios, language = "none", "unknown"
             else : termios, language = "none", "unknown"
         elif len(arg) == 3 : pass 

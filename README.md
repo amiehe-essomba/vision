@@ -49,7 +49,16 @@ Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a 
 - __**Kotlin**__ 
 - __**SQL**__ 
 
+## SHORTCUTS
 
+- **ctrl+q** __move cursor at the beginning of the line__
+- **ctrl+d** __move cursor at the end of the line__
+- **ctrl+s** __save data__
+- **ctrl+g** __show dropdown list__
+- **ctrl+x** __copying at delecting the line__
+- **ctrl+v** __pasting copied line__
+- **ctrl+c** __code exit__
+- **esc** __locking screen__
 
 
 <p align="left">One interesting aspect of VISION as an IDE for multiple programming languages is that it provides a single, integrated environment for developers to work on different projects and programming languages. This can help to streamline their workflow and increase their productivity by allowing them to switch between different projects and languages without having to switch to different tools or environments.
