@@ -49,17 +49,6 @@ Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a 
 - __**Kotlin**__ 
 - __**SQL**__ 
 
-## SHORTCUTS
-
-- **ctrl+q** __move cursor at the beginning of the line__
-- **ctrl+d** __move cursor at the end of the line__
-- **ctrl+s** __save data__
-- **ctrl+g** __show dropdown list__
-- **ctrl+x** __copying at delecting the line__
-- **ctrl+v** __pasting copied line__
-- **ctrl+c** __code exit__
-- **esc** __locking screen__
-
 
 <p align="left">One interesting aspect of VISION as an IDE for multiple programming languages is that it provides a single, integrated environment for developers to work on different projects and programming languages. This can help to streamline their workflow and increase their productivity by allowing them to switch between different projects and languages without having to switch to different tools or environments.
 
@@ -68,6 +57,25 @@ For example, a developer working on a Python project can easily switch to a C or
 Another interesting aspect of VISION's support for different languages is that it allows developers to take advantage of the unique strengths and features of each language within the same IDE. For example, VISION's support for Fortran allows developers to work on high-performance computing projects, while its support for Go and Julia allows them to work on projects that require high concurrency and distributed computing.
 
 Additionally, VISION's support for Black Mamba, a Python-based web framework, allows developers to work on web development projects within the same IDE as their other projects. This can help to streamline their workflow and reduce context switching, as they can work on both the front-end and back-end of web applications within the same environment.</p>
+
+## SHORTCUTS
+
+- **ctrl+q :** __move cursor at the beginning of the line__
+- **ctrl+d :** __move cursor at the end of the line__
+- **ctrl+s :** __save data__
+- **ctrl+g :** __show dropdown list__
+- **ctrl+x :** __copying and delecting the line__
+- **ctrl+v :** __pasting copied line__
+- **ctrl+c :** __code exit__
+- **esc    :** __locking screen__
+> **d   :**
+> **x   :**
+> **c   :**
+> **u   :**
+> **p   :**
+> **r   :**
+> **ctrl + left  :**
+> **ctrl + righh :**
 
 ## CONTRIBUTING
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
