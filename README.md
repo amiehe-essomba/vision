@@ -40,7 +40,7 @@ Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a 
 - __**Python**__ 
 - __**Julia**__ 
 - __**GO**__ 
-- __**CPMD**__ 
+- __**[CPMD](https://www.ipcms.fr/wp-content/uploads/2021/05/cpmd.pdf)**__ 
 - __**C and C++**__ 
 - __**Fortran**__ 
 - __**Bash**__ 
