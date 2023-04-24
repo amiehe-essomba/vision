@@ -10,11 +10,13 @@ def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white"
     asc         = frame.frame(custom=True)
     bold        = init.init.bold
     reset       = init.init.reset
-    cc          = init.init.bold + colors.fg.rbg(0, 255, 255)
-    string      = "VISION EDITOR V-1.0.0-beta".center(max_x - 2)
+    cc          = init.init.bold + colors.fg.rbg(255, 255, 0)
+    ball        = chr(9898)
+    string      = f"{ball}{ball} VISION EDITOR {ball}{ball}".center(max_x - 6)
     move        = moveCursor.cursor 
     action      = state.save
     blink       = init.init.blink+init.init.underline
+    
     
     if color == "white": c   = colors.fg.rbg(255, 255, 255)
     else: c = colors.fg.rbg(0, 0, 0)
@@ -32,7 +34,7 @@ def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white"
     
     # position of the first line 
     LINE = y
-    
+                                                                                                                                                                
     if not data['input']:
         middle(max_x=max_x, n=max_y-5 ,x=x, y=y, color=color, lang=lang)
         sys.stdout.write(move.LEFT(pos=1000))
@@ -72,7 +74,7 @@ def writingData(max_x: int, n : int, x : int, y : int, color : str = "white",
     else: c  = bold + colors.fg.rbg(0, 0, 0)
     input, length       = counter(n=0, color=color)
     scrolledUp          = False 
-    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+colors.fg.rbg(0, 255, 255) + " opened"+ reset 
+    _lang_              = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} program"+colors.fg.rbg(0, 255, 255) + " opened"+ reset 
     magenta             = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f"{x}, {N}"+ reset 
 
     for i in range(N-1):
@@ -158,7 +160,7 @@ def middle(max_x: int, n : int, x : int, y : int, color : str = "white", lang : 
     position    = moveCursor.cursor
     c_bg        = colors.bg.rgb(10, 10, 10)
     magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+"1, 1"+ reset   
-    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ colors.fg.rbg(0, 255, 255) + " opened" + reset 
+    _lang_        = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} program"+ colors.fg.rbg(0, 255, 255) + " opened" + reset 
     
     if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
     else: c = bold + colors.fg.rbg(0, 0, 0)
@@ -226,7 +228,7 @@ def line(x : int, y : int, max_x : int, max_y : int, scrollUp : int = 0, lang : 
     magenta         = init.init.bold + init.init.blink + c_bg + colors.fg.rbg(255, 0, 255) + f"{x-2}, {y+scrollUp-3}" + reset
     c               = init.init.bold + colors.fg.rbg(255, 255, 255)
     size            = len(f"{x-2}, {y+scrollUp-5}")
-    _lang_          = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} programm"+ reset 
+    _lang_          = bold+init.init.blink+ c_bg + colors.fg.rbg(0, 255, 0)+f"{lang} program"+ reset 
     
     sys.stdout.write(
         position.LEFT(pos=1000) + clear.clear.line(2)

@@ -28,12 +28,12 @@ def string(string : str = "", idd : int = 0):
                 # checking the second condition 
                 # if the cursor is not at the end of the string we can build de right string
                 if len(string)-1 == idd: 
-                    if is_break is True:str_ = string[_id_+1: idd+1]  
-                    else: str_ = string[_id_ : idd+1]
+                    if is_break is True:str_, a, b = string[_id_+1: idd+1], _id_+1, idd+1  
+                    else: str_, a, b = string[_id_ : idd+1], _id_, idd+1
                 else:
                     # left cursor string 
-                    if is_break is True:str_l = string[_id_+1: idd+1]  
-                    else: str_l = string[_id_ : idd+1]
+                    if is_break is True: str_l, a, b = string[_id_+1: idd+1] , _id_+1, idd+1 
+                    else: str_l, a, b = string[_id_ : idd+1], _id_, idd+1
                     # building the right cursor string 
                     _id_ = idd 
                     while _id_ < len(string):
@@ -43,8 +43,8 @@ def string(string : str = "", idd : int = 0):
                     # right cusror string 
                     str_r   = string[idd+1 : _id_]
                     # total string 
-                    str_    = str_l+str_r
-                return (len(str_), str_)
-            else: return (0, "")
-        else: return (0, "")
-    except ValueError: return (0, "")
+                    str_, b    = str_l+str_r, _id_
+                return (len(str_), str_, a, b)
+            else: return (0, "", None, None)
+        else: return (0, "", None, None)
+    except IndexError: return (0, "", None, None)

@@ -8,6 +8,7 @@ from saving         import save, writing
 from keywords       import words
 import time
 from AUTO           import buildString as BS
+from keywords       import keywords as KW
 from AUTO           import KEYS
 
 class IDE:
@@ -136,6 +137,8 @@ class IDE:
         self.no_cmt                         = self.color
         self.cmt                            = init.init.bold + colors.bg.rgb(10, 10, 10) + colors.fg.rbg(153, 153, 255) 
         self.conservingColor                = self.color
+        self.idd_select                     = 0
+        self.str_select                     = False
         ###########################################################
         sys.stdout.write(self.move.TO(self.x, self.y))
         sys.stdout.flush()
@@ -222,6 +225,10 @@ class IDE:
                     
                     self.if_line_max        += 1
                     self.if_line            += 1
+                   
+                # selecting <ctrl+n>
+                if self.char == 14          :
+                    self.str_select = True
                    
                 # clear screen  <ctrl+l>
                 elif self.char  == 12       :
@@ -462,9 +469,17 @@ class IDE:
                                             else: pass
                                     else: pass
                                 # <ctrl+up> is handled 
-                                elif next5 == 65: pass 
+                                elif next5 == 65:
+                                    if self.Data['str_drop_down'] : 
+                                        if self.idd_select == 0 : pass 
+                                        else: self.idd_select -= 1
+                                    else: pass 
                                 # <ctrl+dow> is handled 
-                                elif next5 == 66: pass  
+                                elif next5 == 66: 
+                                    if self.Data['str_drop_down'] : 
+                                        if self.idd_select > 7 : pass 
+                                        else: self.idd_select += 1
+                                    else: pass
                         elif next1 == 27:
                             next1, next2, next3, next4, next5 = input.outer()
                             if self.screenLocked is False :  self.screenLocked = True
@@ -680,7 +695,7 @@ class IDE:
                                     self.x, self.y              = self.differentStates['data'][self.differentStates['index']-1]['now_x_y'].copy()
                                     self.if_line_max            = self.if_line
                                     if self.str_ : 
-                                        formating.RestoringSTring(max_x=self.max_x, max_y=self.max_y,LINE=self.LINE, 
+                                        formating.RestoringSTring(max_x=self.max_x, max_y=self.max_y, LINE=self.LINE, 
                                                             WRITE=self.str_, x = self.x, y = self.y)
                                     else: pass 
                                     
@@ -770,10 +785,11 @@ class IDE:
                 if self.Data['I_S'] > 0: sys.stdout.write(self.move.TO(self.x, self.y) )
                 else: pass 
                 
-                counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
-                                            max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked)
+                #counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
+                #                            max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked)
                 #########################################################################################################
-                self.Data['drop_idd'],self.Data['str_drop_down'] = BS.string( self.Data['input'], self.Data['index']-1 )
+                self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = BS.string( self.Data['input'], self.Data['index']-1 )
+                _, _, self._a, self._b = BS.string( self.Data['string'], self.Data['I_S']-1 )
                 #########################################################################################################
                 
                 sys.stdout.flush()
@@ -809,10 +825,55 @@ class IDE:
                 self.histotyOfColors['n'][self.if_line]     = self.nn
                 self.histotyOfColors['locked'][self.if_line]= self.locked
                 ########################################################################################################
-                self.KEYS, self.keys_items = KW.keys(language=self.lang, termios=self.termios, n=self.nn)
-                KEYS.auto(x=self.x, y=self.y,max_x=self.max_x, max_y=self.max_y, keys=self.KEYS, keys_items=self.keys_items,
-                        drop_string=self.Data['str_drop_down'], my_strings=self.str_, I=self.if_line, LEN=self.Data['index'])
+                self.Data['str_drop_down'] = ""
+                if self.Data['str_drop_down']:
+                    self.KEYS, self.keys_items = KW.keys(language=self.lang, termios=self.termios, n=self.nn)
+                    self.alpha, self._STR_, self.beta = KEYS.auto(x=self.x, y=self.y,max_x=self.max_x, max_y=self.max_y, keys=self.KEYS, keys_items=self.keys_items,
+                            drop_string=self.Data['str_drop_down'], my_strings=self.str_, I=self.if_line, 
+                                                        LEN=self.Data['index'], idd_select=self.idd_select)
+                    if self.alpha is None: pass
+                    else: self.y = self.alpha
+                    
+                    if self.str_select is True: 
+                        if self._STR_ :
+                            self.Data['input']  = self.Data['input'][ : self.a] + self._STR_ +  self.Data['input'][self.b : ]
+                            self.Data['string'] = self.Data['string'][ : self._a] + self._STR_ +  self.Data['string'][self._b : ]
+                            self.Data['I_S']   += self.beta-1
+                            self.Data['index'] += self.beta-1
+                            for k in range(self.beta-1):
+                                self.Data['get'].append(1)
+                            self.idd_select, self.str_select  = 0, False
+                        
+                            __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, m = self.m, n=self.nn)
+                            
+                            # moving cursor left 
+                            sys.stdout.write(self.move.LEFT(pos=1000))
+                            # erasing entire line 
+                            sys.stdout.write(self.clear.line(2))
+                            # writing string 
+                            sys.stdout.write(
+                                self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
+                                self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
+                                self.move.TO(x=self.size+1, y=self.y) + self.c_bg+ __string__ + 
+                                self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
+                                )
+                            self.x             += self.beta-1 
+                            sys.stdout.write(self.move.TO(x=self.x, y=self.y))
+                            sys.stdout.flush()
+                            
+                            self.Data['string_tabular'][self.if_line] = self.Data['string']
+                            self.Data['string_tab'][self.if_line]     = self.Data['I_S']
+                            self.Data['liste'][self.if_line]          = self.Data['input']   
+                            self.Data['tabular'][self.if_line]        = self.Data['index']
+                            self.Data['x_y'][self.if_line]            = (self.x, self.y) 
+                            self.Data['memory'][self.if_line]         = self.Data['get'].copy() 
+                            self.str_[self.if_line]                   = __string__ 
+                        else: pass
+                    else: pass 
+                else: pass
                 #########################################################################################################  
+                counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
+                                            max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked)
             except KeyboardInterrupt: 
                 # breaking whyle loop 
                 self._string_ = self.color_bg.red_L + self.color_fg.rbg(255, 255, 255) +"KeyboardInterrupt" + self.init.reset
@@ -820,4 +881,4 @@ class IDE:
                     self.clear.screen(pos=2)+ self.move.TO(x=0, y=0)+
                     self._string_ + "\n" )
                 break
-            except NameError : pass
+            except KeyError : pass
