@@ -78,13 +78,13 @@ Please make sure to update tests as appropriate.
 
 ## EXAMPLES OF CODES
 ### Black Mamba 
-![logo](/images/mamba.png) 
+
 
 ### Python  
 ![logo](/images/python.png)
 
 ### C++ 
-![logo](/images/c++.png) 
+
 
 ## 🤵 Author 
 __**Amiehe Essomba**__ 
