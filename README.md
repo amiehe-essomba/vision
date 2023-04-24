@@ -49,6 +49,7 @@ Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a 
 - __**Kotlin**__ 
 - __**SQL**__ 
 
+
 <p align="left">One interesting aspect of VISION as an IDE for multiple programming languages is that it provides a single, integrated environment for developers to work on different projects and programming languages. This can help to streamline their workflow and increase their productivity by allowing them to switch between different projects and languages without having to switch to different tools or environments.
 
 For example, a developer working on a Python project can easily switch to a C or C++ project within the same IDE, without having to switch to a different tool or environment. This can help to save time and reduce cognitive load, as the developer can stay in the same familiar environment and use the same tools and features across different languages and projects.
