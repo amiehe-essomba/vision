@@ -1,4 +1,5 @@
 
+![logo](/images/logo-png.png)
 <h1 align="center"> VISION </h1>
 <p align="left">VISION is a versatile and powerful text editor designed for developers and programmers who demand speed, efficiency, and customization in their coding environment. With its sleek and minimalist interface, VISION provides a clean and distraction-free workspace that allows you to focus on your code and your work.
 
@@ -36,11 +37,11 @@ Additionally, VISION's multi-platform support allows developers to take advantag
 Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a significant advantage for developers and programmers, as it allows them to work on the platform of their choice and collaborate with colleagues who use different operating systems, while also taking advantage of the unique features and strengths of each platform.</p>
 
 ## LANGUAGES
-- __**Black Mamba**__ 
+- __**[Black Mamba](https://github.com/amiehe-essomba/BlackMamba/)**__ 
 - __**Python**__ 
 - __**Julia**__ 
 - __**GO**__ 
-- __**CPMD**__ 
+- __**[CPMD](https://www.ipcms.fr/wp-content/uploads/2021/05/cpmd.pdf)**__ 
 - __**C and C++**__ 
 - __**Fortran**__ 
 - __**Bash**__ 
@@ -69,21 +70,24 @@ Additionally, VISION's support for Black Mamba, a Python-based web framework, al
 - **ctrl+c :** __code exit__
 - **esc    :** __locking screen__
 
-> **d   :**
+## RUNNING VISION
 
-> **x   :**
+- vision
+- vision my_file.py  
 
-> **c   :**
+## VISION VERSION
 
-> **u   :**
+- vision --ide -v 
+- vision --ide version  
 
-> **p   :**
+## VISION AUTHOR
+- vision --ide -a
+- vision --ide author 
 
-> **r   :**
+## VISION GITHUB PAGE
+- vision --ide -g
+- vision --ide github 
 
-> **ctrl + left  :**
-
-> **ctrl + righh :**
 
 ## CONTRIBUTING
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
@@ -93,13 +97,13 @@ Please make sure to update tests as appropriate.
 
 ## EXAMPLES OF CODES
 ### Black Mamba 
-![logo](/images/mamba.png)
+![logo](/images/Mamba.png)
 
 ### Python  
-![logo](/images/python.png)
+![logo](/images/Python.png)
 
 ### C++ 
-![logo](/images/c++.png)
+![logo](/images/Cpp.png)
 
 ## 🤵 Author 
 __**Amiehe Essomba**__ 
