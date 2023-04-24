@@ -10,7 +10,7 @@ Overall, VISION is a powerful and versatile IDE that offers a range of features 
 
 ## VISION DESIGN 
 
-![logo](https://github.com/Elena-Royer/vision/blob/vision/images/termios-alpha.png)
+![logo](/images/termios-alpha.png)
 
 ## BUILT WITH 
 - __**Python**__ 
@@ -78,13 +78,13 @@ Please make sure to update tests as appropriate.
 
 ## EXAMPLES OF CODES
 ### Black Mamba 
-![logo](https://github.com/Elena-Royer/vision/blob/vision/images/mamba.png) 
+![logo](/images/mamba.png) 
 
 ### Python  
-![logo](https://github.com/Elena-Royer/vision/blob/vision/images/python.png)
+![logo](/images/python.png)
 
 ### C++ 
-![logo](https://github.com/Elena-Royer/vision/blob/vision/images/c++.png)
+![logo](/images/c++.png)
 
 ## 🤵 Author 
 __**Amiehe Essomba**__ 
