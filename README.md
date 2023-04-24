@@ -1,5 +1,5 @@
 
-![logo](/images/logo.png)
+![logo](/images/logo-png.png)
 <h1 align="center"> VISION </h1>
 <p align="left">VISION is a versatile and powerful text editor designed for developers and programmers who demand speed, efficiency, and customization in their coding environment. With its sleek and minimalist interface, VISION provides a clean and distraction-free workspace that allows you to focus on your code and your work.
 

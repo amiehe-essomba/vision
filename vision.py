@@ -2,13 +2,16 @@ import os, sys
 import platform
 import mainLinux
 import mainWin
+import webbrowser
 from configure      import colors, init
 from configure	    import clear, moveCursor
 from pathlib		import Path
 from fileType	    import fileType as FT
 from fileType	    import readfile as RT
 from configure      import screenConfig, colors, init
-import             webbrowser
+from keywords       import key_py
+from images         import * 
+from style          import style, languageStyle
 
 def open_graven_web():
         webbrowser.open(url='https://github.com/amiehe-essomba/vision')
@@ -116,8 +119,7 @@ def visionEditor( ):
                 print(c_bg + color + string + reset)
         else: pass
     else: pass
-
-    
+   
 if __name__ == '__main__':
     sys.stdout.write(clear.clear.screen(2)+moveCursor.cursor.TO(0,0))
     visionEditor()

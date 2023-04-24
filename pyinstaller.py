@@ -1,15 +1,18 @@
 import PyInstaller.__main__ 
 import os
+import platform
 
 
 def path_ico():
     # get ico image 
     error  = None 
-    
-    system  = os.uname()[0]
+    system = platform.system()
+    #system  = os.uname()[0]
     if system == "Linux":
-        return os.path.abspath(os.curdir)+"/images/logo.ico"
-    else: error =  errors.mamba_error().ERROR1(system)
+        return os.path.abspath(os.curdir)+"/images/logo-png.png"
+    elif system == 'Windows':
+        return os.path.abspath(os.curdir)+"\\images\\logo-png.png"
+    else: pass
 
 path = path_ico()
 if path is None: print(path)

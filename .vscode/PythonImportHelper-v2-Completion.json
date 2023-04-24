@@ -612,6 +612,14 @@
         "documentation": {}
     },
     {
+        "label": "key_py",
+        "importPath": "keywords      ",
+        "description": "keywords      ",
+        "isExtraImport": true,
+        "detail": "keywords      ",
+        "documentation": {}
+    },
+    {
         "label": "os,",
         "kind": 6,
         "isExtraImport": true,
@@ -997,6 +1005,15 @@
         "documentation": {}
     },
     {
+        "label": "webbrowser",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "webbrowser",
+        "description": "webbrowser",
+        "detail": "webbrowser",
+        "documentation": {}
+    },
+    {
         "label": "clear",
         "importPath": "configure\t   ",
         "description": "configure\t   ",
@@ -1026,6 +1043,30 @@
         "description": "fileType\t   ",
         "isExtraImport": true,
         "detail": "fileType\t   ",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "images        ",
+        "description": "images        ",
+        "isExtraImport": true,
+        "detail": "images        ",
+        "documentation": {}
+    },
+    {
+        "label": "style",
+        "importPath": "style         ",
+        "description": "style         ",
+        "isExtraImport": true,
+        "detail": "style         ",
+        "documentation": {}
+    },
+    {
+        "label": "languageStyle",
+        "importPath": "style         ",
+        "description": "style         ",
+        "isExtraImport": true,
+        "detail": "style         ",
         "documentation": {}
     },
     {
@@ -1897,7 +1938,7 @@
         "kind": 2,
         "importPath": "pyinstaller",
         "description": "pyinstaller",
-        "peekOfCode": "def path_ico():\n    # get ico image \n    error  = None \n    system  = os.uname()[0]\n    if system == \"Linux\":\n        return os.path.abspath(os.curdir)+\"/images/logo.ico\"\n    else: error =  errors.mamba_error().ERROR1(system)\npath = path_ico()\nif path is None: print(path)\nelse:",
+        "peekOfCode": "def path_ico():\n    # get ico image \n    error  = None \n    system = platform.system()\n    #system  = os.uname()[0]\n    if system == \"Linux\":\n        return os.path.abspath(os.curdir)+\"/images/logo-png.png\"\n    elif system == 'Windows':\n        return os.path.abspath(os.curdir)+\"\\\\images\\\\logo-png.png\"\n    else: pass",
         "detail": "pyinstaller",
         "documentation": {}
     },
