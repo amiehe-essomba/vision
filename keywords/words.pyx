@@ -2,7 +2,6 @@ from configure  import colors, init
 from style      import style, languageStyle 
 from keywords   import key_py 
 
-
 cdef list case():
     lower_case = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
     upper_case = lower_case.upper().split()

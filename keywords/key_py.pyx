@@ -60,7 +60,7 @@ cdef class LANG:
         data["loop"]                = {"name" : ["while", "with", "for", "yield"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
-        data['cond']                = {"name" : ['if', "elif", "else", "try", "except", "finaly"], "color" : self.c }
+        data['cond']                = {"name" : ['if', "elif", "else", "try", "except", "finaly"], "color" : self.c } 
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
         names                       = ['break', "cancel", "exit", "continue", "quit", "next", "pass"]
@@ -132,10 +132,12 @@ cdef class LANG:
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
         data['class_and_func']      = {"name" : ['def', "class", "func", "lambda"], "color" : self.c }
 
+
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}  
         names                       = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
-                                        'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 'min', 'max', 'fopen', 'floor', 
-                                        'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames', 'merge', "prompt, delete" ]
+                                        'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 'min', 'max', 'fopen', 'floor', "print", "scan",
+                                        'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames', 'merge', "prompt", "delete" ]
+        data['inter']                = {"name" : names, "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
         data["loop"]                = {"name" : ["while", "with", "for"], "color" : self.c }
@@ -158,7 +160,7 @@ cdef class LANG:
         data['stop']                = {"name" : ['break', "exit", "continue", "pass", "next"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]} 
-        data["bool_func"]           = {"name" : ["True", "Flase", "None" ], "color" : self.c }
+        data["bool_func"]           = {"name" : ["True", "False", "None" ], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
         data['logical']             = {"name" : ['and', 'or', "only", "&&", "||"], "color" : self.c }
