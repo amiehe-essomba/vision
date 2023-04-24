@@ -961,6 +961,15 @@
         "documentation": {}
     },
     {
+        "label": "PyInstaller.__main__",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "PyInstaller.__main__",
+        "description": "PyInstaller.__main__",
+        "detail": "PyInstaller.__main__",
+        "documentation": {}
+    },
+    {
         "label": "platform",
         "kind": 6,
         "isExtraImport": true,
@@ -1884,11 +1893,38 @@
         "documentation": {}
     },
     {
+        "label": "path_ico",
+        "kind": 2,
+        "importPath": "pyinstaller",
+        "description": "pyinstaller",
+        "peekOfCode": "def path_ico():\n    # get ico image \n    error  = None \n    system  = os.uname()[0]\n    if system == \"Linux\":\n        return os.path.abspath(os.curdir)+\"/images/logo.ico\"\n    else: error =  errors.mamba_error().ERROR1(system)\npath = path_ico()\nif path is None: print(path)\nelse:",
+        "detail": "pyinstaller",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "kind": 5,
+        "importPath": "pyinstaller",
+        "description": "pyinstaller",
+        "peekOfCode": "path = path_ico()\nif path is None: print(path)\nelse:\n    data = os.path.abspath(os.curdir)+'/Library/*;.'\n    data_info = os.path.abspath(os.curdir)+'/README.md;CONTRIBUTING.md;Tools.md;CODE.md'\n    PyInstaller.__main__.run([\n        \"vision.py\",\n        '--onefile',\n        '--console',\n        '-c',",
+        "detail": "pyinstaller",
+        "documentation": {}
+    },
+    {
+        "label": "open_graven_web",
+        "kind": 2,
+        "importPath": "vision",
+        "description": "vision",
+        "peekOfCode": "def open_graven_web():\n        webbrowser.open(url='https://github.com/amiehe-essomba/vision')\ndef visionEditor( ):\n    # bg color \n    c_bg                    = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                    = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                   = c_bg + c_fg\n    # get root path ",
+        "detail": "vision",
+        "documentation": {}
+    },
+    {
         "label": "visionEditor",
         "kind": 2,
         "importPath": "vision",
         "description": "vision",
-        "peekOfCode": "def visionEditor( ):\n    # bg color \n    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                  = c_bg + c_fg\n    # get root path \n    root\t= os.path.abspath(os.curdir)\n    # path parent",
+        "peekOfCode": "def visionEditor( ):\n    # bg color \n    c_bg                    = init.init.bold + colors.bg.rgb(10, 10, 10)\n    # fg color \n    c_fg                    = init.init.bold + colors.fg.rbg(255, 255, 255)\n    # building color \n    color                   = c_bg + c_fg\n    # get root path \n    root\t                = os.path.abspath(os.curdir)\n    # path parent",
         "detail": "vision",
         "documentation": {}
     }

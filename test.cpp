@@ -9,14 +9,14 @@ int main(){
 		if (y==0) {
 			throw "Division by zero";
 		}
-		result = x / y
+		result = x / y;
 		cout << "Result" << result << endl;
 	}
 	catch (const char* error) {
 		cout << "Error" << error << endl;
 	}
 	return 0;
-}
+}
 
 
 

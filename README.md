@@ -1,4 +1,5 @@
 
+![logo](/images/logo.png)
 <h1 align="center"> VISION </h1>
 <p align="left">VISION is a versatile and powerful text editor designed for developers and programmers who demand speed, efficiency, and customization in their coding environment. With its sleek and minimalist interface, VISION provides a clean and distraction-free workspace that allows you to focus on your code and your work.
 
@@ -68,6 +69,24 @@ Additionally, VISION's support for Black Mamba, a Python-based web framework, al
 - **ctrl+v :** __pasting copied line__
 - **ctrl+c :** __code exit__
 - **esc    :** __locking screen__
+
+## RUNNING VISION
+
+- vision
+- vision my_file.py  
+
+## VISION VERSION
+
+- vision --ide -v 
+- vision --ide version  
+
+## VISION AUTHOR
+- vision --ide -a
+- vision --ide author 
+
+## VISION GITHUB PAGE
+- vision --ide -g
+- vision --ide github 
 
 
 ## CONTRIBUTING
