@@ -36,7 +36,7 @@ Additionally, VISION's multi-platform support allows developers to take advantag
 Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a significant advantage for developers and programmers, as it allows them to work on the platform of their choice and collaborate with colleagues who use different operating systems, while also taking advantage of the unique features and strengths of each platform.</p>
 
 ## LANGUAGES
-- __**[Black Mamba](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/)**__ 
+- __**[Black Mamba](https://github.com/amiehe-essomba/BlackMamba/)**__ 
 - __**Python**__ 
 - __**Julia**__ 
 - __**GO**__ 
