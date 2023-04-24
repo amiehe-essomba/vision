@@ -84,7 +84,7 @@ Please make sure to update tests as appropriate.
 ![logo](/images/python.png)
 
 ### C++ 
-![logo](/images/c++.png)
+![logo](/images/c++.png) 
 
 ## 🤵 Author 
 __**Amiehe Essomba**__ 
