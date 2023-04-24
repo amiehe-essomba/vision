@@ -36,7 +36,7 @@ Additionally, VISION's multi-platform support allows developers to take advantag
 Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a significant advantage for developers and programmers, as it allows them to work on the platform of their choice and collaborate with colleagues who use different operating systems, while also taking advantage of the unique features and strengths of each platform.</p>
 
 ## LANGUAGES
-- __**Black Mamba**__ 
+- __**[Black Mamba](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/)**__ 
 - __**Python**__ 
 - __**Julia**__ 
 - __**GO**__ 
@@ -48,7 +48,6 @@ Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a 
 - __**Ruby**__ 
 - __**Kotlin**__ 
 - __**SQL**__ 
-
 
 <p align="left">One interesting aspect of VISION as an IDE for multiple programming languages is that it provides a single, integrated environment for developers to work on different projects and programming languages. This can help to streamline their workflow and increase their productivity by allowing them to switch between different projects and languages without having to switch to different tools or environments.
 
@@ -69,21 +68,6 @@ Additionally, VISION's support for Black Mamba, a Python-based web framework, al
 - **ctrl+c :** __code exit__
 - **esc    :** __locking screen__
 
-> **d   :**
-
-> **x   :**
-
-> **c   :**
-
-> **u   :**
-
-> **p   :**
-
-> **r   :**
-
-> **ctrl + left  :**
-
-> **ctrl + righh :**
 
 ## CONTRIBUTING
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
