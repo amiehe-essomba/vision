@@ -31,11 +31,12 @@ cdef class LANG:
         self.master     = master
         self.c          = {"color_name" : [], 'values' : []}
     cpdef LANG(self, str termios = "monokai", unsigned long int  n = 0):
-        if    self.master == "python": return LANG(self.master).PY(termios=termios)
-        elif  self.master == "mamba" : return LANG(self.master).MAMBA(termios=termios, n = n)
-        elif  self.master == "c"     : return LANG(self.master).C(termios=termios)
-        elif  self.master == "c++"   : return LANG(self.master).C(termios=termios)
-        elif  self.master == "cpmd"  : return LANG(self.master).CPMD(termios=termios)
+        if    self.master == "python"   : return LANG(self.master).PY(termios=termios)
+        elif  self.master == "mamba"    : return LANG(self.master).MAMBA(termios=termios, n = n)
+        elif  self.master == "c"        : return LANG(self.master).C(termios=termios)
+        elif  self.master == "c++"      : return LANG(self.master).C(termios=termios)
+        elif  self.master == "cpmd"     : return LANG(self.master).CPMD(termios=termios)
+        elif  self.master == "cython"   : return LANG(self.master).CYTHON(termios=termios)
         else: pass
 
     cdef PY(self, str termios = "monokai"):
@@ -53,7 +54,7 @@ cdef class LANG:
         data['class_and_func']      = {"name" : ['def', "class", "super"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}  
-        data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range", 
+        data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range",  "ord", "chr",
                                                 "async", "type", "input", "round", "del"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
@@ -114,6 +115,88 @@ cdef class LANG:
 
         return data.copy()
 
+    cdef CYTHON(self, str termios = "monokai"):
+        cdef :
+            dict data = {}
+            list keys = []
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
+        names                       = ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list",  "self",
+                                        "unsigned", "signed", "long", "double", "size_t", "bint", "struct", "const", "readonly", "public"]
+        data['types']               = {"name" : names , "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+        data["constructor"]         = {"name" : ['__init__', '__name__', "__cinit__", "property", "typedef"], "color" : self.c}
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
+        data['class_and_func']      = {"name" : ['def', "class", "super"], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,105,75)]}
+        data['cython_def']          = {"name" : ["cdef", "cpdef"], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}  
+        data['iner']                = {"name" : ["lambda", "map", "filter", "print", "raise", "assert", "range",  
+                                                "ord", "chr", "gil", "nogil", "inline",
+                                                "async", "type", "input", "round", "del"], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+        data["loop"]                = {"name" : ["while", "with", "for", "yield"], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
+        data['cond']                = {"name" : ['if', "elif", "else", "try", "except", "finaly"], "color" : self.c } 
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
+        names                       = ['break', "cancel", "exit", "continue", "quit", "next", "pass"]
+        data['stop']                = {"name" : names, "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}
+        names                       = [ "local", "global",  "return", "open", "close", "readline", "write", "read", "readlines"]
+        data['global']                = {"name" : names, "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
+        data['arguments']           = {"name" : ["args", "kwargs", "other", "all", "any"], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(204,153,255)]} 
+        data["bool_func"]           = {"name" : ["True", "False", "None", "NULL"], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+        data['logical']             = {"name" : ['and', 'or'], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
+        data["bolean"]              = {"name" : ['==', "<=", ">=", "!=", "in", "is", "not in", "not", "-=", "//="
+                                                    "+=", "/=", "**=", "%=", "*=", "->"], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
+        data["loading"]             = {"name" : ['from',  "import", "as", "cimport", "extern", "include"], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
+        data['exceptions']          = {"name" : [ "Exception", "UnicodeEncodeError",
+                                        "UnboundLocalError", "UnicodeDecodeError", "UnicodeError", "UnicodeTranslateError", "UnicodeWarning",
+                                        "UserWarning", "ArithmeticError", "AssertionError", "AttributeError", "BaseException", "BlockingIOError",
+                                        "BrokenPipeError", "BufferError", "BytesWarning", "ConnectionResetError", "ChildProcessError", "ConnectionError",
+                                        "ConnectionRefusedError", "ConnectionAbortedError", "DeprecationWarning", "EnvironmentError", "EOFError",
+                                        "FileExistsError","FileNotFoundError","FloatingPointError","FutureWarning","GeneratorExit",
+                                        "ImportError","ImportWarning","IndentationError","IndexError","InterruptedError","IOError","IsADirectoryError",
+                                        'KeyError', "KeyboardInterrupt", "LookupError", "MemoryError","ModuleNotFoundError",
+                                        "NameError","NotADirectoryError","NotImplemented","NotImplementedError", "OSError","OverflowError",
+                                        "PendingDeprecationWarning", "PermissionError", "ProcessLookupError",
+                                        "RecursionError","ReferenceError","ResourceWarning","RuntimeError","RuntimeWarning",
+                                        "StopAsyncIteration", "StopIteration", "SyntaxError", "SystemError", "SystemExit","SyntaxWarning",
+                                        "TabError", "TimeoutError", "TypeError", "ValueError", "Warning", "WindowsError", "ZeroDivisionError"
+                                        ], "color" : self.c }
+
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
+        data["magic_method"]        = {"name" : ["__add__", "__sub__", "__mul__", "__truediv__", "__floordiv__", "__mod__", 
+                                        "__pow__", "__and__", "__xor__", "__or__", "__radd__", "__le__", '__lt__', "__gt__", "__eq__",
+                                        "__ne__", "__ge__", "__len__", "__getitem__", '__setitem__', '__delitem__', '__iter__', '__contains__',
+                                        '__call__', '__str__'
+                                        ] , "color" : self.c }
+
+        keys                        = list(data.keys())
+        data['all_keys']            = keys.copy()
+
+        return data.copy()
+    
     cdef MAMBA(self, str termios = "monokai", unsigned long int n = 0):
         cdef :
             dict data = {}
@@ -207,7 +290,7 @@ cdef class LANG:
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}  
         names                       = ['new', 'delete', 'enum',  "goto", "friend", "inline" , "namespace", 
-                                        "new", "operator", "register", "volatile", "sizeof", "throw", "this", "cout", "endl"]
+                                        "operator", "register", "volatile", "sizeof", "throw", "this", "cout", "endl", "cin"]
         data['iner']                = {"name" : names, "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(51, 102, 255)]}
@@ -218,7 +301,7 @@ cdef class LANG:
         data['cond']                = {"name" : names, "color" : self.c }  
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
-        data['general']                = {"name" : [ "return", "using", "typedef", "typeid", "typename", "virtual", 
+        data['general']             = {"name" : [ "return", "using", "typedef", "typeid", "typename", "virtual", 
                                                 "extern", "explicit", "template"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(153,204,0)]}

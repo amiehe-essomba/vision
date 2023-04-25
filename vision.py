@@ -48,7 +48,7 @@ def visionEditor( ):
     
     # initilization of writeData
     writeData               = {"data" : [], "FileName" : None, "action" : False}
-    data				= {"writing" : [""], "string" : [""], "input" : [], "color" : {"color" : [color], "m" : [0], "n" : [0], "locked": [False]}}
+    data				    = {"writing" : [""], "string" : [""], "input" : [], "color" : {"color" : [color], "m" : [0], "n" : [0], "locked": [False]}}
     #
     locked                  = False
     

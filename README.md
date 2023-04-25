@@ -38,17 +38,17 @@ Overall, VISION's multi-platform distribution on Linux, macOS, and Windows is a 
 
 ## LANGUAGES
 - __**[Black Mamba](https://github.com/amiehe-essomba/BlackMamba/)**__ 
-- __**Python**__ 
-- __**Julia**__ 
-- __**GO**__ 
+- __**[Python](https://github.com/python)**__ 
+- __**[Julia](https://github.com/JuliaLang/julia)**__ 
+- __**[GO](https://github.com/golang/go)**__ 
 - __**[CPMD](https://www.ipcms.fr/wp-content/uploads/2021/05/cpmd.pdf)**__ 
-- __**C and C++**__ 
-- __**Fortran**__ 
-- __**Bash**__ 
-- __**R**__
-- __**Ruby**__ 
-- __**Kotlin**__ 
-- __**SQL**__ 
+- __**[C and C++](https://github.com/topics/cpp-projects)**__ 
+- __**[Fortran](https://github.com/fortran-lang/fortran-lang.org)**__ 
+- __**[Bash](https://github.com/topics/bash-shell)**__ 
+- __**[R](https://github.com/rstudio/)**__
+- __**[Ruby](https://github.com/ruby/ruby)**__ 
+- __**[Kotlin](https://github.com/JetBrains/kotlin)**__ 
+- __**[SQL](https://github.com/topics/sql)**__ 
 
 
 <p align="left">One interesting aspect of VISION as an IDE for multiple programming languages is that it provides a single, integrated environment for developers to work on different projects and programming languages. This can help to streamline their workflow and increase their productivity by allowing them to switch between different projects and languages without having to switch to different tools or environments.
@@ -104,6 +104,9 @@ Please make sure to update tests as appropriate.
 
 ### C++ 
 ![logo](/images/Cpp.png)
+
+### CYthon 
+![logo](/images/Cython.png)
 
 ## 🤵 Author 
 __**Amiehe Essomba**__ 

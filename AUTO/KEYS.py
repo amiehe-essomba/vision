@@ -38,7 +38,7 @@ def POS(x, y, max_x, string = ""):
     sys.stdout.flush()
 
 def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_items: int = 1, 
-                        drop_string : str = "", my_strings : list=[], I : int = 0, LEN : int = 0, idd_select : int = 0) :
+                        drop_string : str = "", my_strings : list=[], I : int = 0, LEN : int = 0, idd_select : dict = {"idd" : 0, "index" : 0}) :
     # the lastest two line
     max_down            = 2
     # max line on the black screen 
@@ -62,13 +62,13 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
     # set the identifier 
     cursor              = c_bg+ colors.fg.rbg(255,0,0)+chr(9664)+reset
     # max elements which can be contained in the white screen
-    max_element         = 8 
+    max_element         = 4 
     # returning string 
     return_string       = ""
     
     if drop_string:
         # all keys and theirs colors 
-        all_names, all_colors   = keys['names'], keys['colors']
+        all_names, all_colors   = keys['names'].copy(), keys['colors'].copy()
         # creating of the new lists for storing the sorting keys and colors respectively
         newNames, newColors     = [], []
         # computing the length of the drop_string 
@@ -84,22 +84,25 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                     newColors.append( all_colors[ i ] )
                 else: pass 
             except IndexError: pass
-        
+            
+        # sorting the keys inside the list 
+        newNames = sorted(newNames).copy()
+        c_ = newNames.copy()
         if newNames:
-            _IDD_ = idd_select
-            if idd_select <  max_element:  _IDD_ = 0
-            else: 
-                idd_select = max_element -1
-                if _IDD_ < len(newNames) : _IDD_ -= max_element
-                else: _IDD_ = len(newNames) - max_element
+            _IDD_   = idd_select["idd"]
+            _INDEX_ = idd_select["index"]
             
             # selecting the number of elements inside the lits 
             if len(  newNames  ) < max_element : pass 
             else: 
-                try:
-                    newNames = newNames[ _IDD_ : max_element + _IDD_]
-                except IndexError: newNames = newNames[-max_element  : ]
-                    
+                if _IDD_+_INDEX_ < max_element: newNames = newNames[ : max_element]
+                else:
+                    try: 
+                        _newNames_ = newNames[ _INDEX_ : ]
+                        if len(_newNames_) >= max_element : newNames = _newNames_[ : max_element]
+                        else:  newNames = newNames[-max_element : ] 
+                    except IndexError: newNames = newNames[-max_element  : ] 
+              
             # border size initialization
             border = 1
             # computing the true border size
@@ -107,11 +110,15 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                 if len(s)  > border: border = len(s)
                 else: pass
             # computing the true value of border size, 
-            border  += 1
-            # sorting the keys inside the list 
-            newNames = sorted(newNames)
+            border  += 4
+            
             # get return values
-            return_string = newNames[_IDD_]
+            try: return_string = newNames[_IDD_]
+            except IndexError: 
+                n = _IDD_
+                while False:
+                    n -= 1
+                    return_string = newNames[n]          
             
             if LINE > (len(newNames) + 1):
                 #########################################################################
@@ -130,7 +137,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                     idd += 1
                     postion(x, y+idd+1, max_x)
                     # initialization of the the cusror
-                    if i == idd_select:
+                    if i == _IDD_:
                         sys.stdout.write( 
                             cc+c + f"{asc['v']}"  + bold + cc +  
                             " " * (border) + cc+c + f"{asc['v']}" + 
@@ -227,7 +234,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                     Y += 1
                 
                 # new initialization of y postion on len(new_list)+3
-                Y = len(new_list)+3
+                Y = len(new_list)+(max_element-1)
                 
                 # drawing the white board 
                 #########################################################################
@@ -246,7 +253,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                     idd += 1
                     postion(x, Y+1+idd, max_x)
                     # initialization of the the cusror
-                    if i == 0:
+                    if i == _IDD_:
                         sys.stdout.write( 
                             cc+c + f"{asc['v']}"  + bold + cc +  
                             " " * (border) + cc+c + f"{asc['v']}" + 
@@ -283,7 +290,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                 sys.stdout.flush()
                 
                 # returning the new y position after scrolling screen
-                return Y, "", 0
+                return Y, return_string, len(return_string)
         else: 
             # if no key was detected by the script 
             # then we just print the values of the list from the cursor 

@@ -1092,7 +1092,7 @@
         "kind": 2,
         "importPath": "AUTO.KEYS",
         "description": "AUTO.KEYS",
-        "peekOfCode": "def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_items: int = 1, \n                        drop_string : str = \"\", my_strings : list=[], I : int = 0, LEN : int = 0, idd_select : int = 0) :\n    # the lastest two line\n    max_down            = 2\n    # max line on the black screen \n    LINE                = max_y - ( y + max_down + 1)\n    # same as LINE\n    N                   = max_y-(4+1) \n    # frame used to draw the black screen \n    asc                 = frame.frame(custom=True)",
+        "peekOfCode": "def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_items: int = 1, \n                        drop_string : str = \"\", my_strings : list=[], I : int = 0, LEN : int = 0, idd_select : dict = {\"idd\" : 0, \"index\" : 0}) :\n    # the lastest two line\n    max_down            = 2\n    # max line on the black screen \n    LINE                = max_y - ( y + max_down + 1)\n    # same as LINE\n    N                   = max_y-(4+1) \n    # frame used to draw the black screen \n    asc                 = frame.frame(custom=True)",
         "detail": "AUTO.KEYS",
         "documentation": {}
     },
@@ -1623,7 +1623,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def comment( name : str = \"python\"):\n    if   name in ['mamba', \"python\", \"bash\"]    : return {\"name\" : '#'}\n    elif name in ['fortran']                    : return {\"name\" : \"!\"}\n    elif name in ['c', 'c++']                   : return {\"name\" : \"//\"}\n    elif name in ['cpmd']                       : return {\"name\" : \"#\"}\n    else                                        : return {\"name\" : None}\ndef mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}",
+        "peekOfCode": "def comment( name : str = \"python\"):\n    if   name in ['mamba', \"python\", \"bash\", \"cython\"]    : return {\"name\" : '#'}\n    elif name in ['fortran']                    : return {\"name\" : \"!\"}\n    elif name in ['c', 'c++']                   : return {\"name\" : \"//\"}\n    elif name in ['cpmd']                       : return {\"name\" : \"#\"}\n    else                                        : return {\"name\" : None}\ndef mul_cmt(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1632,7 +1632,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}\ndef ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}",
+        "peekOfCode": "def mul_cmt(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}\ndef ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1641,7 +1641,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}",
+        "peekOfCode": "def ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\", \"cython\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1650,7 +1650,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}",
+        "peekOfCode": "def decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\", \"cython\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1659,7 +1659,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
+        "peekOfCode": "def delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\", \"cython\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1668,7 +1668,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
+        "peekOfCode": "def characters(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1893,7 +1893,7 @@
         "kind": 2,
         "importPath": "move_even",
         "description": "move_even",
-        "peekOfCode": "def on_scroll(x, y, dx, dy):\n    traiter_mouvement(x, y, dx, dy)\ndef traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\n\"\"\"_summary_\nwhile True:\n                try:",
+        "peekOfCode": "def on_scroll(x, y, dx, dy):\n    traiter_mouvement(x, y, dx, dy)\ndef traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\ndef R():\n    next1, next2,  next3, next4, next5 = 0, 0, 0, 0, 0\n    data = []",
         "detail": "move_even",
         "documentation": {}
     },
@@ -1902,7 +1902,7 @@
         "kind": 2,
         "importPath": "move_even",
         "description": "move_even",
-        "peekOfCode": "def traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\n\"\"\"_summary_\nwhile True:\n                try:\n                    char1 = input.convert() \n                    if char1 == 91: ",
+        "peekOfCode": "def traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\ndef R():\n    next1, next2,  next3, next4, next5 = 0, 0, 0, 0, 0\n    data = []\n    while True:\n        try:",
         "detail": "move_even",
         "documentation": {}
     },
@@ -1949,6 +1949,33 @@
         "description": "pyinstaller",
         "peekOfCode": "path = path_ico()\nif path is None: print(path)\nelse:\n    data = os.path.abspath(os.curdir)+'/Library/*;.'\n    data_info = os.path.abspath(os.curdir)+'/README.md;CONTRIBUTING.md;Tools.md;CODE.md'\n    PyInstaller.__main__.run([\n        \"vision.py\",\n        '--onefile',\n        '--console',\n        '-c',",
         "detail": "pyinstaller",
+        "documentation": {}
+    },
+    {
+        "label": "iris",
+        "kind": 6,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "class iris:\n\tdef __init__(self, color ):\n\t\tself.color = color \n\tdef get(self) -> int:\n\t\treturn 10 \n\tdef set(self):\n\t\tif self.color == \"green\":\n\t\t\tself.color = \"red\"\n\t\telse: pass",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.color",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "\t\tself.color = color \n\tdef get(self) -> int:\n\t\treturn 10 \n\tdef set(self):\n\t\tif self.color == \"green\":\n\t\t\tself.color = \"red\"\n\t\telse: pass",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.color",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "\t\t\tself.color = \"red\"\n\t\telse: pass",
+        "detail": "test",
         "documentation": {}
     },
     {
