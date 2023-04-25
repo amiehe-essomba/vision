@@ -11,23 +11,6 @@ def traiter_mouvement(x, y, dx, dy):
 
 #with mouse.Listener(on_scroll=on_scroll) as listener:
 #    listener.join()
-    
-"""_summary_
-while True:
-                try:
-                    char1 = input.convert() 
-                    if char1 == 91: 
-                        next2 = ord(sys.stdin.read(1)) 
-                        next1 = char1
-                        if next2 == 49:
-                            next3, next4, next5 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1)), ord(sys.stdin.read(1))
-                    elif char1 == 27:
-                        next11, next23 = ord(sys.stdin.read(1)) , ord(sys.stdin.read(1)) 
-                    else: pass
-                    break
-                except KeyboardInterrupt: break
-                except EOFError: break
-"""
 
 def R():
     next1, next2,  next3, next4, next5 = 0, 0, 0, 0, 0
@@ -56,7 +39,6 @@ def R():
             next1, next2,  next3, next4, next5 = 0, 0, 0, 0, 0
         except KeyboardInterrupt: break
         except EOFError: break
-    
     
 def outer():
     char1, char2, char3, char4, char5 = 0, 0, 0, 0, 0

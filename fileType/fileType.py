@@ -19,6 +19,8 @@ def file(FileName : str = ""):
         elif ext in ["in", "ou"]    : return "cpmd"
         # java script extention 
         elif ext == "js"            : return "javascript"
+        # cython extention 
+        elif ext == "pyx"           : return "cython"
         # extention is not recognized 
         else: return None 
     else:

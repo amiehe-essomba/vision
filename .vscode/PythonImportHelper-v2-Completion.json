@@ -838,6 +838,14 @@
         "documentation": {}
     },
     {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
         "label": "cythonize",
         "importPath": "Cython.Build",
         "description": "Cython.Build",
@@ -940,24 +948,6 @@
         "description": "AUTO          ",
         "isExtraImport": true,
         "detail": "AUTO          ",
-        "documentation": {}
-    },
-    {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "matplotlib.pyplot",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "matplotlib.pyplot",
-        "description": "matplotlib.pyplot",
-        "detail": "matplotlib.pyplot",
         "documentation": {}
     },
     {
@@ -1092,7 +1082,7 @@
         "kind": 2,
         "importPath": "AUTO.KEYS",
         "description": "AUTO.KEYS",
-        "peekOfCode": "def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_items: int = 1, \n                        drop_string : str = \"\", my_strings : list=[], I : int = 0, LEN : int = 0, idd_select : int = 0) :\n    # the lastest two line\n    max_down            = 2\n    # max line on the black screen \n    LINE                = max_y - ( y + max_down + 1)\n    # same as LINE\n    N                   = max_y-(4+1) \n    # frame used to draw the black screen \n    asc                 = frame.frame(custom=True)",
+        "peekOfCode": "def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_items: int = 1, \n                        drop_string : str = \"\", my_strings : list=[], I : int = 0, LEN : int = 0, idd_select : dict = {\"idd\" : 0, \"index\" : 0}) :\n    # the lastest two line\n    max_down            = 2\n    # max line on the black screen \n    LINE                = max_y - ( y + max_down + 1)\n    # same as LINE\n    N                   = max_y-(4+1) \n    # frame used to draw the black screen \n    asc                 = frame.frame(custom=True)",
         "detail": "AUTO.KEYS",
         "documentation": {}
     },
@@ -1623,7 +1613,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def comment( name : str = \"python\"):\n    if   name in ['mamba', \"python\", \"bash\"]    : return {\"name\" : '#'}\n    elif name in ['fortran']                    : return {\"name\" : \"!\"}\n    elif name in ['c', 'c++']                   : return {\"name\" : \"//\"}\n    elif name in ['cpmd']                       : return {\"name\" : \"#\"}\n    else                                        : return {\"name\" : None}\ndef mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}",
+        "peekOfCode": "def comment( name : str = \"python\"):\n    if   name in ['mamba', \"python\", \"bash\", \"cython\"]    : return {\"name\" : '#'}\n    elif name in ['fortran']                    : return {\"name\" : \"!\"}\n    elif name in ['c', 'c++']                   : return {\"name\" : \"//\"}\n    elif name in ['cpmd']                       : return {\"name\" : \"#\"}\n    else                                        : return {\"name\" : None}\ndef mul_cmt(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1632,7 +1622,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def mul_cmt(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}\ndef ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}",
+        "peekOfCode": "def mul_cmt(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['\"\"\"', '\"\"\"']}\n    elif name in [\"c\", \"c++\"]   : return {\"name\" : ['/*', '*/']}\n    else: return {\"name\" : None}\ndef ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1641,7 +1631,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}",
+        "peekOfCode": "def ouput( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '->'}\n    else: return {\"name\" : None}\ndef decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\", \"cython\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1650,7 +1640,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}",
+        "peekOfCode": "def decorator( name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : '@'}\n    else: return {\"name\" : None}\ndef delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\", \"cython\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1659,7 +1649,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
+        "peekOfCode": "def delimitor(name : str = \"python\"):\n    if name in ['mamba', \"python\", \"cython\"]  : return {\"name\" : \":\"}\n    elif name in ['c', \"c++\", \"cython\"]       : return {\"name\" : \";\"}\n    else: return {\"name\" : None}\ndef characters(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.',\";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1668,7 +1658,7 @@
         "kind": 2,
         "importPath": "style.languageStyle",
         "description": "style.languageStyle",
-        "peekOfCode": "def characters(name : str = \"python\"):\n    if   name in [\"python\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
+        "peekOfCode": "def characters(name : str = \"python\"):\n    if   name in [\"python\", \"cython\"]     : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.']}\n    elif name in ['mamba']      : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \"?\"]}\n    elif name in ['c', \"c++\"]   : return {\"name\" : ['+', '-', '*', '%', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.',\";\", \"#\"]}\n    elif name in [\"cpmd\"]       : return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \";\"]}\n    else: return {\"name\" : ['+', '-', '*', '%', '/', '<', '>', '=', '!', '|', '&', \"~\", \"[\",\"]\",'{','}', \"(\", \")\", '.', \"$\", \";\", \":\"]}",
         "detail": "style.languageStyle",
         "documentation": {}
     },
@@ -1700,200 +1690,11 @@
         "documentation": {}
     },
     {
-        "label": "R",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "R = 8.14\nF = 9.648533289e+4\nep_rr = 9.4\u0013\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "F",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "F = 9.648533289e+4\nep_rr = 9.4\u0013\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "ep_rr",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "ep_rr = 9.4\u0013\nT = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "T",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "T = 300 \nep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "ep_0",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "ep_0 = epsilon = 8.854e-12\nA = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N ",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "A",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "A = 0.66\nC0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "C0",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "C0 = (ep_0 * ep_rr * R * T) / (2 * (F * A ) ** 2)\ngama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "gama",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "gama = 1\nsigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "sigma",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "sigma = 5\nKb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  ",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "Kb",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "Kb = 1.380649e-23\na = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "a",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "a = -50\nb = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "b",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "b = 50\nN = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "N",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "N = 100\ndx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "dx",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "dx = (b-a)/N \nV = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)\nW = np.array(W)",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "V",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "V = [a]\nW = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)\nW = np.array(W)\nQ = [0]",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "W",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "W = []\nfor i in range(N):\n\ta += dx  \n\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)\nW = np.array(W)\nQ = [0]\nfor i in range(N):",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "\tB",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "\tB = a * sigma# / (Kb * T)\n\tV.append(a)\n\tW.append(B)\nV = np.array(V)\nW = np.array(W)\nQ = [0]\nfor i in range(N):\n\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "V",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "V = np.array(V)\nW = np.array(W)\nQ = [0]\nfor i in range(N):\n\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)\nplt.plot(V, Q)\nplt.show()",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "W",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "W = np.array(W)\nQ = [0]\nfor i in range(N):\n\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)\nplt.plot(V, Q)\nplt.show()",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "Q",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "Q = [0]\nfor i in range(N):\n\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)\nplt.plot(V, Q)\nplt.show()",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
-        "label": "\tQ_M",
-        "kind": 5,
-        "importPath": "mamba",
-        "description": "mamba",
-        "peekOfCode": "\tQ_M = 2 * F * C0 * A * np.sign(W[i]) * np.sqrt( 2 /  gama ) #* np.sqrt(np.log(1 + 2 * np.sinh( W[i] ) * np.sinh( W[i] ) ))\n\tQ.append(Q_M)\nprint(Q)\nplt.plot(V, Q)\nplt.show()",
-        "detail": "mamba",
-        "documentation": {}
-    },
-    {
         "label": "on_scroll",
         "kind": 2,
         "importPath": "move_even",
         "description": "move_even",
-        "peekOfCode": "def on_scroll(x, y, dx, dy):\n    traiter_mouvement(x, y, dx, dy)\ndef traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\n\"\"\"_summary_\nwhile True:\n                try:",
+        "peekOfCode": "def on_scroll(x, y, dx, dy):\n    traiter_mouvement(x, y, dx, dy)\ndef traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\ndef R():\n    next1, next2,  next3, next4, next5 = 0, 0, 0, 0, 0\n    data = []",
         "detail": "move_even",
         "documentation": {}
     },
@@ -1902,7 +1703,7 @@
         "kind": 2,
         "importPath": "move_even",
         "description": "move_even",
-        "peekOfCode": "def traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\n\"\"\"_summary_\nwhile True:\n                try:\n                    char1 = input.convert() \n                    if char1 == 91: ",
+        "peekOfCode": "def traiter_mouvement(x, y, dx, dy):\n    # Faites quelque chose avec les valeurs de x, y, dx et dy\n    print(dy, dx)\n#with mouse.Listener(on_scroll=on_scroll) as listener:\n#    listener.join()\ndef R():\n    next1, next2,  next3, next4, next5 = 0, 0, 0, 0, 0\n    data = []\n    while True:\n        try:",
         "detail": "move_even",
         "documentation": {}
     },
@@ -1949,6 +1750,87 @@
         "description": "pyinstaller",
         "peekOfCode": "path = path_ico()\nif path is None: print(path)\nelse:\n    data = os.path.abspath(os.curdir)+'/Library/*;.'\n    data_info = os.path.abspath(os.curdir)+'/README.md;CONTRIBUTING.md;Tools.md;CODE.md'\n    PyInstaller.__main__.run([\n        \"vision.py\",\n        '--onefile',\n        '--console',\n        '-c',",
         "detail": "pyinstaller",
+        "documentation": {}
+    },
+    {
+        "label": "long_readme",
+        "kind": 2,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "def long_readme():\n\twith open('README.md', 'r')  as f:\n\t\treturn f.read() \ndef short_readme():\n\twith open('README.txt', 'r')  as f1:\n\t\treturn f1.read()\nsetup(name='vision',\n\tversion='1.0.1',\n\tdescription = short_readme(), \n\tlong_description = long_readme() ,",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "short_readme",
+        "kind": 2,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "def short_readme():\n\twith open('README.txt', 'r')  as f1:\n\t\treturn f1.read()\nsetup(name='vision',\n\tversion='1.0.1',\n\tdescription = short_readme(), \n\tlong_description = long_readme() ,\n\turl='https://github.com/amiehe-essomba/vision',\n\tauthor='Iréné Amiehe-Essomba ',\n\tkeywords = 'mamba cython python c++ c javascript julia ruby R',",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "\tdescription",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "\tdescription = short_readme(), \n\tlong_description = long_readme() ,\n\turl='https://github.com/amiehe-essomba/vision',\n\tauthor='Iréné Amiehe-Essomba ',\n\tkeywords = 'mamba cython python c++ c javascript julia ruby R',\n\tinstall_requires = [\n\t'markdown',\n\t],\n\tclassifier = [\n\t'Licence :: OSI Approved :: IPCMS Licence',",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "\tlong_description",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "\tlong_description = long_readme() ,\n\turl='https://github.com/amiehe-essomba/vision',\n\tauthor='Iréné Amiehe-Essomba ',\n\tkeywords = 'mamba cython python c++ c javascript julia ruby R',\n\tinstall_requires = [\n\t'markdown',\n\t],\n\tclassifier = [\n\t'Licence :: OSI Approved :: IPCMS Licence',\n\t'Operating System :: MacOS :: MacOS X',",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "\tkeywords",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "\tkeywords = 'mamba cython python c++ c javascript julia ruby R',\n\tinstall_requires = [\n\t'markdown',\n\t],\n\tclassifier = [\n\t'Licence :: OSI Approved :: IPCMS Licence',\n\t'Operating System :: MacOS :: MacOS X',\n    'Operating System :: Microsoft :: Windows',\n    'Operating System :: POSIX',\n\t'Program Language :: Python :: version >= 3.8',",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "\tinstall_requires",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "\tinstall_requires = [\n\t'markdown',\n\t],\n\tclassifier = [\n\t'Licence :: OSI Approved :: IPCMS Licence',\n\t'Operating System :: MacOS :: MacOS X',\n    'Operating System :: Microsoft :: Windows',\n    'Operating System :: POSIX',\n\t'Program Language :: Python :: version >= 3.8',\n\t'Topic :: VISION code editor',",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "\tclassifier",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "\tclassifier = [\n\t'Licence :: OSI Approved :: IPCMS Licence',\n\t'Operating System :: MacOS :: MacOS X',\n    'Operating System :: Microsoft :: Windows',\n    'Operating System :: POSIX',\n\t'Program Language :: Python :: version >= 3.8',\n\t'Topic :: VISION code editor',\n\t],   \n\ttest_suite = 'nose.collector',\n\tinclude_package_data = True, ",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "\ttest_suite",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "\ttest_suite = 'nose.collector',\n\tinclude_package_data = True, \n\tauthor_email='amieheessomba@etu.unistra.fr',\n\tlicense='MIT License',\n\tpackages=['vision'],\n\tzip_safe=False)",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "\tinclude_package_data",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "\tinclude_package_data = True, \n\tauthor_email='amieheessomba@etu.unistra.fr',\n\tlicense='MIT License',\n\tpackages=['vision'],\n\tzip_safe=False)",
+        "detail": "setup",
         "documentation": {}
     },
     {

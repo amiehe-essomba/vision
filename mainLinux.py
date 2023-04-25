@@ -137,7 +137,9 @@ class IDE:
         self.no_cmt                         = self.color
         self.cmt                            = init.init.bold + colors.bg.rgb(10, 10, 10) + colors.fg.rbg(153, 153, 255) 
         self.conservingColor                = self.color
+        ###########################################################
         self.idd_select                     = 0
+        self.index_select                   = 0
         self.str_select                     = False
         ###########################################################
         sys.stdout.write(self.move.TO(self.x, self.y))
@@ -471,14 +473,20 @@ class IDE:
                                 # <ctrl+up> is handled 
                                 elif next5 == 65:
                                     if self.Data['str_drop_down'] : 
-                                        if self.idd_select == 0 : pass 
-                                        else: self.idd_select -= 1
+                                        if self.idd_select == 0 : 
+                                            if self.index_select == 0 : pass 
+                                            else:
+                                                if self.index_select > 1: self.index_select -= 1
+                                                else: pass
+                                        else:
+                                            if self.idd_select >= 1:  self.idd_select -= 1
+                                            else: pass
                                     else: pass 
                                 # <ctrl+dow> is handled 
                                 elif next5 == 66: 
                                     if self.Data['str_drop_down'] : 
-                                        if self.idd_select > 7 : pass 
-                                        else: self.idd_select += 1
+                                        if self.idd_select <= 2 : self.idd_select += 1
+                                        else: self.index_select += 1
                                     else: pass
                         elif next1 == 27:
                             next1, next2, next3, next4, next5 = input.outer()
@@ -825,12 +833,13 @@ class IDE:
                 self.histotyOfColors['n'][self.if_line]     = self.nn
                 self.histotyOfColors['locked'][self.if_line]= self.locked
                 ########################################################################################################
-                self.Data['str_drop_down'] = ""
-                if self.Data['str_drop_down']:
+                #self.Data['str_drop_down'] = ""
+                #if self.Data['str_drop_down']:
+                if self.lang != "unknown":
                     self.KEYS, self.keys_items = KW.keys(language=self.lang, termios=self.termios, n=self.nn)
-                    self.alpha, self._STR_, self.beta = KEYS.auto(x=self.x, y=self.y,max_x=self.max_x, max_y=self.max_y, keys=self.KEYS, keys_items=self.keys_items,
+                    self.alpha, self._STR_, self.beta = KEYS.auto(x=self.x, y=self.y,max_x=self.max_x, max_y=self.max_y, keys=self.KEYS.copy(), keys_items=self.keys_items,
                             drop_string=self.Data['str_drop_down'], my_strings=self.str_, I=self.if_line, 
-                                                        LEN=self.Data['index'], idd_select=self.idd_select)
+                            LEN=self.Data['index'], idd_select={"idd" : self.idd_select, "index" : self.index_select})
                     if self.alpha is None: pass
                     else: self.y = self.alpha
                     
@@ -842,7 +851,7 @@ class IDE:
                             self.Data['index'] += self.beta-1
                             for k in range(self.beta-1):
                                 self.Data['get'].append(1)
-                            self.idd_select, self.str_select  = 0, False
+                            self.idd_select, self.index_select, self.str_select  = 0, 0, False
                         
                             __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, m = self.m, n=self.nn)
                             
@@ -870,6 +879,7 @@ class IDE:
                             self.str_[self.if_line]                   = __string__ 
                         else: pass
                     else: pass 
+                #else: pass
                 else: pass
                 #########################################################################################################  
                 counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
