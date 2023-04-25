@@ -178,10 +178,10 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                 # computing the new cusor postion 
                 NEW_LINE = max_y - (Y+max_down+1)
                 # restoring the screen 
-                if NEW_LINE < 0: pass 
+                if NEW_LINE <= 0: pass 
                 else:
                     for i in range(NEW_LINE):
-                        M = Y+i
+                        M = Y+i+1
                         try: POS(x, M, max_x, string=my_strings[I+i+1])
                         except IndexError: POS(x, M, max_x)
                         sys.stdout.flush()

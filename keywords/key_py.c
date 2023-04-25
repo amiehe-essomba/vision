@@ -1688,6 +1688,7 @@ static const char __pyx_k_bolean[] = "bolean";
 static const char __pyx_k_cancel[] = "cancel";
 static const char __pyx_k_colors[] = "colors";
 static const char __pyx_k_cython[] = "cython";
+static const char __pyx_k_define[] = "define";
 static const char __pyx_k_delete[] = "delete";
 static const char __pyx_k_double[] = "double";
 static const char __pyx_k_except[] = "except";
@@ -2208,6 +2209,7 @@ static PyObject *__pyx_n_s_cython;
 static PyObject *__pyx_n_s_cython_def;
 static PyObject *__pyx_n_s_def;
 static PyObject *__pyx_n_s_default;
+static PyObject *__pyx_n_s_define;
 static PyObject *__pyx_n_s_del;
 static PyObject *__pyx_n_s_delete;
 static PyObject *__pyx_n_s_delitem;
@@ -9159,7 +9161,7 @@ static PyObject *__pyx_f_6key_py_4LANG_C(struct __pyx_obj_6key_py_LANG *__pyx_v_
  *         data["bolean"]              = {"name" : names, "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}             # <<<<<<<<<<<<<<
- *         data["loading"]             = {"name" : ['include'], "color" : self.c }
+ *         data["loading"]             = {"name" : ['include', "define"], "color" : self.c }
  * 
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
@@ -9198,17 +9200,20 @@ static PyObject *__pyx_f_6key_py_4LANG_C(struct __pyx_obj_6key_py_LANG *__pyx_v_
   /* "key_py.pyx":321
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
- *         data["loading"]             = {"name" : ['include'], "color" : self.c }             # <<<<<<<<<<<<<<
+ *         data["loading"]             = {"name" : ['include', "define"], "color" : self.c }             # <<<<<<<<<<<<<<
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_include);
   __Pyx_GIVEREF(__pyx_n_s_include);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_include);
+  __Pyx_INCREF(__pyx_n_s_define);
+  __Pyx_GIVEREF(__pyx_n_s_define);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_define);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_t_2) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_v_self->c) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
@@ -9216,7 +9221,7 @@ static PyObject *__pyx_f_6key_py_4LANG_C(struct __pyx_obj_6key_py_LANG *__pyx_v_
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "key_py.pyx":323
- *         data["loading"]             = {"name" : ['include'], "color" : self.c }
+ *         data["loading"]             = {"name" : ['include', "define"], "color" : self.c }
  * 
  *         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}             # <<<<<<<<<<<<<<
  *         data['exceptions']          = {"name" : ['logic_error', "exception", "bad_alloc", "bad_cast", "bad_exception", "bad_typeid",
@@ -11367,6 +11372,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cython_def, __pyx_k_cython_def, sizeof(__pyx_k_cython_def), 0, 0, 1, 1},
   {&__pyx_n_s_def, __pyx_k_def, sizeof(__pyx_k_def), 0, 0, 1, 1},
   {&__pyx_n_s_default, __pyx_k_default, sizeof(__pyx_k_default), 0, 0, 1, 1},
+  {&__pyx_n_s_define, __pyx_k_define, sizeof(__pyx_k_define), 0, 0, 1, 1},
   {&__pyx_n_s_del, __pyx_k_del, sizeof(__pyx_k_del), 0, 0, 1, 1},
   {&__pyx_n_s_delete, __pyx_k_delete, sizeof(__pyx_k_delete), 0, 0, 1, 1},
   {&__pyx_n_s_delitem, __pyx_k_delitem, sizeof(__pyx_k_delitem), 0, 0, 1, 1},

@@ -318,7 +318,7 @@ cdef class LANG:
         data["bolean"]              = {"name" : names, "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 0, 0)]}
-        data["loading"]             = {"name" : ['include'], "color" : self.c }
+        data["loading"]             = {"name" : ['include', "define"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 204, 0)]}
         data['exceptions']          = {"name" : ['logic_error', "exception", "bad_alloc", "bad_cast", "bad_exception", "bad_typeid", 
