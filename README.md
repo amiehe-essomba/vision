@@ -105,7 +105,7 @@ Please make sure to update tests as appropriate.
 ### C++ 
 ![logo](/images/Cpp.png)
 
-### CYthon 
+### Cython 
 ![logo](/images/Cython.png)
 
 ## 🤵 Author 

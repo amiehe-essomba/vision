@@ -161,7 +161,7 @@ cdef class words:
                             if self.ss: self.newS +=  words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                             else: pass  
                     else:
-                        if s in self.comment    :
+                        if   s in self.comment  :
                             cmt_str  = ""
                             self.ss += s 
                             if i < len( self.string ) - 1: pass 
@@ -263,16 +263,9 @@ cdef class words:
                                         if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
                                         else:  pass
                                 else:
-                                    if self.language in {"c++", "c"}:
-                                        self.ss += s 
-                                        if i < len(self.string) - 1: pass
-                                        else:
-                                            if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
-                                            else:  pass
-                                    else:
-                                        self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
-                                        self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
-                                        self.ss      = ''
+                                    self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, count=self.count, b_=b_)
+                                    self.ss      = ''
                             else :
                                 if s == '/':
                                     if self.language in {"c++", "c"}:
