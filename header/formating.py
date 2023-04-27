@@ -145,3 +145,55 @@ def RestoringSTring(max_x : int = 0, max_y : int = 0, LINE : int = 4, WRITE : li
             
     sys.stdout.write(move.TO(x=x, y=y))
     sys.stdout.flush()
+    
+def WritingDown(x :int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE : int = 4):
+    move        = moveCursor.cursor
+    N           = max_y-(LINE+1) 
+    Y           = LINE
+    asc         = frame.frame(custom=True)
+    bold        = init.init.bold
+    reset       = init.init.reset
+    c_bg        = colors.bg.rgb(10, 10, 10)  
+    c           = bold + colors.fg.rbg(255, 255, 255)
+    input, length       = header.counter(n=0)
+    sys.stdout.write(move.TO(x=length, y=Y) )
+    
+    for i in range(N):
+        if Y > y:
+            sys.stdout.write(move.TO(x=length+1, y=Y) + move.LEFT(pos=1000) + clear.clear.line(2))
+            sys.stdout.write(
+                input + c_bg + " " * (max_x - (length+2) ) + reset +
+                move.TO(x=max_x, y=Y) + c + f"{asc['v']}" + 
+                move.TO(x=length+1, y=Y) + c_bg + "" + reset +"\n"
+                )
+            sys.stdout.flush()
+        else: pass
+        Y += 1 
+    sys.stdout.write(move.TO(x=x, y=y))
+    sys.stdout.flush()
+    
+def WritingUp(x :int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE : int = 4):
+    move        = moveCursor.cursor
+    N           = max_y-(LINE+1) 
+    Y           = LINE
+    asc         = frame.frame(custom=True)
+    bold        = init.init.bold
+    reset       = init.init.reset
+    c_bg        = colors.bg.rgb(10, 10, 10)  
+    c           = bold + colors.fg.rbg(255, 255, 255)
+    input, length       = header.counter(n=0)
+    sys.stdout.write(move.TO(x=length, y=Y) )
+    
+    for i in range(N):
+        if Y < y:
+            sys.stdout.write(move.TO(x=length+1, y=Y) + move.LEFT(pos=1000) + clear.clear.line(2))
+            sys.stdout.write(
+                input + c_bg + " " * (max_x - (length+2) ) + reset +
+                move.TO(x=max_x, y=Y) + c + f"{asc['v']}" + 
+                move.TO(x=length+1, y=Y) + c_bg + "" + reset +"\n"
+                )
+            sys.stdout.flush()
+        else: pass
+        Y += 1 
+    sys.stdout.write(move.TO(x=x, y=y))
+    sys.stdout.flush()

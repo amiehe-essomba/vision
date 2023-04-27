@@ -87,7 +87,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
             
         # sorting the keys inside the list 
         newNames = sorted(newNames).copy()
-        c_ = newNames.copy()
+                                
         if newNames:
             _IDD_   = idd_select["idd"]
             _INDEX_ = idd_select["index"]
@@ -112,185 +112,187 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
             # computing the true value of border size, 
             border  += 4
             
-            # get return values
-            try: return_string = newNames[_IDD_]
-            except IndexError: 
-                n = _IDD_
-                while False:
-                    n -= 1
-                    return_string = newNames[n]          
-            
-            if LINE > (len(newNames) + 1):
-                #########################################################################
-                postion(x, y+1, max_x)
-                # first line     
-                sys.stdout.write(
-                    move.TO(x=x-LEN, y=y+1) + c_bg + " " * LEN + move.TO(x=x, y=y+1) + reset + 
-                    cc+c + f"{asc['ul']}" + f"{asc['h']}" * (border) + f"{asc['ur']}" +
-                    move.TO(x=x+border+2, y=y+1) + reset + c_bg+ " " * (max_x-x-border-3)
-                    + reset + "\n")
-                #########################################################################
-                # middle  lines
-                idd = 0
-                    
-                for i in range( len(newNames )+1):
-                    idd += 1
-                    postion(x, y+idd+1, max_x)
-                    # initialization of the the cusror
-                    if i == _IDD_:
-                        sys.stdout.write( 
-                            cc+c + f"{asc['v']}"  + bold + cc +  
-                            " " * (border) + cc+c + f"{asc['v']}" + 
-                            cursor + reset + "\n"
-                            )
-                    # remove cursor
-                    else:
-                        sys.stdout.write( 
-                            cc+c + f"{asc['v']}"  + bold + cc +  
-                            " " * (border) + cc+c + f"{asc['v']}" + 
-                            reset + "\n"
-                        )
-                    sys.stdout.flush()
-                #########################################################################
-                # third line
-                postion(x, y+idd+1, max_x) 
-                sys.stdout.write(cc+c + f"{asc['dl']}" + f"{asc['h']}" * (border) + f"{asc['dr']}"+ reset + "\n")
-                sys.stdout.flush()
-                #########################################################################
-                postion(x, y, max_x, my_strings[I])
-                sys.stdout.write(move.TO(x=x, y=y))
+            if (max_x - (x+border+2)) > 0 :
+                # get return values
+                try: return_string = newNames[_IDD_]
+                except IndexError: 
+                    n = _IDD_
+                    while False:
+                        n -= 1
+                        return_string = newNames[n]          
                 
-                # writing keys inside white board
-                for i in range(len(newNames)):
+                if LINE > (len(newNames) + 1):
+                    #########################################################################
+                    postion(x, y+1, max_x)
+                    # first line     
                     sys.stdout.write(
-                        move.TO(x=x+1, y=y+i+2) +
-                        cc + keys_items[newNames[i]] +
-                        init.init.bold + newNames[i] + c + " " * (border - len(newNames[i]))+
-                        reset + "\n"
-                        )
-                    sys.stdout.flush()
-                #########################################################################
-                
-                X, Y = screenConfig.cursor()
-                postion(x, Y, max_x) 
-                sys.stdout.write(cc+c + f"{asc['dl']}" + f"{asc['h']}" * (border) + f"{asc['dr']}"+ reset + "\n")
-                sys.stdout.flush()
-                # computing the new cusor postion 
-                NEW_LINE = max_y - (Y+max_down+1)
-                # restoring the screen 
-                if NEW_LINE <= 0: pass 
-                else:
-                    for i in range(NEW_LINE):
-                        M = Y+i+1
-                        try: POS(x, M, max_x, string=my_strings[I+i+1])
-                        except IndexError: POS(x, M, max_x)
+                        move.TO(x=x-LEN, y=y+1) + c_bg + " " * LEN + move.TO(x=x, y=y+1) + reset + 
+                        cc+c + f"{asc['ul']}" + f"{asc['h']}" * (border) + f"{asc['ur']}" +
+                        move.TO(x=x+border+2, y=y+1) + reset + c_bg+ " " * (max_x-x-border-3)
+                        + reset + "\n")
+                    #########################################################################
+                    # middle  lines
+                    idd = 0
+                        
+                    for i in range( len(newNames )+1):
+                        idd += 1
+                        postion(x, y+idd+1, max_x)
+                        # initialization of the the cusror
+                        if i == _IDD_:
+                            sys.stdout.write( 
+                                cc+c + f"{asc['v']}"  + bold + cc +  
+                                " " * (border) + cc+c + f"{asc['v']}" + 
+                                cursor + reset + "\n"
+                                )
+                        # remove cursor
+                        else:
+                            sys.stdout.write( 
+                                cc+c + f"{asc['v']}"  + bold + cc +  
+                                " " * (border) + cc+c + f"{asc['v']}" + 
+                                reset + "\n"
+                            )
                         sys.stdout.flush()
-                # restoring the true cursor position on the screen
-                sys.stdout.write(move.TO(x=x, y=y))
-                sys.stdout.flush()
-                
-                return None, return_string, len(return_string)
-                #########################################################################
-            else:
-                # computing the number of lines could be print on the screen
-                N           = max_y - (4+max_down+1) + 1
-                # computing the number of line which going to be scrolled 
-                delimitor   = ((len(newNames) + 1) - LINE)+2
-                # extracting the data of the main list of data 
-                new_list    = my_strings[ delimitor : ].copy() 
-                
-                # checking the first condition 
-                if N > len(new_list):
-                    # when the first condition is respected
-                    if (N-len(new_list)) >= (len(newNames)+1) : pass 
-                    # when first condition is respected
-                    else: 
-                        # computing the new delimitor position
-                        delimitor += ((len(newNames)+1) - (N - len(new_list))) + 1
-                        # getting the new list
-                        new_list  = my_strings[ delimitor : ]
-                # checking the second condition 
-                else:
-                    # wrunning while loop until the second condition is not respected 
-                    while N < len(new_list):
-                        delimitor += 1
-                        new_list  = my_strings[ delimitor : ].copy()
-                    # computing the new delimitor postion 
-                    delimitor += ((len(newNames)+1) - (N - len(new_list))) + 1
-                    # getting the new list 
-                    new_list  = my_strings[ delimitor : ] 
-                  
-                # initialization of y postion on 4          
-                Y = 4
-                # moving cursor postion of (x, 4)
-                sys.stdout.write(move.TO(x=0, y=4))
-                sys.stdout.flush()
-                
-                # printing the values stored in new_list from the beginning of screen
-                for i in range(N):
-                    try: POS(x, Y, max_x, string=new_list[i])
-                    except IndexError: POS(x, Y, max_x)
+                    #########################################################################
+                    # third line
+                    postion(x, y+idd+1, max_x) 
+                    sys.stdout.write(cc+c + f"{asc['dl']}" + f"{asc['h']}" * (border) + f"{asc['dr']}"+ reset + "\n")
                     sys.stdout.flush()
-                    Y += 1
-                
-                # new initialization of y postion on len(new_list)+3
-                Y = len(new_list)+(max_element-1)
-                
-                # drawing the white board 
-                #########################################################################
-                postion(x, Y+1, max_x)
-                # first line     
-                sys.stdout.write(
-                    move.TO(x=x-LEN, y=Y+1) + c_bg + " " * LEN + move.TO(x=x, y=Y+1) + reset + 
-                    cc+c + f"{asc['ul']}" + f"{asc['h']}" * (border) + f"{asc['ur']}" +
-                    move.TO(x=x+border+2, y=Y+1) + reset + c_bg+ " " * (max_x-x-border-3)
-                    + reset + "\n")
-                #########################################################################
-                
-                # middle  lines
-                idd = 0
-                for i in range( len(newNames )+1):
-                    idd += 1
-                    postion(x, Y+1+idd, max_x)
-                    # initialization of the the cusror
-                    if i == _IDD_:
-                        sys.stdout.write( 
-                            cc+c + f"{asc['v']}"  + bold + cc +  
-                            " " * (border) + cc+c + f"{asc['v']}" + 
-                            cursor + reset + "\n"
-                            )
-                    # remove cursor
-                    else:
-                        sys.stdout.write( 
-                            cc+c + f"{asc['v']}"  + bold + cc +  
-                            " " * (border) + cc+c + f"{asc['v']}" + 
+                    #########################################################################
+                    postion(x, y, max_x, my_strings[I])
+                    sys.stdout.write(move.TO(x=x, y=y))
+                    
+                    # writing keys inside white board
+                    for i in range(len(newNames)):
+                        sys.stdout.write(
+                            move.TO(x=x+1, y=y+i+2) +
+                            cc + keys_items[newNames[i]] +
+                            init.init.bold + newNames[i] + c + " " * (border - len(newNames[i]))+
                             reset + "\n"
-                        )
+                            )
+                        sys.stdout.flush()
+                    #########################################################################
+                    
+                    X, Y = screenConfig.cursor()
+                    postion(x, Y, max_x) 
+                    sys.stdout.write(cc+c + f"{asc['dl']}" + f"{asc['h']}" * (border) + f"{asc['dr']}"+ reset + "\n")
                     sys.stdout.flush()
-                #########################################################################
-                # third line
-                postion(x, Y+1+idd, max_x) 
-                sys.stdout.write(cc+c + f"{asc['dl']}" + f"{asc['h']}" * (border) + f"{asc['dr']}"+ reset + "\n")
-                sys.stdout.flush()
-                #########################################################################
-                #postion(x, Y, max_x, my_strings[I])
-                sys.stdout.write(move.TO(x=x, y=Y))
-                
-                # writing keys inside white board
-                for i in range(len(newNames)):
-                    sys.stdout.write(
-                        move.TO(x=x+1, y=Y+i+2) +
-                        cc + keys_items[newNames[i]] +
-                        init.init.bold + newNames[i] + c + " " * (border - len(newNames[i]))+
-                        reset + "\n"
-                        )
+                    # computing the new cusor postion 
+                    NEW_LINE = max_y - (Y+max_down+1)
+                    # restoring the screen 
+                    if NEW_LINE <= 0: pass 
+                    else:
+                        for i in range(NEW_LINE):
+                            M = Y+i+1
+                            try: POS(x, M, max_x, string=my_strings[I+i+1])
+                            except IndexError: POS(x, M, max_x)
+                            sys.stdout.flush()
+                    # restoring the true cursor position on the screen
+                    sys.stdout.write(move.TO(x=x, y=y))
                     sys.stdout.flush()
                     
-                sys.stdout.write(move.TO(x=x, y=Y))
-                sys.stdout.flush()
-                
-                # returning the new y position after scrolling screen
-                return Y, return_string, len(return_string)
+                    return None, return_string, len(return_string)
+                    #########################################################################
+                else:
+                    # computing the number of lines could be print on the screen
+                    N           = max_y - (4+max_down+1) + 1
+                    # computing the number of line which going to be scrolled 
+                    delimitor   = ((len(newNames) + 1) - LINE)+2
+                    # extracting the data of the main list of data 
+                    new_list    = my_strings[ delimitor : ].copy() 
+                    
+                    # checking the first condition 
+                    if N > len(new_list):
+                        # when the first condition is respected
+                        if (N-len(new_list)) >= (len(newNames)+1) : pass 
+                        # when first condition is respected
+                        else: 
+                            # computing the new delimitor position
+                            delimitor += ((len(newNames)+1) - (N - len(new_list))) + 1
+                            # getting the new list
+                            new_list  = my_strings[ delimitor : ]
+                    # checking the second condition 
+                    else:
+                        # wrunning while loop until the second condition is not respected 
+                        while N < len(new_list):
+                            delimitor += 1
+                            new_list  = my_strings[ delimitor : ].copy()
+                        # computing the new delimitor postion 
+                        delimitor += ((len(newNames)+1) - (N - len(new_list))) + 1
+                        # getting the new list 
+                        new_list  = my_strings[ delimitor : ] 
+                    
+                    # initialization of y postion on 4          
+                    Y = 4
+                    # moving cursor postion of (x, 4)
+                    sys.stdout.write(move.TO(x=0, y=4))
+                    sys.stdout.flush()
+                    
+                    # printing the values stored in new_list from the beginning of screen
+                    for i in range(N):
+                        try: POS(x, Y, max_x, string=new_list[i])
+                        except IndexError: POS(x, Y, max_x)
+                        sys.stdout.flush()
+                        Y += 1
+                    
+                    # new initialization of y postion on len(new_list)+3
+                    Y = len(new_list)+(max_element-1)
+                    
+                    # drawing the white board 
+                    #########################################################################
+                    postion(x, Y+1, max_x)
+                    # first line     
+                    sys.stdout.write(
+                        move.TO(x=x-LEN, y=Y+1) + c_bg + " " * LEN + move.TO(x=x, y=Y+1) + reset + 
+                        cc+c + f"{asc['ul']}" + f"{asc['h']}" * (border) + f"{asc['ur']}" +
+                        move.TO(x=x+border+2, y=Y+1) + reset + c_bg+ " " * (max_x-x-border-3)
+                        + reset + "\n")
+                    #########################################################################
+                    
+                    # middle  lines
+                    idd = 0
+                    for i in range( len(newNames )+1):
+                        idd += 1
+                        postion(x, Y+1+idd, max_x)
+                        # initialization of the the cusror
+                        if i == _IDD_:
+                            sys.stdout.write( 
+                                cc+c + f"{asc['v']}"  + bold + cc +  
+                                " " * (border) + cc+c + f"{asc['v']}" + 
+                                cursor + reset + "\n"
+                                )
+                        # remove cursor
+                        else:
+                            sys.stdout.write( 
+                                cc+c + f"{asc['v']}"  + bold + cc +  
+                                " " * (border) + cc+c + f"{asc['v']}" + 
+                                reset + "\n"
+                            )
+                        sys.stdout.flush()
+                    #########################################################################
+                    # third line
+                    postion(x, Y+1+idd, max_x) 
+                    sys.stdout.write(cc+c + f"{asc['dl']}" + f"{asc['h']}" * (border) + f"{asc['dr']}"+ reset + "\n")
+                    sys.stdout.flush()
+                    #########################################################################
+                    #postion(x, Y, max_x, my_strings[I])
+                    sys.stdout.write(move.TO(x=x, y=Y))
+                    
+                    # writing keys inside white board
+                    for i in range(len(newNames)):
+                        sys.stdout.write(
+                            move.TO(x=x+1, y=Y+i+2) +
+                            cc + keys_items[newNames[i]] +
+                            init.init.bold + newNames[i] + c + " " * (border - len(newNames[i]))+
+                            reset + "\n"
+                            )
+                        sys.stdout.flush()
+                        
+                    sys.stdout.write(move.TO(x=x, y=Y))
+                    sys.stdout.flush()
+                    
+                    # returning the new y position after scrolling screen
+                    return Y, return_string, len(return_string)
+            else: return None, "", 0
         else: 
             # if no key was detected by the script 
             # then we just print the values of the list from the cursor 
