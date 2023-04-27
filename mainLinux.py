@@ -160,7 +160,7 @@ class IDE:
                     self._string_ + "\n"
                 )
                 sys.stdout.flush()
-                break
+                return
             else: pass 
             
             try:
@@ -985,4 +985,4 @@ class IDE:
                     self.clear.screen(pos=2)+ self.move.TO(x=0, y=0)+
                     self._string_ + "\n" )
                 break
-            except NameError : pass
+            except IndexError : pass

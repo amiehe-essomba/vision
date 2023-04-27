@@ -4,7 +4,7 @@ from configure      import colors, init, clear, state, screenConfig, moveCursor,
 from frame          import frame
 from DataBase       import data
 from header         import header, formating, counter
-from saving         import save, writing
+from saving         import save, writing, Find_String
 from keywords       import words
 import time
 from AUTO           import buildString as BS
@@ -139,12 +139,19 @@ class IDE:
         self.cmt                            = init.init.bold + colors.bg.rgb(10, 10, 10) + colors.fg.rbg(153, 153, 255) 
         self.conservingColor                = self.color
         ###########################################################
+        self.idd_select                     = 0
+        self.index_select                   = 0
+        self.str_select                     = False
+        ###########################################################
+        self.find_string                    = ""
+        self.string_find_is_found           = False
+        ###########################################################
         sys.stdout.write(self.move.TO(self.x, self.y))
         sys.stdout.flush()
         ########################################################### 
         
         while True:
-            # getting max size (max_x, max_y) of the window 
+            # getting max size (max_x, max_y) of the window at each time
             self._max_x_, self._max_y_  = screenConfig.cursorMax()
             if (self._max_x_ != self.max_x) or (self._max_y_ != self.max_y):
                 self._string_ = self.color_bg.red_L + self.color_fg.rbg(255, 255, 255) +"Screen Coordinates have changed" + self.init.reset
@@ -153,7 +160,7 @@ class IDE:
                     self._string_ + "\n"
                 )
                 sys.stdout.flush()
-                break
+                return
             else: pass 
             
             try:
@@ -163,15 +170,56 @@ class IDE:
                     _ = self.char[1]
                     self.char = self.char[0]
                     if self.char is not None: 
+                        
+                        # <ctrl+a>
+                        if   self.char == 1         :
+                            # checking firstly is the screen is locked
+                            if self.screenLocked is False : 
+                                # delecting characters on the left side of the cursor
+                                if self.Data['input']:
+                                    self.Data['input']  = self.Data['input'][self.Data['index'] : ]
+                                    self.Data['string'] = self.Data['string'][self.Data['I_S'] : ]
+                                    self.x              = (self.size + 1)
+                                    self.get            = []
+                                    if self.Data['string']:
+                                        for ss in self.Data['string']:
+                                            if ss == '\t': self.get.append([1 for x in range(4)])
+                                            else: self.get.append(1)
+                                    else: pass
+                                    sys.stdout.write(self.move.TO(x=self.x, y=self.y))
+                                    sys.stdout.flush()
+                                else: pass
+                            else: pass
+                    
                         # breaking whyle loop 
-                        if   self.char == 3         :
+                        elif self.char == 3         :
                             self._string_ = self.color_bg.red_L + self.color_fg.rbg(255, 255, 255) +"KeyboardInterrupt" + self.init.reset
                             sys.stdout.write(
                                 self.clear.screen(pos=2)+ self.move.TO(x=0, y=0)+
                                 self._string_ + "\n"
                             )
                             return
-                    
+
+                        # <ctrl+z>
+                        elif self.char == 26        :
+                            # checking firstly is the screen is locked
+                            if self.screenLocked is False : 
+                                # delecting characters from the cursor at the end of the line
+                                if self.Data['input']:
+                                    self.Data['input']  = self.Data['input'][ : self.Data['index']]
+                                    self.Data['string'] = self.Data['string'][ : self.Data['I_S']]
+                                    self.x              = len(self.Data["input"]) + (self.size + 1)
+                                    self.get            = []
+                                    if self.Data['string']:
+                                        for ss in self.Data['string']:
+                                            if ss == '\t': self.get.append([1 for x in range(4)])
+                                            else: self.get.append(1)
+                                    else: pass
+                                    sys.stdout.write(self.move.TO(x=self.x, y=self.y))
+                                    sys.stdout.flush()
+                                else: pass
+                            else: pass
+                        
                         # saving data <ctrl+s>
                         elif self.char == 19        : 
                             if self.screenLocked is False : 
@@ -202,31 +250,42 @@ class IDE:
                             
                         # adding a new line on top <ctrl+o>
                         elif self.char == 15        : 
-                            self.Data['string']      = ""
-                            self.Data['input']       = ""
-                            self.Data["I_S"]         = 0
-                            self.Data["index"]       = 0
-                            self.Data['get']         = []
-                            self.x                   = self.size + 1
-                            
-                            self.Data['string_tabular'].insert(self.if_line, self.Data['string'])
-                            self.Data['string_tab'].insert(self.if_line, self.Data['I_S'])
-                            self.Data['liste'].insert(self.if_line, self.Data['input'] )
-                            self.Data['tabular'].insert(self.if_line, self.Data['index'] )
-                            self.Data['x_y'].insert(self.if_line, (self.x, self.y))
-                            self.Data['memory'].insert(self.if_line, self.Data['get'])
-                            self.str_.insert(self.if_line, self.Data['input'])
-                            
-                            self.histotyOfColors['color'].insert(self.if_line, self.color)
-                            self.histotyOfColors['m'].insert(self.if_line, 0)
-                            self.histotyOfColors['n'].insert(self.if_line, 0)
-                            self.histotyOfColors['locked'].insert(self.if_line, self.locked)
-                            
-                            formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
-                            
-                            self.if_line_max        += 1
-                            self.if_line            += 1
-
+                            # checking first is the screen is not locked 
+                            if self.screenLocked is False :
+                                self.Data['string']      = ""
+                                self.Data['input']       = ""
+                                self.Data["I_S"]         = 0
+                                self.Data["index"]       = 0
+                                self.Data['get']         = []
+                                self.x                   = self.size + 1
+                                
+                                self.Data['string_tabular'].insert(self.if_line, self.Data['string'])
+                                self.Data['string_tab'].insert(self.if_line, self.Data['I_S'])
+                                self.Data['liste'].insert(self.if_line, self.Data['input'] )
+                                self.Data['tabular'].insert(self.if_line, self.Data['index'] )
+                                self.Data['x_y'].insert(self.if_line, (self.x, self.y))
+                                self.Data['memory'].insert(self.if_line, self.Data['get'])
+                                self.str_.insert(self.if_line, self.Data['input'])
+                                
+                                self.histotyOfColors['color'].insert(self.if_line, self.color)
+                                self.histotyOfColors['m'].insert(self.if_line, 0)
+                                self.histotyOfColors['n'].insert(self.if_line, 0)
+                                self.histotyOfColors['locked'].insert(self.if_line, self.locked)
+                                
+                                formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
+                                
+                                self.if_line_max        += 1
+                                self.if_line            += 1
+                            else: pass
+                        
+                        # selecting <ctrl+n>
+                        elif self.char == 14        :
+                            # checking first is the screen is not locked 
+                            if self.screenLocked is False : 
+                                # selecting a keyword from the proposed list 
+                                self.str_select = True
+                            else: pass
+                    
                         # clear screen  <ctrl+l>
                         elif self.char == 12        :
                             self.Data['string']             = ""
@@ -259,21 +318,59 @@ class IDE:
                     
                         # delecting char <backspace>
                         elif self.char in {127, 8}  :
-                            if self.Data['get']:
-                                self.Data['string']     =  self.Data['string'][ : self.Data["I_S"] - 1] + self.Data['string'][ self.Data["I_S"] : ]
-                                self.Data['I_S']       -= 1
-                                if type( self.Data['get'][self.Data['I_S']] ) == type(list()):
-                                    self.Data['input']  =  self.Data['input'][ : self.Data["index"] - 4] + self.Data['input'][ self.Data["index"] : ]
-                                    self.x                 -= 4
-                                    self.Data['index']     -= 4
+                            if self.screenLocked is False : 
+                                if self.Data['get']:
+                                    self.Data['string']     =  self.Data['string'][ : self.Data["I_S"] - 1] + self.Data['string'][ self.Data["I_S"] : ]
+                                    self.Data['I_S']       -= 1
+                                    if type( self.Data['get'][self.Data['I_S']] ) == type(list()):
+                                        self.Data['input']  =  self.Data['input'][ : self.Data["index"] - 4] + self.Data['input'][ self.Data["index"] : ]
+                                        self.x                 -= 4
+                                        self.Data['index']     -= 4
+                                    else:
+                                        self.Data['input']      =  self.Data['input'][ : self.Data["index"] - 1] + self.Data['input'][ self.Data["index"] : ]
+                                        self.x                 -= 1
+                                        self.Data['index']     -= 1
+                                    
+                                    del self.Data['get'][self.Data['I_S']]
+                                    self.counterL           = 0
+                                    self.counterR          -= 1
+                                else: pass
+                            else: pass
+                        
+                        #<ctrl+x>
+                        elif self.char == 24        :
+                            # checking first is the screen is not locked 
+                            if self.screenLocked is False : 
+                                # clear lines from the cursor at the end of the screen
+                                if self.if_line == len(self.Data['string_tabular']) : pass
                                 else:
-                                    self.Data['input']      =  self.Data['input'][ : self.Data["index"] - 1] + self.Data['input'][ self.Data["index"] : ]
-                                    self.x                 -= 1
-                                    self.Data['index']     -= 1
-                                
-                                del self.Data['get'][self.Data['I_S']]
-                                self.counterL           = 0
-                                self.counterR          -= 1
+                                    for ii in range(self.if_line+1, len(self.Data['string_tabular'])):
+                                        self.Data['string_tabular'][ii] = ""
+                                        self.Data['string_tab'][ii]     = 0
+                                        self.Data['liste'][ii]          = ""  
+                                        self.Data['tabular'][ii]        = 0
+                                        self.Data['x_y'][ii]            = (self.size+1, self.y) 
+                                        self.Data['memory'][ii]         = []
+                                        self.str_[ii]                   = ""  
+                                    formating.WritingDown(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y) 
+                            else: pass 
+
+                        #<ctrl+u>
+                        elif self.char == 21        :
+                            # checking first is the screen is not locked 
+                            if self.screenLocked is False : 
+                                # clear lines from the cursor at the beginning of screen
+                                if self.if_line == len(self.Data['string_tabular']) : pass
+                                else:
+                                    for ii in range(0, self.if_line):
+                                        self.Data['string_tabular'][ii] = ""
+                                        self.Data['string_tab'][ii]     = 0
+                                        self.Data['liste'][ii]          = ""  
+                                        self.Data['tabular'][ii]        = 0
+                                        self.Data['x_y'][ii]            = (self.size+1, self.y) 
+                                        self.Data['memory'][ii]         = []
+                                        self.str_[ii]                   = ""  
+                                    formating.WritingUp(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y) 
                             else: pass
                         
                         # moving cursor up, down, left, right   
@@ -477,6 +574,7 @@ class IDE:
                                      
                         # when <enter> is pressed  
                         elif self.char in {13, 10}  :
+                            # creating or inserting a new line line on the bottom of the current line
                             if self.screenLocked is False : 
                                 # moving cursor left 
                                 sys.stdout.write(self.move.LEFT(pos=1000))
@@ -597,6 +695,13 @@ class IDE:
                             self.Data['I_S']    = 0
                             self.Data['index']  = 0
                             self.x              = self.size + 1
+
+                        #<ctrl + r>
+                        elif self.char == 18        :
+                            #used for finding a particular string on the screen 
+                            if self.screenLocked is True:
+                                self.find_string = Find_String.FindData().find(x=self.x, y=self.y, LINE=self.LINE, lang=self.lang)
+                            else: pass 
                     
                         #ctrl + d 
                         elif self.char == 4         : 
@@ -768,12 +873,11 @@ class IDE:
                         counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
                                                     max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked)
                         #########################################################################################################
-                        self.Data['drop_idd'],self.Data['str_drop_down'] = BS.string( self.Data['input'], self.Data['index']-1 )
-                        #sys.stdout.write("                               @"+self.Data['str_drop_down']+"@")
+                        self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = BS.string( self.Data['input'], self.Data['index']-1 )
+                        _, _, self._a, self._b = BS.string( self.Data['string'], self.Data['I_S']-1 )
                         #########################################################################################################
                         
-                        sys.stdout.flush()         
-                        #time.sleep(2)   
+                        sys.stdout.flush()           
                         
                         self.Data['string_tabular'][self.if_line] = self.Data['string']
                         self.Data['string_tab'][self.if_line]     = self.Data['I_S']
@@ -806,9 +910,52 @@ class IDE:
                         self.histotyOfColors['n'][self.if_line]     = self.nn
                         self.histotyOfColors['locked'][self.if_line]= self.locked
                         ########################################################################################################
-                        self.KEYS, self.keys_items = KW.keys(language=self.lang, termios=self.termios, n=self.nn)
-                        KEYS.auto(x=self.x, y=self.y,max_x=self.max_x, max_y=self.max_y, keys=self.KEYS, keys_items=self.keys_items,
-                                drop_string=self.Data['str_drop_down'], my_strings=self.str_, I=self.if_line, LEN=self.Data['index'])
+                        if self.lang != "unknown":
+                            self.KEYS, self.keys_items = KW.keys(language=self.lang, termios=self.termios, n=self.nn)
+                            self.alpha, self._STR_, self.beta = KEYS.auto(x=self.x, y=self.y,max_x=self.max_x, max_y=self.max_y, 
+                                    keys=self.KEYS.copy(), keys_items=self.keys_items, drop_string=self.Data['str_drop_down'], 
+                                    my_strings=self.str_, I=self.if_line,  LEN=self.Data['index'], 
+                                    idd_select={"idd" : self.idd_select, "index" : self.index_select})
+                            if self.alpha is None: pass
+                            else: self.y = self.alpha
+                            
+                            if self.str_select is True: 
+                                if self._STR_ :
+                                    self.Data['input']  = self.Data['input'][ : self.a] + self._STR_ +  self.Data['input'][self.b : ]
+                                    self.Data['string'] = self.Data['string'][ : self._a] + self._STR_ +  self.Data['string'][self._b : ]
+                                    self.Data['I_S']   += self.beta-1
+                                    self.Data['index'] += self.beta-1
+                                    for k in range(self.beta-1):
+                                        self.Data['get'].append(1)
+                                    self.idd_select, self.index_select, self.str_select  = 0, 0, False
+                                    __string__, __color__ = words.words(self.Data['input'], self.color, 
+                                                    language = self.lang ).final(locked=self.locked, m = self.m, n=self.nn)
+                                    
+                                    # moving cursor left 
+                                    sys.stdout.write(self.move.LEFT(pos=1000))
+                                    # erasing entire line 
+                                    sys.stdout.write(self.clear.line(2))
+                                    # writing string 
+                                    sys.stdout.write(
+                                        self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
+                                        self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
+                                        self.move.TO(x=self.size+1, y=self.y) + self.c_bg+ __string__ + 
+                                        self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
+                                        )
+                                    self.x             += self.beta-1 
+                                    sys.stdout.write(self.move.TO(x=self.x, y=self.y))
+                                    sys.stdout.flush()
+                                    
+                                    self.Data['string_tabular'][self.if_line] = self.Data['string']
+                                    self.Data['string_tab'][self.if_line]     = self.Data['I_S']
+                                    self.Data['liste'][self.if_line]          = self.Data['input']   
+                                    self.Data['tabular'][self.if_line]        = self.Data['index']
+                                    self.Data['x_y'][self.if_line]            = (self.x, self.y) 
+                                    self.Data['memory'][self.if_line]         = self.Data['get'].copy() 
+                                    self.str_[self.if_line]                   = __string__ 
+                                else: pass
+                            else: pass
+                        else: pass
                         #########################################################################################################   
                     else: pass
                 else: pass 
@@ -820,7 +967,7 @@ class IDE:
                     self._string_ + "\n"
                 )
                 break
-            except NameError : pass
+            except IndexError : pass
             
 
 if __name__ == '__main__':
