@@ -1,7 +1,7 @@
 
 ![logo](/images/logo-png.png)
 <h1 align="center"> VISION </h1>
-<p align="left">VISION is a versatile and powerful text editor designed for developers and programmers who demand speed, efficiency, and customization in their coding environment. With its sleek and minimalist interface, VISION provides a clean and distraction-free workspace that allows you to focus on your code and your work.
+<p align="left">VISION is a versatile and powerful code editor designed for developers and programmers who demand speed, efficiency, and customization in their coding environment. With its sleek and minimalist interface, VISION provides a clean and distraction-free workspace that allows you to focus on your code and your work.
 
 VISION offers a wide range of features and tools that are designed to streamline your workflow and enhance your productivity. These include a powerful search and replace function, customizable keyboard shortcuts, syntax highlighting for a wide range of programming languages, and an extensive library of plugins and extensions that allow you to customize your IDE to suit your needs.
 
