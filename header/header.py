@@ -1,18 +1,22 @@
 import sys 
+import platform
 from configure  import colors, init, clear, state, screenConfig, moveCursor, scroll
 from frame      import frame
 from header     import checkFile
 from header     import add
 from keywords   import words
 
+
 def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white",  
                                 dataBase : dict = {}, data : dict = {}, lang="unknwon"):
+    system      = platform.system()
     asc         = frame.frame(custom=True)
     bold        = init.init.bold
     reset       = init.init.reset
     cc          = init.init.bold + colors.fg.rbg(255, 255, 0)
     ball        = chr(9898)
     string      = f"{ball}{ball} VISION EDITOR {ball}{ball}".center(max_x - 6)
+    _string_    = f"VISION EDITOR".center(max_x - 2)
     move        = moveCursor.cursor 
     action      = state.save
     blink       = init.init.blink+init.init.underline
@@ -20,21 +24,30 @@ def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white"
     
     if color == "white": c   = colors.fg.rbg(255, 255, 255)
     else: c = colors.fg.rbg(0, 0, 0)
+    if system in {"Linux", "Macos"}:
     
-    # first line     
-    sys.stdout.write(c + f"{asc['ul']}" + f"{asc['h']}" * (max_x-2) + f"{asc['ur']}" + reset + "\n")
-    # second line 
-    sys.stdout.write(c + f"{asc['v']}"  + bold + cc +  string + c + f"{asc['v']}" + reset + "\n")
-    # third line 
-    sys.stdout.write(c + f"{asc['vl']}" + f"{asc['h']}" * 7 + f"{asc['h']}" +  
-                         f"{asc['h']}"*(max_x - 10) + f"{asc['vr']}" + reset + "\n")
+        # first line 
+        sys.stdout.write(c + f"{asc['ul']}" + f"{asc['h']}" * (max_x-2) + f"{asc['ur']}" + reset + "\n")
+        # second line 
+        sys.stdout.write(c + f"{asc['v']}"  + bold + cc +  string + c + f"{asc['v']}" + reset + "\n" )
+        # third line 
+        sys.stdout.write(c + f"{asc['vl']}" + f"{asc['h']}" * 7 + f"{asc['h']}" +  
+                            f"{asc['h']}"*(max_x - 10) + f"{asc['vr']}" + reset+ "\n")
+    else:
+        # first line 
+        sys.stdout.write(move.LEFT(1000)+c + f"{asc['ul']}" + f"{asc['h']}" * (max_x-2) + f"{asc['ur']}" + reset +"\n")
+        # second line 
+        sys.stdout.write(move.LEFT(1000)+c + f"{asc['v']}"  + cc + bold + _string_+reset  + f"{asc['v']}" + reset + "\n")
+        # third line 
+        sys.stdout.write(move.LEFT(1000)+c + f"{asc['vl']}" + f"{asc['h']}" * 7 + f"{asc['h']}" +  
+                            f"{asc['h']}"*(max_x - 10) + f"{asc['vr']}" + reset +"\n")
 
     # currently cursor position (x, y)    
     x, y = screenConfig.cursor()
     
     # position of the first line 
     LINE = y
-                                                                                                                                                                
+                                                                                                                                                             
     if not data['input']:
         middle(max_x=max_x, n=max_y-5 ,x=x, y=y, color=color, lang=lang)
         sys.stdout.write(move.LEFT(pos=1000))

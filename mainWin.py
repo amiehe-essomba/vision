@@ -40,52 +40,51 @@ class IDE:
         
     def VISION(self, importation : dict = {}, writeData : dict = {}, path : str = ""):
         # loading external data 
-        self.importation            = importation
+        self.importation                    = importation
         
         # initialization of data 
-        self.Data                   = data.base()
+        self.Data                           = data.base()
         # 
-        self.indexation             = data.indexation()
+        self.indexation                     = data.indexation()
         # accounting line
-        self.if_line                = 0
+        self.if_line                        = 0
         # max lines
-        self.if_line_max            = 0
+        self.if_line_max                    = 0
         # move curor up fist time 
-        self.key_up_first_time      = True
+        self.key_up_first_time              = True
         # storing key_up_first_time
-        self.key_up_id              = False 
+        self.key_up_id                      = False 
         # action to do after one of these commands is pressed 
         # it means UP, DOWN or ENTER is pressed
-        self.action                 = None
+        self.action                         = None
         # fixing the x-axis border 
-        self.border_x_limit         = True 
+        self.border_x_limit                 = True 
         # last line 
-        self.last_line              = {"last": self.max_y-2, "now" : 0}
+        self.last_line                      = {"last": self.max_y-2, "now" : 0}
         # counter 
-        self.np                     = 0
+        self.np                             = 2
         # writing data in a file
-        self.writeData              = writeData
+        self.writeData                      = writeData
         # bg color 
-        self.c_bg                   = self.init.bold + self.color_bg.rgb(10, 10, 10)
+        self.c_bg                           = self.init.bold + self.color_bg.rgb(10, 10, 10)
         # fg color 
-        self.c                      = self.init.bold + self.color_fg.rbg(255, 255, 255)
+        self.c                              = self.init.bold + self.color_fg.rbg(255, 255, 255)
         # building color 
-        self.color                  = self.c_bg + self.c
+        self.color                          = self.c_bg + self.c
         # locked the writings 
-        self.locked                 = False 
+        self.locked                         = False 
         # 
-        self.m                      = 0
-        self.max_down               = 2
-        w = 0
-        self.LINE                   = 4
+        self.m                              = 0
+        self.max_down                       = 2
+        self.LINE                           = 4
         ###########################################################
-        # initialization 
-        self.input, self.size       = header.counter( self.if_line )
+         # initialization 
+        self.input, self.size               = header.counter( self.if_line + 1 )
         # get number of line if file is opened 
-        self.gama                   = header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white", dataBase=self.Data, 
+        self.gama                           = header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white", dataBase=self.Data, 
                                                         data=self.importation, lang=self.lang)
         # get cursor position after printing data 
-        self.x, self.y              = screenConfig.cursor()
+        self.x, self.y                      = screenConfig.cursor()
         ###########################################################
         # counter left and right 
         self.counterL, self.counterR        = 0, 0
@@ -956,7 +955,9 @@ class IDE:
                                 else: pass
                             else: pass
                         else: pass
-                        #########################################################################################################   
+                        #########################################################################################################  
+                        counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
+                                            max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked) 
                     else: pass
                 else: pass 
             except KeyboardInterrupt: 
@@ -969,7 +970,3 @@ class IDE:
                 break
             except IndexError : pass
             
-
-if __name__ == '__main__':
-    sys.stdout.write(clear.clear.screen(2))
-    IDE().VISION()

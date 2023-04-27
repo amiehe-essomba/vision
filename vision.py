@@ -122,4 +122,5 @@ def visionEditor( ):
    
 if __name__ == '__main__':
     sys.stdout.write(clear.clear.screen(2)+moveCursor.cursor.TO(0,0))
+    sys.stdout.flush()
     visionEditor()
