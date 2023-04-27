@@ -49,7 +49,31 @@
         "documentation": {}
     },
     {
+        "label": "frame",
+        "importPath": "frame         ",
+        "description": "frame         ",
+        "isExtraImport": true,
+        "detail": "frame         ",
+        "documentation": {}
+    },
+    {
         "label": "header",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "header",
+        "importPath": "header        ",
+        "description": "header        ",
+        "isExtraImport": true,
+        "detail": "header        ",
+        "documentation": {}
+    },
+    {
+        "label": "formating",
         "importPath": "header        ",
         "description": "header        ",
         "isExtraImport": true,
@@ -321,6 +345,62 @@
         "documentation": {}
     },
     {
+        "label": "clear",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "screenConfig",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "moveCursor",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "scroll",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
+        "label": "init",
+        "importPath": "configure     ",
+        "description": "configure     ",
+        "isExtraImport": true,
+        "detail": "configure     ",
+        "documentation": {}
+    },
+    {
         "label": "colors",
         "importPath": "configure     ",
         "description": "configure     ",
@@ -513,6 +593,22 @@
         "documentation": {}
     },
     {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
         "label": "save",
         "importPath": "saving        ",
         "description": "saving        ",
@@ -522,6 +618,14 @@
     },
     {
         "label": "writing",
+        "importPath": "saving        ",
+        "description": "saving        ",
+        "isExtraImport": true,
+        "detail": "saving        ",
+        "documentation": {}
+    },
+    {
+        "label": "Find_String",
         "importPath": "saving        ",
         "description": "saving        ",
         "isExtraImport": true,
@@ -883,6 +987,22 @@
         "description": "getUserInput  ",
         "isExtraImport": true,
         "detail": "getUserInput  ",
+        "documentation": {}
+    },
+    {
+        "label": "input",
+        "importPath": "getUserInput  ",
+        "description": "getUserInput  ",
+        "isExtraImport": true,
+        "detail": "getUserInput  ",
+        "documentation": {}
+    },
+    {
+        "label": "fileType",
+        "importPath": "fileType      ",
+        "description": "fileType      ",
+        "isExtraImport": true,
+        "detail": "fileType      ",
         "documentation": {}
     },
     {
@@ -1456,6 +1576,24 @@
         "documentation": {}
     },
     {
+        "label": "WritingDown",
+        "kind": 2,
+        "importPath": "header.formating",
+        "description": "header.formating",
+        "peekOfCode": "def WritingDown(x :int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE : int = 4):\n    move        = moveCursor.cursor\n    N           = max_y-(LINE+1) \n    Y           = LINE\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)\n    input, length       = header.counter(n=0)",
+        "detail": "header.formating",
+        "documentation": {}
+    },
+    {
+        "label": "WritingUp",
+        "kind": 2,
+        "importPath": "header.formating",
+        "description": "header.formating",
+        "peekOfCode": "def WritingUp(x :int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE : int = 4):\n    move        = moveCursor.cursor\n    N           = max_y-(LINE+1) \n    Y           = LINE\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold\n    reset       = init.init.reset\n    c_bg        = colors.bg.rgb(10, 10, 10)  \n    c           = bold + colors.fg.rbg(255, 255, 255)\n    input, length       = header.counter(n=0)",
+        "detail": "header.formating",
+        "documentation": {}
+    },
+    {
         "label": "title",
         "kind": 2,
         "importPath": "header.header",
@@ -1525,6 +1663,24 @@
         "description": "header.header",
         "peekOfCode": "def subTitle(max_x:int, x:int, y:int, lang : str=\"\", scrollUp : int = 0):\n    bold            = init.init.bold\n    position        = moveCursor.cursor\n    reset           = init.init.reset\n    input, length   = counter(n=1)\n    asc             = frame.frame(custom=True)\n    c_bg            = colors.bg.rgb(10, 10, 10)\n    magenta         = init.init.bold + init.init.blink + c_bg + colors.fg.rbg(255, 0, 255) + f\"{x-2}, {y+scrollUp-5}\" + reset\n    c               = init.init.bold + colors.fg.rbg(255, 255, 255)\n    magenta     = bold+init.init.blink+ c_bg + colors.fg.rbg(255, 0, 255)+f\"{x}, {y}\"+ reset ",
         "detail": "header.header",
+        "documentation": {}
+    },
+    {
+        "label": "FindData",
+        "kind": 6,
+        "importPath": "saving.Find_String",
+        "description": "saving.Find_String",
+        "peekOfCode": "class FindData:\n    def __init__(self):\n        # getting max size (max_x, max_y) of the window \n        self.max_x, self.max_y  = screenConfig.cursorMax()\n        self._max_x_            = self.max_x \n        self.max_x            //= 2 \n        # loading the keywords for moving cursor on a particular region of the screen \n        self.move               = moveCursor.cursor\n        # loading keywords for cleaning screen and lines \n        self.clear              = clear.clear",
+        "detail": "saving.Find_String",
+        "documentation": {}
+    },
+    {
+        "label": "bottom",
+        "kind": 2,
+        "importPath": "saving.Find_String",
+        "description": "saving.Find_String",
+        "peekOfCode": "def bottom(max_x :int = 0, color : str = \"white\"):\n    asc         = frame.frame(custom=True)\n    bold        = init.init.bold    \n    reset       = init.init.reset\n    if color == \"white\": c   = bold + colors.fg.rbg(255, 255, 255)\n    else: c = bold + colors.fg.rbg(0, 0, 0)\n    sys.stdout.write(\n        c + f\"{asc['dl']}\" + f\"{asc['h']}\" * 7 + \n        f\"{asc['h']}\" + f\"{asc['h']}\" * (max_x - 10) + \n        f\"{asc['dr']}\" + reset + \"\\n\"",
+        "detail": "saving.Find_String",
         "documentation": {}
     },
     {

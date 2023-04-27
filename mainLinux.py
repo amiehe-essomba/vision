@@ -4,7 +4,7 @@ from configure      import colors, init, clear, state, screenConfig, moveCursor,
 from frame          import frame
 from DataBase       import data
 from header         import header, formating, counter
-from saving         import save, writing
+from saving         import save, writing, Find_String
 from keywords       import words
 import time
 from AUTO           import buildString as BS
@@ -40,51 +40,51 @@ class IDE:
         
     def VISION(self, importation : dict = {}, writeData : dict = {}, path : str = "" ):
         # loading external data 
-        self.importation            = importation
+        self.importation                    = importation
         #
-        self.Data                   = data.base()
+        self.Data                           = data.base()
         #
-        self.indexation             = data.indexation()
+        self.indexation                     = data.indexation()
         # accounting line
-        self.if_line                = 0
+        self.if_line                        = 0
         # max lines
-        self.if_line_max            = 0
+        self.if_line_max                    = 0
         # move curor up fist time 
-        self.key_up_first_time      = True
+        self.key_up_first_time              = True
         # storing key_up_first_time
-        self.key_up_id              = False 
+        self.key_up_id                      = False 
         # action to do after one of these commands is pressed 
         # it means UP, DOWN or ENTER is pressed
-        self.action                 = None
+        self.action                         = None
         # fixing the x-axis border 
-        self.border_x_limit         = True 
+        self.border_x_limit                 = True 
         # last line 
-        self.last_line              = {"last": self.max_y-2, "now" : 0}
+        self.last_line                      = {"last": self.max_y-2, "now" : 0}
         # counter 
-        self.np                     = 2
+        self.np                             = 2
         # writing data in a file
-        self.writeData              = writeData
+        self.writeData                      = writeData
         # bg color 
-        self.c_bg                   = self.init.bold + self.color_bg.rgb(10, 10, 10)
+        self.c_bg                           = self.init.bold + self.color_bg.rgb(10, 10, 10)
         # fg color 
-        self.c                      = self.init.bold + self.color_fg.rbg(255, 255, 255)
+        self.c                              = self.init.bold + self.color_fg.rbg(255, 255, 255)
         # building color 
-        self.color                  = self.c_bg + self.c
+        self.color                          = self.c_bg + self.c
         # locked the writings 
-        self.locked                 = False 
-        self.m, self._idd_          = 0, 0
+        self.locked                         = False 
+        self.m, self._idd_                  = 0, 0
         # limitation of the last line 
-        self.max_down               = 2
+        self.max_down                       = 2
         # first line position after the name of the EDITOR 
-        self.LINE                   = 4
+        self.LINE                           = 4
         ###########################################################
         # initialization 
-        self.input, self.size       = header.counter( self.if_line + 1 )
+        self.input, self.size               = header.counter( self.if_line + 1 )
         # get number of line if file is opened 
-        self.gama                   = header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white", dataBase=self.Data, 
+        self.gama                           = header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white", dataBase=self.Data, 
                                                         data=self.importation, lang=self.lang)
         # get cursor position after printing data 
-        self.x, self.y              = screenConfig.cursor()
+        self.x, self.y                      = screenConfig.cursor()
         ###########################################################
         # counter left and right 
         self.counterL, self.counterR        = 0, 0
@@ -142,6 +142,9 @@ class IDE:
         self.index_select                   = 0
         self.str_select                     = False
         ###########################################################
+        self.find_string                    = ""
+        self.string_find_is_found           = False
+        ###########################################################
         sys.stdout.write(self.move.TO(self.x, self.y))
         sys.stdout.flush()
         ###########################################################                    
@@ -163,9 +166,30 @@ class IDE:
             try:
                 # get user input
                 self.char = input.convert() 
-              
+
+                # <ctrl+a>
+                if   self.char == 1         :
+                    # checking firstly is the screen is locked
+                    if self.screenLocked is False : 
+                        # delecting characters on the left side of the cursor
+                        if self.Data['input']:
+                            self.Data['input']  = self.Data['input'][self.Data['index'] : ]
+                            self.Data['string'] = self.Data['string'][self.Data['I_S'] : ]
+                            self.x              = (self.size + 1)
+                            self.get            = []
+                            if self.Data['string']:
+                                for ss in self.Data['string']:
+                                    if ss == '\t': self.get.append([1 for x in range(4)])
+                                    else: self.get.append(1)
+                            else: pass
+                            sys.stdout.write(self.move.TO(x=self.x, y=self.y))
+                            sys.stdout.flush()
+                        else: pass
+                    else: pass
+                
                 # break while loop <ctrl+c> = keyboardInterrupt 
-                if self.char == 3           :
+                elif self.char == 3         :
+                    # break while loop 
                     self._string_ = self.color_bg.red_L + self.color_fg.rbg(255, 255, 255) +"KeyboardInterrupt" + self.init.reset
                     sys.stdout.write(
                         self.clear.screen(pos=2)+ self.move.TO(x=0, y=0)+
@@ -173,11 +197,32 @@ class IDE:
                     )
                     return
                 
+                # <ctrl+z>
+                elif self.char == 26        :
+                    # checking firstly is the screen is locked
+                    if self.screenLocked is False : 
+                        # delecting characters from the cursor at the end of the line
+                        if self.Data['input']:
+                            self.Data['input']  = self.Data['input'][ : self.Data['index']]
+                            self.Data['string'] = self.Data['string'][ : self.Data['I_S']]
+                            self.x              = len(self.Data["input"]) + (self.size + 1)
+                            self.get            = []
+                            if self.Data['string']:
+                                for ss in self.Data['string']:
+                                    if ss == '\t': self.get.append([1 for x in range(4)])
+                                    else: self.get.append(1)
+                            else: pass
+                            sys.stdout.write(self.move.TO(x=self.x, y=self.y))
+                            sys.stdout.flush()
+                        else: pass
+                    else: pass
+                
                 # saving data <ctrl+s>
                 elif self.char == 19        : 
+                    # used to save data and memorising the screen 
                     if self.screenLocked is False : 
                         if self.writeData['FileName'] is None: 
-                            self.histotyOfColors   = {"m" : [], "n" : [], "color" : [], "locked" : []}
+                            self.histotyOfColors   = {"m" : [0], "n" : [0], "color" : [self.color], "locked" : [False]}
                             self.writeData["data"] =  self.Data['string_tabular'].copy()
                             self.lang = save.saveData( self.writeData ).build(self.x, self.y, self.lang, self.str_, history = self.histotyOfColors)
                         else: writing.writeInput(self.Data['string_tabular'], self.writeData["FileName"])
@@ -202,38 +247,47 @@ class IDE:
                     else: pass
                 
                 # adding a new line on top <ctrl+o>
-                elif self.char  == 15       : 
-                    self.Data['string']      = ""
-                    self.Data['input']       = ""
-                    self.Data["I_S"]         = 0
-                    self.Data["index"]       = 0
-                    self.Data['get']         = []
-                    self.x                   = self.size + 1
-                    
-                    self.Data['string_tabular'].insert(self.if_line, self.Data['string'])
-                    self.Data['string_tab'].insert(self.if_line, self.Data['I_S'])
-                    self.Data['liste'].insert(self.if_line, self.Data['input'] )
-                    self.Data['tabular'].insert(self.if_line, self.Data['index'] )
-                    self.Data['x_y'].insert(self.if_line, (self.x, self.y))
-                    self.Data['memory'].insert(self.if_line, self.Data['get'])
-                    self.str_.insert(self.if_line, self.Data['input'])
-                    
-                    self.histotyOfColors['color'].insert(self.if_line, self.color)
-                    self.histotyOfColors['m'].insert(self.if_line, 0)
-                    self.histotyOfColors['n'].insert(self.if_line, 0)
-                    self.histotyOfColors['locked'].insert(self.if_line, self.locked)
-                    
-                    formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
-                    
-                    self.if_line_max        += 1
-                    self.if_line            += 1
-                   
+                elif self.char == 15        : 
+                    # checking first is the screen is not locked 
+                    if self.screenLocked is False : 
+                        # using to for adding a new line on top of the current line
+                        self.Data['string']      = ""
+                        self.Data['input']       = ""
+                        self.Data["I_S"]         = 0
+                        self.Data["index"]       = 0
+                        self.Data['get']         = []
+                        self.x                   = self.size + 1
+                        
+                        self.Data['string_tabular'].insert(self.if_line, self.Data['string'])
+                        self.Data['string_tab'].insert(self.if_line, self.Data['I_S'])
+                        self.Data['liste'].insert(self.if_line, self.Data['input'] )
+                        self.Data['tabular'].insert(self.if_line, self.Data['index'] )
+                        self.Data['x_y'].insert(self.if_line, (self.x, self.y))
+                        self.Data['memory'].insert(self.if_line, self.Data['get'])
+                        self.str_.insert(self.if_line, self.Data['input'])
+                        
+                        self.histotyOfColors['color'].insert(self.if_line, self.color)
+                        self.histotyOfColors['m'].insert(self.if_line, 0)
+                        self.histotyOfColors['n'].insert(self.if_line, 0)
+                        self.histotyOfColors['locked'].insert(self.if_line, self.locked)
+                        
+                        formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
+                        
+                        self.if_line_max        += 1
+                        self.if_line            += 1
+                    else: pass
+                
                 # selecting <ctrl+n>
-                if self.char == 14          :
-                    self.str_select = True
+                elif self.char == 14        :
+                    # checking first is the screen is not locked 
+                    if self.screenLocked is False : 
+                        # selecting a keyword from the proposed list 
+                        self.str_select = True
+                    else: pass
                    
                 # clear screen  <ctrl+l>
-                elif self.char  == 12       :
+                elif self.char == 12        :
+                    # clearing entire screen
                     self.Data['string']             = ""
                     self.Data['input']              = ""
                     self.Data["I_S"]                = 0
@@ -284,6 +338,42 @@ class IDE:
                         else: pass
                     else: pass
                 
+                #<ctrl+x>
+                elif self.char == 24        :
+                    # checking first is the screen is not locked 
+                    if self.screenLocked is False : 
+                        # clear lines from the cursor at the end of the screen
+                        if self.if_line == len(self.Data['string_tabular']) : pass
+                        else:
+                            for ii in range(self.if_line+1, len(self.Data['string_tabular'])):
+                                self.Data['string_tabular'][ii] = ""
+                                self.Data['string_tab'][ii]     = 0
+                                self.Data['liste'][ii]          = ""  
+                                self.Data['tabular'][ii]        = 0
+                                self.Data['x_y'][ii]            = (self.size+1, self.y) 
+                                self.Data['memory'][ii]         = []
+                                self.str_[ii]                   = ""  
+                            formating.WritingDown(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y) 
+                    else: pass 
+                    
+                #<ctrl+u>
+                elif self.char == 21        :
+                    # checking first is the screen is not locked 
+                    if self.screenLocked is False : 
+                        # clear lines from the cursor at the beginning of screen
+                        if self.if_line == len(self.Data['string_tabular']) : pass
+                        else:
+                            for ii in range(0, self.if_line):
+                                self.Data['string_tabular'][ii] = ""
+                                self.Data['string_tab'][ii]     = 0
+                                self.Data['liste'][ii]          = ""  
+                                self.Data['tabular'][ii]        = 0
+                                self.Data['x_y'][ii]            = (self.size+1, self.y) 
+                                self.Data['memory'][ii]         = []
+                                self.str_[ii]                   = ""  
+                            formating.WritingUp(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y) 
+                    else: pass
+    
                 # moving cursor up, down, left, right   
                 elif self.char == 27        :
                     while True  :
@@ -503,6 +593,7 @@ class IDE:
                         
                 # when <enter> is pressed  
                 elif self.char in {13, 10}  :
+                    # creating or inserting a new line line on the bottom of the current line
                     if self.screenLocked is False : 
                         # moving cursor left 
                         sys.stdout.write(self.move.LEFT(pos=1000))
@@ -625,6 +716,13 @@ class IDE:
                     self.Data['index']  = 0
                     self.x              = self.size + 1
                     
+                #<ctrl + r>
+                elif self.char == 18        :
+                    #used for finding a particular string on the screen 
+                    if self.screenLocked is True:
+                        self.find_string = Find_String.FindData().find(x=self.x, y=self.y, LINE=self.LINE, lang=self.lang)
+                    else: pass 
+                
                 #ctrl + d 
                 elif self.char == 4         : 
                     self.Data['I_S']    = len(self.Data['string'])
@@ -793,8 +891,6 @@ class IDE:
                 if self.Data['I_S'] > 0: sys.stdout.write(self.move.TO(self.x, self.y) )
                 else: pass 
                 
-                #counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
-                #                            max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked)
                 #########################################################################################################
                 self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = BS.string( self.Data['input'], self.Data['index']-1 )
                 _, _, self._a, self._b = BS.string( self.Data['string'], self.Data['I_S']-1 )
@@ -834,7 +930,6 @@ class IDE:
                 self.histotyOfColors['locked'][self.if_line]= self.locked
                 ########################################################################################################
                 #self.Data['str_drop_down'] = ""
-                #if self.Data['str_drop_down']:
                 if self.lang != "unknown":
                     self.KEYS, self.keys_items = KW.keys(language=self.lang, termios=self.termios, n=self.nn)
                     self.alpha, self._STR_, self.beta = KEYS.auto(x=self.x, y=self.y,max_x=self.max_x, max_y=self.max_y, keys=self.KEYS.copy(), keys_items=self.keys_items,
@@ -879,7 +974,6 @@ class IDE:
                             self.str_[self.if_line]                   = __string__ 
                         else: pass
                     else: pass 
-                #else: pass
                 else: pass
                 #########################################################################################################  
                 counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
@@ -891,4 +985,4 @@ class IDE:
                     self.clear.screen(pos=2)+ self.move.TO(x=0, y=0)+
                     self._string_ + "\n" )
                 break
-            except KeyError : pass
+            except NameError : pass
