@@ -226,7 +226,8 @@ class IDE:
                         if self.writeData['FileName'] is None: 
                             self.histotyOfColors   = {"m" : [0], "n" : [0], "color" : [self.color], "locked" : [False]}
                             self.writeData["data"] =  self.Data['string_tabular'].copy()
-                            self.lang = save.saveData( self.writeData ).build(self.x, self.y, self.lang, self.str_, history = self.histotyOfColors)
+                            self.lang = save.saveData( self.writeData ).build(self.x, self.y, self.lang, self.str_, history = self.histotyOfColors,
+                                                                              COLOR=self.COLOR.copy())
                         else: writing.writeInput(self.Data['string_tabular'], self.writeData["FileName"])
                         self.differentStates['data'] = {
                             self.differentStates['index'] : {
@@ -443,7 +444,7 @@ class IDE:
                                                 self.x, self.Y          = self.Data['x_y'][self.if_line] 
                                                 self.Data['get']        = self.Data['memory'][self.if_line].copy()
                                                 formating.formating(LINE=self.LINE, data=self.str_, idd=self.if_line_max, 
-                                                                    max_y=self.max_y-self.max_down+1, max_x=self.max_x) 
+                                                                    max_y=self.max_y-self.max_down+1, max_x=self.max_x, COLOR=self.COLOR.copy()) 
                                                 sys.stdout.write( self.move.TO(x=self.x, y=self.LINE) + self.init.reset )
                                                 sys.stdout.flush()
                                             else: pass

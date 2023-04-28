@@ -11,12 +11,14 @@ from fileType	    import readfile as RT
 from configure      import screenConfig, colors, init
 from keywords       import key_py
 from images         import * 
-from style          import style, languageStyle
+from style          import style, languageStyle 
+from terminalType   import Terminal
 
 def open_graven_web():
         webbrowser.open(url='https://github.com/amiehe-essomba/vision')
         
 def visionEditor( ):
+    """
     # bg color 
     fgBlack                 = init.init.bold + colors.fg.rbg(10, 10, 10)
     # bg color 
@@ -62,25 +64,23 @@ def visionEditor( ):
         "bgWhite"   : bgWhite, 
         "fgBlack"   : fgBlack 
         }
+    """
+    
     
     # get root path 
     root	                = os.path.abspath(os.curdir)
-
     # path parent
     s                       = Path(__file__).resolve().parents[2]
-
     # get system name
     system                  = platform.system()
-
     # get arguments 
     arg	                    = sys.argv
-
     # coustomized terminal 
     terminal                = "monokai"
-    
+    #colors used
+    COLOR = Terminal.termianlConfig(name = terminal)
     # get screen coordinate (x_max, y_max)
     max_x, max_y            = screenConfig.cursorMax()
-    
     # set color 
     color                   = colors.fg.rbg(255,0,0) + init.init.bold+init.init.blink
     reset                   = init.init.reset
@@ -158,7 +158,10 @@ def visionEditor( ):
                 string = f" Increase the height of screen at least 50 : height = {max_x} "
                 print(c_bg + color + string + reset)
         else: pass
-    else: pass
+    else: 
+        string = f" VISION is not distributed for {system} platform "
+        print(c_bg + color + string + reset)
+    
    
 if __name__ == '__main__':
     sys.stdout.write(clear.clear.screen(2)+moveCursor.cursor.TO(0,0))
