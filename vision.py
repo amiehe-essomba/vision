@@ -18,11 +18,51 @@ def open_graven_web():
         
 def visionEditor( ):
     # bg color 
-    c_bg                    = init.init.bold + colors.bg.rgb(10, 10, 10)
+    fgBlack                 = init.init.bold + colors.fg.rbg(10, 10, 10)
+    # bg color 
+    bgWhite                 = init.init.bold + colors.bg.rgb(255, 255, 255)
+    # bg color 
+    codeBgColors            = init.init.bold + colors.bg.rgb(0, 0, 0)
     # fg color 
-    c_fg                    = init.init.bold + colors.fg.rbg(255, 255, 255)
+    codeFgColors            = init.init.bold + colors.fg.rbg(255,255,255)
     # building color 
-    color                   = c_bg + c_fg
+    codeColors              = codeBgColors + init.init.bold + colors.fg.rbg(255, 255, 255)
+    # widget color 
+    widgetColors            = codeBgColors + init.init.bold + colors.fg.rbg(255, 255, 255)
+    #keyword found color 
+    KeyColor                = init.init.bold + colors.bg.rgb(200, 200, 0) + init.init.bold + colors.fg.rbg(255, 255, 255)
+    # comment color 
+    commentColor            = codeBgColors  + colors.fg.rbg(153, 153, 255) 
+    #string color 
+    strColor                = codeBgColors + colors.bg.rgb(100, 100, 100) + colors.fg.rbg(255, 153, 20)
+    #title color            
+    titleColor              = init.init.bold + colors.fg.rbg(0, 255, 0)
+    #program color 
+    proColor                = init.init.bold+init.init.blink+ codeBgColors + colors.fg.rbg(0, 255, 0)
+    #col and raw color 
+    ColRawColor             = init.init.bold+init.init.blink+ codeBgColors + colors.fg.rbg(255, 100, 255)
+    #opened, closed
+    openedColor             = init.init.bold+init.init.blink+ codeBgColors + colors.fg.rbg(0, 255, 255)
+    #cursor color 
+    cursorColor             = codeBgColors + colors.fg.rbg(255,0,0)+chr(9664)
+    # colors used 
+    COLOR                   = {
+        "fgColor"   : codeColors, 
+        "bgColor"   : codeBgColors, 
+        "wColor"    : widgetColors, 
+        "keyColor"  : KeyColor,
+        "cmtColor"  : commentColor,
+        "strColor"  : strColor, 
+        "white"     : codeFgColors,
+        "titleColor": titleColor,
+        "proColor"  : proColor,
+        "CRColor"   : ColRawColor,
+        "openedColor" :openedColor,
+        "cursorColor" : cursorColor, 
+        "bgWhite"   : bgWhite, 
+        "fgBlack"   : fgBlack 
+        }
+    
     # get root path 
     root	                = os.path.abspath(os.curdir)
 
@@ -63,7 +103,7 @@ def visionEditor( ):
                     if system == "Windows" :  name = root + f"\\{arg[1]}"
                     else:  name = root + f"/{arg[1]}"
                     try:
-                        if os.stat(name).st_size != 0 :  data = RT.readFile(fileName=name, termios=termios, language=language)
+                        if os.stat(name).st_size != 0 :  data = RT.readFile(fileName=name, termios=termios, language=language, COLOR=COLOR.copy())
                         else:  pass
                     except FileNotFoundError : pass 
                    
@@ -106,8 +146,8 @@ def visionEditor( ):
         if locked is False:
             if max_x > 50:
                 if max_y > 20 :
-                    if   system == "Windows"	: mainWin.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)
-                    elif system == "Linux"	    : mainLinux.IDE(termios=termios, lang=language).VISION(importation=data, writeData =  writeData, path = root)
+                    if   system == "Windows"	: mainWin.IDE(termios=termios, lang=language, COLOR=COLOR.copy()).VISION(importation=data, writeData =  writeData, path = root)
+                    elif system == "Linux"	    : mainLinux.IDE(termios=termios, lang=language, COLOR=COLOR.copy()).VISION(importation=data, writeData =  writeData, path = root)
                     else: 
                         string = f" VISION is not distributed for {system} platform "
                         print(c_bg + color + string + reset)

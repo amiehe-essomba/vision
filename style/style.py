@@ -11,20 +11,20 @@ class config:
         # loading initialization cursor parameters 
         self.init               = init.init
  
-    def main(self, char : str = "=", language : str = "python", cmt : str = "", cc : str = "", color: str = ""):
+    def main(self, char : str = "=", language : str = "python", cmt : str = "", cc : str = "", color: str = "", COLOR : dict = {}):
         self.return_char  = ""
         
         if char and char != cmt:
             if   char in {'<', '>', '=', '!', '|', '&', '?', "~"}   : self.return_char =  config(self.termios).operators(char=char, language=language, cc=cc)
             elif char in {'+', '-', '*', '^', '%', '/'}             : self.return_char =  config(self.termios).arithmetic(char=char, language=language,cc=cc)
-            elif char in {"'", '"'}                                 : self.return_char =  config(self.termios).quote(char=char, language=language,cc=cc, color=color)
+            elif char in {"'", '"'}                                 : self.return_char =  config(self.termios).quote(char=char, language=language,cc=cc, color=color, COLOR=COLOR.copy())
             elif char in {str(x) for x in range(10)}                : self.return_char =  config(self.termios).number(char=char, language=language,cc=cc)
             elif char in {"[","]",'{','}', "(", ")"}                : self.return_char =  config(self.termios).bracket(char=char, language=language,cc=cc)
             elif char in {"@", "$"}                                 : self.return_char =  config(self.termios).decorators(char=char, language=language,cc=cc)
             elif char in {":", "."}                                 : self.return_char =  config(self.termios).dots(char=char, language=language,cc=cc)
             else                                                    : self.return_char =  config(self.termios).rest(char=char, language=language,cc=cc)
         elif char and char == cmt: 
-            self.return_char =  config(self.termios).comment(char=char, language=language, cc=cc)
+            self.return_char =  config(self.termios).comment(char=char, language=language, cc=cc, COLOR=COLOR.copy())
         else: pass 
         
         return self.return_char
@@ -53,15 +53,15 @@ class config:
         
         return self.text
     
-    def quote(self, char: str = "'", language : str = "mamba", cc : str = "", color: str = "")          :
+    def quote(self, char: str = "'", language : str = "mamba", cc : str = "", color: str = "", COLOR : dict = {})          :
         # initialization 
         self.text = ""
         
         if language in ['python', 'mamba', "c", "c++", "cpmd", "cython"] : 
             # default text color white 
             if not color:
-                if   self.termios == "monokai":  self.text = self.init.bold+cc+self.color_fg.rbg(255, 153, 204) + char + self.init.reset
-                elif self.termios == "orion"  :  self.text = self.init.bold+cc+self.color_fg.rbg(255, 153, 204) + self.init.blink+ char + self.init.reset
+                if   self.termios == "monokai":  self.text = self.init.bold+cc+COLOR['strColor']+ char + self.init.reset
+                elif self.termios == "orion"  :  self.text = self.init.bold+cc+COLOR['strColor'] + self.init.blink+ char + self.init.reset
             else: 
                 if   self.termios == "monokai":  self.text = color + char + self.init.reset
                 elif self.termios == "orion"  :  self.text = color +  self.init.blink+ char + self.init.reset
@@ -81,14 +81,14 @@ class config:
         
         return self.text
     
-    def comment(self, char: str = "#", language : str = "mamba", cc : str = "")        :
+    def comment(self, char: str = "#", language : str = "mamba", cc : str = "", COLOR : dict = {})        :
         # initialization 
         self.text = ""
         
         if language in ['python', 'mamba', "c", "c++", "cpmd", "cython"] : 
             # default text color white 
-            if language in ['c', 'c++']: self.c = self.init.bold+cc+self.color_fg.rbg(153, 153, 255) 
-            else: self.c = self.init.bold+cc+self.color_fg.rbg(153, 153, 255)
+            if language in ['c', 'c++']: self.c = self.init.bold+cc+COLOR['cmtColor'] #self.color_fg.rbg(153, 153, 255) 
+            else: self.c = self.init.bold+cc+ COLOR['cmtColor'] #self.color_fg.rbg(153, 153, 255)
             
             if   self.termios == "monokai":  self.text = self.c + char + self.init.reset
             elif self.termios == "orion"  :  self.text = self.c + self.init.blink+ char + self.init.reset

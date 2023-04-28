@@ -18,6 +18,7 @@ def frame(custom : bool = False):
         vl, vr = chr(9568), chr(9571)
 
         f = {'ul':up_l, 'ur':up_r, 'dl':down_l, 'dr':down_r, 'm1':med1,'m2':med2, 'm3':med3, 'v':ver, 'h':hor, 'vl':vl, 'vr': vr}
+        
     else:
         up_l, up_r = chr(9487), chr(9491)
         down_l, down_r = chr(9495), chr(9499)

@@ -12,7 +12,7 @@ from keywords       import keywords as KW
 from AUTO           import KEYS
 
 class IDE:
-    def __init__(self, termios : str = "none", lang : str ="unknown"):
+    def __init__(self, termios : str = "none", lang : str ="unknown", COLOR : dict = {}):
         # border configuration 
         self.acs                = frame.frame(custom=True)
         # loading backgroung color 
@@ -37,6 +37,8 @@ class IDE:
         self.termios            = termios
         # language type 
         self.lang               = lang
+        # color parameters
+        self.COLOR              = COLOR.copy()
         
     def VISION(self, importation : dict = {}, writeData : dict = {}, path : str = "" ):
         # loading external data 
@@ -65,11 +67,11 @@ class IDE:
         # writing data in a file
         self.writeData                      = writeData
         # bg color 
-        self.c_bg                           = self.init.bold + self.color_bg.rgb(10, 10, 10)
+        self.c_bg                           = self.COLOR["bgColor"] 
         # fg color 
-        self.c                              = self.init.bold + self.color_fg.rbg(255, 255, 255)
+        self.c                              = self.COLOR["fgColor"] 
         # building color 
-        self.color                          = self.c_bg + self.c
+        self.color                          = self.COLOR["fgColor"] 
         # locked the writings 
         self.locked                         = False 
         self.m, self._idd_                  = 0, 0
@@ -82,7 +84,7 @@ class IDE:
         self.input, self.size               = header.counter( self.if_line + 1 )
         # get number of line if file is opened 
         self.gama                           = header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white", dataBase=self.Data, 
-                                                        data=self.importation, lang=self.lang)
+                                                        data=self.importation, lang=self.lang, COLOR=self.COLOR.copy())
         # get cursor position after printing data 
         self.x, self.y                      = screenConfig.cursor()
         ###########################################################
@@ -134,9 +136,9 @@ class IDE:
         }
         self.histotyOfColors                = self.importation["color"].copy()
         ##########################################################
-        self.no_cmt                         = self.color
-        self.cmt                            = init.init.bold + colors.bg.rgb(10, 10, 10) + colors.fg.rbg(153, 153, 255) 
-        self.conservingColor                = self.color
+        self.no_cmt                         = self.COLOR["fgColor"] 
+        self.cmt                            = self.COLOR["cmtColor"] 
+        self.conservingColor                = self.COLOR["fgColor"] 
         ###########################################################
         self.idd_select                     = 0
         self.index_select                   = 0
@@ -271,7 +273,7 @@ class IDE:
                         self.histotyOfColors['n'].insert(self.if_line, 0)
                         self.histotyOfColors['locked'].insert(self.if_line, self.locked)
                         
-                        formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
+                        formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y, COLOR=self.COLOR.copy())
                         
                         self.if_line_max        += 1
                         self.if_line            += 1
@@ -314,7 +316,7 @@ class IDE:
                     self.Data['drop_idd'],self.Data['str_drop_down'] = 0, ""
                     ####################################################
                     
-                    formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
+                    formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y, COLOR=self.COLOR.copy())
                     
                 # delecting char <backspace>
                 elif self.char in {127, 8}  :
@@ -353,7 +355,7 @@ class IDE:
                                 self.Data['x_y'][ii]            = (self.size+1, self.y) 
                                 self.Data['memory'][ii]         = []
                                 self.str_[ii]                   = ""  
-                            formating.WritingDown(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y) 
+                            formating.WritingDown(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y, COLOR=self.COLOR.copy()) 
                     else: pass 
                     
                 #<ctrl+u>
@@ -371,7 +373,7 @@ class IDE:
                                 self.Data['x_y'][ii]            = (self.size+1, self.y) 
                                 self.Data['memory'][ii]         = []
                                 self.str_[ii]                   = ""  
-                            formating.WritingUp(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y) 
+                            formating.WritingUp(x=self.x, y=self.y, max_x=self.max_x, max_y=self.max_y, COLOR=self.COLOR.copy()) 
                     else: pass
     
                 # moving cursor up, down, left, right   
@@ -466,7 +468,7 @@ class IDE:
                                             sys.stdout.flush()
                                         else:
                                             formating.formating(LINE=self.LINE, data=self.str_.copy(), max_x=self.max_x, idd=self.scrollDown, 
-                                                                                    max_y=self.max_y-self.max_down)
+                                                                    max_y=self.max_y-self.max_down, COLOR=self.COLOR.copy())
                                             sys.stdout.write( self.move.TO(x=self.x, y=self.LINE) + self.init.reset)
                                             sys.stdout.flush()
                                     else: pass 
@@ -523,7 +525,7 @@ class IDE:
                                             self.y                  = self.max_y-(self.max_down+1)
                                             self.Data['get']        = self.Data['memory'][self.if_line].copy()
                                             formating.formating(LINE = self.LINE, data=self.str_.copy(), max_x=self.max_x, 
-                                                                            idd=self.scrollDown,  max_y=self.max_y-self.max_down)
+                                                                idd=self.scrollDown,  max_y=self.max_y-self.max_down, COLOR=self.COLOR.copy())
                                             sys.stdout.write( self.move.TO(x=self.x, y=self.y) + self.init.reset)
                                             sys.stdout.flush()
                                         else: pass
@@ -606,7 +608,7 @@ class IDE:
                         self.locked = self.histotyOfColors['locked'][self.if_line]
                         if self.lang != "unknown" : 
                             __string__, __color__ = words.words(self.Data['input'], self.color, 
-                                                    self.lang ).final(locked=self.locked, m=self.m, n=self.nn)     
+                                                    self.lang ).final(locked=self.locked, m=self.m, n=self.nn, COLOR=self.COLOR.copy())     
                         else: __string__ = self.Data['input']
                         
                         sys.stdout.write(
@@ -674,12 +676,12 @@ class IDE:
                                 if len( self.Data['input'] ) >= (self.max_y-(self.LINE+self.max_down)): 
                                     self.scrollUp += 1
                                     formating.formating(LINE=self.LINE, data=self.str_[ : - self.scrollUp ], max_x=self.max_x, idd=self.scrollDown, 
-                                                                                max_y=self.max_y-self.max_down)
+                                                                                max_y=self.max_y-self.max_down, COLOR=self.COLOR.copy())
                                     sys.stdout.write( self.move.TO(x=self.x, y=self.y) + self.init.reset)
                                     sys.stdout.flush()
                                 else:
                                     formating.formating(LINE=self.LINE, data=self.str_, max_x=self.max_x, idd=self.scrollDown, 
-                                                    max_y=self.max_y-self.max_down, MAX={'x' : self.x, "y" : self.y, "max" : self.if_line})
+                                            max_y=self.max_y-self.max_down, MAX={'x' : self.x, "y" : self.y, "max" : self.if_line}, COLOR=self.COLOR.copy())
                                     sys.stdout.write( self.move.TO(x=self.x, y=self.y) + self.init.reset)
                                     sys.stdout.flush()
                         else: 
@@ -688,7 +690,7 @@ class IDE:
                             self.scrollUp    = 0
                             
                             formating.formating(LINE=self.LINE, data=self.str_, max_x=self.max_x, idd=self.scrollDown, 
-                                                                                max_y=self.max_y-self.max_down)
+                                                                                max_y=self.max_y-self.max_down, COLOR=self.COLOR.copy())
                             sys.stdout.write( self.move.TO(x=self.x, y=self.y) + self.init.reset)
                             sys.stdout.flush()
                         
@@ -720,7 +722,7 @@ class IDE:
                 elif self.char == 18        :
                     #used for finding a particular string on the screen 
                     if self.screenLocked is True:
-                        self.find_string = Find_String.FindData().find(x=self.x, y=self.y, LINE=self.LINE, lang=self.lang)
+                        self.find_string = Find_String.FindData().find(x=self.x, y=self.y, LINE=self.LINE, lang=self.lang, COLOR=self.COLOR.copy())
                     else: pass 
                 
                 #ctrl + d 
@@ -802,7 +804,7 @@ class IDE:
                                     self.if_line_max            = self.if_line
                                     if self.str_ : 
                                         formating.RestoringSTring(max_x=self.max_x, max_y=self.max_y, LINE=self.LINE, 
-                                                            WRITE=self.str_, x = self.x, y = self.y)
+                                                            WRITE=self.str_, x = self.x, y = self.y, COLOR=self.COLOR.copy())
                                     else: pass 
                                     
                                     del self.differentStates['data'][ self.differentStates['index']-1]
@@ -821,7 +823,7 @@ class IDE:
                                         self.Data['x_y']            = self.Data['x_y'][ : self.if_line] + self.Data['x_y'][self.if_line+1 : ] + [(self.size+1, len(self.Data['memory']))]
                                         self.str_                   = self.str_[ : self.if_line] + self.str_[self.if_line+1 : ] + ['']    
                                         
-                                        formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y)
+                                        formating.scrollUP(self.str_, self.max_x, self.if_line_max, self.max_y, self.y, COLOR=self.COLOR.copy())
                                         
                                         self.Data['input']                          = self.Data['liste'][self.if_line]
                                         self.Data['string']                         = self.Data['string_tabular'][self.if_line]
@@ -877,7 +879,8 @@ class IDE:
                 self.locked = self.histotyOfColors['locked'][self.if_line]
             
                 if self.lang != "unknown" : 
-                    __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, m = self.m, n=self.nn)
+                    __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, 
+                                            m = self.m, n=self.nn, COLOR=self.COLOR.copy())
                 else:  __string__ = self.Data['input']
                 
                 sys.stdout.write(
@@ -934,7 +937,7 @@ class IDE:
                     self.KEYS, self.keys_items = KW.keys(language=self.lang, termios=self.termios, n=self.nn)
                     self.alpha, self._STR_, self.beta = KEYS.auto(x=self.x, y=self.y,max_x=self.max_x, max_y=self.max_y, keys=self.KEYS.copy(), keys_items=self.keys_items,
                             drop_string=self.Data['str_drop_down'], my_strings=self.str_, I=self.if_line, 
-                            LEN=self.Data['index'], idd_select={"idd" : self.idd_select, "index" : self.index_select})
+                            LEN=self.Data['index'], idd_select={"idd" : self.idd_select, "index" : self.index_select}, COLOR=self.COLOR.copy())
                     if self.alpha is None: pass
                     else: self.y = self.alpha
                     
@@ -948,7 +951,8 @@ class IDE:
                                 self.Data['get'].append(1)
                             self.idd_select, self.index_select, self.str_select  = 0, 0, False
                         
-                            __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, m = self.m, n=self.nn)
+                            __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, 
+                                            m = self.m, n=self.nn, COLOR=self.COLOR.copy())
                             
                             # moving cursor left 
                             sys.stdout.write(self.move.LEFT(pos=1000))
@@ -977,7 +981,7 @@ class IDE:
                 else: pass
                 #########################################################################################################  
                 counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
-                                            max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked)
+                            max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked, COLOR=self.COLOR.copy())
             except KeyboardInterrupt: 
                 # breaking whyle loop 
                 self._string_ = self.color_bg.red_L + self.color_fg.rbg(255, 255, 255) +"KeyboardInterrupt" + self.init.reset

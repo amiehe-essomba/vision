@@ -225,7 +225,8 @@ class IDE:
                                 if self.writeData['FileName'] is None: 
                                     self.histotyOfColors   = {"m" : [], "n" : [], "color" : [], "locked" : []}
                                     self.writeData["data"] =  self.Data['string_tabular'].copy()
-                                    self.lang = save.saveData( self.writeData ).build(self.x, self.y, self.lang, self.str_, history = self.histotyOfColors)
+                                    self.lang = save.saveData( self.writeData ).build(self.x, self.y, self.lang, self.str_, 
+                                                                    history = self.histotyOfColors, COLOR=self.COLOR.copy())
                                 else: writing.writeInput(self.Data['string_tabular'], self.writeData["FileName"])
                                 self.differentStates['data'] = {
                                     self.differentStates['index'] : {
@@ -869,8 +870,6 @@ class IDE:
                         if self.Data['I_S'] > 0: sys.stdout.write(self.move.TO(self.x, self.y) )
                         else: pass 
                         
-                        counter.count(number=self.if_line, x=self.x, y=self.y, max_x=self.max_x, 
-                                                    max_y=self.max_y-(self.max_down), lang=self.lang, action=self.screenLocked)
                         #########################################################################################################
                         self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = BS.string( self.Data['input'], self.Data['index']-1 )
                         _, _, self._a, self._b = BS.string( self.Data['string'], self.Data['I_S']-1 )
