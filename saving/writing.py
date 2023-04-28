@@ -7,22 +7,17 @@ def writeInput(dataFile: list , FileName : str):
             
     file.close()
     
-def BLACK_M(WRITE : list = [], lang : str = "unknown", history : dict = {}):
+def BLACK_M(WRITE : list = [], lang : str = "unknown", history : dict = {}, COLOR : dict = {},):
     from keywords       import words
-    from configure      import colors, init
-    
-    # bg color 
-    c_bg                   = init.init.bold + colors.bg.rgb(10, 10, 10)
-    # fg color 
-    c_fg                   = init.init.bold + colors.fg.rbg(255, 255, 255)
+
     # building color 
-    color                  = c_bg + c_fg
+    color                  = COLOR['fgColor']
     # locking string 
     locked                 = False 
     # storing data      
     LIST                   = []
     m, idd                 = 0, 0
-    cmt                    = init.init.bold + colors.bg.rgb(10, 10, 10) + colors.fg.rbg(153, 153, 255) 
+    cmt                    = COLOR['cmtColor']
     no_cmt                 = color
     
     if WRITE:
@@ -31,7 +26,7 @@ def BLACK_M(WRITE : list = [], lang : str = "unknown", history : dict = {}):
             if locked is False:
                 locked, idd         = keys(tab, lang, string)
                 _string_            = string.replace("\t", " " * 4)
-                __line__, __color__ = words.words(string=_string_, color=color, language=lang ).final(locked=locked, m=m, n=idd)
+                __line__, __color__ = words.words(string=_string_, color=color, language=lang ).final(locked=locked, m=m, n=idd, COLOR=COLOR.copy())
                 
                 history["color"].append(color)
                 history["m"].append(m)

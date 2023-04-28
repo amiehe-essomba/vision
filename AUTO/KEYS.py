@@ -1,14 +1,14 @@
 import sys 
 from frame          import frame
 from header         import header
-from configure      import colors, init, clear, state, screenConfig, moveCursor, scroll
+from configure      import init, screenConfig, moveCursor
 
-def postion(x, y, max_x, string = ""):
+def postion(x, y, max_x, string = "", COLOR : dict = {}):
     asc                 = frame.frame(custom=True)
     reset               = init.init.reset
-    c_bg                = init.init.bold + colors.bg.rgb(10,10,10)
+    c_bg                = COLOR['bgColor']
     move                = moveCursor.cursor 
-    c                   = init.init.bold + colors.fg.rbg(255,255,255)
+    c                   = COLOR['white']
     Input, size         = header.counter( 0 )
     
     sys.stdout.write(move.LEFT(pos=1000))
@@ -20,12 +20,12 @@ def postion(x, y, max_x, string = ""):
     )
     sys.stdout.flush()
 
-def POS(x, y, max_x, string = ""):
+def POS(x, y, max_x, string = "", COLOR : dict = {}):
     asc                 = frame.frame(custom=True)
     reset               = init.init.reset
-    c_bg                = init.init.bold + colors.bg.rgb(10,10,10)
+    c_bg                = COLOR['bgColor']
     move                = moveCursor.cursor 
-    c                   = init.init.bold + colors.fg.rbg(255,255,255)
+    c                   = COLOR['white']
     Input, size         = header.counter( 0 )
     
     sys.stdout.write(move.LEFT(pos=1000))
@@ -38,7 +38,8 @@ def POS(x, y, max_x, string = ""):
     sys.stdout.flush()
 
 def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_items: int = 1, 
-                        drop_string : str = "", my_strings : list=[], I : int = 0, LEN : int = 0, idd_select : dict = {"idd" : 0, "index" : 0}) :
+                drop_string : str = "", my_strings : list=[], I : int = 0, LEN : int = 0, 
+                idd_select : dict = {"idd" : 0, "index" : 0}, COLOR : dict = {}) :
     # the lastest two line
     max_down            = 2
     # max line on the black screen 
@@ -52,15 +53,15 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
     # reset characters
     reset               = init.init.reset
     # set while color 
-    cc                  = colors.bg.rgb(255,255,255)
+    cc                  = COLOR['bgWhite']
     # set bold and black screen 
-    c                   = init.init.bold + colors.fg.rbg(10,10,10)
+    c                   = COLOR['fgBlack']
     # set bold and black screen 
-    c_bg                = init.init.bold + colors.bg.rgb(10,10,10)
+    c_bg                = COLOR['bgColor']
     # cursor action 
     move                = moveCursor.cursor 
     # set the identifier 
-    cursor              = c_bg+ colors.fg.rbg(255,0,0)+chr(9664)+reset
+    cursor              = COLOR["cursorColor"] + reset
     # max elements which can be contained in the white screen
     max_element         = 4 
     # returning string 
@@ -123,7 +124,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                 
                 if LINE > (len(newNames) + 1):
                     #########################################################################
-                    postion(x, y+1, max_x)
+                    postion(x, y+1, max_x, COLOR = COLOR.copy())
                     # first line     
                     sys.stdout.write(
                         move.TO(x=x-LEN, y=y+1) + c_bg + " " * LEN + move.TO(x=x, y=y+1) + reset + 
@@ -136,7 +137,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                         
                     for i in range( len(newNames )+1):
                         idd += 1
-                        postion(x, y+idd+1, max_x)
+                        postion(x, y+idd+1, max_x, COLOR = COLOR.copy())
                         # initialization of the the cusror
                         if i == _IDD_:
                             sys.stdout.write( 
@@ -154,11 +155,11 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                         sys.stdout.flush()
                     #########################################################################
                     # third line
-                    postion(x, y+idd+1, max_x) 
+                    postion(x, y+idd+1, max_x , COLOR = COLOR.copy()) 
                     sys.stdout.write(cc+c + f"{asc['dl']}" + f"{asc['h']}" * (border) + f"{asc['dr']}"+ reset + "\n")
                     sys.stdout.flush()
                     #########################################################################
-                    postion(x, y, max_x, my_strings[I])
+                    postion(x, y, max_x, my_strings[I] , COLOR = COLOR.copy())
                     sys.stdout.write(move.TO(x=x, y=y))
                     
                     # writing keys inside white board
@@ -173,7 +174,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                     #########################################################################
                     
                     X, Y = screenConfig.cursor()
-                    postion(x, Y, max_x) 
+                    postion(x, Y, max_x, COLOR = COLOR.copy()) 
                     sys.stdout.write(cc+c + f"{asc['dl']}" + f"{asc['h']}" * (border) + f"{asc['dr']}"+ reset + "\n")
                     sys.stdout.flush()
                     # computing the new cusor postion 
@@ -183,8 +184,8 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                     else:
                         for i in range(NEW_LINE):
                             M = Y+i+1
-                            try: POS(x, M, max_x, string=my_strings[I+i+1])
-                            except IndexError: POS(x, M, max_x)
+                            try: POS(x, M, max_x, string=my_strings[I+i+1], COLOR = COLOR.copy())
+                            except IndexError: POS(x, M, max_x, COLOR = COLOR.copy())
                             sys.stdout.flush()
                     # restoring the true cursor position on the screen
                     sys.stdout.write(move.TO(x=x, y=y))
@@ -229,8 +230,8 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                     
                     # printing the values stored in new_list from the beginning of screen
                     for i in range(N):
-                        try: POS(x, Y, max_x, string=new_list[i])
-                        except IndexError: POS(x, Y, max_x)
+                        try: POS(x, Y, max_x, string=new_list[i], COLOR = COLOR.copy())
+                        except IndexError: POS(x, Y, max_x, COLOR = COLOR.copy())
                         sys.stdout.flush()
                         Y += 1
                     
@@ -239,7 +240,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                     
                     # drawing the white board 
                     #########################################################################
-                    postion(x, Y+1, max_x)
+                    postion(x, Y+1, max_x, COLOR = COLOR.copy())
                     # first line     
                     sys.stdout.write(
                         move.TO(x=x-LEN, y=Y+1) + c_bg + " " * LEN + move.TO(x=x, y=Y+1) + reset + 
@@ -252,7 +253,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                     idd = 0
                     for i in range( len(newNames )+1):
                         idd += 1
-                        postion(x, Y+1+idd, max_x)
+                        postion(x, Y+1+idd, max_x, COLOR = COLOR.copy())
                         # initialization of the the cusror
                         if i == _IDD_:
                             sys.stdout.write( 
@@ -270,7 +271,7 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
                         sys.stdout.flush()
                     #########################################################################
                     # third line
-                    postion(x, Y+1+idd, max_x) 
+                    postion(x, Y+1+idd, max_x, COLOR = COLOR.copy()) 
                     sys.stdout.write(cc+c + f"{asc['dl']}" + f"{asc['h']}" * (border) + f"{asc['dr']}"+ reset + "\n")
                     sys.stdout.flush()
                     #########################################################################
@@ -301,8 +302,8 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
             if NEW_LINE > 0 :pass 
             else:
                 for i in range(NEW_LINE+1):
-                    try: POS(x, y+i, max_x, string=my_strings[I+i])
-                    except IndexError: POS(x, y+i, max_x)
+                    try: POS(x, y+i, max_x, string=my_strings[I+i], COLOR = COLOR.copy())
+                    except IndexError: POS(x, y+i, max_x, COLOR = COLOR.copy())
                     sys.stdout.flush()
             # restoring the cursor position    
             sys.stdout.write(move.TO(x=x, y=y))
@@ -316,8 +317,8 @@ def auto(x : int, y : int, max_y : int, max_x : int, keys : dict = {}, keys_item
         if NEW_LINE == 0 :pass 
         else:
             for i in range(NEW_LINE+1):
-                try: POS(x, y+i, max_x, string=my_strings[I+i])
-                except IndexError: POS(x, y+i, max_x)
+                try: POS(x, y+i, max_x, string=my_strings[I+i], COLOR = COLOR.copy())
+                except IndexError: POS(x, y+i, max_x, COLOR = COLOR.copy())
                 sys.stdout.flush()
         # restoring the cursor position
         sys.stdout.write(move.TO(x=x, y=y))

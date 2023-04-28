@@ -48,22 +48,22 @@ class saveData:
         # system
         self.system             = platform.system()
         
-    def build(self, x: int = 0, y : int = 0, lang : str = "", WRITE : list = [], history : dict = {}):
+    def build(self, x: int = 0, y : int = 0, lang : str = "", WRITE : list = [], history : dict = {}, COLOR : dict = {}):
         sys.stdout.write(
             self.move.DOWN(pos=self.max_y+1)+self.clear.screen(pos=0)
         )
         sys.stdout.write(self.clear.screen(0))
-        lang = saveData(self.dataBase).write(x, y, WRITE, lang, history = history)
+        lang = saveData(self.dataBase).write(x, y, WRITE, lang, history = history, COLOR=COLOR.copy())
         return lang 
     
-    def write(self, x :int = 0, y:int = 0, WRITE : list = [], lang : str = "unknown", LINE : int = 4, history : dict = {}):
-        self.c              = self.init.bold + colors.fg.rbg(255, 255, 255)
+    def write(self, x :int = 0, y:int = 0, WRITE : list = [], lang : str = "unknown", LINE : int = 4, history : dict = {}, COLOR : dict = {}):
+        self.c              = COLOR['white']  
         self.blink          = self.init.bold + colors.fg.rbg(255, 0, 255)
-        self.c_bg           = self.init.bold + colors.bg.rgb(10, 10, 10)
+        self.c_bg           = COLOR['fgColor']
         self.input          = f"{self.acs['v']} {self.blink}FILE NAME : " + self.init.reset
         self.length         = len("| input name :")
-        self.cc             = init.init.bold + colors.fg.rbg(0, 255, 255)
-        self._string_       = "VISION EDITOR V-1.0.0".center(self._max_x_ - 2)
+        #self.cc             = init.init.bold + colors.fg.rbg(0, 255, 255)
+        self._string_       = "VISION EDITOR".center(self._max_x_ - 2)
         self.language_type  = "unknown"
         _input_, _length_   = header.counter(n=0)
         
@@ -142,7 +142,7 @@ class saveData:
                             else: 
                                 writing.writeInput(self.dataBase["data"], self.string)
                                 if self.dataBase["data"]:
-                                    WRITE       = writing.BLACK_M(self.dataBase["data"], self.language_type, history)
+                                    WRITE       = writing.BLACK_M(self.dataBase["data"], self.language_type, history, COLOR=COLOR.copy())
                                     sys.stdout.write(
                                         self.move.TO(x=0, y=LINE)+ 
                                         self.move.LEFT(1000)

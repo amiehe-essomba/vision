@@ -1,17 +1,16 @@
-import sys , os 
-from configure  import colors, init, clear, moveCursor 
+import sys 
+from configure  import init, clear, moveCursor 
 from frame      import frame
 from header     import header
 
-def formating(LINE : int = 4, data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, MAX  = None):
+def formating(LINE : int = 4, data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, MAX  = None, COLOR : dict = {}):
     move        = moveCursor.cursor
     N           = max_y-(LINE+1) 
     Y           = LINE
     asc         = frame.frame(custom=True)
-    bold        = init.init.bold
     reset       = init.init.reset
-    c_bg        = colors.bg.rgb(10, 10, 10)  
-    c           = bold + colors.fg.rbg(255, 255, 255)
+    c_bg        = COLOR['fgColor'] 
+    c           = COLOR['white'] 
     input, length       = header.counter(n=0)
     sys.stdout.write(move.TO(x=length, y=LINE) )
 
@@ -54,15 +53,14 @@ def formating(LINE : int = 4, data : list = [], max_x : int = 0, idd : int = 0, 
                 Y += 1
                 sys.stdout.flush()
 
-def scrollUP(data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, y : int = 0):
+def scrollUP(data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, y : int = 0, COLOR : dict = {}):
     move        = moveCursor.cursor
     N           = max_y-(y+1) 
     Y           = y
     asc         = frame.frame(custom=True)
-    bold        = init.init.bold
     reset       = init.init.reset
-    c_bg        = colors.bg.rgb(10, 10, 10)  
-    c           = bold + colors.fg.rbg(255, 255, 255)
+    c_bg        = COLOR['fgColor'] 
+    c           = COLOR['white'] 
     input, length       = header.counter(n=0)
     sys.stdout.write(move.TO(x=length, y=Y) )
     
@@ -86,15 +84,14 @@ def scrollUP(data : list = [], max_x : int = 0, idd : int = 0, max_y : int = 0, 
             sys.stdout.flush()
     else: pass
     
-def ClearScreen(max_x : int = 0, max_y : int = 0, LINE : int = 4):
+def ClearScreen(max_x : int = 0, max_y : int = 0, LINE : int = 4, COLOR :dict = {}):
     move        = moveCursor.cursor
     N           = max_y-(LINE+1) 
     Y           = LINE
     asc         = frame.frame(custom=True)
-    bold        = init.init.bold
     reset       = init.init.reset
-    c_bg        = colors.bg.rgb(10, 10, 10)  
-    c           = bold + colors.fg.rbg(255, 255, 255)
+    c_bg        = COLOR['fgColor'] 
+    c           = COLOR['white'] 
     input, length       = header.counter(n=0)
     sys.stdout.write(move.TO(x=length, y=Y) )
     
@@ -111,16 +108,15 @@ def ClearScreen(max_x : int = 0, max_y : int = 0, LINE : int = 4):
     sys.stdout.write(move.TO(x=length+1, y=LINE))
     sys.stdout.flush()
     
-def RestoringSTring(max_x : int = 0, max_y : int = 0, LINE : int = 4, WRITE : list = [], y : int = 0, x : int = 0 ):
+def RestoringSTring(max_x : int = 0, max_y : int = 0, LINE : int = 4, WRITE : list = [], y : int = 0, x : int = 0, COLOR : dict = {} ):
     ClearScreen(max_x=max_x, max_y=max_y, LINE=LINE)
     move        = moveCursor.cursor
     N           = max_y-(LINE+1) 
     Y           = LINE
     asc         = frame.frame(custom=True)
-    bold        = init.init.bold
     reset       = init.init.reset
-    c_bg        = colors.bg.rgb(10, 10, 10)  
-    c           = bold + colors.fg.rbg(255, 255, 255)
+    c_bg        = COLOR['fgColor'] 
+    c           = COLOR['white'] 
     input, length       = header.counter(n=0)
     sys.stdout.write(move.TO(x=length, y=Y) )
     
@@ -146,15 +142,14 @@ def RestoringSTring(max_x : int = 0, max_y : int = 0, LINE : int = 4, WRITE : li
     sys.stdout.write(move.TO(x=x, y=y))
     sys.stdout.flush()
     
-def WritingDown(x :int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE : int = 4):
+def WritingDown(x :int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE : int = 4, COLOR : dict = {}):
     move        = moveCursor.cursor
     N           = max_y-(LINE+1) 
     Y           = LINE
     asc         = frame.frame(custom=True)
-    bold        = init.init.bold
     reset       = init.init.reset
-    c_bg        = colors.bg.rgb(10, 10, 10)  
-    c           = bold + colors.fg.rbg(255, 255, 255)
+    c_bg        = COLOR['fgColor'] 
+    c           = COLOR['white'] 
     input, length       = header.counter(n=0)
     sys.stdout.write(move.TO(x=length, y=Y) )
     
@@ -172,15 +167,14 @@ def WritingDown(x :int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE 
     sys.stdout.write(move.TO(x=x, y=y))
     sys.stdout.flush()
     
-def WritingUp(x :int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE : int = 4):
+def WritingUp(x :int = 0, y : int = 0, max_x : int = 0, max_y : int = 0, LINE : int = 4, COLOR : dict = {}):
     move        = moveCursor.cursor
     N           = max_y-(LINE+1) 
     Y           = LINE
     asc         = frame.frame(custom=True)
-    bold        = init.init.bold
     reset       = init.init.reset
-    c_bg        = colors.bg.rgb(10, 10, 10)  
-    c           = bold + colors.fg.rbg(255, 255, 255)
+    c_bg        = COLOR['fgColor'] 
+    c           = COLOR['white'] 
     input, length       = header.counter(n=0)
     sys.stdout.write(move.TO(x=length, y=Y) )
     
