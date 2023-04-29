@@ -15,7 +15,8 @@ from style          import style, languageStyle
 from terminalType   import Terminal
 
 def open_graven_web():
-        webbrowser.open(url='https://github.com/amiehe-essomba/vision')
+    webbrowser.open(url='https://github.com/amiehe-essomba/vision')
+    
         
 def visionEditor( ):
     """

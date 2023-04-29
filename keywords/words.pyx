@@ -67,6 +67,7 @@ cdef class words:
             str s , cc      = COLOR['fgColor'] 
             list num        = [str(x) for x in range(10)]
             unsigned long int c_idd = 0
+            
        
         self.counter = count['int']
 
@@ -130,17 +131,19 @@ cdef class words:
         return newString
     
     cpdef final(self, unsigned long long n = 0, bint locked = False, bint blink = False, bint code_w = False, 
-                                                unsigned long long int m = 0, dict COLOR  = {}):
+                                        unsigned long long int m = 0, dict COLOR  = {}, str QUOTE = ""):
         cdef:
             str b_, s 
             unsigned long  long int i, j 
             unsigned long long int quote = 0
             str _cmt_           = COLOR['cmtColor']    
             str _init_          = COLOR['fgColor']   
-            dict color_return   = {"color" : self.color, "locked" : False, "rest" : 0, "init" : _init_}
+            str str_color       = COLOR['cmtColor']
+            dict color_return   = {"color" : self.color, "locked" : False, "rest" : 0, "init" : _init_, "quote" : ""}
             bint string_locked  = False
             str cmt_str         = ""
-        
+            str python_str      = ""
+            
         self.c              = COLOR['strColor'] 
         self.cc             = self.color  
         self.count          = {"int" : 0, "sys" : [], "c" : 0}
@@ -150,187 +153,247 @@ cdef class words:
 
         if locked is False:
             for i , s in enumerate(self.string ):
-                if self.count['int'] % 2 == 0: self.color = init.init.bold+self.cc 
-                else: self.color = self.c 
+                if i >= quote:
+                    if self.count['int'] % 2 == 0: self.color = init.init.bold+self.cc 
+                    else: self.color = self.c 
 
-                if s not in [' ']:
-                    if s in case()+[str(x) for x in range(10)]:
-                        self.ss += s 
-                        cmt_str  = ""
-                        if i < len(self.string)-1: pass 
-                        else:
-                            if self.ss: self.newS +=  words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                                        count=self.count, b_=b_, COLOR=COLOR.copy())
-                            else: pass  
-                    else:
-                        if   s in self.comment  :
-                            cmt_str  = ""
+                    if s not in [' ']:
+                        if s in case()+[str(x) for x in range(10)]:
                             self.ss += s 
-                            if i < len( self.string ) - 1: pass 
+                            cmt_str  = ""
+                            if i < len(self.string)-1: pass 
                             else:
                                 if self.ss: self.newS +=  words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
-                                else: pass 
-                        elif s in ['"', "'"]    :
-                            self.ss   +=s 
-                            if self.language in ['python', "cython"]: 
-                                if s == '"': 
-                                    cmt_str += s 
-                                    if cmt_str == '"""' : 
-                                        string_locked = True 
-                                    else: pass
-                                else: pass 
-
+                                                                            count=self.count, b_=b_, COLOR=COLOR.copy())
+                                else: pass  
+                        else:
+                            if   s in self.comment  :
+                                cmt_str  = ""
+                                self.ss += s 
                                 if i < len( self.string ) - 1: pass 
-                                else: 
+                                else:
+                                    if self.ss: self.newS +=  words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
+                                    else: pass 
+                            elif s in ['"', "'"]    :
+                                self.ss   += s 
+                                if self.language in ['python', "cython"]: 
+                                    if s == "'": 
+                                        if not cmt_str: cmt_str += s 
+                                        else:
+                                            if '"' not in cmt_str : cmt_str += s 
+                                            else : cmt_str = ""
+
+                                    elif s == '"' : 
+                                        if not cmt_str: cmt_str += s 
+                                        else:
+                                            if "'" not in cmt_str : cmt_str += s 
+                                            else : cmt_str = ""
+    
+                                    if cmt_str in ['"""', "'''"] : 
+                                        string_locked = True 
+                                        color_return = {"color" : str_color, "locked" : False, "rest" : 0, 'init' : _init_, "quote" : cmt_str[0]}
+                                        try:
+                                            s = cmt_str[0]
+                                            if self.string[i + 1 : ]:
+                                                for d, _s_ in enumerate(self.string[i + 1 : ]):
+                                                    if _s_ == s:  python_str += s 
+                                                    else:
+                                                        if not python_str : pass
+                                                        else:  break
+                                                
+                                                if len(python_str) == 3: quote = d + i + 1
+                                                else: pass
+
+                                                self.newS += words(self.ss[ : -len(cmt_str)], self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                
+                                                if quote > 0:
+                                                    self.newS += words(cmt_str+self.string[i+1 : quote], str_color, language=self.language).keywords(n=n, locked=string_locked, 
+                                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                    color_return = {"color" : self.color, "locked" : False, "rest" : 0, 'init' : _init_, "quote" : cmt_str[0]}
+                                                    self.color = _init_
+                                                    self.cc    = _init_
+                                                else:
+                                                    self.newS += words(cmt_str+self.string[i+1 : ], str_color, language=self.language).keywords(n=n, locked=string_locked, 
+                                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                    break
+                                                
+                                                self.ss,  cmt_str , python_str  = "", "", ""
+                                            else:
+                                                if self.ss[ :-3 ]:
+                                                    self.newS += words(self.ss[ :-3 ], self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                else: pass 
+                                                self.newS += words(cmt_str, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                self.ss = ""
+                                                break
+                                        
+                                        except IndexError:
+                                            if self.ss[ :-3 ]:
+                                                self.newS += words(self.ss[ :-3 ], self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                            else: pass 
+                                            self.newS += words(cmt_str, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                            self.ss = ""
+                                            break
+                                    else:
+                                        if i < len( self.string ) - 1: pass 
+                                        else: 
+                                            if i < len( self.string ) - 1: pass 
+                                            else:
+                                                color_return = {"color" : _init_, "locked" : False, "rest" : 0, 'init' : _init_, "quote" : ""}
+                                                if self.ss:  self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                else:  pass
+                                
+                                else:
                                     if i < len( self.string ) - 1: pass 
                                     else:
-                                        color_return = {"color" : _init_, "locked" : False, "rest" : 0, 'init' : _init_}
                                         if self.ss:  self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                        else:  pass
-                            else:
-                                if i < len( self.string ) - 1: pass 
-                                else:
-                                    if self.ss:  self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                    else:  pass
-                        elif s == "-"           :
-                            cmt_str  = ""
-                            if self.language in ['python', "mamba", "cython"]:
-                                try:
-                                    if self.string[i+1] == '>': 
-                                        self.ss += s
-                                        if i < len( self.string ) - 1: pass 
-                                        else: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                    count=self.count, b_=b_, COLOR=COLOR.copy())
-                                    else: 
-                                        self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                        self.newS   += words(s, self.color, language=self.language).keywords(n=n,locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                        self.ss     = ""
-                                except IndexError: 
-                                    self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                    self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                    self.ss      = ""
-                            else: 
-                                self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                self.ss      = ""
-                        elif s == "<"           :
-                            self.ss += s
-                            if self.language in ['c', "c++"]:
-                                if i < len(self.string) - 1: pass
-                                else:
-                                    if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                    else:  pass
-                            else: 
-                                if i < len(self.string) - 1: pass
-                                else:
-                                    if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                    else:  pass
-                        elif s == ">"           :
-                            cmt_str  = ""
-                            if self.language in ['python', "mamba", "cython"]: 
-                                if i == 0:
-                                    self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
-                                    self.ss      = ""
-                                else:
-                                    try:
-                                        if self.string[i-1] in ['-']:
-                                            self.ss += s 
-                                            if i < len(self.string)-1: pass 
-                                            else: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
                                                             count=self.count, b_=b_,COLOR=COLOR.copy())
+                                        else:  pass
+                            elif s == "-"           :
+                                cmt_str  = ""
+                                if self.language in ['python', "mamba", "cython"]:
+                                    try:
+                                        if self.string[i+1] == '>': 
+                                            self.ss += s
+                                            if i < len( self.string ) - 1: pass 
+                                            else: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                        count=self.count, b_=b_, COLOR=COLOR.copy())
                                         else: 
-                                            self.ss     += s
                                             self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                            count=self.count, b_=b_,COLOR=COLOR.copy())
+                                            self.newS   += words(s, self.color, language=self.language).keywords(n=n,locked=locked, 
                                                             count=self.count, b_=b_,COLOR=COLOR.copy())
                                             self.ss     = ""
                                     except IndexError: 
-                                        self.newS   += words(self.s, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                            count=self.count, b_=b_,COLOR=COLOR.copy()) 
+                                        self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                            count=self.count, b_=b_,COLOR=COLOR.copy())
+                                        self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                            count=self.count, b_=b_,COLOR=COLOR.copy())
                                         self.ss      = ""
-                            elif self.language in ['c', "c++"]:
+                                else: 
+                                    self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                            count=self.count, b_=b_,COLOR=COLOR.copy())
+                                    self.ss      = ""
+                            elif s == "<"           :
                                 self.ss += s
-                                if self.ss[0] == '<':
-                                    
-                                    self.newS   += words(self.ss, _cmt_, language=self.language).keywords(n=n, locked=True, 
-                                                            count=self.count, b_=b_,COLOR=COLOR.copy()) 
-                                    self.ss      = ""
-                                else:
-                                    self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                            count=self.count, b_=b_,COLOR=COLOR.copy()) 
-                                    self.ss      = ""
-                            else: 
-                                self.ss     += s
-                                self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                            count=self.count, b_=b_,COLOR=COLOR.copy()) 
-                                self.ss      = ""
-                        else                    :
-                            cmt_str  = ""
-                            if self.ss:
-                                if self.cmt in self.ss:
-                                    self.ss += s
+                                cmt_str  = ""
+                                if self.language in ['c', "c++"]:
                                     if i < len(self.string) - 1: pass
                                     else:
                                         if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                            count=self.count, b_=b_,COLOR=COLOR.copy())
                                         else:  pass
-                                else:
+                                else: 
+                                    if i < len(self.string) - 1: pass
+                                    else:
+                                        if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                            count=self.count, b_=b_,COLOR=COLOR.copy())
+                                        else:  pass
+                            elif s == ">"           :
+                                cmt_str  = ""
+                                if self.language in ['python', "mamba", "cython"]: 
+                                    if i == 0:
+                                        self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                            count=self.count, b_=b_,COLOR=COLOR.copy())
+                                        self.ss      = ""
+                                    else:
+                                        try:
+                                            if self.string[i-1] in ['-']:
+                                                self.ss += s 
+                                                if i < len(self.string)-1: pass 
+                                                else: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                            else: 
+                                                self.ss     += s
+                                                self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                self.ss     = ""
+                                        except IndexError: 
+                                            self.newS   += words(self.s, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy()) 
+                                            self.ss      = ""
+                                elif self.language in ['c', "c++"]:
+                                    self.ss += s
+                                    if self.ss[0] == '<':
+                                        
+                                        self.newS   += words(self.ss, _cmt_, language=self.language).keywords(n=n, locked=True, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy()) 
+                                        self.ss      = ""
+                                    else:
+                                        self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy()) 
+                                        self.ss      = ""
+                                else: 
+                                    self.ss     += s
                                     self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
-                                    self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
-                                    self.ss      = ''
-                            else :
-                                if s == '/':
-                                    if self.language in {"c++", "c"}:
-                                        self.ss += s 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy()) 
+                                    self.ss      = ""
+                            else                    :
+                                cmt_str  = ""
+                                if self.ss:
+                                    if self.cmt in self.ss:
+                                        self.ss += s
                                         if i < len(self.string) - 1: pass
                                         else:
                                             if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                            count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
                                             else:  pass
+                                    else:
+                                        self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
+                                        self.newS   += words(s, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                        count=self.count, b_=b_,COLOR=COLOR.copy())
+                                        self.ss      = ''
+                                else :
+                                    if s == '/':
+                                        if self.language in {"c++", "c"}:
+                                            self.ss += s 
+                                            if i < len(self.string) - 1: pass
+                                            else:
+                                                if self.ss: self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                else:  pass
+                                        else:
+                                            self.newS   += words(s, self.color, language=self.language).keywords(n=n,locked=locked, 
+                                            count=self.count, b_=b_,COLOR=COLOR.copy())
+                                            self.ss      = ''
                                     else:
                                         self.newS   += words(s, self.color, language=self.language).keywords(n=n,locked=locked, 
                                         count=self.count, b_=b_,COLOR=COLOR.copy())
                                         self.ss      = ''
+                    else:
+                        cmt_str  = ""
+                        if self.ss :
+                            if self.cmt in self.ss:
+                                self.ss += ' '
+                                if i < len(self.string) - 1:  pass
                                 else:
-                                    self.newS   += words(s, self.color, language=self.language).keywords(n=n,locked=locked, 
-                                    count=self.count, b_=b_,COLOR=COLOR.copy())
-                                    self.ss      = ''
-                else:
-                    cmt_str  = ""
-                    if self.ss :
-                        if self.cmt in self.ss:
-                            self.ss += ' '
-                            if i < len(self.string) - 1:  pass
+                                    if self.ss:  self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                        count=self.count, b_=b_,COLOR=COLOR.copy())
+                                    else:  pass
                             else:
-                                if self.ss:  self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                    count=self.count, b_=b_,COLOR=COLOR.copy())
-                                else:  pass
-                        else:
-                            if self.count['int'] % 2 == 0: self.color = self.cc
-                            else: self.color = self.c
+                                if self.count['int'] % 2 == 0: self.color = self.cc
+                                else: self.color = self.c
 
-                            self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                self.newS   += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                    count=self.count, b_=b_,COLOR=COLOR.copy())
+                                if code_w is False: self.newS   += self.cc + ' '
+                                else: self.newS   += self.cc + ' '
+                                self.ss     = ''
+                        else:
                             if code_w is False: self.newS   += self.cc + ' '
                             else: self.newS   += self.cc + ' '
-                            self.ss     = ''
-                    else:
-                        if code_w is False: self.newS   += self.cc + ' '
-                        else: self.newS   += self.cc + ' '
-                        self.ss      = ''
-        else:  
+                            self.ss      = ''
+                else: self.ss = ""
+        else:
             self.newS = words(self.string, self.color, language=self.language).keywords(n=n, locked=locked, 
-            count=self.count, b_=b_,COLOR=COLOR.copy())
+                    count=self.count, b_=b_,COLOR=COLOR.copy())
 
         return self.newS, color_return
+        

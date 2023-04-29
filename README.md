@@ -15,6 +15,7 @@ Overall, VISION is a powerful and versatile IDE that offers a range of features 
 ## BUILT WITH 
 - __**Python**__ 
 - __**Cython**__ 
+- __**C**__
 
 ## PLATFORMS
 - __**WINDOWS**__ 
@@ -72,7 +73,7 @@ Additionally, VISION's support for Black Mamba, a Python-based web framework, al
 ## RUNNING VISION
 
 - vision
-- vision my_file.py  
+- vision my_file 
 
 ## VISION VERSION
 

@@ -3,6 +3,14 @@ from terminalType   import bgWhite, cmtColor, codeBgColor, codeColor, codeFgColo
 from terminalType   import cursorColor, fgBlack, openColor, prgramColor, titleColor, widgetColor 
 
 def termianlConfig( name : str = "monokai"):
+    """_summary_
+
+    Args:
+        name (str, optional): _description_. Defaults to "monokai".
+
+    Returns:
+        _type_: _description_
+    """
     # bg color 
     fgBlack_                = fgBlack.fgColor(name = name) 
     # bg color 

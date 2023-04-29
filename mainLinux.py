@@ -41,6 +41,13 @@ class IDE:
         self.COLOR              = COLOR.copy()
         
     def VISION(self, importation : dict = {}, writeData : dict = {}, path : str = "" ):
+        """_summary_
+
+        Args:
+            importation (dict, optional): _description_. Defaults to {}.
+            writeData (dict, optional): _description_. Defaults to {}.
+            path (str, optional): _description_. Defaults to "".
+        """
         # loading external data 
         self.importation                    = importation
         #

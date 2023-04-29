@@ -13,6 +13,7 @@ from AUTO           import KEYS
 
 class IDE:
     def __init__(self, termios : str = "none", lang : str = "unknown", COLOR : dict = {}):
+        
         # border configuration 
         self.acs                = frame.frame(custom=True)
         # loading backgroung color 
@@ -41,6 +42,13 @@ class IDE:
         self.COLOR              = COLOR.copy()
         
     def VISION(self, importation : dict = {}, writeData : dict = {}, path : str = ""):
+        """_summary_
+
+        Args:
+            importation (dict, optional): _description_. Defaults to {}.
+            writeData (dict, optional): _description_. Defaults to {}.
+            path (str, optional): _description_. Defaults to "".
+        """
         # loading external data 
         self.importation                    = importation
         
@@ -143,6 +151,7 @@ class IDE:
         self.idd_select                     = 0
         self.index_select                   = 0
         self.str_select                     = False
+        self.QUOTE                          = ""
         ###########################################################
         self.find_string                    = ""
         self.string_find_is_found           = False
@@ -639,6 +648,7 @@ class IDE:
                                     self.Data['memory'].append( self.Data['get'] )
                                     self.str_.append(self.Data['input'])
                                     self.action = "ADD"
+                                    
                                     self.histotyOfColors['color'].append(self.color)
                                     self.histotyOfColors['m'].append(self.m)
                                     self.histotyOfColors['n'].append(self.nn)
@@ -860,8 +870,8 @@ class IDE:
                     
                         if self.lang != "unknown" : 
                             __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, 
-                                                m = self.m, n=self.nn, COLOR=self.COLOR.copy())
-                        else:  __string__ = self.Data['input']
+                                                m = self.m, n=self.nn, COLOR=self.COLOR.copy(), QUOTE=self.QUOTE)
+                        else:  __string__, __color__ = self.Data['input'], {}
                         
                         sys.stdout.write(
                             self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
@@ -878,6 +888,11 @@ class IDE:
                         self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = BS.string( self.Data['input'], self.Data['index']-1 )
                         _, _, self._a, self._b = BS.string( self.Data['string'], self.Data['I_S']-1 )
                         #########################################################################################################
+                        #try:
+                        #    self.histotyOfColors['color'][self.if_line]     = __color__['color']
+                        #    self.histotyOfColors['locked'][self.if_line]    = __color__['locked']
+                        #    self.QUOTE                                      = __color__['quote']
+                        #except Keyerror: pass
                         
                         sys.stdout.flush()           
                         
