@@ -906,6 +906,7 @@ class IDE:
                         
                         #########################################################################################################
                         #########################################################################################################
+                        """
                         tab = writing.tabular(self.Data['string'], self.lang)
                         
                         if self.locked is False:         
@@ -921,6 +922,7 @@ class IDE:
                             
                             if  self.locked is True: self.color   = self.cmt 
                             else: self.color = self.no_cmt
+                        """
                         
                         self.histotyOfColors['color'][self.if_line] = self.color
                         self.histotyOfColors['m'][self.if_line]     = self.m 

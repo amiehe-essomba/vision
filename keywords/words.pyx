@@ -143,6 +143,8 @@ cdef class words:
             bint string_locked  = False
             str cmt_str         = ""
             str python_str      = ""
+            dict  __dic__ 
+            str __string__
             
         self.c              = COLOR['strColor'] 
         self.cc             = self.color  
@@ -193,49 +195,43 @@ cdef class words:
                                     if cmt_str in ['"""', "'''"] : 
                                         string_locked = True 
                                         color_return = {"color" : str_color, "locked" : False, "rest" : 0, 'init' : _init_, "quote" : cmt_str[0]}
-                                        try:
-                                            s = cmt_str[0]
-                                            if self.string[i + 1 : ]:
-                                                for d, _s_ in enumerate(self.string[i + 1 : ]):
-                                                    if _s_ == s:  python_str += s 
-                                                    else:
-                                                        if not python_str : pass
-                                                        else:  break
-                                                
-                                                if len(python_str) == 3: quote = d + i + 1
-                                                else: pass
-
-                                                self.newS += words(self.ss[ : -len(cmt_str)], self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
-                                                
-                                                if quote > 0:
-                                                    self.newS += words(cmt_str+self.string[i+1 : quote], str_color, language=self.language).keywords(n=n, locked=string_locked, 
-                                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
-                                                    color_return = {"color" : self.color, "locked" : False, "rest" : 0, 'init' : _init_, "quote" : cmt_str[0]}
-                                                    self.color = _init_
-                                                    self.cc    = _init_
-                                                else:
-                                                    self.newS += words(cmt_str+self.string[i+1 : ], str_color, language=self.language).keywords(n=n, locked=string_locked, 
-                                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
-                                                    break
-                                                
-                                                self.ss,  cmt_str , python_str  = "", "", ""
-                                            else:
-                                                if self.ss[ :-3 ]:
-                                                    self.newS += words(self.ss[ :-3 ], self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
-                                                else: pass 
-                                                self.newS += words(cmt_str, self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                                    count=self.count, b_=b_,COLOR=COLOR.copy())
-                                                self.ss = ""
-                                                break
                                         
-                                        except IndexError:
+                                        if i != len(self.string)-1 :
+                                            for d, _s_ in enumerate(self.string[i + 1 : ]):
+                                                if _s_ == s: python_str += s 
+                                                else:
+                                                    if not python_str : pass
+                                                    else:  break
+                                            
+                                            if len(python_str) >= 3: quote = d + i + 1
+                                            else: quote = 0
+
+                                            self.newS += words(self.ss[ : -len(cmt_str)], self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                            
+                                            if quote > 0 :
+                                                self.newS += words(cmt_str+self.string[i+1 : quote], str_color, language=self.language).keywords(n=n, locked=string_locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                color_return = {"color" : self.color, "locked" : False, "rest" : 0, 'init' : _init_, "quote" : cmt_str[0]}
+                                        
+                                                try:
+                                                    __string__, __dic__ = words(self.string[quote : ], str_color, language=self.language).final(n=n, locked=locked, 
+                                                                    m=m, COLOR=COLOR.copy())
+                                                    self.newS += __string__
+                                                    break
+                                                except IndexError: break
+                                            else:
+                                                self.newS += words(cmt_str+self.string[i+1 : ], str_color, language=self.language).keywords(n=n, locked=string_locked, 
+                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                break
+                                            
+                                            self.ss,  cmt_str , python_str  = "", "", ""
+                                        else:
                                             if self.ss[ :-3 ]:
                                                 self.newS += words(self.ss[ :-3 ], self.color, language=self.language).keywords(n=n, locked=locked, 
-                                                                count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                            count=self.count, b_=b_,COLOR=COLOR.copy())
                                             else: pass 
-                                            self.newS += words(cmt_str, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                            self.newS += words(cmt_str, str_color, language=self.language).keywords(n=n, locked=string_locked, 
                                                                 count=self.count, b_=b_,COLOR=COLOR.copy())
                                             self.ss = ""
                                             break
@@ -245,8 +241,10 @@ cdef class words:
                                             if i < len( self.string ) - 1: pass 
                                             else:
                                                 color_return = {"color" : _init_, "locked" : False, "rest" : 0, 'init' : _init_, "quote" : ""}
-                                                if self.ss:  self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
+                                                if self.ss:  
+                                                    self.newS += words(self.ss, self.color, language=self.language).keywords(n=n, locked=locked, 
                                                                 count=self.count, b_=b_,COLOR=COLOR.copy())
+                                                    self.ss=""
                                                 else:  pass
                                 
                                 else:
