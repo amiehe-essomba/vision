@@ -1,6 +1,7 @@
 from configure      import colors, init
 from terminalType   import bgWhite, cmtColor, codeBgColor, codeColor, codeFgColor, ColRawColor, strColor
 from terminalType   import cursorColor, fgBlack, openColor, prgramColor, titleColor, widgetColor 
+from terminalType   import op, ar, bracket, number
 
 def termianlConfig( name : str = "monokai"):
     """_summary_
@@ -51,10 +52,14 @@ def termianlConfig( name : str = "monokai"):
         "titleColor"    : titleColor_,
         "proColor"      : proColor_,
         "CRColor"       : ColRawColor_,
-        "openedColor"   :openedColor_,
+        "openedColor"   : openedColor_,
         "cursorColor"   : cursorColor_, 
         "bgWhite"       : bgWhite_, 
-        "fgBlack"       : fgBlack_ 
+        "fgBlack"       : fgBlack_, 
+        'op'            : op.operators(name = name),
+        "ar"            : ar.arithmetic(name = name),
+        "bracket"       : bracket.B(name = name),
+        "num"           : number.number( name = name)
         }
 
 

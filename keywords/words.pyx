@@ -91,11 +91,11 @@ cdef class words:
                                 if i == 0:
                                     try: 
                                         if self.string[1] in case(): newString += bold + cc + self.color + s + init.init.reset
-                                        else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
-                                    except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
+                                        else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
+                                    except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
                                 else:
                                     if self.string[i - 1] in case(): newString += bold + cc + self.color + s + init.init.reset
-                                    else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc)
+                                    else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc, COLOR=COLOR.copy())
                             elif s in self.comment:
                                 newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
                                 if self.string[ 0 ] not in [ "'", '"']: active = True
@@ -112,11 +112,11 @@ cdef class words:
                                 if self.language in ['c++', 'c']:
                                     try:
                                         if self.string[i+1] == "/" :
-                                            newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)
+                                            newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
                                             active = True
-                                        else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)
-                                    except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
-                                else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc) 
+                                        else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())
+                                    except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
+                                else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy()) 
                             else: newString += bold + cc + self.color + s + init.init.reset
                         else: newString += bold+cc+COLOR['cmtColor']  + s + init.init.reset
                     else:

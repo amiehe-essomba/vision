@@ -147,6 +147,7 @@ class IDE:
         self.no_cmt                         = self.COLOR["fgColor"] 
         self.cmt                            = self.COLOR["cmtColor"] 
         self.conservingColor                = self.COLOR["fgColor"]
+        self.color                          = self.COLOR["fgColor"]
         ###########################################################
         self.idd_select                     = 0
         self.index_select                   = 0
@@ -597,7 +598,7 @@ class IDE:
                                 self.nn     = self.histotyOfColors['n'][self.if_line]
                                 self.locked = self.histotyOfColors['locked'][self.if_line]
                                 if self.lang != "unknown" : 
-                                    __string__, __color__ = words.words(self.Data['input'], self.color, 
+                                    __string__, __color__ = words.words(self.Data['input'][ : self.Data['index'] ], self.color, 
                                             self.lang ).final(locked=self.locked, m=self.m, n=self.nn, COLOR=self.COLOR.copy())     
                                 else: __string__ = self.Data['input']
                                 
@@ -612,24 +613,21 @@ class IDE:
                                 # initializing all variables
                                 self.if_line            += 1 
                                 self.if_line_max        += 1
-                                self.Data['string']      = ""
-                                self.Data['input']       = ""
-                                self.Data["I_S"]         = 0
-                                self.Data["index"]       = 0
-                                self.Data['get']         = []
+                                self.Data['string']      = self.Data['string'][self.Data['I_S'] : ]#""
+                                self.Data['input']       = self.Data['input'][self.Data['index'] : ] #""
+                                self.Data['get']         = self.Data["get"][self.Data['I_S'] : ]#[]
                                 self.input, self.size    = header.counter( self.if_line + 1 )
-                                self.x                   = self.size + 1
                                 #####################################################################################
                                 
                                 try : 
                                     self.Data['string_tabular'][self.if_line]
-                                    self.Data['string_tabular'].insert(self.if_line, self.Data['string'])
+                                    self.Data['string_tabular'].insert(self.if_line, self.Data['string'][: self.Data['I_S']])
                                     self.Data['string_tab'].insert(self.if_line, self.Data['I_S'])
-                                    self.Data['liste'].insert(self.if_line, self.Data['input'] )
+                                    self.Data['liste'].insert(self.if_line, self.Data['input'][ : self.Data['index']] )
                                     self.Data['tabular'].insert(self.if_line, self.Data['index'] )
                                     self.Data['x_y'].insert(self.if_line, (self.x, self.y))
-                                    self.Data['memory'].insert(self.if_line, self.Data['get'])
-                                    self.str_.insert(self.if_line, self.Data['input'])
+                                    self.Data['memory'].insert(self.if_line, self.Data['get'][: self.Data['I_S']])
+                                    self.str_.insert(self.if_line, self.Data['input'][ : self.Data['index']])
                                     self.action = "INSERTS"
                                     
                                     if self.histotyOfColors['locked'][self.if_line-1] is True: self.locked = True 
@@ -640,13 +638,13 @@ class IDE:
                                     self.histotyOfColors['n'].insert(self.if_line, self.nn)
                                     self.histotyOfColors['locked'].insert(self.if_line, self.locked)
                                 except IndexError:
-                                    self.Data['string_tabular'].append( self.Data['string'] )
-                                    self.Data['liste'].append( self.Data['input'] )
+                                    self.Data['string_tabular'].append( self.Data['string'][ : self.Data['I_S'] ] )
+                                    self.Data['liste'].append( self.Data['input'][ : self.Data['index'] ] )
                                     self.Data['string_tab'].append( self.Data['I_S'] )
                                     self.Data['tabular'].append( self.Data['index'] )
                                     self.Data['x_y'].append( (self.x, self.y) )
-                                    self.Data['memory'].append( self.Data['get'] )
-                                    self.str_.append(self.Data['input'])
+                                    self.Data['memory'].append( self.Data['get'][ : self.Data['I_S'] ] )
+                                    self.str_.append(self.Data['input'][ : self.Data['index']])
                                     self.action = "ADD"
                                     
                                     self.histotyOfColors['color'].append(self.color)
@@ -654,6 +652,12 @@ class IDE:
                                     self.histotyOfColors['n'].append(self.nn)
                                     self.histotyOfColors['locked'].append(self.locked)
                                     
+                                ######################################################################
+                                self.Data["I_S"]         = 0
+                                self.Data["index"]       = 0
+                                self.x                   = self.size + 1
+                                ######################################################################
+                                
                                 if self.y < self.max_y-(self.max_down+1): 
                                     self.y    += 1
                                     if self.action == "ADD" : 
@@ -870,7 +874,7 @@ class IDE:
                     
                         if self.lang != "unknown" : 
                             __string__, __color__ = words.words(self.Data['input'], self.color, language = self.lang ).final(locked=self.locked, 
-                                                m = self.m, n=self.nn, COLOR=self.COLOR.copy(), QUOTE=self.QUOTE)
+                                                m = self.m, n=self.nn, COLOR=self.COLOR.copy())
                         else:  __string__, __color__ = self.Data['input'], {}
                         
                         sys.stdout.write(
@@ -888,11 +892,6 @@ class IDE:
                         self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = BS.string( self.Data['input'], self.Data['index']-1 )
                         _, _, self._a, self._b = BS.string( self.Data['string'], self.Data['I_S']-1 )
                         #########################################################################################################
-                        #try:
-                        #    self.histotyOfColors['color'][self.if_line]     = __color__['color']
-                        #    self.histotyOfColors['locked'][self.if_line]    = __color__['locked']
-                        #    self.QUOTE                                      = __color__['quote']
-                        #except Keyerror: pass
                         
                         sys.stdout.flush()           
                         
@@ -906,6 +905,8 @@ class IDE:
                         
                         #########################################################################################################
                         #########################################################################################################
+                        
+                        self.color   = self.no_cmt 
                         """
                         tab = writing.tabular(self.Data['string'], self.lang)
                         

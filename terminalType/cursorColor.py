@@ -3,7 +3,7 @@ from terminalType   import codeBgColor as CB
 
 def cursorColor(name : str = "monokai"):
     cursorColor = {
-        "monokai"   : CB.codeBgColor(name="monokai") + colors.fg.rbg(255,0,0) + chr(9664),
+        "monokai"   : CB.codeBgColor(name="monokai") + colors.fg.rbg(255,255,0) + chr(9664),
         "orion"     : CB.codeBgColor(name="orion"), 
         "pegasus"   : CB.codeBgColor(name="pegasus"),
         "solo"      : CB.codeBgColor(name="solo"), 

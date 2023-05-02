@@ -65,8 +65,8 @@ def visionEditor( ):
         "bgWhite"   : bgWhite, 
         "fgBlack"   : fgBlack 
         }
-    """
     
+    """
     
     # get root path 
     root	                = os.path.abspath(os.curdir)

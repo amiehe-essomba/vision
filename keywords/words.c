@@ -3000,7 +3000,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
  *                                 if i == 0:
  *                                     try:             # <<<<<<<<<<<<<<
  *                                         if self.string[1] in case(): newString += bold + cc + self.color + s + init.init.reset
- *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
+ *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
  */
                 {
                   __Pyx_PyThreadState_declare
@@ -3015,8 +3015,8 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
  *                                 if i == 0:
  *                                     try:
  *                                         if self.string[1] in case(): newString += bold + cc + self.color + s + init.init.reset             # <<<<<<<<<<<<<<
- *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
- *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
+ *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
+ *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
  */
                     __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_self->string, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L17_error)
                     __Pyx_GOTREF(__pyx_t_3);
@@ -3059,8 +3059,8 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                     /* "words.pyx":94
  *                                     try:
  *                                         if self.string[1] in case(): newString += bold + cc + self.color + s + init.init.reset
- *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)             # <<<<<<<<<<<<<<
- *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
+ *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())             # <<<<<<<<<<<<<<
+ *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
  *                                 else:
  */
                     /*else*/ {
@@ -3087,12 +3087,20 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_main); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L17_error)
                       __Pyx_GOTREF(__pyx_t_1);
                       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                      __pyx_t_3 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L17_error)
+                      __pyx_t_3 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L17_error)
                       __Pyx_GOTREF(__pyx_t_3);
                       if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_char, __pyx_v_s) < 0) __PYX_ERR(0, 94, __pyx_L17_error)
                       if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_language, __pyx_v_self->language) < 0) __PYX_ERR(0, 94, __pyx_L17_error)
                       if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_cmt, __pyx_kp_s__26) < 0) __PYX_ERR(0, 94, __pyx_L17_error)
                       if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_cc, __pyx_v_cc) < 0) __PYX_ERR(0, 94, __pyx_L17_error)
+                      if (unlikely(__pyx_v_COLOR == Py_None)) {
+                        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy");
+                        __PYX_ERR(0, 94, __pyx_L17_error)
+                      }
+                      __pyx_t_11 = PyDict_Copy(__pyx_v_COLOR); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 94, __pyx_L17_error)
+                      __Pyx_GOTREF(__pyx_t_11);
+                      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_COLOR, __pyx_t_11) < 0) __PYX_ERR(0, 94, __pyx_L17_error)
+                      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
                       __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 94, __pyx_L17_error)
                       __Pyx_GOTREF(__pyx_t_11);
                       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3111,7 +3119,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
  *                                 if i == 0:
  *                                     try:             # <<<<<<<<<<<<<<
  *                                         if self.string[1] in case(): newString += bold + cc + self.color + s + init.init.reset
- *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
+ *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
  */
                   }
                   __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
@@ -3125,8 +3133,8 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
 
                   /* "words.pyx":95
  *                                         if self.string[1] in case(): newString += bold + cc + self.color + s + init.init.reset
- *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
- *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)             # <<<<<<<<<<<<<<
+ *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
+ *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())             # <<<<<<<<<<<<<<
  *                                 else:
  *                                     if self.string[i - 1] in case(): newString += bold + cc + self.color + s + init.init.reset
  */
@@ -3160,12 +3168,20 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                     __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_main); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 95, __pyx_L19_except_error)
                     __Pyx_GOTREF(__pyx_t_18);
                     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-                    __pyx_t_16 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 95, __pyx_L19_except_error)
+                    __pyx_t_16 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 95, __pyx_L19_except_error)
                     __Pyx_GOTREF(__pyx_t_16);
                     if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_char, __pyx_v_s) < 0) __PYX_ERR(0, 95, __pyx_L19_except_error)
                     if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_language, __pyx_v_self->language) < 0) __PYX_ERR(0, 95, __pyx_L19_except_error)
                     if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_cmt, __pyx_kp_s__26) < 0) __PYX_ERR(0, 95, __pyx_L19_except_error)
                     if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_cc, __pyx_v_cc) < 0) __PYX_ERR(0, 95, __pyx_L19_except_error)
+                    if (unlikely(__pyx_v_COLOR == Py_None)) {
+                      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy");
+                      __PYX_ERR(0, 95, __pyx_L19_except_error)
+                    }
+                    __pyx_t_17 = PyDict_Copy(__pyx_v_COLOR); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 95, __pyx_L19_except_error)
+                    __Pyx_GOTREF(__pyx_t_17);
+                    if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_COLOR, __pyx_t_17) < 0) __PYX_ERR(0, 95, __pyx_L19_except_error)
+                    __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
                     __pyx_t_17 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_empty_tuple, __pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 95, __pyx_L19_except_error)
                     __Pyx_GOTREF(__pyx_t_17);
                     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
@@ -3189,7 +3205,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
  *                                 if i == 0:
  *                                     try:             # <<<<<<<<<<<<<<
  *                                         if self.string[1] in case(): newString += bold + cc + self.color + s + init.init.reset
- *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
+ *                                         else: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
  */
                   __Pyx_XGIVEREF(__pyx_t_12);
                   __Pyx_XGIVEREF(__pyx_t_13);
@@ -3215,10 +3231,10 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
               }
 
               /* "words.pyx":97
- *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
+ *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
  *                                 else:
  *                                     if self.string[i - 1] in case(): newString += bold + cc + self.color + s + init.init.reset             # <<<<<<<<<<<<<<
- *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc)
+ *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc, COLOR=COLOR.copy())
  *                             elif s in self.comment:
  */
               /*else*/ {
@@ -3264,7 +3280,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                 /* "words.pyx":98
  *                                 else:
  *                                     if self.string[i - 1] in case(): newString += bold + cc + self.color + s + init.init.reset
- *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc)             # <<<<<<<<<<<<<<
+ *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc, COLOR=COLOR.copy())             # <<<<<<<<<<<<<<
  *                             elif s in self.comment:
  *                                 newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  */
@@ -3292,12 +3308,20 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                   __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_main); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 98, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_11);
                   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                  __pyx_t_1 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+                  __pyx_t_1 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_1);
                   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_char, __pyx_v_s) < 0) __PYX_ERR(0, 98, __pyx_L1_error)
                   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_language, __pyx_v_self->language) < 0) __PYX_ERR(0, 98, __pyx_L1_error)
                   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_cmt, __pyx_kp_s__26) < 0) __PYX_ERR(0, 98, __pyx_L1_error)
                   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_cc, __pyx_v_cc) < 0) __PYX_ERR(0, 98, __pyx_L1_error)
+                  if (unlikely(__pyx_v_COLOR == Py_None)) {
+                    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy");
+                    __PYX_ERR(0, 98, __pyx_L1_error)
+                  }
+                  __pyx_t_3 = PyDict_Copy(__pyx_v_COLOR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
+                  __Pyx_GOTREF(__pyx_t_3);
+                  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_COLOR, __pyx_t_3) < 0) __PYX_ERR(0, 98, __pyx_L1_error)
+                  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                   __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_3);
                   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -3325,7 +3349,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
 
             /* "words.pyx":99
  *                                     if self.string[i - 1] in case(): newString += bold + cc + self.color + s + init.init.reset
- *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc)
+ *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc, COLOR=COLOR.copy())
  *                             elif s in self.comment:             # <<<<<<<<<<<<<<
  *                                 newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  *                                 if self.string[ 0 ] not in [ "'", '"']: active = True
@@ -3335,7 +3359,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
             if (__pyx_t_6) {
 
               /* "words.pyx":100
- *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc)
+ *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc, COLOR=COLOR.copy())
  *                             elif s in self.comment:
  *                                 newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())             # <<<<<<<<<<<<<<
  *                                 if self.string[ 0 ] not in [ "'", '"']: active = True
@@ -3428,7 +3452,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
 
               /* "words.pyx":99
  *                                     if self.string[i - 1] in case(): newString += bold + cc + self.color + s + init.init.reset
- *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc)
+ *                                     else: newString += style.config().main(char=s, language=self.language, cmt="",cc=cc, COLOR=COLOR.copy())
  *                             elif s in self.comment:             # <<<<<<<<<<<<<<
  *                                 newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  *                                 if self.string[ 0 ] not in [ "'", '"']: active = True
@@ -3721,7 +3745,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
  *                                 if self.language in ['c++', 'c']:
  *                                     try:             # <<<<<<<<<<<<<<
  *                                         if self.string[i+1] == "/" :
- *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)
+ *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  */
                 {
                   __Pyx_PyThreadState_declare
@@ -3736,7 +3760,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
  *                                 if self.language in ['c++', 'c']:
  *                                     try:
  *                                         if self.string[i+1] == "/" :             # <<<<<<<<<<<<<<
- *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)
+ *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  *                                             active = True
  */
                     __pyx_t_19 = (__pyx_v_i + 1);
@@ -3749,9 +3773,9 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                       /* "words.pyx":115
  *                                     try:
  *                                         if self.string[i+1] == "/" :
- *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)             # <<<<<<<<<<<<<<
+ *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())             # <<<<<<<<<<<<<<
  *                                             active = True
- *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)
+ *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())
  */
                       __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_style); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L37_error)
                       __Pyx_GOTREF(__pyx_t_3);
@@ -3776,12 +3800,20 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                       __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_main); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 115, __pyx_L37_error)
                       __Pyx_GOTREF(__pyx_t_11);
                       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                      __pyx_t_1 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L37_error)
+                      __pyx_t_1 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L37_error)
                       __Pyx_GOTREF(__pyx_t_1);
                       if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_char, __pyx_v_s) < 0) __PYX_ERR(0, 115, __pyx_L37_error)
                       if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_language, __pyx_v_self->language) < 0) __PYX_ERR(0, 115, __pyx_L37_error)
                       if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_cmt, __pyx_v_s) < 0) __PYX_ERR(0, 115, __pyx_L37_error)
                       if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_cc, __pyx_v_cc) < 0) __PYX_ERR(0, 115, __pyx_L37_error)
+                      if (unlikely(__pyx_v_COLOR == Py_None)) {
+                        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy");
+                        __PYX_ERR(0, 115, __pyx_L37_error)
+                      }
+                      __pyx_t_3 = PyDict_Copy(__pyx_v_COLOR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L37_error)
+                      __Pyx_GOTREF(__pyx_t_3);
+                      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_COLOR, __pyx_t_3) < 0) __PYX_ERR(0, 115, __pyx_L37_error)
+                      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L37_error)
                       __Pyx_GOTREF(__pyx_t_3);
                       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -3795,10 +3827,10 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
 
                       /* "words.pyx":116
  *                                         if self.string[i+1] == "/" :
- *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)
+ *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  *                                             active = True             # <<<<<<<<<<<<<<
- *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)
- *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
+ *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())
+ *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
  */
                       __pyx_v_active = 1;
 
@@ -3806,18 +3838,18 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
  *                                 if self.language in ['c++', 'c']:
  *                                     try:
  *                                         if self.string[i+1] == "/" :             # <<<<<<<<<<<<<<
- *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)
+ *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  *                                             active = True
  */
                       goto __pyx_L45;
                     }
 
                     /* "words.pyx":117
- *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)
+ *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  *                                             active = True
- *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)             # <<<<<<<<<<<<<<
- *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
- *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)
+ *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())             # <<<<<<<<<<<<<<
+ *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
+ *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())
  */
                     /*else*/ {
                       __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_style); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L37_error)
@@ -3843,12 +3875,20 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                       __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_main); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 117, __pyx_L37_error)
                       __Pyx_GOTREF(__pyx_t_11);
                       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                      __pyx_t_1 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L37_error)
+                      __pyx_t_1 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L37_error)
                       __Pyx_GOTREF(__pyx_t_1);
                       if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_char, __pyx_v_s) < 0) __PYX_ERR(0, 117, __pyx_L37_error)
                       if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_language, __pyx_n_s_mamba) < 0) __PYX_ERR(0, 117, __pyx_L37_error)
                       if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_cmt, __pyx_kp_s__26) < 0) __PYX_ERR(0, 117, __pyx_L37_error)
                       if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_cc, __pyx_v_cc) < 0) __PYX_ERR(0, 117, __pyx_L37_error)
+                      if (unlikely(__pyx_v_COLOR == Py_None)) {
+                        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy");
+                        __PYX_ERR(0, 117, __pyx_L37_error)
+                      }
+                      __pyx_t_3 = PyDict_Copy(__pyx_v_COLOR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L37_error)
+                      __Pyx_GOTREF(__pyx_t_3);
+                      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_COLOR, __pyx_t_3) < 0) __PYX_ERR(0, 117, __pyx_L37_error)
+                      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L37_error)
                       __Pyx_GOTREF(__pyx_t_3);
                       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -3867,7 +3907,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
  *                                 if self.language in ['c++', 'c']:
  *                                     try:             # <<<<<<<<<<<<<<
  *                                         if self.string[i+1] == "/" :
- *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)
+ *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  */
                   }
                   __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -3885,9 +3925,9 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
 
                   /* "words.pyx":118
  *                                             active = True
- *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)
- *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)             # <<<<<<<<<<<<<<
- *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)
+ *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())
+ *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())             # <<<<<<<<<<<<<<
+ *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())
  *                             else: newString += bold + cc + self.color + s + init.init.reset
  */
                   __pyx_t_15 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_IndexError);
@@ -3920,12 +3960,20 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                     __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_main); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 118, __pyx_L39_except_error)
                     __Pyx_GOTREF(__pyx_t_18);
                     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-                    __pyx_t_16 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 118, __pyx_L39_except_error)
+                    __pyx_t_16 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 118, __pyx_L39_except_error)
                     __Pyx_GOTREF(__pyx_t_16);
                     if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_char, __pyx_v_s) < 0) __PYX_ERR(0, 118, __pyx_L39_except_error)
                     if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_language, __pyx_v_self->language) < 0) __PYX_ERR(0, 118, __pyx_L39_except_error)
                     if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_cmt, __pyx_kp_s__26) < 0) __PYX_ERR(0, 118, __pyx_L39_except_error)
                     if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_cc, __pyx_v_cc) < 0) __PYX_ERR(0, 118, __pyx_L39_except_error)
+                    if (unlikely(__pyx_v_COLOR == Py_None)) {
+                      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy");
+                      __PYX_ERR(0, 118, __pyx_L39_except_error)
+                    }
+                    __pyx_t_17 = PyDict_Copy(__pyx_v_COLOR); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 118, __pyx_L39_except_error)
+                    __Pyx_GOTREF(__pyx_t_17);
+                    if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_COLOR, __pyx_t_17) < 0) __PYX_ERR(0, 118, __pyx_L39_except_error)
+                    __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
                     __pyx_t_17 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_empty_tuple, __pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 118, __pyx_L39_except_error)
                     __Pyx_GOTREF(__pyx_t_17);
                     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
@@ -3949,7 +3997,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
  *                                 if self.language in ['c++', 'c']:
  *                                     try:             # <<<<<<<<<<<<<<
  *                                         if self.string[i+1] == "/" :
- *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc)
+ *                                             newString += style.config().main(char=s, language=self.language, cmt=s, cc=cc, COLOR=COLOR.copy())
  */
                   __Pyx_XGIVEREF(__pyx_t_14);
                   __Pyx_XGIVEREF(__pyx_t_13);
@@ -3975,9 +4023,9 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
               }
 
               /* "words.pyx":119
- *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)
- *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
- *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)             # <<<<<<<<<<<<<<
+ *                                         else:  newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())
+ *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
+ *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())             # <<<<<<<<<<<<<<
  *                             else: newString += bold + cc + self.color + s + init.init.reset
  *                         else: newString += bold+cc+COLOR['cmtColor']  + s + init.init.reset
  */
@@ -4005,12 +4053,20 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
                 __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_main); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-                __pyx_t_11 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 119, __pyx_L1_error)
+                __pyx_t_11 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 119, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_11);
                 if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_char, __pyx_v_s) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
                 if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_language, __pyx_n_s_mamba) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
                 if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_cmt, __pyx_kp_s__26) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
                 if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_cc, __pyx_v_cc) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
+                if (unlikely(__pyx_v_COLOR == Py_None)) {
+                  PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "copy");
+                  __PYX_ERR(0, 119, __pyx_L1_error)
+                }
+                __pyx_t_3 = PyDict_Copy(__pyx_v_COLOR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_COLOR, __pyx_t_3) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4035,8 +4091,8 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
             }
 
             /* "words.pyx":120
- *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc)
- *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)
+ *                                     except IndexError: newString += style.config().main(char=s, language=self.language, cmt="", cc=cc, COLOR=COLOR.copy())
+ *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())
  *                             else: newString += bold + cc + self.color + s + init.init.reset             # <<<<<<<<<<<<<<
  *                         else: newString += bold+cc+COLOR['cmtColor']  + s + init.init.reset
  *                     else:
@@ -4082,7 +4138,7 @@ static PyObject *__pyx_f_5words_5words_keywords(struct __pyx_obj_5words_words *_
           }
 
           /* "words.pyx":121
- *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc)
+ *                                 else: newString += style.config().main(char=s, language="mamba", cmt="", cc=cc, COLOR=COLOR.copy())
  *                             else: newString += bold + cc + self.color + s + init.init.reset
  *                         else: newString += bold+cc+COLOR['cmtColor']  + s + init.init.reset             # <<<<<<<<<<<<<<
  *                     else:
