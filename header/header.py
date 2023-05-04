@@ -46,7 +46,7 @@ def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white"
     if not data['input']:
         middle(max_x=max_x, n=max_y-5 ,x=x, y=y, color=color, lang=lang, COLOR=COLOR.copy())
         sys.stdout.write(move.LEFT(pos=1000))
-        bottom(max_x=max_x, color=color)
+        bottom(max_x=max_x, color=color, COLOR=COLOR.copy())
         sys.stdout.write(move.TO(x=size+1, y=4))
         sys.stdout.write(action.save)
         N = 0
@@ -54,7 +54,7 @@ def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white"
         N, scrolledUp = writingData(max_x=max_x, n=max_y-LINE, x=x, y=y, color=color, dataBase=dataBase, 
                                         data=data, lang=lang, COLOR=COLOR.copy())
         sys.stdout.write(move.LEFT(pos=1000))
-        bottom(max_x=max_x, color=color)
+        bottom(max_x=max_x, color=color, COLOR=COLOR.copy())
         
         if scrolledUp is True: sys.stdout.write(move.UP(pos=3)+move.RIGHT(pos=size))
         else: sys.stdout.write(move.TO(x=size+1, y=LINE))
@@ -79,7 +79,7 @@ def writingData(max_x: int, n : int, x : int, y : int, color : str = "white",
     Input               = data["input"].copy()
     N                   = len(Input)
     c                   = COLOR["white"]
-    input, length       = counter(n=0, color=color)
+    input, length       = counter(n=0, color=color, COLOR=COLOR.copy())
     scrolledUp          = False 
     _lang_              = f"{COLOR['proColor']}{lang} program"+f"{COLOR['openedColor']} opened"+ reset 
     magenta             = f"{COLOR['CRColor']}{x}, {N}"+ reset 
@@ -170,7 +170,7 @@ def middle(max_x: int, n : int, x : int, y : int, color : str = "white", lang : 
     _lang_      = f"{COLOR['proColor']}{lang} program"+f"{COLOR['openedColor']} opened"+ reset 
     magenta     = f"{COLOR['CRColor']}{1}, {1}"+ reset 
     
-    input, length = counter(n=0, color=color)
+    input, length = counter(n=0, color=color, COLOR=COLOR.copy())
     
     for i in range(n+1): 
         sys.stdout.write(move_left.LEFT(pos=1000))
@@ -186,27 +186,29 @@ def middle(max_x: int, n : int, x : int, y : int, color : str = "white", lang : 
         position.TO(x=x, y=y-1) 
     )
     
-def counter(n :int , color : str = "white"):
+def counter(n :int , color : str = "white", COLOR : dict = {}):
     asc         = frame.frame(custom=True)
     bold        = init.init.bold    
     reset       = init.init.reset
     length      = len(str(n))
     max_x       = 5
-    if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
-    else: c = bold + colors.fg.rbg(0, 0, 0)
+    c           = COLOR['white']
+    
+    #if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
+    #else: c = bold + colors.fg.rbg(0, 0, 0)
     
     if (max_x - length) >= 0:  s       = f"{c}{asc['v']}{reset} "
     else:  s = ""
 
     return s, len("  ")
 
-def bottom(max_x :int = 0, color : str = "white"):
+def bottom(max_x :int = 0, color : str = "white", COLOR : dict = {}):
     asc         = frame.frame(custom=True)
     bold        = init.init.bold    
     reset       = init.init.reset
-    
-    if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
-    else: c = bold + colors.fg.rbg(0, 0, 0)
+    c           = COLOR['white']
+    #if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
+    #else: c = bold + colors.fg.rbg(0, 0, 0)
     
     sys.stdout.write(
         c + f"{asc['dl']}" + f"{asc['h']}" * 7 + 

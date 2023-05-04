@@ -89,7 +89,7 @@ class IDE:
         self.LINE                           = 4
         ###########################################################
          # initialization 
-        self.input, self.size               = header.counter( self.if_line + 1 )
+        self.input, self.size               = header.counter( self.if_line + 1, COLOR=self.COLOR.copy() )
         # get number of line if file is opened 
         self.gama                           = header.title(max_x=self.max_x, max_y=self.max_y, size=self.size, color="white", dataBase=self.Data, 
                                                         data=self.importation, lang=self.lang, COLOR=self.COLOR.copy())
@@ -148,6 +148,7 @@ class IDE:
         self.cmt                            = self.COLOR["cmtColor"] 
         self.conservingColor                = self.COLOR["fgColor"]
         self.color                          = self.COLOR["fgColor"]
+        self.cW                             = self.COLOR["white"]
         ###########################################################
         self.idd_select                     = 0
         self.index_select                   = 0
@@ -424,7 +425,7 @@ class IDE:
                                             self.if_line           -= 1 
                                             self.y                 -= 1
                                             self.if_line_max       -= 1
-                                            self.input, self.size   = header.counter( self.if_line + 1)
+                                            self.input, self.size   = header.counter( self.if_line + 1, COLOR=self.COLOR.copy())
                                             self.Data['string']     = self.Data['string_tabular'][self.if_line]
                                             self.Data['I_S']        = self.Data['string_tab'][self.if_line]
                                             self.Data['input']      = self.Data['liste'][self.if_line]
@@ -444,7 +445,7 @@ class IDE:
                                                     self.if_line_max       -= 1
                                                     self.if_line           -= 1
                                                     self.y                  = self.LINE
-                                                    self.input, self.size   = header.counter( self.if_line )
+                                                    self.input, self.size   = header.counter( self.if_line, COLOR=self.COLOR.copy() )
                                                     self.Data['string']     = self.Data['string_tabular'][self.if_line]
                                                     self.Data['I_S']        = self.Data['string_tab'][self.if_line]
                                                     self.Data['input']      = self.Data['liste'][self.if_line]
@@ -464,7 +465,7 @@ class IDE:
                                             self.scrollDown        -= 1
                                             self.if_line_max       -= 1
                                             self.if_line           -= 1
-                                            self.input, self.size   = header.counter( self.if_line + 1)
+                                            self.input, self.size   = header.counter( self.if_line + 1, COLOR=self.COLOR.copy())
                                             self.Data['string']     = self.Data['string_tabular'][self.if_line]
                                             self.Data['I_S']        = self.Data['string_tab'][self.if_line]
                                             self.Data['input']      = self.Data['liste'][self.if_line]
@@ -487,7 +488,7 @@ class IDE:
                                         self.y                     += 1
                                         self.if_line               += 1 
                                         self.if_line_max           += 1
-                                        self.input, self.size       = header.counter( self.if_line + 1)
+                                        self.input, self.size       = header.counter( self.if_line + 1, COLOR=self.COLOR.copy())
                                         try:
                                             self.Data['string']     = self.Data['string_tabular'][self.if_line]
                                             self.Data['I_S']        = self.Data['string_tab'][self.if_line]
@@ -525,7 +526,7 @@ class IDE:
                                                 self.scrollDown        += 1
                                                 self.if_line_max       += 1
                                                 self.if_line           += 1
-                                                self.input, self.size   = header.counter( self.if_line + 1)
+                                                self.input, self.size   = header.counter( self.if_line + 1, COLOR=self.COLOR.copy())
                                                 self.Data['string']     = self.Data['string_tabular'][self.if_line]
                                                 self.Data['I_S']        = self.Data['string_tab'][self.if_line]
                                                 self.Data['input']      = self.Data['liste'][self.if_line]
@@ -604,7 +605,7 @@ class IDE:
                                 
                                 sys.stdout.write(
                                     self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
-                                    self.move.TO(x=self.max_x, y=self.y) + self.c + f"{self.acs['v']}" +
+                                    self.move.TO(x=self.max_x, y=self.y) + self.cW  + f"{self.acs['v']}" +
                                     self.move.TO(x=self.size+1, y=self.y) + self.c_bg+  __string__ + 
                                     self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
                                     )
@@ -613,10 +614,10 @@ class IDE:
                                 # initializing all variables
                                 self.if_line            += 1 
                                 self.if_line_max        += 1
-                                self.Data['string']      = self.Data['string'][self.Data['I_S'] : ]#""
-                                self.Data['input']       = self.Data['input'][self.Data['index'] : ] #""
-                                self.Data['get']         = self.Data["get"][self.Data['I_S'] : ]#[]
-                                self.input, self.size    = header.counter( self.if_line + 1 )
+                                self.Data['string']      = self.Data['string'][self.Data['I_S'] : ]
+                                self.Data['input']       = self.Data['input'][self.Data['index'] : ]
+                                self.Data['get']         = self.Data["get"][self.Data['I_S'] : ]
+                                self.input, self.size    = header.counter( self.if_line + 1, COLOR=self.COLOR.copy() )
                                 #####################################################################################
                                 
                                 try : 
@@ -651,7 +652,6 @@ class IDE:
                                     self.histotyOfColors['m'].append(self.m)
                                     self.histotyOfColors['n'].append(self.nn)
                                     self.histotyOfColors['locked'].append(self.locked)
-                                    
                                 ######################################################################
                                 self.Data["I_S"]         = 0
                                 self.Data["index"]       = 0
@@ -879,8 +879,8 @@ class IDE:
                         
                         sys.stdout.write(
                             self.input + self.c_bg + " " * ( self.max_x - (self.size+2) ) + self.init.reset + 
-                            self.move.TO(x=self.max_x, y=self.y) +  f"{self.acs['v']}" +
-                            self.move.TO(x=self.size+1, y=self.y) + self.c_bg+ __string__ + 
+                            self.move.TO(x=self.max_x, y=self.y) +  self.cW + f"{self.acs['v']}" +
+                            self.move.TO(x=self.size+1, y=self.y) + self.c_bg + __string__ + 
                             self.move.TO(x=self.size+1, y=self.y) + self.init.reset 
                             )
 

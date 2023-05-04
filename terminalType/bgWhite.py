@@ -3,7 +3,7 @@ from configure      import colors, init
 def bgWhite(name : str = "monokai"):
     bgWhite = {
         "monokai"   : init.init.bold + colors.bg.rgb(255, 255, 255),
-        "orion"     : init.init.bold + colors.bg.rgb(255, 255, 255), 
+        "orion"     : init.init.bold + colors.bg.rgb(0,0,0), 
         "pegasus"   : init.init.bold + colors.bg.rgb(255, 255, 255),
         "solo"      : init.init.bold + colors.bg.rgb(255, 255, 255), 
         "skyBlue"   : init.init.bold + colors.bg.rgb(255, 255, 255),

@@ -10,9 +10,9 @@ def B(name : str = "monokai"):
             "{"     : CB.codeBgColor(name="monokai")    + color_fg.rbg(255, 255, 153), 
             },
         "orion"     : {
-            "("     : CB.codeBgColor(name="monokai")    + color_fg.rbg(0, 255, 0),
-            "["     : CB.codeBgColor(name="monokai")    + color_fg.rbg(255, 255, 0),
-            "{"     : CB.codeBgColor(name="monokai")    + color_fg.rbg(255, 255, 153), 
+            "("     : CB.codeBgColor(name="orion")    + color_fg.rbg(0, 255, 0),
+            "["     : CB.codeBgColor(name="orion")    + color_fg.rbg(255, 255, 0),
+            "{"     : CB.codeBgColor(name="orion")    + color_fg.rbg(255, 255, 153), 
             },
         "pegasus"   : {
             "("     : CB.codeBgColor(name="monokai")    + color_fg.rbg(0, 255, 0),

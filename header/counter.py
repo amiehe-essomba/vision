@@ -14,7 +14,7 @@ def count(number : int , x : int , y : int , max_x : int, max_y : int, lang : st
     magenta             = COLOR["CRColor"]+f"{x-2}, {number+1}"+ reset 
     if action is False: _opened_        = f"{COLOR['openedColor']} opened"+ reset 
     else:               _opened_        = f"{COLOR['openedColor']} locked"+ reset 
-    input, length         = header.counter(n=0)
+    input, length         = header.counter(n=0, COLOR=COLOR.copy())
 
     sys.stdout.write(
         move.TO(x=length+2, y=max_y) + move.LEFT(pos=1000) + clear.clear.line(2)+

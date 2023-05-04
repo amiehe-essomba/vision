@@ -9,7 +9,7 @@ def postion(x, y, max_x, string = "", COLOR : dict = {}):
     c_bg                = COLOR['bgColor']
     move                = moveCursor.cursor 
     c                   = COLOR['white']
-    Input, size         = header.counter( 0 )
+    Input, size         = header.counter( 0, COLOR=COLOR.copy() )
     
     sys.stdout.write(move.LEFT(pos=1000))
     sys.stdout.write(
@@ -26,7 +26,7 @@ def POS(x, y, max_x, string = "", COLOR : dict = {}):
     c_bg                = COLOR['bgColor']
     move                = moveCursor.cursor 
     c                   = COLOR['white']
-    Input, size         = header.counter( 0 )
+    Input, size         = header.counter( 0, COLOR=COLOR.copy() )
     
     sys.stdout.write(move.LEFT(pos=1000))
     sys.stdout.write(

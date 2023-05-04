@@ -19,54 +19,6 @@ def open_graven_web():
     
         
 def visionEditor( ):
-    """
-    # bg color 
-    fgBlack                 = init.init.bold + colors.fg.rbg(10, 10, 10)
-    # bg color 
-    bgWhite                 = init.init.bold + colors.bg.rgb(255, 255, 255)
-    # bg color 
-    codeBgColors            = init.init.bold + colors.bg.rgb(0, 0, 0)
-    # fg color 
-    codeFgColors            = init.init.bold + colors.fg.rbg(255,255,255)
-    # building color 
-    codeColors              = codeBgColors + init.init.bold + colors.fg.rbg(255, 255, 255)
-    # widget color 
-    widgetColors            = codeBgColors + init.init.bold + colors.fg.rbg(255, 255, 255)
-    #keyword found color 
-    KeyColor                = init.init.bold + colors.bg.rgb(200, 200, 0) + init.init.bold + colors.fg.rbg(255, 255, 255)
-    # comment color 
-    commentColor            = codeBgColors  + colors.fg.rbg(153, 153, 255) 
-    #string color 
-    strColor                = codeBgColors + colors.bg.rgb(100, 100, 100) + colors.fg.rbg(255, 153, 20)
-    #title color            
-    titleColor              = init.init.bold + colors.fg.rbg(0, 255, 0)
-    #program color 
-    proColor                = init.init.bold+init.init.blink+ codeBgColors + colors.fg.rbg(0, 255, 0)
-    #col and raw color 
-    ColRawColor             = init.init.bold+init.init.blink+ codeBgColors + colors.fg.rbg(255, 100, 255)
-    #opened, closed
-    openedColor             = init.init.bold+init.init.blink+ codeBgColors + colors.fg.rbg(0, 255, 255)
-    #cursor color 
-    cursorColor             = codeBgColors + colors.fg.rbg(255,0,0)+chr(9664)
-    # colors used 
-    COLOR                   = {
-        "fgColor"   : codeColors, 
-        "bgColor"   : codeBgColors, 
-        "wColor"    : widgetColors, 
-        "keyColor"  : KeyColor,
-        "cmtColor"  : commentColor,
-        "strColor"  : strColor, 
-        "white"     : codeFgColors,
-        "titleColor": titleColor,
-        "proColor"  : proColor,
-        "CRColor"   : ColRawColor,
-        "openedColor" :openedColor,
-        "cursorColor" : cursorColor, 
-        "bgWhite"   : bgWhite, 
-        "fgBlack"   : fgBlack 
-        }
-    
-    """
     
     # get root path 
     root	                = os.path.abspath(os.curdir)
@@ -77,7 +29,7 @@ def visionEditor( ):
     # get arguments 
     arg	                    = sys.argv
     # coustomized terminal 
-    terminal                = "monokai"
+    terminal                = "orion"
     #colors used
     COLOR = Terminal.termianlConfig(name = terminal)
     # get screen coordinate (x_max, y_max)

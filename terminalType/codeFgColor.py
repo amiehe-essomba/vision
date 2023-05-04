@@ -3,7 +3,7 @@ from configure      import colors, init
 def codeFgColor(name : str = "monokai"):
     codeFgColor = {
         "monokai"   : init.init.bold + colors.fg.rbg(255,255,255),
-        "orion"     : init.init.bold + colors.fg.rbg(255,255,255),
+        "orion"     : init.init.bold + colors.fg.rbg(0,255,0),
         "pegasus"   : init.init.bold + colors.fg.rbg(255,255,255),
         "solo"      : init.init.bold + colors.fg.rbg(255,255,255),
         "skyBlue"   : init.init.bold + colors.fg.rbg(255,255,255),
