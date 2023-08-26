@@ -14,8 +14,8 @@ def title(max_x :int = 0, max_y :int = 0, size : int = 0,  color : str = "white"
     reset       = init.init.reset
     cc          = COLOR['titleColor']
     ball        = chr(9898)
-    string      = f"{ball}{ball} VISION EDITOR {ball}{ball}".center(max_x - 6)
-    _string_    = f"VISION EDITOR".center(max_x - 2)
+    string      = f"{ball}{ball} VISION CODE EDITOR {ball}{ball}".center(max_x - 6)
+    _string_    = f"VISION CODE EDITOR".center(max_x - 2)
     move        = moveCursor.cursor 
     action      = state.save
     c           = COLOR['white']
@@ -192,8 +192,8 @@ def counter(n :int , color : str = "white", COLOR : dict = {}):
     reset       = init.init.reset
     length      = len(str(n))
     max_x       = 5
+ 
     c           = COLOR['white']
-    
     #if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
     #else: c = bold + colors.fg.rbg(0, 0, 0)
     
@@ -207,12 +207,9 @@ def bottom(max_x :int = 0, color : str = "white", COLOR : dict = {}):
     bold        = init.init.bold    
     reset       = init.init.reset
     c           = COLOR['white']
-    #if color == "white": c   = bold + colors.fg.rbg(255, 255, 255)
-    #else: c = bold + colors.fg.rbg(0, 0, 0)
     
     sys.stdout.write(
         c + f"{asc['dl']}" + f"{asc['h']}" * 7 + 
         f"{asc['h']}" + f"{asc['h']}" * (max_x - 10) + 
         f"{asc['dr']}" + reset + "\n"
         )
-

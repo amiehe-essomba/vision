@@ -11,7 +11,7 @@ def formating(LINE : int = 4, data : list = [], max_x : int = 0, idd : int = 0, 
     reset       = init.init.reset
     c_bg        = COLOR['fgColor'] 
     c           = COLOR['white'] 
-    input, length       = header.counter(n=0)
+    input, length       = header.counter(n=0, COLOR=COLOR)
     sys.stdout.write(move.TO(x=length, y=LINE) )
 
     if MAX is None:
@@ -25,8 +25,8 @@ def formating(LINE : int = 4, data : list = [], max_x : int = 0, idd : int = 0, 
                 )
             Y += 1
         sys.stdout.flush()
-        
     else:
+        
         Y = MAX['y']
         line = N - Y +  (LINE+1)
         if len(data[MAX['max'] : ]) <  line :

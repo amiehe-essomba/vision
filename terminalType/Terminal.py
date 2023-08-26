@@ -3,7 +3,7 @@ from terminalType   import bgWhite, cmtColor, codeBgColor, codeColor, codeFgColo
 from terminalType   import cursorColor, fgBlack, openColor, prgramColor, titleColor, widgetColor 
 from terminalType   import op, ar, bracket, number
 
-def termianlConfig( name : str = "monokai"):
+def terminalConfig( name : str = "monokai"):
     """_summary_
 
     Args:

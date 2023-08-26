@@ -1,14 +1,12 @@
 from keywords   import key_py 
 
-cpdef keys(str language, str termios, unsigned long int n ):
-    cdef:
-        dict all_keys = key_py.LANG(master = language).LANG(termios = termios, n = n )
-        list keys     = all_keys["all_keys"]
-        unsigned long int i, j, MAX = 0
-        str string, color
-        list names  = []
-        list colors = []
-        dict key_items = {}
+def keys(language : str, termios : str,  n : int ):
+    all_keys    = key_py.LANG(master = language).LANG(termios = termios, n = n )
+    keys        = all_keys["all_keys"]
+    names       = []
+    colors      = []
+    key_items   = {}
+    MAX         = 0
 
     if language == "unknown" : pass 
     else:

@@ -2,42 +2,22 @@ from configure  import colors, init
 from style      import style, languageStyle 
 from keywords   import key_py 
 
-cdef list case():
+def case() -> list:
     lower_case = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
     upper_case = lower_case.upper().split()
     
     return lower_case.split()+upper_case+['_']
 
-cdef list CHARS():
-    cdef:
-        list names =  ['+', '-', '*', '^', '%', '/', '<', '>', '=', 
+def CHARS() -> list:
+    
+    names =  ['+', '-', '*', '^', '%', '/', '<', '>', '=', 
                         '!', '|', '&', '?', "~", "[","]",'{','}', 
                         "(", ")", '.', ':', '$', '@']
 
     return names
 
-cdef class words:
-    cdef public :
-        str string 
-        str color 
-        str language
-        str  termios
-    cdef:
-        unsigned long long int counter
-        str  newS        
-        str  ss          
-        bint active   
-        dict count      
-        str  c           
-        str  cc          
-        str  cmt         
-        list comment  
-        str  decorator, delimitor
-        list chars 
-        list mul_cmt
-        dict LANG
-
-    def __cinit__(self, string, color, language,  termios = "monokai" ):
+class words:
+    def __init__(self, string : str, color :str, language:str,  termios:str = "monokai" ):
         self.string         = string 
         self.color          = color 
         self.language       = language
@@ -52,21 +32,18 @@ cdef class words:
         self.chars          = languageStyle.characters(name=self.language)['name']
         self.mul_cmt        = languageStyle.mul_cmt(name=self.language)['name']
         self.LANG           = {}
-        
-        
-    cdef keywords(self, unsigned long long int n = 0, bint locked = False, dict count = {'int' : 0, 'sys' : []}, str b_ = '', dict COLOR = {}):
-        self.LANG  = key_py.LANG(master = self.language).LANG(termios = self.termios, n = n)
-        cdef :
-            str newString   = ""
-            bint active     = False
-            unsigned long long int i, j
-            list my_list    = count['sys'].copy()
-            str bold        = b_+init.init.bold
-            list keys       = self.LANG["all_keys"]
-            bint isFound    = False
-            str s , cc      = COLOR['fgColor'] 
-            list num        = [str(x) for x in range(10)]
-            unsigned long int c_idd = 0
+
+    def keywords(self, n :int = 0, locked : bool = False, count :dict = {'int' : 0, 'sys' : []},  b_ :str = '',  COLOR : dict = {}):
+        self.LANG   = key_py.LANG(master = self.language).LANG(termios = self.termios, n = n)
+        newString   = ""
+        active      = False
+        my_list     = count['sys'].copy()
+        bold        = b_+init.init.bold
+        keys        = self.LANG["all_keys"]
+        isFound     = False
+        cc          = COLOR['fgColor'] 
+        num         = [str(x) for x in range(10)]
+        c_idd       = 0
             
        
         self.counter = count['int']
@@ -129,23 +106,19 @@ cdef class words:
         count['sys'] = my_list.copy()
 
         return newString
-    
-    cpdef final(self, unsigned long long n = 0, bint locked = False, bint blink = False, bint code_w = False, 
-                                        unsigned long long int m = 0, dict COLOR  = {}, str QUOTE = ""):
-        cdef:
-            str b_, s 
-            unsigned long  long int i, j 
-            unsigned long long int quote = 0
-            str _cmt_           = COLOR['cmtColor']    
-            str _init_          = COLOR['fgColor']   
-            str str_color       = COLOR['cmtColor']
-            dict color_return   = {"color" : self.color, "locked" : False, "rest" : 0, "init" : _init_, "quote" : ""}
-            bint string_locked  = False
-            str cmt_str         = ""
-            str python_str      = ""
-            dict  __dic__ 
-            str __string__
-            
+
+    def final(self,  n : int= 0, locked : bool = False, blink : bool = False, code_w : bool= False, 
+                                    m : int = 0,  COLOR : dict  = {}, QUOTE : str = ""):
+        
+        quote           = 0
+        _cmt_           = COLOR['cmtColor']    
+        _init_          = COLOR['fgColor']   
+        str_color       = COLOR['cmtColor']
+        color_return    = {"color" : self.color, "locked" : False, "rest" : 0, "init" : _init_, "quote" : ""}
+        string_locked   = False
+        cmt_str         = ""
+        python_str      = ""
+        
         self.c              = COLOR['strColor'] 
         self.cc             = self.color  
         self.count          = {"int" : 0, "sys" : [], "c" : 0}
@@ -394,4 +367,3 @@ cdef class words:
                     count=self.count, b_=b_,COLOR=COLOR.copy())
 
         return self.newS, color_return
-        

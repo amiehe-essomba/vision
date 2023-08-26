@@ -1,18 +1,17 @@
 from configure  import colors
 
-cdef list case():
+def case() -> list :
     lower_case = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
     upper_case = lower_case.upper().split()
 
     return upper_case
 
-cdef list pseudo():
-    cdef:
-        str ext     = "psp"
-        list psp    = ["MT", 'GTH', "SPRINK", 'MT_GIA']
-        list func   = ["BLYP", "PBE", "B3LYP", "HSE", "PBE0", "BLYP2"]
-        list all_psp= []
-        str strin   = ""
+def pseudo() -> list:
+    ext     = "psp"
+    psp     = ["MT", 'GTH', "SPRINK", 'MT_GIA']
+    func    = ["BLYP", "PBE", "B3LYP", "HSE", "PBE0", "BLYP2"]
+    all_psp = []
+    strin   = ""
 
     for i, s in enumerate(case()):
         for j, ss in enumerate(psp):
@@ -22,15 +21,11 @@ cdef list pseudo():
     
     return all_psp
 
-cdef class LANG:
-    cdef public :
-        str master 
-    cdef:
-        dict c
-    def __cinit__(self, master) -> None:
+class LANG:
+    def __init__(self, master) -> None:
         self.master     = master
         self.c          = {"color_name" : [], 'values' : []}
-    cpdef LANG(self, str termios = "monokai", unsigned long int  n = 0):
+    def LANG(self, termios : str = "monokai",  n : int = 0):
         if    self.master == "python"   : return LANG(self.master).PY(termios=termios)
         elif  self.master == "mamba"    : return LANG(self.master).MAMBA(termios=termios, n = n)
         elif  self.master == "c"        : return LANG(self.master).C(termios=termios)
@@ -39,18 +34,17 @@ cdef class LANG:
         elif  self.master == "cython"   : return LANG(self.master).CYTHON(termios=termios)
         else: pass
 
-    cdef PY(self, str termios = "monokai"):
-        cdef :
-            dict data = {}
-            list keys = []
+    def PY(self, termios : str = "monokai"):
+        data = {}
+        keys = []
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
         data['types']               = {"name" : ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list", "bool", "self"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(25,165,200)]}
-        data["constructor"]         = {"name" : ['__init__', '__name__', "__cinit__"], "color" : self.c}
+        data["constructor"]         = {"name" : ['__init__', '__name__'], "color" : self.c}
 
-        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}
+        self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(15,100,150)]}
         data['class_and_func']      = {"name" : ['def', "class", "super"], "color" : self.c }
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255,165,0)]}  
@@ -115,10 +109,10 @@ cdef class LANG:
 
         return data.copy()
 
-    cdef CYTHON(self, str termios = "monokai"):
-        cdef :
-            dict data = {}
-            list keys = []
+    def CYTHON(self, termios : str = "monokai"):
+        
+        data = {}
+        keys = []
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
         names                       = ['int', 'float', 'complex', "str", "dict", "set", "tuple", "list",  "self",
@@ -197,11 +191,11 @@ cdef class LANG:
 
         return data.copy()
     
-    cdef MAMBA(self, str termios = "monokai", unsigned long int n = 0):
-        cdef :
-            dict data = {}
-            list keys = []
-            list names
+    def MAMBA(self, termios : str = "monokai",  n: int = 0):
+    
+        data = {}
+        keys = []
+        names
 
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
@@ -269,12 +263,9 @@ cdef class LANG:
 
         return data.copy()
 
-    cdef C(self, str termios = "monokai"):
-        cdef :
-            dict data = {}
-            list keys = []
-            list names
-
+    def C(self, termios : str = "monokai"):
+        data = {}
+        keys = []
 
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(240,128,128)]}
         names                       = ['int', 'float',  "auto", "double", "char", "long", "signed", "unsigned", "struct", 
@@ -330,14 +321,10 @@ cdef class LANG:
 
         return data.copy()
 
-    cdef CPMD(self, str termios = "monokai"):
-        cdef :
-            dict data = {}
-            list keys = []
-            list names, _names_
-            str  x
-
-
+    def CPMD(self, termios : str = "monokai"):
+        data = {}
+        keys = []
+       
         self.c                      = {"color_name" : ["monokai"], 'values' : [colors.fg.rbg(255, 102, 0)]}
         names                       = ["CPMD", "CONTROL", "SYSTEM", "POTENTIAL", "PARAMETERS", "PRINT", "ATOMS",
                                             "RESTART", "CONSTRAINTS", "THERMOSTAT", "BAROSTAT", "CELL_OPT", "GEO_OPT", "INFO", "END", "DFT", "VDW"]

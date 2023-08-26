@@ -1,5 +1,6 @@
 from keywords       import words
 from saving         import writing
+from configure      import screenConfig
 
 def readFile(fileName: str, termios : str , language :  str, COLOR : dict  = {}):
     # building color 
@@ -14,24 +15,39 @@ def readFile(fileName: str, termios : str , language :  str, COLOR : dict  = {})
     no_cmt                 = color
     colorList              = []
     end                    = False
-    
+    # getting max size (max_x, max_y) of the window 
+    max_x, max_y           = screenConfig.cursorMax()
+    n                      = 5
+    error                  = None
+    index                  = 0
     try:
         with open(fileName) as file:
-            for line in file.readlines():  
+            for line in file.readlines(): 
+                index += 1 
                 if line[-1] == '\n': line = line[:-1]
                 else: pass
                 
                 tab = writing.tabular(line, language)
                 if locked is False:
-                    __line__, __color__ = words.words(string=line.replace("\t", " " * 4), color=color, 
-                                        language=language ).final(locked=locked, m=m, n=idd, blink=False, code_w=False, COLOR=COLOR.copy())
+                    line = line.replace("\t", " " * 4) 
+                    if len(line) > (max_x-n):
+                        #line = line[:(max_x-n)]
+                        #__line__, __color__ = words.words(string=line, color=color, 
+                        #            language=language ).final(locked=locked, m=m, n=idd, blink=False, 
+                        #                                        code_w=False, COLOR=COLOR.copy())
+                        error = f'line {index} has more characters than {max_x}'
+                        break
+                    else:
+                        __line__, __color__ = words.words(string=line, color=color, 
+                                    language=language ).final(locked=locked, m=m, n=idd, blink=False, 
+                                                                code_w=False, COLOR=COLOR.copy())
                     data["writing"].append( __line__ )
                     data["input"].append( line.replace("\t", " " * 4) )
                     data["string"].append( line.replace(" " * 4, '\t') )
                     data["color"]["color"].append(color)
                     data["color"]["m"].append(m)
                     data["color"]['n'].append(idd)
-                    data["color"]['locked'].append(locked)
+                    data["color"]['locked'].append(locked)     
                     
                     locked, idd         = writing.keys(tab, language, line)
                     if locked is True: color = cmt 
@@ -48,8 +64,14 @@ def readFile(fileName: str, termios : str , language :  str, COLOR : dict  = {})
                         data["input"].append( line.replace("\t", " " * 4) )
                         data["string"].append( line)
                     else:
-                        __line__, __color__ = words.words(string=line.replace("\t", " " * 4), color=color, 
-                                        language=language ).final(locked=locked, m=m, n=idd, blink=False, code_w=False, COLOR=COLOR.copy())
+                        line = line.replace("\t", " " * 4) 
+                        if len(line) > (max_x-n):
+                            line = line[:(max_x-n)]                      
+                            __line__, __color__ = words.words(string=line, color=color, 
+                                            language=language ).final(locked=locked, m=m, n=idd, blink=False, code_w=False, COLOR=COLOR.copy())
+                        else:
+                            __line__, __color__ = words.words(string=line, color=color, 
+                                            language=language ).final(locked=locked, m=m, n=idd, blink=False, code_w=False, COLOR=COLOR.copy())
                         data["writing"].append( __line__ )
                         data["input"].append( line.replace("\t", " " * 4) )
                         data["string"].append( line.replace(" " * 4, '\t') )
@@ -57,6 +79,7 @@ def readFile(fileName: str, termios : str , language :  str, COLOR : dict  = {})
                         data["color"]["m"].append(m)
                         data["color"]['n'].append(idd)
                         data["color"]['locked'].append(locked)
+
                     if locked is True: color = cmt 
                     else: color = no_cmt                 
         file.close()
@@ -69,5 +92,5 @@ def readFile(fileName: str, termios : str , language :  str, COLOR : dict  = {})
     data["color"]['locked'].append(locked)
     data["writing"].append('')
     
-    return data 
+    return data, error
 

@@ -31,14 +31,14 @@ def visionEditor( ):
     # coustomized terminal 
     terminal                = "orion"
     #colors used
-    COLOR = Terminal.termianlConfig(name = terminal)
+    COLOR = Terminal.terminalConfig(name = terminal)
     # get screen coordinate (x_max, y_max)
     max_x, max_y            = screenConfig.cursorMax()
     # set color 
     color                   = colors.fg.rbg(255,0,0) + init.init.bold+init.init.blink
     reset                   = init.init.reset
     c_bg                    = colors.bg.white_L
-    
+    error                   = None
     # initilization of writeData
     writeData               = {"data" : [], "FileName" : None, "action" : False}
     data				    = {"writing" : [""], "string" : [""], "input" : [], "color" : {"color" : [color], "m" : [0], "n" : [0], "locked": [False]}}
@@ -56,13 +56,14 @@ def visionEditor( ):
                     if system == "Windows" :  name = root + f"\\{arg[1]}"
                     else:  name = root + f"/{arg[1]}"
                     try:
-                        if os.stat(name).st_size != 0 :  data = RT.readFile(fileName=name, termios=termios, language=language, COLOR=COLOR.copy())
+                        if os.stat(name).st_size != 0 :  data, error = RT.readFile(fileName=name, termios=termios, language=language, COLOR=COLOR.copy())
                         else:  pass
                     except FileNotFoundError : pass 
-                   
-                    writeData["FileName"]   = arg[1]
-                    writeData["data"]	    = data['string'].copy()
-                    writeData["action"]	    = True     
+                    if error is None:
+                        writeData["FileName"]   = arg[1]
+                        writeData["data"]	    = data['string'].copy()
+                        writeData["action"]	    = True     
+                    else: locked = True
                 else: termios, language = "none", "unknown"
             else : termios, language = "none", "unknown"
         elif len(arg) == 3 : 
@@ -110,7 +111,7 @@ def visionEditor( ):
             else:
                 string = f" Increase the height of screen at least 50 : height = {max_x} "
                 print(c_bg + color + string + reset)
-        else: pass
+        else: print(c_bg + color + error + reset)
     else: 
         string = f" VISION is not distributed for {system} platform "
         print(c_bg + color + string + reset)
